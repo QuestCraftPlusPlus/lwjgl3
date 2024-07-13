@@ -67,7 +67,7 @@ if [ "$SKIP_FREETYPE" != "1" ]; then
   llvm-strip ./build_android-$LWJGL_BUILD_ARCH/lib/libfreetype.so
   
   cd ..
-  cp   freetype-$BUILD_FREETYPE_VERSION/build_android-$LWJGL_BUILD_ARCH/lib/libfreetype.so $LWJGL_NATIVE/freetype/
+  cp   freetype-$BUILD_FREETYPE_VERSION/build_android-$LWJGL_BUILD_ARCH/lib/libfreetype.so $LWJGL_NATIVE/
   rm -rf freetype-$BUILD_FREETYPE_VERSION
   unset BUILD_FREETYPE_VERSION
   unset CC
@@ -128,7 +128,9 @@ yes | ant -Dplatform.linux=true \
 rm -rf bin/out; mkdir bin/out
 find $LWJGL_NATIVE -name 'liblwjgl*.so' -exec cp {} bin/out/ \;
 cp $LWJGL_NATIVE/shaderc/libshaderc.so bin/out/
-cp $LWJGL_NATIVE/freetype/libfreetype.so bin/out/
+if [ -e "$LWJGL_NATIVE/libfreetype.so" ]; then
+  cp $LWJGL_NATIVE/libfreetype.so bin/out/
+fi
 
 # Cleanup unused output jar files
 find bin/RELEASE \( -name '*-natives-*' -o -name '*-sources.jar' \) -delete
