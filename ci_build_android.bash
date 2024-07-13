@@ -64,10 +64,10 @@ if [ "$SKIP_FREETYPE" != "1" ]; then
 
   make -j4
   make install
-
   llvm-strip ./build_android-$LWJGL_BUILD_ARCH/lib/libfreetype.so
-  cp  ./build_android-$LWJGL_BUILD_ARCH/lib/libfreetype.so $LWJGL_NATIVE/freetype/
+  
   cd ..
+  cp   freetype-$BUILD_FREETYPE_VERSION/build_android-$LWJGL_BUILD_ARCH/lib/libfreetype.so $LWJGL_NATIVE/freetype/
   rm -rf freetype-$BUILD_FREETYPE_VERSION
   unset BUILD_FREETYPE_VERSION
   unset CC
