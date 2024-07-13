@@ -66,7 +66,7 @@ if [ "$SKIP_FREETYPE" != "1" ]; then
   make install
 
   llvm-strip ./build_android-$LWJGL_BUILD_ARCH/lib/libfreetype.so
-  cp  ./build_android-$LWJGL_BUILD_ARCH/lib/libfreetype.so $LWJGL_NATIVE/
+  cp  ./build_android-$LWJGL_BUILD_ARCH/lib/libfreetype.so $LWJGL_NATIVE/freetype/
   cd ..
   rm -rf freetype-$BUILD_FREETYPE_VERSION
   unset BUILD_FREETYPE_VERSION
@@ -128,9 +128,7 @@ yes | ant -Dplatform.linux=true \
 rm -rf bin/out; mkdir bin/out
 find $LWJGL_NATIVE -name 'liblwjgl*.so' -exec cp {} bin/out/ \;
 cp $LWJGL_NATIVE/shaderc/libshaderc.so bin/out/
-if[ -e $LWJGL_NATIVE/libfreetype.so ]; then
-  cp $LWJGL_NATIVE/libfreetype.so bin/out/
-fi 
+cp $LWJGL_NATIVE/freetype/libfreetype.so bin/out/
 
 # Cleanup unused output jar files
 find bin/RELEASE \( -name '*-natives-*' -o -name '*-sources.jar' \) -delete
