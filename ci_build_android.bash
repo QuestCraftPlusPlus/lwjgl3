@@ -57,6 +57,7 @@ if [ "$SKIP_FREETYPE" != "1" ]; then
     --prefix=`pwd`/build_android-$LWJGL_BUILD_ARCH \
     --without-zlib \
     --with-brotli=no \
+    --with-bzip2=no \
     --with-png=no \
     --with-harfbuzz=no \
     --enable-static=no \
