@@ -352,7 +352,6 @@ This script is included in /build.xml and /config/update-dependencies.xml.
                 <sequential if:true="openvr">
                     <get-quiet name="@{module} :: @{artifact}" url="https://github.com/ValveSoftware/openvr/raw/master/bin/linuxarm64/libopenvr_api.so" dest="${dest}" skipexisting="true"/>
                 </sequential>
-                <get-quiet name="@{module} :: @{artifact}" url="https://build.lwjgl.org/${build.type}/${platform.remote}/${build.arch}/@{artifact}" dest="${dest}" skipexisting="true"/>
             </sequential>
         </sequential>
     </macrodef>
