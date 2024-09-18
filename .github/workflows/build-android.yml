@@ -34,7 +34,7 @@ jobs:
         path: bin/RELEASE
 
     - name: Upload native build output
-      uses: actions/upload-artifact@v1
+      uses: actions/upload-artifact@v2
       with:
         name: lwjgl3-android-natives-${{matrix.arch}}
         path: bin/out
