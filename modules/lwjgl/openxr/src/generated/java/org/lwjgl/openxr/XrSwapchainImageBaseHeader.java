@@ -25,8 +25,8 @@ import static org.lwjgl.system.MemoryStack.*;
  * <h5>Valid Usage (Implicit)</h5>
  * 
  * <ul>
- * <li>{@code type} <b>must</b> be one of the following XrStructureType values: {@link KHROpenGLEnable#XR_TYPE_SWAPCHAIN_IMAGE_OPENGL_KHR TYPE_SWAPCHAIN_IMAGE_OPENGL_KHR}, {@link KHRVulkanEnable#XR_TYPE_SWAPCHAIN_IMAGE_VULKAN_KHR TYPE_SWAPCHAIN_IMAGE_VULKAN_KHR}</li>
- * <li>{@code next} <b>must</b> be {@code NULL} or a valid pointer to the <a href="https://www.khronos.org/registry/OpenXR/specs/1.0/html/xrspec.html#valid-usage-for-structure-pointer-chains">next structure in a structure chain</a></li>
+ * <li>{@code type} <b>must</b> be one of the following XrStructureType values: {@link KHROpenGLESEnable#XR_TYPE_SWAPCHAIN_IMAGE_OPENGL_ES_KHR TYPE_SWAPCHAIN_IMAGE_OPENGL_ES_KHR}, {@link KHROpenGLEnable#XR_TYPE_SWAPCHAIN_IMAGE_OPENGL_KHR TYPE_SWAPCHAIN_IMAGE_OPENGL_KHR}, {@link KHRVulkanEnable#XR_TYPE_SWAPCHAIN_IMAGE_VULKAN_KHR TYPE_SWAPCHAIN_IMAGE_VULKAN_KHR}</li>
+ * <li>{@code next} <b>must</b> be {@code NULL} or a valid pointer to the <a target="_blank" href="https://www.khronos.org/registry/OpenXR/specs/1.0/html/xrspec.html#valid-usage-for-structure-pointer-chains">next structure in a structure chain</a></li>
  * </ul>
  * 
  * <h5>See Also</h5>
@@ -158,6 +158,11 @@ public class XrSwapchainImageBaseHeader extends Struct<XrSwapchainImageBaseHeade
         return new XrSwapchainImageBaseHeader(value.address(), __getContainer(value));
     }
 
+    /** Upcasts the specified {@code XrSwapchainImageOpenGLESKHR} instance to {@code XrSwapchainImageBaseHeader}. */
+    public static XrSwapchainImageBaseHeader create(XrSwapchainImageOpenGLESKHR value) {
+        return new XrSwapchainImageBaseHeader(value.address(), __getContainer(value));
+    }
+
     /** Upcasts the specified {@code XrSwapchainImageVulkanKHR} instance to {@code XrSwapchainImageBaseHeader}. */
     public static XrSwapchainImageBaseHeader create(XrSwapchainImageVulkanKHR value) {
         return new XrSwapchainImageBaseHeader(value.address(), __getContainer(value));
@@ -209,6 +214,11 @@ public class XrSwapchainImageBaseHeader extends Struct<XrSwapchainImageBaseHeade
 
     /** Upcasts the specified {@code XrSwapchainImageOpenGLKHR.Buffer} instance to {@code XrSwapchainImageBaseHeader.Buffer}. */
     public static XrSwapchainImageBaseHeader.Buffer create(XrSwapchainImageOpenGLKHR.Buffer value) {
+        return new XrSwapchainImageBaseHeader.Buffer(value.address(), __getContainer(value), -1, 0, value.remaining(), value.remaining());
+    }
+
+    /** Upcasts the specified {@code XrSwapchainImageOpenGLESKHR.Buffer} instance to {@code XrSwapchainImageBaseHeader.Buffer}. */
+    public static XrSwapchainImageBaseHeader.Buffer create(XrSwapchainImageOpenGLESKHR.Buffer value) {
         return new XrSwapchainImageBaseHeader.Buffer(value.address(), __getContainer(value), -1, 0, value.remaining(), value.remaining());
     }
 

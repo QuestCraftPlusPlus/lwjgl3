@@ -22,7 +22,8 @@ import static org.lwjgl.system.MemoryStack.*;
  * 
  * <ul>
  * <li>The {@link KHRLoaderInit XR_KHR_loader_init} extension <b>must</b> be enabled prior to using {@link XrLoaderInitInfoBaseHeaderKHR}</li>
- * <li>{@code next} <b>must</b> be {@code NULL} or a valid pointer to the <a href="https://www.khronos.org/registry/OpenXR/specs/1.0/html/xrspec.html#valid-usage-for-structure-pointer-chains">next structure in a structure chain</a></li>
+ * <li>{@code type} <b>must</b> be {@link KHRLoaderInitAndroid#XR_TYPE_LOADER_INIT_INFO_ANDROID_KHR TYPE_LOADER_INIT_INFO_ANDROID_KHR}</li>
+ * <li>{@code next} <b>must</b> be {@code NULL} or a valid pointer to the <a target="_blank" href="https://www.khronos.org/registry/OpenXR/specs/1.0/html/xrspec.html#valid-usage-for-structure-pointer-chains">next structure in a structure chain</a></li>
  * </ul>
  * 
  * <h5>See Also</h5>
@@ -149,6 +150,11 @@ public class XrLoaderInitInfoBaseHeaderKHR extends Struct<XrLoaderInitInfoBaseHe
         return address == NULL ? null : new XrLoaderInitInfoBaseHeaderKHR(address, null);
     }
 
+    /** Upcasts the specified {@code XrLoaderInitInfoAndroidKHR} instance to {@code XrLoaderInitInfoBaseHeaderKHR}. */
+    public static XrLoaderInitInfoBaseHeaderKHR create(XrLoaderInitInfoAndroidKHR value) {
+        return new XrLoaderInitInfoBaseHeaderKHR(value.address(), __getContainer(value));
+    }
+
     /**
      * Returns a new {@link XrLoaderInitInfoBaseHeaderKHR.Buffer} instance allocated with {@link MemoryUtil#memAlloc memAlloc}. The instance must be explicitly freed.
      *
@@ -191,6 +197,11 @@ public class XrLoaderInitInfoBaseHeaderKHR extends Struct<XrLoaderInitInfoBaseHe
     @Nullable
     public static XrLoaderInitInfoBaseHeaderKHR.Buffer createSafe(long address, int capacity) {
         return address == NULL ? null : new Buffer(address, capacity);
+    }
+
+    /** Upcasts the specified {@code XrLoaderInitInfoAndroidKHR.Buffer} instance to {@code XrLoaderInitInfoBaseHeaderKHR.Buffer}. */
+    public static XrLoaderInitInfoBaseHeaderKHR.Buffer create(XrLoaderInitInfoAndroidKHR.Buffer value) {
+        return new XrLoaderInitInfoBaseHeaderKHR.Buffer(value.address(), __getContainer(value), -1, 0, value.remaining(), value.remaining());
     }
 
     /**

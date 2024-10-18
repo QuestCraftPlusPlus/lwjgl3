@@ -32,8 +32,8 @@ import org.lwjgl.egl.*;
  * <ul>
  * <li>The {@link MNDXEGLEnable XR_MNDX_egl_enable} extension <b>must</b> be enabled prior to using {@link XrGraphicsBindingEGLMNDX}</li>
  * <li>{@code type} <b>must</b> be {@link MNDXEGLEnable#XR_TYPE_GRAPHICS_BINDING_EGL_MNDX TYPE_GRAPHICS_BINDING_EGL_MNDX}</li>
- * <li>{@code next} <b>must</b> be {@code NULL} or a valid pointer to the <a href="https://www.khronos.org/registry/OpenXR/specs/1.0/html/xrspec.html#valid-usage-for-structure-pointer-chains">next structure in a structure chain</a></li>
- * <li>{@code getProcAddress} <b>must</b> be a valid {@code PFN_xrEglGetProcAddressMNDX} value</li>
+ * <li>{@code next} <b>must</b> be {@code NULL} or a valid pointer to the <a target="_blank" href="https://www.khronos.org/registry/OpenXR/specs/1.0/html/xrspec.html#valid-usage-for-structure-pointer-chains">next structure in a structure chain</a></li>
+ * <li>{@code getProcAddress} <b>must</b> be a valid {@code PFNEGLGETPROCADDRESSPROC} value</li>
  * <li>{@code display} <b>must</b> be a valid {@code EGLDisplay} value</li>
  * <li>{@code config} <b>must</b> be a valid {@code EGLConfig} value</li>
  * <li>{@code context} <b>must</b> be a valid {@code EGLContext} value</li>
@@ -49,7 +49,6 @@ import org.lwjgl.egl.*;
  * struct XrGraphicsBindingEGLMNDX {
  *     XrStructureType {@link #type};
  *     void const * {@link #next};
- *     PFN_xrEglGetProcAddressMNDX {@link #getProcAddress};
  *     EGLDisplay {@link #display};
  *     EGLConfig {@link #config};
  *     EGLContext {@link #context};
@@ -67,7 +66,6 @@ public class XrGraphicsBindingEGLMNDX extends Struct<XrGraphicsBindingEGLMNDX> i
     public static final int
         TYPE,
         NEXT,
-        GETPROCADDRESS,
         DISPLAY,
         CONFIG,
         CONTEXT;
@@ -75,7 +73,6 @@ public class XrGraphicsBindingEGLMNDX extends Struct<XrGraphicsBindingEGLMNDX> i
     static {
         Layout layout = __struct(
             __member(4),
-            __member(POINTER_SIZE),
             __member(POINTER_SIZE),
             __member(POINTER_SIZE),
             __member(POINTER_SIZE),
@@ -87,10 +84,9 @@ public class XrGraphicsBindingEGLMNDX extends Struct<XrGraphicsBindingEGLMNDX> i
 
         TYPE = layout.offsetof(0);
         NEXT = layout.offsetof(1);
-        GETPROCADDRESS = layout.offsetof(2);
-        DISPLAY = layout.offsetof(3);
-        CONFIG = layout.offsetof(4);
-        CONTEXT = layout.offsetof(5);
+        DISPLAY = layout.offsetof(2);
+        CONFIG = layout.offsetof(3);
+        CONTEXT = layout.offsetof(4);
     }
 
     protected XrGraphicsBindingEGLMNDX(long address, @Nullable ByteBuffer container) {
@@ -121,9 +117,6 @@ public class XrGraphicsBindingEGLMNDX extends Struct<XrGraphicsBindingEGLMNDX> i
     /** {@code NULL} or a pointer to the next structure in a structure chain. No such structures are defined in core OpenXR or this extension. */
     @NativeType("void const *")
     public long next() { return nnext(address()); }
-    /** a valid function pointer to {@code eglGetProcAddress}. */
-    @NativeType("PFN_xrEglGetProcAddressMNDX")
-    public long getProcAddress() { return ngetProcAddress(address()); }
     /** a valid EGL {@code EGLDisplay}. */
     @NativeType("EGLDisplay")
     public long display() { return ndisplay(address()); }
@@ -140,8 +133,6 @@ public class XrGraphicsBindingEGLMNDX extends Struct<XrGraphicsBindingEGLMNDX> i
     public XrGraphicsBindingEGLMNDX type$Default() { return type(MNDXEGLEnable.XR_TYPE_GRAPHICS_BINDING_EGL_MNDX); }
     /** Sets the specified value to the {@link #next} field. */
     public XrGraphicsBindingEGLMNDX next(@NativeType("void const *") long value) { nnext(address(), value); return this; }
-    /** Sets the specified value to the {@link #getProcAddress} field. */
-    public XrGraphicsBindingEGLMNDX getProcAddress(@NativeType("PFN_xrEglGetProcAddressMNDX") long value) { ngetProcAddress(address(), value); return this; }
     /** Sets the specified value to the {@link #display} field. */
     public XrGraphicsBindingEGLMNDX display(@NativeType("EGLDisplay") long value) { ndisplay(address(), value); return this; }
     /** Sets the specified value to the {@link #config} field. */
@@ -153,14 +144,12 @@ public class XrGraphicsBindingEGLMNDX extends Struct<XrGraphicsBindingEGLMNDX> i
     public XrGraphicsBindingEGLMNDX set(
         int type,
         long next,
-        long getProcAddress,
         long display,
         long config,
         long context
     ) {
         type(type);
         next(next);
-        getProcAddress(getProcAddress);
         display(display);
         config(config);
         context(context);
@@ -297,8 +286,6 @@ public class XrGraphicsBindingEGLMNDX extends Struct<XrGraphicsBindingEGLMNDX> i
     public static int ntype(long struct) { return UNSAFE.getInt(null, struct + XrGraphicsBindingEGLMNDX.TYPE); }
     /** Unsafe version of {@link #next}. */
     public static long nnext(long struct) { return memGetAddress(struct + XrGraphicsBindingEGLMNDX.NEXT); }
-    /** Unsafe version of {@link #getProcAddress}. */
-    public static long ngetProcAddress(long struct) { return memGetAddress(struct + XrGraphicsBindingEGLMNDX.GETPROCADDRESS); }
     /** Unsafe version of {@link #display}. */
     public static long ndisplay(long struct) { return memGetAddress(struct + XrGraphicsBindingEGLMNDX.DISPLAY); }
     /** Unsafe version of {@link #config}. */
@@ -310,8 +297,6 @@ public class XrGraphicsBindingEGLMNDX extends Struct<XrGraphicsBindingEGLMNDX> i
     public static void ntype(long struct, int value) { UNSAFE.putInt(null, struct + XrGraphicsBindingEGLMNDX.TYPE, value); }
     /** Unsafe version of {@link #next(long) next}. */
     public static void nnext(long struct, long value) { memPutAddress(struct + XrGraphicsBindingEGLMNDX.NEXT, value); }
-    /** Unsafe version of {@link #getProcAddress(long) getProcAddress}. */
-    public static void ngetProcAddress(long struct, long value) { memPutAddress(struct + XrGraphicsBindingEGLMNDX.GETPROCADDRESS, check(value)); }
     /** Unsafe version of {@link #display(long) display}. */
     public static void ndisplay(long struct, long value) { memPutAddress(struct + XrGraphicsBindingEGLMNDX.DISPLAY, check(value)); }
     /** Unsafe version of {@link #config(long) config}. */
@@ -325,7 +310,6 @@ public class XrGraphicsBindingEGLMNDX extends Struct<XrGraphicsBindingEGLMNDX> i
      * @param struct the struct to validate
      */
     public static void validate(long struct) {
-        check(memGetAddress(struct + XrGraphicsBindingEGLMNDX.GETPROCADDRESS));
         check(memGetAddress(struct + XrGraphicsBindingEGLMNDX.DISPLAY));
         check(memGetAddress(struct + XrGraphicsBindingEGLMNDX.CONFIG));
         check(memGetAddress(struct + XrGraphicsBindingEGLMNDX.CONTEXT));
@@ -375,9 +359,6 @@ public class XrGraphicsBindingEGLMNDX extends Struct<XrGraphicsBindingEGLMNDX> i
         /** @return the value of the {@link XrGraphicsBindingEGLMNDX#next} field. */
         @NativeType("void const *")
         public long next() { return XrGraphicsBindingEGLMNDX.nnext(address()); }
-        /** @return the value of the {@link XrGraphicsBindingEGLMNDX#getProcAddress} field. */
-        @NativeType("PFN_xrEglGetProcAddressMNDX")
-        public long getProcAddress() { return XrGraphicsBindingEGLMNDX.ngetProcAddress(address()); }
         /** @return the value of the {@link XrGraphicsBindingEGLMNDX#display} field. */
         @NativeType("EGLDisplay")
         public long display() { return XrGraphicsBindingEGLMNDX.ndisplay(address()); }
@@ -394,8 +375,6 @@ public class XrGraphicsBindingEGLMNDX extends Struct<XrGraphicsBindingEGLMNDX> i
         public XrGraphicsBindingEGLMNDX.Buffer type$Default() { return type(MNDXEGLEnable.XR_TYPE_GRAPHICS_BINDING_EGL_MNDX); }
         /** Sets the specified value to the {@link XrGraphicsBindingEGLMNDX#next} field. */
         public XrGraphicsBindingEGLMNDX.Buffer next(@NativeType("void const *") long value) { XrGraphicsBindingEGLMNDX.nnext(address(), value); return this; }
-        /** Sets the specified value to the {@link XrGraphicsBindingEGLMNDX#getProcAddress} field. */
-        public XrGraphicsBindingEGLMNDX.Buffer getProcAddress(@NativeType("PFN_xrEglGetProcAddressMNDX") long value) { XrGraphicsBindingEGLMNDX.ngetProcAddress(address(), value); return this; }
         /** Sets the specified value to the {@link XrGraphicsBindingEGLMNDX#display} field. */
         public XrGraphicsBindingEGLMNDX.Buffer display(@NativeType("EGLDisplay") long value) { XrGraphicsBindingEGLMNDX.ndisplay(address(), value); return this; }
         /** Sets the specified value to the {@link XrGraphicsBindingEGLMNDX#config} field. */

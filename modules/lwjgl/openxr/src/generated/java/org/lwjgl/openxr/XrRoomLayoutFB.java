@@ -27,7 +27,7 @@ import static org.lwjgl.system.MemoryStack.*;
  * <ul>
  * <li>The {@link FBScene XR_FB_scene} extension <b>must</b> be enabled prior to using {@link XrRoomLayoutFB}</li>
  * <li>{@code type} <b>must</b> be {@link FBScene#XR_TYPE_ROOM_LAYOUT_FB TYPE_ROOM_LAYOUT_FB}</li>
- * <li>{@code next} <b>must</b> be {@code NULL} or a valid pointer to the <a href="https://www.khronos.org/registry/OpenXR/specs/1.0/html/xrspec.html#valid-usage-for-structure-pointer-chains">next structure in a structure chain</a></li>
+ * <li>{@code next} <b>must</b> be {@code NULL} or a valid pointer to the <a target="_blank" href="https://www.khronos.org/registry/OpenXR/specs/1.0/html/xrspec.html#valid-usage-for-structure-pointer-chains">next structure in a structure chain</a></li>
  * <li>If {@code wallUuidCapacityInput} is not 0, {@code wallUuids} <b>must</b> be a pointer to an array of {@code wallUuidCapacityInput} {@link XrUuidEXT} structures</li>
  * </ul>
  * 
@@ -121,10 +121,10 @@ public class XrRoomLayoutFB extends Struct<XrRoomLayoutFB> implements NativeReso
     public XrUuidEXT floorUuid() { return nfloorUuid(address()); }
     /** the UUID of the spatial entity representing the room ceiling */
     public XrUuidEXT ceilingUuid() { return nceilingUuid(address()); }
-    /** the capacity of the {@code wallUuids} array, in number of UUIDs, or 0 to indicate a request to retrieve the required capacity. */
+    /** the capacity of the {@code wallUuids} array, in bytes, or 0 to indicate a request to retrieve the required capacity. */
     @NativeType("uint32_t")
     public int wallUuidCapacityInput() { return nwallUuidCapacityInput(address()); }
-    /** the count of {@link XrUuidEXT} handles written, or the required capacity in the case that {@code wallUuidCapacityInput} is insufficient. */
+    /** a pointer to the count of {@link XrUuidEXT} handles written, or a pointer to the required capacity in the case that {@code wallUuidCapacityInput} is insufficient. */
     @NativeType("uint32_t")
     public int wallUuidCountOutput() { return nwallUuidCountOutput(address()); }
     /** a pointer to an array of {@link XrUuidEXT} handles, but can be {@code NULL} if {@code wallUuidCapacityInput} is 0. */

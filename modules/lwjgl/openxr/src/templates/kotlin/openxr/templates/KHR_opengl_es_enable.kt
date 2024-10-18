@@ -24,7 +24,7 @@ val KHR_opengl_es_enable = "KHROpenGLESEnable".nativeClassXR("KHR_opengl_es_enab
         In order to expose the structures, types, and functions of this extension, the application source code <b>must</b> define #USE_GRAPHICS_API_OPENGL_ES, as well as an appropriate <a target="_blank" href="https://www.khronos.org/registry/OpenXR/specs/1.0/html/xrspec.html\#window-system-header-control">window system define</a>, before including the OpenXR platform header {@code openxr_platform.h}, in all portions of your library or application that include it. The only window system define currently supported by this extension is:
 
         <ul>
-            <li>#USE_PLATFORM_ANDROID</li>
+            <li>USE_PLATFORM_ANDROID</li>
         </ul>
         """
 

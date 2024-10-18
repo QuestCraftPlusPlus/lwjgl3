@@ -23,7 +23,7 @@ import static org.lwjgl.system.MemoryStack.*;
  * 
  * <ul>
  * <li>{@code type} <b>must</b> be {@link XR10#XR_TYPE_INSTANCE_CREATE_INFO TYPE_INSTANCE_CREATE_INFO}</li>
- * <li>{@code next} <b>must</b> be {@code NULL} or a valid pointer to the <a href="https://www.khronos.org/registry/OpenXR/specs/1.0/html/xrspec.html#valid-usage-for-structure-pointer-chains">next structure in a structure chain</a>. See also: {@link XrDebugUtilsMessengerCreateInfoEXT}</li>
+ * <li>{@code next} <b>must</b> be {@code NULL} or a valid pointer to the <a target="_blank" href="https://www.khronos.org/registry/OpenXR/specs/1.0/html/xrspec.html#valid-usage-for-structure-pointer-chains">next structure in a structure chain</a>. See also: {@link XrDebugUtilsMessengerCreateInfoEXT}, {@link XrInstanceCreateInfoAndroidKHR}</li>
  * <li>{@code createFlags} <b>must</b> be 0</li>
  * <li>{@code applicationInfo} <b>must</b> be a valid {@link XrApplicationInfo} structure</li>
  * <li>If {@code enabledApiLayerCount} is not 0, {@code enabledApiLayerNames} <b>must</b> be a pointer to an array of {@code enabledApiLayerCount} null-terminated UTF-8 strings</li>
@@ -128,7 +128,7 @@ public class XrInstanceCreateInfo extends Struct<XrInstanceCreateInfo> implement
     /** the number of global API layers to enable. */
     @NativeType("uint32_t")
     public int enabledApiLayerCount() { return nenabledApiLayerCount(address()); }
-    /** a pointer to an array of {@code enabledApiLayerCount} strings containing the names of API layers to enable for the created instance. See the <a href="https://www.khronos.org/registry/OpenXR/specs/1.0/html/xrspec.html#api-layers-and-extensions">API Layers And Extensions</a> section for further details. */
+    /** a pointer to an array of {@code enabledApiLayerCount} strings containing the names of API layers to enable for the created instance. See the <a target="_blank" href="https://www.khronos.org/registry/OpenXR/specs/1.0/html/xrspec.html#api-layers-and-extensions">API Layers And Extensions</a> section for further details. */
     @Nullable
     @NativeType("char const * const *")
     public PointerBuffer enabledApiLayerNames() { return nenabledApiLayerNames(address()); }
@@ -148,6 +148,8 @@ public class XrInstanceCreateInfo extends Struct<XrInstanceCreateInfo> implement
     public XrInstanceCreateInfo next(@NativeType("void const *") long value) { nnext(address(), value); return this; }
     /** Prepends the specified {@link XrDebugUtilsMessengerCreateInfoEXT} value to the {@code next} chain. */
     public XrInstanceCreateInfo next(XrDebugUtilsMessengerCreateInfoEXT value) { return this.next(value.next(this.next()).address()); }
+    /** Prepends the specified {@link XrInstanceCreateInfoAndroidKHR} value to the {@code next} chain. */
+    public XrInstanceCreateInfo next(XrInstanceCreateInfoAndroidKHR value) { return this.next(value.next(this.next()).address()); }
     /** Sets the specified value to the {@link #createFlags} field. */
     public XrInstanceCreateInfo createFlags(@NativeType("XrInstanceCreateFlags") long value) { ncreateFlags(address(), value); return this; }
     /** Copies the specified {@link XrApplicationInfo} to the {@link #applicationInfo} field. */
@@ -423,6 +425,8 @@ public class XrInstanceCreateInfo extends Struct<XrInstanceCreateInfo> implement
         public XrInstanceCreateInfo.Buffer next(@NativeType("void const *") long value) { XrInstanceCreateInfo.nnext(address(), value); return this; }
         /** Prepends the specified {@link XrDebugUtilsMessengerCreateInfoEXT} value to the {@code next} chain. */
         public XrInstanceCreateInfo.Buffer next(XrDebugUtilsMessengerCreateInfoEXT value) { return this.next(value.next(this.next()).address()); }
+        /** Prepends the specified {@link XrInstanceCreateInfoAndroidKHR} value to the {@code next} chain. */
+        public XrInstanceCreateInfo.Buffer next(XrInstanceCreateInfoAndroidKHR value) { return this.next(value.next(this.next()).address()); }
         /** Sets the specified value to the {@link XrInstanceCreateInfo#createFlags} field. */
         public XrInstanceCreateInfo.Buffer createFlags(@NativeType("XrInstanceCreateFlags") long value) { XrInstanceCreateInfo.ncreateFlags(address(), value); return this; }
         /** Copies the specified {@link XrApplicationInfo} to the {@link XrInstanceCreateInfo#applicationInfo} field. */

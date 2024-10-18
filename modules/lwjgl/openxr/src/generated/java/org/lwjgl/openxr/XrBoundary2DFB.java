@@ -27,7 +27,7 @@ import static org.lwjgl.system.MemoryStack.*;
  * <ul>
  * <li>The {@link FBScene XR_FB_scene} extension <b>must</b> be enabled prior to using {@link XrBoundary2DFB}</li>
  * <li>{@code type} <b>must</b> be {@link FBScene#XR_TYPE_BOUNDARY_2D_FB TYPE_BOUNDARY_2D_FB}</li>
- * <li>{@code next} <b>must</b> be {@code NULL} or a valid pointer to the <a href="https://www.khronos.org/registry/OpenXR/specs/1.0/html/xrspec.html#valid-usage-for-structure-pointer-chains">next structure in a structure chain</a></li>
+ * <li>{@code next} <b>must</b> be {@code NULL} or a valid pointer to the <a target="_blank" href="https://www.khronos.org/registry/OpenXR/specs/1.0/html/xrspec.html#valid-usage-for-structure-pointer-chains">next structure in a structure chain</a></li>
  * <li>If {@code vertexCapacityInput} is not 0, {@code vertices} <b>must</b> be a pointer to an array of {@code vertexCapacityInput} {@link XrVector2f} structures</li>
  * </ul>
  * 
@@ -109,10 +109,10 @@ public class XrBoundary2DFB extends Struct<XrBoundary2DFB> implements NativeReso
     /** {@code NULL} or a pointer to the next structure in a structure chain. No such structures are defined in core OpenXR or this extension. */
     @NativeType("void const *")
     public long next() { return nnext(address()); }
-    /** the capacity of the {@code vertices} array, in number of vertices, or 0 to indicate a request to retrieve the required capacity. */
+    /** the capacity of the {@code vertices} array, in bytes, or 0 to indicate a request to retrieve the required capacity. */
     @NativeType("uint32_t")
     public int vertexCapacityInput() { return nvertexCapacityInput(address()); }
-    /** the count of {@link XrVector2f} written, or the required capacity in the case that {@code vertexCapacityInput} is insufficient. */
+    /** a pointer to the count of {@link XrVector2f} written, or a pointer to the required capacity in the case that {@code vertexCapacityInput} is insufficient. */
     @NativeType("uint32_t")
     public int vertexCountOutput() { return nvertexCountOutput(address()); }
     /** a pointer to an array of {@link XrVector2f}, but <b>can</b> be {@code NULL} if {@code vertexCapacityInput} is 0. */

@@ -281,7 +281,7 @@ val XrSessionCreateInfo = struct(Module.OPENXR, "XrSessionCreateInfo") {
         <h5>Valid Usage (Implicit)</h5>
         <ul>
             <li>{@code type} <b>must</b> be #TYPE_SESSION_CREATE_INFO</li>
-            <li>{@code next} <b>must</b> be {@code NULL} or a valid pointer to the <a target="_blank" href="https://www.khronos.org/registry/OpenXR/specs/1.0/html/xrspec.html\#valid-usage-for-structure-pointer-chains">next structure in a structure chain</a>. See also: ##XrGraphicsBindingD3D11KHR, ##XrGraphicsBindingD3D12KHR, ##XrGraphicsBindingEGLMNDX, ##XrGraphicsBindingOpenGLESAndroidKHR, ##XrGraphicsBindingOpenGLWaylandKHR, ##XrGraphicsBindingOpenGLWin32KHR, ##XrGraphicsBindingOpenGLXcbKHR, ##XrGraphicsBindingOpenGLXlibKHR, ##XrGraphicsBindingVulkanKHR, ##XrHolographicWindowAttachmentMSFT, ##XrSessionCreateInfoOverlayEXTX</li>
+            <li>{@code next} <b>must</b> be {@code NULL} or a valid pointer to the <a target="_blank" href="https://www.khronos.org/registry/OpenXR/specs/1.0/html/xrspec.html\#valid-usage-for-structure-pointer-chains">next structure in a structure chain</a>. See also: ##XrGraphicsBindingEGLMNDX, ##XrGraphicsBindingOpenGLESAndroidKHR, ##XrGraphicsBindingOpenGLWaylandKHR, ##XrGraphicsBindingOpenGLWin32KHR, ##XrGraphicsBindingOpenGLXcbKHR, ##XrGraphicsBindingOpenGLXlibKHR, ##XrGraphicsBindingVulkanKHR, ##XrHolographicWindowAttachmentMSFT, ##XrSessionCreateInfoOverlayEXTX</li>
             <li>{@code createFlags} <b>must</b> be 0</li>
         </ul>
 
@@ -520,13 +520,13 @@ val XrSwapchainCreateInfo = struct(Module.OPENXR, "XrSwapchainCreateInfo") {
         <h5>Valid Usage (Implicit)</h5>
         <ul>
             <li>{@code type} <b>must</b> be #TYPE_SWAPCHAIN_CREATE_INFO</li>
-            <li>{@code next} <b>must</b> be {@code NULL} or a valid pointer to the <a target="_blank" href="https://www.khronos.org/registry/OpenXR/specs/1.0/html/xrspec.html\#valid-usage-for-structure-pointer-chains">next structure in a structure chain</a>. See also: ##XrAndroidSurfaceSwapchainCreateInfoFB, ##XrSecondaryViewConfigurationSwapchainCreateInfoMSFT, ##XrSwapchainCreateInfoFoveationFB, ##XrVulkanSwapchainCreateInfoMETA</li>
+            <li>{@code next} <b>must</b> be {@code NULL} or a valid pointer to the <a target="_blank" href="https://www.khronos.org/registry/OpenXR/specs/1.0/html/xrspec.html\#valid-usage-for-structure-pointer-chains">next structure in a structure chain</a>. See also: ##XrSecondaryViewConfigurationSwapchainCreateInfoMSFT, ##XrSwapchainCreateInfoFoveationFB, ##XrVulkanSwapchainCreateInfoMETA</li>
             <li>{@code createFlags} <b>must</b> be 0 or a valid combination of {@code XrSwapchainCreateFlagBits} values</li>
             <li>{@code usageFlags} <b>must</b> be 0 or a valid combination of {@code XrSwapchainUsageFlagBits} values</li>
         </ul>
 
         <h5>See Also</h5>
-        #CreateSession(), #CreateSwapchain(), #CreateSwapchainAndroidSurfaceKHR(), #EnumerateSwapchainFormats()
+        #CreateSession(), #CreateSwapchain(), #EnumerateSwapchainFormats()
         """
 
     Expression("#TYPE_SWAPCHAIN_CREATE_INFO")..XrStructureType("type", "the {@code XrStructureType} of this structure.")
@@ -555,7 +555,7 @@ val XrSwapchainImageBaseHeader = struct(Module.OPENXR, "XrSwapchainImageBaseHead
 
         <h5>Valid Usage (Implicit)</h5>
         <ul>
-            <li>{@code type} <b>must</b> be one of the following XrStructureType values: #TYPE_SWAPCHAIN_IMAGE_D3D11_KHR, #TYPE_SWAPCHAIN_IMAGE_D3D12_KHR, #TYPE_SWAPCHAIN_IMAGE_OPENGL_ES_KHR, #TYPE_SWAPCHAIN_IMAGE_OPENGL_KHR, #TYPE_SWAPCHAIN_IMAGE_VULKAN_KHR</li>
+            <li>{@code type} <b>must</b> be one of the following XrStructureType values: #TYPE_SWAPCHAIN_IMAGE_OPENGL_ES_KHR, #TYPE_SWAPCHAIN_IMAGE_OPENGL_KHR, #TYPE_SWAPCHAIN_IMAGE_VULKAN_KHR</li>
             <li>{@code next} <b>must</b> be {@code NULL} or a valid pointer to the <a target="_blank" href="https://www.khronos.org/registry/OpenXR/specs/1.0/html/xrspec.html\#valid-usage-for-structure-pointer-chains">next structure in a structure chain</a></li>
         </ul>
 

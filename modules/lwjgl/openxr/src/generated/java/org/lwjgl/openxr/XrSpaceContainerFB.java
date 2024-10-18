@@ -27,7 +27,7 @@ import static org.lwjgl.system.MemoryStack.*;
  * <ul>
  * <li>The {@link FBSpatialEntityContainer XR_FB_spatial_entity_container} extension <b>must</b> be enabled prior to using {@link XrSpaceContainerFB}</li>
  * <li>{@code type} <b>must</b> be {@link FBSpatialEntityContainer#XR_TYPE_SPACE_CONTAINER_FB TYPE_SPACE_CONTAINER_FB}</li>
- * <li>{@code next} <b>must</b> be {@code NULL} or a valid pointer to the <a href="https://www.khronos.org/registry/OpenXR/specs/1.0/html/xrspec.html#valid-usage-for-structure-pointer-chains">next structure in a structure chain</a></li>
+ * <li>{@code next} <b>must</b> be {@code NULL} or a valid pointer to the <a target="_blank" href="https://www.khronos.org/registry/OpenXR/specs/1.0/html/xrspec.html#valid-usage-for-structure-pointer-chains">next structure in a structure chain</a></li>
  * <li>If {@code uuidCapacityInput} is not 0, {@code uuids} <b>must</b> be a pointer to an array of {@code uuidCapacityInput} {@link XrUuidEXT} structures</li>
  * </ul>
  * 
@@ -109,7 +109,7 @@ public class XrSpaceContainerFB extends Struct<XrSpaceContainerFB> implements Na
     /** {@code NULL} or a pointer to the next structure in a structure chain. No such structures are defined in core OpenXR or this extension. */
     @NativeType("void const *")
     public long next() { return nnext(address()); }
-    /** the capacity of the {@code uuids} array, or 0 to indicate a request to retrieve the required capacity. */
+    /** an input parameter for the application to specify a capacity for the output list */
     @NativeType("uint32_t")
     public int uuidCapacityInput() { return nuuidCapacityInput(address()); }
     /** an output parameter which will hold the number of UUIDs included in the output list, or the required capacity in the case that {@code uuidCapacityInput} is insufficient */

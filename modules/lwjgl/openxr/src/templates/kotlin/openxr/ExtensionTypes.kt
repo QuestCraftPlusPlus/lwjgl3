@@ -45,6 +45,7 @@ val XrHandJointEXT = "XrHandJointEXT".enumType
 val XrHandJointSetEXT = "XrHandJointSetEXT".enumType
 val XrHandPoseTypeMSFT = "XrHandPoseTypeMSFT".enumType
 val XrReprojectionModeMSFT = "XrReprojectionModeMSFT".enumType
+val XrCompositionLayerSecureContentFlagBitsFB = "XrCompositionLayerSecureContentFlagBitsFB".enumType
 val XrBodyJointFB = "XrBodyJointFB".enumType
 val XrBodyJointSetFB = "XrBodyJointSetFB".enumType
 val XrHandJointsMotionRangeEXT = "XrHandJointsMotionRangeEXT".enumType
@@ -711,7 +712,7 @@ val XrGraphicsBindingOpenGLESAndroidKHR = struct(Module.OPENXR, "XrGraphicsBindi
         <h5>Description</h5>
         When creating an OpenGL ES-backed {@code XrSession} on Android, the application will provide a pointer to an ##XrGraphicsBindingOpenGLESAndroidKHR structure in the {@code next} chain of the ##XrSessionCreateInfo.
 
-        The required window system configuration define to expose this structure type is #USE_PLATFORM_ANDROID.
+        The required window system configuration define to expose this structure type is USE_PLATFORM_ANDROID.
 
         <h5>Valid Usage (Implicit)</h5>
         <ul>
@@ -935,15 +936,21 @@ val XrVisibilityMaskKHR = struct(Module.OPENXR, "XrVisibilityMaskKHR") {
         """
         Visibility Mask.
 
-        <h5>See Also</h5>
-        {@code XR_KHR_visibility_mask}, {@code XrStructureType}, ##XrVector2f, #GetVisibilityMaskKHR()
+        <h5>Valid Usage (Implicit)</h5>
+        <ul>
+            <li>The {@link KHRVisibilityMask XR_KHR_visibility_mask} extension <b>must</b> be enabled prior to using ##XrVisibilityMaskKHR</li>
+            <li>{@code type} <b>must</b> be #TYPE_VISIBILITY_MASK_KHR</li>
+            <li>{@code next} <b>must</b> be {@code NULL} or a valid pointer to the <a target="_blank" href="https://www.khronos.org/registry/OpenXR/specs/1.0/html/xrspec.html\#valid-usage-for-structure-pointer-chains">next structure in a structure chain</a></li>
+            <li>If {@code vertexCapacityInput} is not 0, {@code vertices} <b>must</b> be a pointer to an array of {@code vertexCapacityInput} ##XrVector2f structures</li>
+            <li>If {@code indexCapacityInput} is not 0, {@code indices} <b>must</b> be a pointer to an array of {@code indexCapacityInput} {@code uint32_t} values</li>
+        </ul>
 
-        <h5>Document Notes</h5>
-        #XrVisibilityMaskKHR
+        <h5>See Also</h5>
+        ##XrVector2f, #GetVisibilityMaskKHR()
         """
 
-    Expression("#TYPE_VISIBILITY_MASK_KHR")..XrStructureType("type", "<b>must</b> be #TYPE_VISIBILITY_MASK_KHR")
-    nullable..opaque_p("next", "<b>must</b> be {@code NULL} or a valid pointer to the <a target=\"_blank\" href=\"https://www.khronos.org/registry/OpenXR/specs/1.0/html/xrspec.html\\#valid-usage-for-structure-pointer-chains\">next structure in a structure chain</a>")
+    Expression("#TYPE_VISIBILITY_MASK_KHR")..XrStructureType("type", "the {@code XrStructureType} of this structure.")
+    nullable..opaque_p("next", "{@code NULL} or a pointer to the next structure in a structure chain. No such structures are defined in core OpenXR or this extension.")
     AutoSize("vertices", optional = true)..uint32_t("vertexCapacityInput", "the capacity of the {@code vertices} array, or 0 to indicate a request to retrieve the required capacity.")
     uint32_t("vertexCountOutput", "filled in by the runtime with the count of vertices written or the required capacity in the case that {@code vertexCapacityInput} or {@code indexCapacityInput} is insufficient.")
     nullable..XrVector2f.p("vertices", "an array of vertices filled in by the runtime that specifies mask coordinates in the z=-1 plane of the rendered view—​i.e. one meter in front of the view. When rendering the mask for use in a projection layer, these vertices must be transformed by the application’s projection matrix used for the respective ##XrCompositionLayerProjectionView.")
@@ -1208,13 +1215,13 @@ val XrGraphicsBindingEGLMNDX = struct(Module.OPENXR, "XrGraphicsBindingEGLMNDX")
 
     Expression("#TYPE_GRAPHICS_BINDING_EGL_MNDX")..XrStructureType("type", "the {@code XrStructureType} of this structure.")
     nullable..opaque_const_p("next", "{@code NULL} or a pointer to the next structure in a structure chain. No such structures are defined in core OpenXR or this extension.")
-    PFNEGLGETPROCADDRESSPROC("getProcAddress", "a valid function pointer to {@code eglGetProcAddress}.")
     EGLDisplay("display", "a valid EGL {@code EGLDisplay}.")
     EGLConfig("config", "a valid EGL {@code EGLConfig}.")
     EGLContext("context", "a valid EGL {@code EGLContext}.")
 }
 
 val XrSpatialGraphNodeSpaceCreateInfoMSFT = struct(Module.OPENXR, "XrSpatialGraphNodeSpaceCreateInfoMSFT") {
+    javaImport("static org.lwjgl.openxr.MSFTSpatialGraphBridge.*")
     documentation =
         """
         The information to create space from a spatial graph node.
@@ -1234,7 +1241,7 @@ val XrSpatialGraphNodeSpaceCreateInfoMSFT = struct(Module.OPENXR, "XrSpatialGrap
     Expression("#TYPE_SPATIAL_GRAPH_NODE_SPACE_CREATE_INFO_MSFT")..XrStructureType("type", "the {@code XrStructureType} of this structure.")
     nullable..opaque_const_p("next", "{@code NULL} or a pointer to the next structure in a structure chain. No such structures are defined in core OpenXR or this extension.")
     XrSpatialGraphNodeTypeMSFT("nodeType", "an {@code XrSpatialGraphNodeTypeMSFT} specifying the spatial node type.")
-    uint8_t("nodeId", "a global unique identifier (a.k.a. GUID or 16 byte array), representing the spatial node that is being tracked.")[XR_GUID_SIZE_MSFT]
+    uint8_t("nodeId", "a global unique identifier (a.k.a. GUID or 16 byte array), representing the spatial node that is being tracked.")["XR_GUID_SIZE_MSFT"]
     XrPosef("pose", "an ##XrPosef defining the position and orientation of the new space’s origin within the natural reference frame of the spatial graph node.")
 }
 
@@ -1283,6 +1290,7 @@ val XrSpatialGraphNodeBindingPropertiesGetInfoMSFT = struct(Module.OPENXR, "XrSp
 }
 
 val XrSpatialGraphNodeBindingPropertiesMSFT = struct(Module.OPENXR, "XrSpatialGraphNodeBindingPropertiesMSFT") {
+    javaImport("static org.lwjgl.openxr.MSFTSpatialGraphBridge.*")
     documentation =
         """
         The spatial graph node binding properties.
@@ -1300,7 +1308,7 @@ val XrSpatialGraphNodeBindingPropertiesMSFT = struct(Module.OPENXR, "XrSpatialGr
 
     Expression("#TYPE_SPATIAL_GRAPH_NODE_BINDING_PROPERTIES_MSFT")..XrStructureType("type", "the {@code XrStructureType} of this structure.")
     nullable..opaque_p("next", "{@code NULL} or a pointer to the next structure in a structure chain.")
-    uint8_t("nodeId", "a global unique identifier (a.k.a. GUID or 16 byte array), representing the spatial graph node.")[XR_GUID_SIZE_MSFT]
+    uint8_t("nodeId", "a global unique identifier (a.k.a. GUID or 16 byte array), representing the spatial graph node.")["XR_GUID_SIZE_MSFT"]
     XrPosef("poseInNodeSpace", "an ##XrPosef defining the pose in the underlying node’s space.")
 }
 
@@ -1938,6 +1946,7 @@ val XrControllerModelKeyStateMSFT = struct(Module.OPENXR, "XrControllerModelKeyS
 }
 
 val XrControllerModelNodePropertiesMSFT = struct(Module.OPENXR, "XrControllerModelNodePropertiesMSFT") {
+    javaImport("static org.lwjgl.openxr.MSFTControllerModel.*")
     documentation =
         """
         Describes the controller model node properties.
@@ -1954,8 +1963,8 @@ val XrControllerModelNodePropertiesMSFT = struct(Module.OPENXR, "XrControllerMod
             <li>The {@link MSFTControllerModel XR_MSFT_controller_model} extension <b>must</b> be enabled prior to using ##XrControllerModelNodePropertiesMSFT</li>
             <li>{@code type} <b>must</b> be #TYPE_CONTROLLER_MODEL_NODE_PROPERTIES_MSFT</li>
             <li>{@code next} <b>must</b> be {@code NULL} or a valid pointer to the <a target="_blank" href="https://www.khronos.org/registry/OpenXR/specs/1.0/html/xrspec.html\#valid-usage-for-structure-pointer-chains">next structure in a structure chain</a></li>
-            <li>{@code parentNodeName} <b>must</b> be a null-terminated UTF-8 string whose length is less than or equal to XR_MAX_CONTROLLER_MODEL_NODE_NAME_SIZE_MSFT</li>
-            <li>{@code nodeName} <b>must</b> be a null-terminated UTF-8 string whose length is less than or equal to XR_MAX_CONTROLLER_MODEL_NODE_NAME_SIZE_MSFT</li>
+            <li>{@code parentNodeName} <b>must</b> be a null-terminated UTF-8 string whose length is less than or equal to #MAX_CONTROLLER_MODEL_NODE_NAME_SIZE_MSFT</li>
+            <li>{@code nodeName} <b>must</b> be a null-terminated UTF-8 string whose length is less than or equal to #MAX_CONTROLLER_MODEL_NODE_NAME_SIZE_MSFT</li>
         </ul>
 
         <h5>See Also</h5>
@@ -1964,8 +1973,8 @@ val XrControllerModelNodePropertiesMSFT = struct(Module.OPENXR, "XrControllerMod
 
     Expression("#TYPE_CONTROLLER_MODEL_NODE_PROPERTIES_MSFT")..XrStructureType("type", "the {@code XrStructureType} of this structure.")
     nullable..opaque_p("next", "{@code NULL} or a pointer to the next structure in a structure chain.")
-    charUTF8("parentNodeName", "the name of the parent node in the provided glTF file. The parent name <b>may</b> be empty if it should not be used to locate this node.")[XR_MAX_CONTROLLER_MODEL_NODE_NAME_SIZE_MSFT]
-    charUTF8("nodeName", "the name of this node in the provided glTF file.")[XR_MAX_CONTROLLER_MODEL_NODE_NAME_SIZE_MSFT]
+    charUTF8("parentNodeName", "the name of the parent node in the provided glTF file. The parent name <b>may</b> be empty if it should not be used to locate this node.")["XR_MAX_CONTROLLER_MODEL_NODE_NAME_SIZE_MSFT"]
+    charUTF8("nodeName", "the name of this node in the provided glTF file.")["XR_MAX_CONTROLLER_MODEL_NODE_NAME_SIZE_MSFT"]
 }
 
 val XrControllerModelPropertiesMSFT = struct(Module.OPENXR, "XrControllerModelPropertiesMSFT") {
@@ -2126,15 +2135,26 @@ val XrCompositionLayerReprojectionPlaneOverrideMSFT = struct(Module.OPENXR, "XrC
         """
         Describe the parameters to override the reprojection plane.
 
-        <h5>See Also</h5>
-        {@code XR_MSFT_composition_layer_reprojection}, {@code XrStructureType}, ##XrVector3f
+        <h5>Description</h5>
+        A runtime <b>must</b> return #ERROR_VALIDATION_FAILURE if the {@code normal} vector deviates by more than 1% from unit length.
 
-        <h5>Document Notes</h5>
-        #XrCompositionLayerReprojectionPlaneOverrideMSFT
+        Adding a reprojection plane override <b>may</b> benefit various reprojection modes including #REPROJECTION_MODE_DEPTH_MSFT, #REPROJECTION_MODE_PLANAR_FROM_DEPTH_MSFT and #REPROJECTION_MODE_PLANAR_MANUAL_MSFT.
+
+        When application choose #REPROJECTION_MODE_ORIENTATION_ONLY_MSFT mode, the reprojection plane override <b>may</b> be ignored by the runtime.
+
+        <h5>Valid Usage (Implicit)</h5>
+        <ul>
+            <li>The {@link MSFTCompositionLayerReprojection XR_MSFT_composition_layer_reprojection} extension <b>must</b> be enabled prior to using ##XrCompositionLayerReprojectionPlaneOverrideMSFT</li>
+            <li>{@code type} <b>must</b> be #TYPE_COMPOSITION_LAYER_REPROJECTION_PLANE_OVERRIDE_MSFT</li>
+            <li>{@code next} <b>must</b> be {@code NULL} or a valid pointer to the <a target="_blank" href="https://www.khronos.org/registry/OpenXR/specs/1.0/html/xrspec.html\#valid-usage-for-structure-pointer-chains">next structure in a structure chain</a></li>
+        </ul>
+
+        <h5>See Also</h5>
+        ##XrVector3f
         """
 
-    Expression("#TYPE_COMPOSITION_LAYER_REPROJECTION_PLANE_OVERRIDE_MSFT")..XrStructureType("type", "<b>must</b> be #TYPE_COMPOSITION_LAYER_REPROJECTION_PLANE_OVERRIDE_MSFT")
-    nullable..opaque_const_p("next", "<b>must</b> be {@code NULL} or a valid pointer to the <a target=\"_blank\" href=\"https://www.khronos.org/registry/OpenXR/specs/1.0/html/xrspec.html\\#valid-usage-for-structure-pointer-chains\">next structure in a structure chain</a>")
+    Expression("#TYPE_COMPOSITION_LAYER_REPROJECTION_PLANE_OVERRIDE_MSFT")..XrStructureType("type", "")
+    nullable..opaque_const_p("next", "")
     XrVector3f("position", "describes the position of the focus plane represented in the corresponding ##XrCompositionLayerProjection{@code ::space}.")
     XrVector3f("normal", "a unit vector describes the focus plane normal represented in the corresponding ##XrCompositionLayerProjection{@code ::space}.")
     XrVector3f("velocity", "a velocity of the position in the corresponding ##XrCompositionLayerProjection{@code ::space} measured in meters per second.")
@@ -2151,7 +2171,7 @@ val XrSwapchainStateBaseHeaderFB = struct(Module.OPENXR, "XrSwapchainStateBaseHe
         <h5>Valid Usage (Implicit)</h5>
         <ul>
             <li>The {@link FBSwapchainUpdateState XR_FB_swapchain_update_state} extension <b>must</b> be enabled prior to using ##XrSwapchainStateBaseHeaderFB</li>
-            <li>{@code type} <b>must</b> be one of the following XrStructureType values: #TYPE_SWAPCHAIN_STATE_ANDROID_SURFACE_DIMENSIONS_FB, #TYPE_SWAPCHAIN_STATE_FOVEATION_FB, #TYPE_SWAPCHAIN_STATE_SAMPLER_OPENGL_ES_FB, #TYPE_SWAPCHAIN_STATE_SAMPLER_VULKAN_FB</li>
+            <li>{@code type} <b>must</b> be one of the following XrStructureType values: #TYPE_SWAPCHAIN_STATE_FOVEATION_FB, #TYPE_SWAPCHAIN_STATE_SAMPLER_OPENGL_ES_FB, #TYPE_SWAPCHAIN_STATE_SAMPLER_VULKAN_FB</li>
             <li>{@code next} <b>must</b> be {@code NULL} or a valid pointer to the <a target="_blank" href="https://www.khronos.org/registry/OpenXR/specs/1.0/html/xrspec.html\#valid-usage-for-structure-pointer-chains">next structure in a structure chain</a></li>
         </ul>
 
@@ -4088,6 +4108,7 @@ val XrSystemKeyboardTrackingPropertiesFB = struct(Module.OPENXR, "XrSystemKeyboa
 }
 
 val XrKeyboardTrackingDescriptionFB = struct(Module.OPENXR, "XrKeyboardTrackingDescriptionFB", mutable = false) {
+    javaImport("static org.lwjgl.openxr.FBKeyboardTracking.*")
     documentation =
         """
         Description of a trackable keyboard.
@@ -4107,7 +4128,7 @@ val XrKeyboardTrackingDescriptionFB = struct(Module.OPENXR, "XrKeyboardTrackingD
     uint64_t("trackedKeyboardId", "abstract identifier describing the type of keyboard.")
     XrVector3f("size", "bounding box.")
     XrKeyboardTrackingFlagsFB("flags", "additional information on the type of keyboard available. If #KEYBOARD_TRACKING_EXISTS_BIT_FB is not set there is no keyboard.")
-    charUTF8("name", "human readable keyboard identifier.")[XR_MAX_KEYBOARD_TRACKING_NAME_SIZE_FB]
+    charUTF8("name", "human readable keyboard identifier.")["XR_MAX_KEYBOARD_TRACKING_NAME_SIZE_FB"]
 }
 
 val XrKeyboardSpaceCreateInfoFB = struct(Module.OPENXR, "XrKeyboardSpaceCreateInfoFB") {
@@ -4449,6 +4470,7 @@ val XrPassthroughStyleFB = struct(Module.OPENXR, "XrPassthroughStyleFB") {
 }
 
 val XrPassthroughColorMapMonoToRgbaFB = struct(Module.OPENXR, "XrPassthroughColorMapMonoToRgbaFB") {
+    javaImport("static org.lwjgl.openxr.FBPassthrough.*")
     documentation =
         """
         A layer color map.
@@ -4471,10 +4493,11 @@ val XrPassthroughColorMapMonoToRgbaFB = struct(Module.OPENXR, "XrPassthroughColo
 
     Expression("#TYPE_PASSTHROUGH_COLOR_MAP_MONO_TO_RGBA_FB")..XrStructureType("type", "the {@code XrStructureType} of this structure.")
     nullable..opaque_const_p("next", "{@code NULL} or a pointer to the next structure in a structure chain.")
-    XrColor4f("textureColorMap", "an array of ##XrColor4f colors to which the passthrough imagery luminance values are mapped.")[XR_PASSTHROUGH_COLOR_MAP_MONO_SIZE_FB]
+    XrColor4f("textureColorMap", "an array of ##XrColor4f colors to which the passthrough imagery luminance values are mapped.")["XR_PASSTHROUGH_COLOR_MAP_MONO_SIZE_FB"]
 }
 
 val XrPassthroughColorMapMonoToMonoFB = struct(Module.OPENXR, "XrPassthroughColorMapMonoToMonoFB") {
+    javaImport("static org.lwjgl.openxr.FBPassthrough.*")
     documentation =
         """
         A layer color map.
@@ -4494,7 +4517,7 @@ val XrPassthroughColorMapMonoToMonoFB = struct(Module.OPENXR, "XrPassthroughColo
 
     Expression("#TYPE_PASSTHROUGH_COLOR_MAP_MONO_TO_MONO_FB")..XrStructureType("type", "the {@code XrStructureType} of this structure.")
     nullable..opaque_const_p("next", "{@code NULL} or a pointer to the next structure in a structure chain.")
-    uint8_t("textureColorMap", "an array of {@code uint8_t} grayscale color values to which the passthrough luminance values are mapped.")[XR_PASSTHROUGH_COLOR_MAP_MONO_SIZE_FB]
+    uint8_t("textureColorMap", "an array of {@code uint8_t} grayscale color values to which the passthrough luminance values are mapped.")["XR_PASSTHROUGH_COLOR_MAP_MONO_SIZE_FB"]
 }
 
 val XrPassthroughBrightnessContrastSaturationFB = struct(Module.OPENXR, "XrPassthroughBrightnessContrastSaturationFB") {
@@ -4601,6 +4624,7 @@ val XrRenderModelPathInfoFB = struct(Module.OPENXR, "XrRenderModelPathInfoFB") {
 }
 
 val XrRenderModelPropertiesFB = struct(Module.OPENXR, "XrRenderModelPropertiesFB") {
+    javaImport("static org.lwjgl.openxr.FBRenderModel.*")
     documentation =
         """
         The information about the render model.
@@ -4615,7 +4639,7 @@ val XrRenderModelPropertiesFB = struct(Module.OPENXR, "XrRenderModelPropertiesFB
             <li>The {@link FBRenderModel XR_FB_render_model} extension <b>must</b> be enabled prior to using ##XrRenderModelPropertiesFB</li>
             <li>{@code type} <b>must</b> be #TYPE_RENDER_MODEL_PROPERTIES_FB</li>
             <li>{@code next} <b>must</b> be {@code NULL} or a valid pointer to the <a target="_blank" href="https://www.khronos.org/registry/OpenXR/specs/1.0/html/xrspec.html\#valid-usage-for-structure-pointer-chains">next structure in a structure chain</a></li>
-            <li>{@code modelName} <b>must</b> be a null-terminated UTF-8 string whose length is less than or equal to XR_MAX_RENDER_MODEL_NAME_SIZE_FB</li>
+            <li>{@code modelName} <b>must</b> be a null-terminated UTF-8 string whose length is less than or equal to #MAX_RENDER_MODEL_NAME_SIZE_FB</li>
             <li>{@code flags} <b>must</b> be a valid combination of {@code XrRenderModelFlagBitsFB} values</li>
             <li>{@code flags} <b>must</b> not be 0</li>
         </ul>
@@ -4627,7 +4651,7 @@ val XrRenderModelPropertiesFB = struct(Module.OPENXR, "XrRenderModelPropertiesFB
     Expression("#TYPE_RENDER_MODEL_PROPERTIES_FB")..XrStructureType("type", "the {@code XrStructureType} of this structure.")
     nullable..opaque_p("next", "{@code NULL} or a pointer to the next structure in a structure chain. ##XrRenderModelCapabilitiesRequestFB is a structure in this structure chain and <b>should</b> be linked when this structure is passed to #GetRenderModelPropertiesFB().")
     uint32_t("vendorId", "the vendor id of the model.")
-    charUTF8("modelName", "the name of the model.")[XR_MAX_RENDER_MODEL_NAME_SIZE_FB]
+    charUTF8("modelName", "the name of the model.")["XR_MAX_RENDER_MODEL_NAME_SIZE_FB"]
     XrRenderModelKeyFB("modelKey", "the unique model key used to load the model in #LoadRenderModelFB().")
     uint32_t("modelVersion", "the version number of the model.")
     XrRenderModelFlagsFB("flags", "a bitmask of {@code XrRenderModelFlagsFB}. After a successful call to #GetRenderModelPropertiesFB(), flags must contain the support level of the model and no other support levels.")
@@ -6321,7 +6345,7 @@ val XrEyeGazesFB = struct(Module.OPENXR, "XrEyeGazesFB") {
 
     Expression("#TYPE_EYE_GAZES_FB")..XrStructureType("type", "the {@code XrStructureType} of this structure.")
     nullable..opaque_p("next", "{@code NULL} or a pointer to the next structure in a structure chain. No such structures are defined in core OpenXR or this extension.")
-    XrEyeGazeFB("gaze", "an array of ##XrEyeGazeFB receiving the returned eye gaze directions.")[XR_EYE_POSITION_COUNT_FB]
+    XrEyeGazeFB("gaze", "an array of ##XrEyeGazeFB receiving the returned eye gaze directions.")
     XrTime("time", "an {@code XrTime} time at which the returned eye gaze is tracked or extrapolated to. Equals the time for which the eye gaze was requested if the interpolation at the time was successful.")
 }
 

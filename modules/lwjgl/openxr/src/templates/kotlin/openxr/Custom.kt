@@ -55,11 +55,9 @@ fun templateCustomization() {
     generateDispatchableHandle(XrFoveationProfileFB, XrSession)
     generateDispatchableHandle(XrGeometryInstanceFB, XrSession)
     generateDispatchableHandle(XrHandTrackerEXT, XrSession)
-    generateDispatchableHandle(XrPassthroughColorLutMETA, XrPassthroughFB)
     generateDispatchableHandle(XrPassthroughFB, XrSession)
     generateDispatchableHandle(XrPassthroughHTC, XrSession)
     generateDispatchableHandle(XrPassthroughLayerFB, XrSession)
-    generateDispatchableHandle(XrPlaneDetectorEXT, XrSession)
     generateDispatchableHandle(XrSceneMSFT, XrSceneObserverMSFT)
     generateDispatchableHandle(XrSceneObserverMSFT, XrSession)
     generateDispatchableHandle(XrSession, XrInstance)
@@ -70,7 +68,6 @@ fun templateCustomization() {
     generateDispatchableHandle(XrSpatialGraphNodeBindingMSFT, XrSession)
     generateDispatchableHandle(XrSwapchain, XrSession)
     generateDispatchableHandle(XrTriangleMeshFB, XrSession)
-    generateDispatchableHandle(XrVirtualKeyboardMETA, XrSession)
 
     XR10.apply {
         LongConstant(
