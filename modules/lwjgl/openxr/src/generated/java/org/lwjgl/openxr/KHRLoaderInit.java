@@ -53,7 +53,7 @@ public class KHRLoaderInit {
      * 
      * <ul>
      * <li>The {@link KHRLoaderInit XR_KHR_loader_init} extension <b>must</b> be enabled prior to calling {@link #xrInitializeLoaderKHR InitializeLoaderKHR}</li>
-     * <li>{@code loaderInitInfo} <b>must</b> be a pointer to a valid {@link XrLoaderInitInfoBaseHeaderKHR}-based structure</li>
+     * <li>{@code loaderInitInfo} <b>must</b> be a pointer to a valid {@link XrLoaderInitInfoBaseHeaderKHR}-based structure. See also: {@link XrLoaderInitInfoAndroidKHR}</li>
      * </ul>
      * 
      * <h5>Return Codes</h5>

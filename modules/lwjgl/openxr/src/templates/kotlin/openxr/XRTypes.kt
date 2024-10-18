@@ -122,7 +122,7 @@ val XrInstanceCreateInfo = struct(Module.OPENXR, "XrInstanceCreateInfo") {
         <h5>Valid Usage (Implicit)</h5>
         <ul>
             <li>{@code type} <b>must</b> be #TYPE_INSTANCE_CREATE_INFO</li>
-            <li>{@code next} <b>must</b> be {@code NULL} or a valid pointer to the <a target="_blank" href="https://www.khronos.org/registry/OpenXR/specs/1.0/html/xrspec.html\#valid-usage-for-structure-pointer-chains">next structure in a structure chain</a>. See also: ##XrDebugUtilsMessengerCreateInfoEXT</li>
+            <li>{@code next} <b>must</b> be {@code NULL} or a valid pointer to the <a target="_blank" href="https://www.khronos.org/registry/OpenXR/specs/1.0/html/xrspec.html\#valid-usage-for-structure-pointer-chains">next structure in a structure chain</a>. See also: ##XrDebugUtilsMessengerCreateInfoEXT, ##XrInstanceCreateInfoAndroidKHR</li>
             <li>{@code createFlags} <b>must</b> be 0</li>
             <li>{@code applicationInfo} <b>must</b> be a valid ##XrApplicationInfo structure</li>
             <li>If {@code enabledApiLayerCount} is not 0, {@code enabledApiLayerNames} <b>must</b> be a pointer to an array of {@code enabledApiLayerCount} null-terminated UTF-8 strings</li>
@@ -135,7 +135,7 @@ val XrInstanceCreateInfo = struct(Module.OPENXR, "XrInstanceCreateInfo") {
 
     Expression("#TYPE_INSTANCE_CREATE_INFO")..XrStructureType("type", "the {@code XrStructureType} of this structure.")
     PointerSetter(
-        "XrDebugUtilsMessengerCreateInfoEXT",
+        "XrDebugUtilsMessengerCreateInfoEXT", "XrInstanceCreateInfoAndroidKHR",
         prepend = true
     )..nullable..opaque_const_p("next", "{@code NULL} or a pointer to the next structure in a structure chain. No such structures are defined in core OpenXR.")
     XrInstanceCreateFlags("createFlags", "a bitmask of {@code XrInstanceCreateFlags} that identifies options that apply to the creation.")
@@ -281,7 +281,7 @@ val XrSessionCreateInfo = struct(Module.OPENXR, "XrSessionCreateInfo") {
         <h5>Valid Usage (Implicit)</h5>
         <ul>
             <li>{@code type} <b>must</b> be #TYPE_SESSION_CREATE_INFO</li>
-            <li>{@code next} <b>must</b> be {@code NULL} or a valid pointer to the <a target="_blank" href="https://www.khronos.org/registry/OpenXR/specs/1.0/html/xrspec.html\#valid-usage-for-structure-pointer-chains">next structure in a structure chain</a>. See also: ##XrGraphicsBindingEGLMNDX, ##XrGraphicsBindingOpenGLWaylandKHR, ##XrGraphicsBindingOpenGLWin32KHR, ##XrGraphicsBindingOpenGLXcbKHR, ##XrGraphicsBindingOpenGLXlibKHR, ##XrGraphicsBindingVulkanKHR, ##XrHolographicWindowAttachmentMSFT, ##XrSessionCreateInfoOverlayEXTX</li>
+            <li>{@code next} <b>must</b> be {@code NULL} or a valid pointer to the <a target="_blank" href="https://www.khronos.org/registry/OpenXR/specs/1.0/html/xrspec.html\#valid-usage-for-structure-pointer-chains">next structure in a structure chain</a>. See also: ##XrGraphicsBindingEGLMNDX, ##XrGraphicsBindingOpenGLESAndroidKHR, ##XrGraphicsBindingOpenGLWaylandKHR, ##XrGraphicsBindingOpenGLWin32KHR, ##XrGraphicsBindingOpenGLXcbKHR, ##XrGraphicsBindingOpenGLXlibKHR, ##XrGraphicsBindingVulkanKHR, ##XrHolographicWindowAttachmentMSFT, ##XrSessionCreateInfoOverlayEXTX</li>
             <li>{@code createFlags} <b>must</b> be 0</li>
         </ul>
 
@@ -291,7 +291,7 @@ val XrSessionCreateInfo = struct(Module.OPENXR, "XrSessionCreateInfo") {
 
     Expression("#TYPE_SESSION_CREATE_INFO")..XrStructureType("type", "the {@code XrStructureType} of this structure.")
     PointerSetter(
-        "XrGraphicsBindingEGLMNDX", "XrGraphicsBindingOpenGLWaylandKHR", "XrGraphicsBindingOpenGLWin32KHR", "XrGraphicsBindingOpenGLXcbKHR", "XrGraphicsBindingOpenGLXlibKHR", "XrGraphicsBindingVulkan2KHR", "XrGraphicsBindingVulkanKHR", "XrHolographicWindowAttachmentMSFT", "XrSessionCreateInfoOverlayEXTX",
+        "XrGraphicsBindingEGLMNDX", "XrGraphicsBindingOpenGLESAndroidKHR", "XrGraphicsBindingOpenGLWaylandKHR", "XrGraphicsBindingOpenGLWin32KHR", "XrGraphicsBindingOpenGLXcbKHR", "XrGraphicsBindingOpenGLXlibKHR", "XrGraphicsBindingVulkan2KHR", "XrGraphicsBindingVulkanKHR", "XrHolographicWindowAttachmentMSFT", "XrSessionCreateInfoOverlayEXTX",
         prepend = true
     )..nullable..opaque_const_p("next", "{@code NULL} or a pointer to the next structure in a structure chain. No such structures are defined in core OpenXR. Note that in most cases one graphics API extension specific struct needs to be in this next chain.")
     XrSessionCreateFlags("createFlags", "identifies {@code XrSessionCreateFlags} that apply to the creation.")
@@ -555,7 +555,7 @@ val XrSwapchainImageBaseHeader = struct(Module.OPENXR, "XrSwapchainImageBaseHead
 
         <h5>Valid Usage (Implicit)</h5>
         <ul>
-            <li>{@code type} <b>must</b> be one of the following XrStructureType values: #TYPE_SWAPCHAIN_IMAGE_OPENGL_KHR, #TYPE_SWAPCHAIN_IMAGE_VULKAN_KHR</li>
+            <li>{@code type} <b>must</b> be one of the following XrStructureType values: #TYPE_SWAPCHAIN_IMAGE_OPENGL_ES_KHR, #TYPE_SWAPCHAIN_IMAGE_OPENGL_KHR, #TYPE_SWAPCHAIN_IMAGE_VULKAN_KHR</li>
             <li>{@code next} <b>must</b> be {@code NULL} or a valid pointer to the <a target="_blank" href="https://www.khronos.org/registry/OpenXR/specs/1.0/html/xrspec.html\#valid-usage-for-structure-pointer-chains">next structure in a structure chain</a></li>
         </ul>
 

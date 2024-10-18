@@ -49,13 +49,12 @@ import org.lwjgl.egl.*;
  * struct XrGraphicsBindingEGLMNDX {
  *     XrStructureType {@link #type};
  *     void const * {@link #next};
- *     PFNEGLGETPROCADDRESSPROC {@link #getProcAddress};
  *     EGLDisplay {@link #display};
  *     EGLConfig {@link #config};
  *     EGLContext {@link #context};
  * }</code></pre>
  */
-public class XrGraphicsBindingEGLMNDX extends Struct implements NativeResource {
+public class XrGraphicsBindingEGLMNDX extends Struct<XrGraphicsBindingEGLMNDX> implements NativeResource {
 
     /** The struct size in bytes. */
     public static final int SIZEOF;
@@ -67,7 +66,6 @@ public class XrGraphicsBindingEGLMNDX extends Struct implements NativeResource {
     public static final int
         TYPE,
         NEXT,
-        GETPROCADDRESS,
         DISPLAY,
         CONFIG,
         CONTEXT;
@@ -75,7 +73,6 @@ public class XrGraphicsBindingEGLMNDX extends Struct implements NativeResource {
     static {
         Layout layout = __struct(
             __member(4),
-            __member(POINTER_SIZE),
             __member(POINTER_SIZE),
             __member(POINTER_SIZE),
             __member(POINTER_SIZE),
@@ -87,10 +84,18 @@ public class XrGraphicsBindingEGLMNDX extends Struct implements NativeResource {
 
         TYPE = layout.offsetof(0);
         NEXT = layout.offsetof(1);
-        GETPROCADDRESS = layout.offsetof(2);
-        DISPLAY = layout.offsetof(3);
-        CONFIG = layout.offsetof(4);
-        CONTEXT = layout.offsetof(5);
+        DISPLAY = layout.offsetof(2);
+        CONFIG = layout.offsetof(3);
+        CONTEXT = layout.offsetof(4);
+    }
+
+    protected XrGraphicsBindingEGLMNDX(long address, @Nullable ByteBuffer container) {
+        super(address, container);
+    }
+
+    @Override
+    protected XrGraphicsBindingEGLMNDX create(long address, @Nullable ByteBuffer container) {
+        return new XrGraphicsBindingEGLMNDX(address, container);
     }
 
     /**
@@ -112,9 +117,6 @@ public class XrGraphicsBindingEGLMNDX extends Struct implements NativeResource {
     /** {@code NULL} or a pointer to the next structure in a structure chain. No such structures are defined in core OpenXR or this extension. */
     @NativeType("void const *")
     public long next() { return nnext(address()); }
-    /** a valid function pointer to {@code eglGetProcAddress}. */
-    @NativeType("PFNEGLGETPROCADDRESSPROC")
-    public long getProcAddress() { return ngetProcAddress(address()); }
     /** a valid EGL {@code EGLDisplay}. */
     @NativeType("EGLDisplay")
     public long display() { return ndisplay(address()); }
@@ -131,8 +133,6 @@ public class XrGraphicsBindingEGLMNDX extends Struct implements NativeResource {
     public XrGraphicsBindingEGLMNDX type$Default() { return type(MNDXEGLEnable.XR_TYPE_GRAPHICS_BINDING_EGL_MNDX); }
     /** Sets the specified value to the {@link #next} field. */
     public XrGraphicsBindingEGLMNDX next(@NativeType("void const *") long value) { nnext(address(), value); return this; }
-    /** Sets the specified value to the {@link #getProcAddress} field. */
-    public XrGraphicsBindingEGLMNDX getProcAddress(@NativeType("PFNEGLGETPROCADDRESSPROC") long value) { ngetProcAddress(address(), value); return this; }
     /** Sets the specified value to the {@link #display} field. */
     public XrGraphicsBindingEGLMNDX display(@NativeType("EGLDisplay") long value) { ndisplay(address(), value); return this; }
     /** Sets the specified value to the {@link #config} field. */
@@ -144,14 +144,12 @@ public class XrGraphicsBindingEGLMNDX extends Struct implements NativeResource {
     public XrGraphicsBindingEGLMNDX set(
         int type,
         long next,
-        long getProcAddress,
         long display,
         long config,
         long context
     ) {
         type(type);
         next(next);
-        getProcAddress(getProcAddress);
         display(display);
         config(config);
         context(context);
@@ -175,29 +173,29 @@ public class XrGraphicsBindingEGLMNDX extends Struct implements NativeResource {
 
     /** Returns a new {@code XrGraphicsBindingEGLMNDX} instance allocated with {@link MemoryUtil#memAlloc memAlloc}. The instance must be explicitly freed. */
     public static XrGraphicsBindingEGLMNDX malloc() {
-        return wrap(XrGraphicsBindingEGLMNDX.class, nmemAllocChecked(SIZEOF));
+        return new XrGraphicsBindingEGLMNDX(nmemAllocChecked(SIZEOF), null);
     }
 
     /** Returns a new {@code XrGraphicsBindingEGLMNDX} instance allocated with {@link MemoryUtil#memCalloc memCalloc}. The instance must be explicitly freed. */
     public static XrGraphicsBindingEGLMNDX calloc() {
-        return wrap(XrGraphicsBindingEGLMNDX.class, nmemCallocChecked(1, SIZEOF));
+        return new XrGraphicsBindingEGLMNDX(nmemCallocChecked(1, SIZEOF), null);
     }
 
     /** Returns a new {@code XrGraphicsBindingEGLMNDX} instance allocated with {@link BufferUtils}. */
     public static XrGraphicsBindingEGLMNDX create() {
         ByteBuffer container = BufferUtils.createByteBuffer(SIZEOF);
-        return wrap(XrGraphicsBindingEGLMNDX.class, memAddress(container), container);
+        return new XrGraphicsBindingEGLMNDX(memAddress(container), container);
     }
 
     /** Returns a new {@code XrGraphicsBindingEGLMNDX} instance for the specified memory address. */
     public static XrGraphicsBindingEGLMNDX create(long address) {
-        return wrap(XrGraphicsBindingEGLMNDX.class, address);
+        return new XrGraphicsBindingEGLMNDX(address, null);
     }
 
     /** Like {@link #create(long) create}, but returns {@code null} if {@code address} is {@code NULL}. */
     @Nullable
     public static XrGraphicsBindingEGLMNDX createSafe(long address) {
-        return address == NULL ? null : wrap(XrGraphicsBindingEGLMNDX.class, address);
+        return address == NULL ? null : new XrGraphicsBindingEGLMNDX(address, null);
     }
 
     /**
@@ -206,7 +204,7 @@ public class XrGraphicsBindingEGLMNDX extends Struct implements NativeResource {
      * @param capacity the buffer capacity
      */
     public static XrGraphicsBindingEGLMNDX.Buffer malloc(int capacity) {
-        return wrap(Buffer.class, nmemAllocChecked(__checkMalloc(capacity, SIZEOF)), capacity);
+        return new Buffer(nmemAllocChecked(__checkMalloc(capacity, SIZEOF)), capacity);
     }
 
     /**
@@ -215,7 +213,7 @@ public class XrGraphicsBindingEGLMNDX extends Struct implements NativeResource {
      * @param capacity the buffer capacity
      */
     public static XrGraphicsBindingEGLMNDX.Buffer calloc(int capacity) {
-        return wrap(Buffer.class, nmemCallocChecked(capacity, SIZEOF), capacity);
+        return new Buffer(nmemCallocChecked(capacity, SIZEOF), capacity);
     }
 
     /**
@@ -225,7 +223,7 @@ public class XrGraphicsBindingEGLMNDX extends Struct implements NativeResource {
      */
     public static XrGraphicsBindingEGLMNDX.Buffer create(int capacity) {
         ByteBuffer container = __create(capacity, SIZEOF);
-        return wrap(Buffer.class, memAddress(container), capacity, container);
+        return new Buffer(memAddress(container), container, -1, 0, capacity, capacity);
     }
 
     /**
@@ -235,13 +233,13 @@ public class XrGraphicsBindingEGLMNDX extends Struct implements NativeResource {
      * @param capacity the buffer capacity
      */
     public static XrGraphicsBindingEGLMNDX.Buffer create(long address, int capacity) {
-        return wrap(Buffer.class, address, capacity);
+        return new Buffer(address, capacity);
     }
 
     /** Like {@link #create(long, int) create}, but returns {@code null} if {@code address} is {@code NULL}. */
     @Nullable
     public static XrGraphicsBindingEGLMNDX.Buffer createSafe(long address, int capacity) {
-        return address == NULL ? null : wrap(Buffer.class, address, capacity);
+        return address == NULL ? null : new Buffer(address, capacity);
     }
 
     /**
@@ -250,7 +248,7 @@ public class XrGraphicsBindingEGLMNDX extends Struct implements NativeResource {
      * @param stack the stack from which to allocate
      */
     public static XrGraphicsBindingEGLMNDX malloc(MemoryStack stack) {
-        return wrap(XrGraphicsBindingEGLMNDX.class, stack.nmalloc(ALIGNOF, SIZEOF));
+        return new XrGraphicsBindingEGLMNDX(stack.nmalloc(ALIGNOF, SIZEOF), null);
     }
 
     /**
@@ -259,7 +257,7 @@ public class XrGraphicsBindingEGLMNDX extends Struct implements NativeResource {
      * @param stack the stack from which to allocate
      */
     public static XrGraphicsBindingEGLMNDX calloc(MemoryStack stack) {
-        return wrap(XrGraphicsBindingEGLMNDX.class, stack.ncalloc(ALIGNOF, 1, SIZEOF));
+        return new XrGraphicsBindingEGLMNDX(stack.ncalloc(ALIGNOF, 1, SIZEOF), null);
     }
 
     /**
@@ -269,7 +267,7 @@ public class XrGraphicsBindingEGLMNDX extends Struct implements NativeResource {
      * @param capacity the buffer capacity
      */
     public static XrGraphicsBindingEGLMNDX.Buffer malloc(int capacity, MemoryStack stack) {
-        return wrap(Buffer.class, stack.nmalloc(ALIGNOF, capacity * SIZEOF), capacity);
+        return new Buffer(stack.nmalloc(ALIGNOF, capacity * SIZEOF), capacity);
     }
 
     /**
@@ -279,7 +277,7 @@ public class XrGraphicsBindingEGLMNDX extends Struct implements NativeResource {
      * @param capacity the buffer capacity
      */
     public static XrGraphicsBindingEGLMNDX.Buffer calloc(int capacity, MemoryStack stack) {
-        return wrap(Buffer.class, stack.ncalloc(ALIGNOF, capacity, SIZEOF), capacity);
+        return new Buffer(stack.ncalloc(ALIGNOF, capacity, SIZEOF), capacity);
     }
 
     // -----------------------------------
@@ -288,8 +286,6 @@ public class XrGraphicsBindingEGLMNDX extends Struct implements NativeResource {
     public static int ntype(long struct) { return UNSAFE.getInt(null, struct + XrGraphicsBindingEGLMNDX.TYPE); }
     /** Unsafe version of {@link #next}. */
     public static long nnext(long struct) { return memGetAddress(struct + XrGraphicsBindingEGLMNDX.NEXT); }
-    /** Unsafe version of {@link #getProcAddress}. */
-    public static long ngetProcAddress(long struct) { return memGetAddress(struct + XrGraphicsBindingEGLMNDX.GETPROCADDRESS); }
     /** Unsafe version of {@link #display}. */
     public static long ndisplay(long struct) { return memGetAddress(struct + XrGraphicsBindingEGLMNDX.DISPLAY); }
     /** Unsafe version of {@link #config}. */
@@ -301,8 +297,6 @@ public class XrGraphicsBindingEGLMNDX extends Struct implements NativeResource {
     public static void ntype(long struct, int value) { UNSAFE.putInt(null, struct + XrGraphicsBindingEGLMNDX.TYPE, value); }
     /** Unsafe version of {@link #next(long) next}. */
     public static void nnext(long struct, long value) { memPutAddress(struct + XrGraphicsBindingEGLMNDX.NEXT, value); }
-    /** Unsafe version of {@link #getProcAddress(long) getProcAddress}. */
-    public static void ngetProcAddress(long struct, long value) { memPutAddress(struct + XrGraphicsBindingEGLMNDX.GETPROCADDRESS, check(value)); }
     /** Unsafe version of {@link #display(long) display}. */
     public static void ndisplay(long struct, long value) { memPutAddress(struct + XrGraphicsBindingEGLMNDX.DISPLAY, check(value)); }
     /** Unsafe version of {@link #config(long) config}. */
@@ -316,7 +310,6 @@ public class XrGraphicsBindingEGLMNDX extends Struct implements NativeResource {
      * @param struct the struct to validate
      */
     public static void validate(long struct) {
-        check(memGetAddress(struct + XrGraphicsBindingEGLMNDX.GETPROCADDRESS));
         check(memGetAddress(struct + XrGraphicsBindingEGLMNDX.DISPLAY));
         check(memGetAddress(struct + XrGraphicsBindingEGLMNDX.CONFIG));
         check(memGetAddress(struct + XrGraphicsBindingEGLMNDX.CONTEXT));
@@ -332,9 +325,9 @@ public class XrGraphicsBindingEGLMNDX extends Struct implements NativeResource {
         /**
          * Creates a new {@code XrGraphicsBindingEGLMNDX.Buffer} instance backed by the specified container.
          *
-         * Changes to the container's content will be visible to the struct buffer instance and vice versa. The two buffers' position, limit, and mark values
+         * <p>Changes to the container's content will be visible to the struct buffer instance and vice versa. The two buffers' position, limit, and mark values
          * will be independent. The new buffer's position will be zero, its capacity and its limit will be the number of bytes remaining in this buffer divided
-         * by {@link XrGraphicsBindingEGLMNDX#SIZEOF}, and its mark will be undefined.
+         * by {@link XrGraphicsBindingEGLMNDX#SIZEOF}, and its mark will be undefined.</p>
          *
          * <p>The created buffer instance holds a strong reference to the container object.</p>
          */
@@ -366,9 +359,6 @@ public class XrGraphicsBindingEGLMNDX extends Struct implements NativeResource {
         /** @return the value of the {@link XrGraphicsBindingEGLMNDX#next} field. */
         @NativeType("void const *")
         public long next() { return XrGraphicsBindingEGLMNDX.nnext(address()); }
-        /** @return the value of the {@link XrGraphicsBindingEGLMNDX#getProcAddress} field. */
-        @NativeType("PFNEGLGETPROCADDRESSPROC")
-        public long getProcAddress() { return XrGraphicsBindingEGLMNDX.ngetProcAddress(address()); }
         /** @return the value of the {@link XrGraphicsBindingEGLMNDX#display} field. */
         @NativeType("EGLDisplay")
         public long display() { return XrGraphicsBindingEGLMNDX.ndisplay(address()); }
@@ -385,8 +375,6 @@ public class XrGraphicsBindingEGLMNDX extends Struct implements NativeResource {
         public XrGraphicsBindingEGLMNDX.Buffer type$Default() { return type(MNDXEGLEnable.XR_TYPE_GRAPHICS_BINDING_EGL_MNDX); }
         /** Sets the specified value to the {@link XrGraphicsBindingEGLMNDX#next} field. */
         public XrGraphicsBindingEGLMNDX.Buffer next(@NativeType("void const *") long value) { XrGraphicsBindingEGLMNDX.nnext(address(), value); return this; }
-        /** Sets the specified value to the {@link XrGraphicsBindingEGLMNDX#getProcAddress} field. */
-        public XrGraphicsBindingEGLMNDX.Buffer getProcAddress(@NativeType("PFNEGLGETPROCADDRESSPROC") long value) { XrGraphicsBindingEGLMNDX.ngetProcAddress(address(), value); return this; }
         /** Sets the specified value to the {@link XrGraphicsBindingEGLMNDX#display} field. */
         public XrGraphicsBindingEGLMNDX.Buffer display(@NativeType("EGLDisplay") long value) { XrGraphicsBindingEGLMNDX.ndisplay(address(), value); return this; }
         /** Sets the specified value to the {@link XrGraphicsBindingEGLMNDX#config} field. */

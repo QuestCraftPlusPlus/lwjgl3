@@ -192,6 +192,33 @@ val XrCompositionLayerCubeKHR = struct(Module.OPENXR, "XrCompositionLayerCubeKHR
     XrQuaternionf("orientation", "the orientation of the environment map in the {@code space}.")
 }
 
+val XrInstanceCreateInfoAndroidKHR = struct(Module.OPENXR, "XrInstanceCreateInfoAndroidKHR") {
+    documentation =
+        """
+        Creates an OpenXR Instance.
+
+        <h5>Description</h5>
+        ##XrInstanceCreateInfoAndroidKHR contains additional Android specific information needed when calling #CreateInstance(). The {@code applicationVM} field should be populated with the {@code JavaVM} structure received by the {@code JNI_OnLoad} function, while the {@code applicationActivity} field will typically contain a reference to a Java activity object received through an application-specific native method. The ##XrInstanceCreateInfoAndroidKHR structure <b>must</b> be provided in the {@code next} chain of the ##XrInstanceCreateInfo structure when calling #CreateInstance().
+
+        <h5>Valid Usage (Implicit)</h5>
+        <ul>
+            <li>The {@link KHRAndroidCreateInstance XR_KHR_android_create_instance} extension <b>must</b> be enabled prior to using ##XrInstanceCreateInfoAndroidKHR</li>
+            <li>{@code type} <b>must</b> be #TYPE_INSTANCE_CREATE_INFO_ANDROID_KHR</li>
+            <li>{@code next} <b>must</b> be {@code NULL} or a valid pointer to the <a target="_blank" href="https://www.khronos.org/registry/OpenXR/specs/1.0/html/xrspec.html\#valid-usage-for-structure-pointer-chains">next structure in a structure chain</a></li>
+            <li>{@code applicationVM} <b>must</b> be a pointer value</li>
+            <li>{@code applicationActivity} <b>must</b> be a pointer value</li>
+        </ul>
+
+        <h5>See Also</h5>
+        #CreateInstance(), #DestroyInstance()
+        """
+
+    Expression("#TYPE_INSTANCE_CREATE_INFO_ANDROID_KHR")..XrStructureType("type", "the {@code XrStructureType} of this structure.")
+    nullable..opaque_const_p("next", "{@code NULL} or a pointer to the next structure in a structure chain. No such structures are defined in core OpenXR or this extension.")
+    opaque_p("applicationVM", "a pointer to the JNI’s opaque {@code JavaVM} structure, cast to a void pointer.")
+    opaque_p("applicationActivity", "a JNI reference to an {@code android.app.Activity} that will drive the session lifecycle of this instance, cast to a void pointer.")
+}
+
 val XrCompositionLayerDepthInfoKHR = struct(Module.OPENXR, "XrCompositionLayerDepthInfoKHR") {
     documentation =
         """
@@ -676,6 +703,96 @@ val XrGraphicsRequirementsOpenGLKHR = struct(Module.OPENXR, "XrGraphicsRequireme
     XrVersion("maxApiVersionSupported", "the maximum version of OpenGL that the runtime has been tested on and is known to support. Newer OpenGL versions might work if they are compatible. Uses #XR_MAKE_VERSION() on major and minor API version, ignoring any patch version component.")
 }
 
+val XrGraphicsBindingOpenGLESAndroidKHR = struct(Module.OPENXR, "XrGraphicsBindingOpenGLESAndroidKHR") {
+    javaImport("org.lwjgl.egl.*")
+    documentation =
+        """
+        The graphics binding structure to be passed at session creation to use OpenGL ES on Android.
+
+        <h5>Description</h5>
+        When creating an OpenGL ES-backed {@code XrSession} on Android, the application will provide a pointer to an ##XrGraphicsBindingOpenGLESAndroidKHR structure in the {@code next} chain of the ##XrSessionCreateInfo.
+
+        The required window system configuration define to expose this structure type is USE_PLATFORM_ANDROID.
+
+        <h5>Valid Usage (Implicit)</h5>
+        <ul>
+            <li>The {@link KHROpenGLESEnable XR_KHR_opengl_es_enable} extension <b>must</b> be enabled prior to using ##XrGraphicsBindingOpenGLESAndroidKHR</li>
+            <li>{@code type} <b>must</b> be #TYPE_GRAPHICS_BINDING_OPENGL_ES_ANDROID_KHR</li>
+            <li>{@code next} <b>must</b> be {@code NULL} or a valid pointer to the <a target="_blank" href="https://www.khronos.org/registry/OpenXR/specs/1.0/html/xrspec.html\#valid-usage-for-structure-pointer-chains">next structure in a structure chain</a></li>
+            <li>{@code display} <b>must</b> be a valid {@code EGLDisplay} value</li>
+            <li>{@code config} <b>must</b> be a valid {@code EGLConfig} value</li>
+            <li>{@code context} <b>must</b> be a valid {@code EGLContext} value</li>
+        </ul>
+
+        <h5>See Also</h5>
+        #CreateSession()
+        """
+
+    Expression("#TYPE_GRAPHICS_BINDING_OPENGL_ES_ANDROID_KHR")..XrStructureType("type", "the {@code XrStructureType} of this structure.")
+    nullable..opaque_const_p("next", "{@code NULL} or a pointer to the next structure in a structure chain. No such structures are defined in core OpenXR or this extension.")
+    EGLDisplay("display", "a valid Android OpenGL ES {@code EGLDisplay}.")
+    EGLConfig("config", "a valid Android OpenGL ES {@code EGLConfig}.")
+    EGLContext("context", "a valid Android OpenGL ES {@code EGLContext}.")
+}
+
+val XrSwapchainImageOpenGLESKHR = struct(Module.OPENXR, "XrSwapchainImageOpenGLESKHR", mutable = false, parentStruct = XrSwapchainImageBaseHeader) {
+    documentation =
+        """
+        OpenGL ES-specific swapchain image structure.
+
+        <h5>Description</h5>
+        If a given session was created with a stext:XrGraphicsBindingOpenGLES*KHR, the following conditions <b>must</b> apply.
+
+        <ul>
+            <li>Calls to #EnumerateSwapchainImages() on an {@code XrSwapchain} in that session <b>must</b> return an array of ##XrSwapchainImageOpenGLESKHR structures.</li>
+            <li>Whenever an OpenXR function accepts an ##XrSwapchainImageBaseHeader pointer as a parameter in that session, the runtime <b>must</b> also accept a pointer to an ##XrSwapchainImageOpenGLESKHR structure.</li>
+        </ul>
+
+        The OpenXR runtime <b>must</b> interpret the bottom-left corner of the swapchain image as the coordinate origin unless specified otherwise by extension functionality.
+
+        The OpenXR runtime <b>must</b> interpret the swapchain images in a clip space of positive Y pointing up, near Z plane at -1, and far Z plane at 1.
+
+        <h5>Valid Usage (Implicit)</h5>
+        <ul>
+            <li>The {@link KHROpenGLESEnable XR_KHR_opengl_es_enable} extension <b>must</b> be enabled prior to using ##XrSwapchainImageOpenGLESKHR</li>
+            <li>{@code type} <b>must</b> be #TYPE_SWAPCHAIN_IMAGE_OPENGL_ES_KHR</li>
+            <li>{@code next} <b>must</b> be {@code NULL} or a valid pointer to the <a target="_blank" href="https://www.khronos.org/registry/OpenXR/specs/1.0/html/xrspec.html\#valid-usage-for-structure-pointer-chains">next structure in a structure chain</a></li>
+        </ul>
+
+        <h5>See Also</h5>
+        ##XrSwapchainImageBaseHeader
+        """
+
+    Expression("#TYPE_SWAPCHAIN_IMAGE_OPENGL_ES_KHR")..XrStructureType("type", "the {@code XrStructureType} of this structure.").mutable()
+    nullable..opaque_p("next", "{@code NULL} or a pointer to the next structure in a structure chain. No such structures are defined in core OpenXR or this extension.").mutable()
+    uint32_t("image", "an index indicating the current OpenGL ES swapchain image to use.")
+}
+
+val XrGraphicsRequirementsOpenGLESKHR = struct(Module.OPENXR, "XrGraphicsRequirementsOpenGLESKHR") {
+    documentation =
+        """
+        OpenGL ES API version requirements.
+
+        <h5>Description</h5>
+        ##XrGraphicsRequirementsOpenGLESKHR is populated by #GetOpenGLESGraphicsRequirementsKHR() with the runtime’s OpenGL ES API version requirements.
+
+        <h5>Valid Usage (Implicit)</h5>
+        <ul>
+            <li>The {@link KHROpenGLESEnable XR_KHR_opengl_es_enable} extension <b>must</b> be enabled prior to using ##XrGraphicsRequirementsOpenGLESKHR</li>
+            <li>{@code type} <b>must</b> be #TYPE_GRAPHICS_REQUIREMENTS_OPENGL_ES_KHR</li>
+            <li>{@code next} <b>must</b> be {@code NULL} or a valid pointer to the <a target="_blank" href="https://www.khronos.org/registry/OpenXR/specs/1.0/html/xrspec.html\#valid-usage-for-structure-pointer-chains">next structure in a structure chain</a></li>
+        </ul>
+
+        <h5>See Also</h5>
+        #GetOpenGLESGraphicsRequirementsKHR()
+        """
+
+    Expression("#TYPE_GRAPHICS_REQUIREMENTS_OPENGL_ES_KHR")..XrStructureType("type", "the {@code XrStructureType} of this structure.")
+    nullable..opaque_p("next", "{@code NULL} or a pointer to the next structure in a structure chain. No such structures are defined in core OpenXR or this extension.")
+    XrVersion("minApiVersionSupported", "the minimum version of OpenGL ES that the runtime supports. Uses #XR_MAKE_VERSION() on major and minor API version, ignoring any patch version component.")
+    XrVersion("maxApiVersionSupported", "the maximum version of OpenGL ES that the runtime has been tested on and is known to support. Newer OpenGL ES versions might work if they are compatible. Uses #XR_MAKE_VERSION() on major and minor API version, ignoring any patch version component.")
+}
+
 val XrGraphicsBindingVulkanKHR = struct(Module.OPENXR, "XrGraphicsBindingVulkanKHR") {
     javaImport("org.lwjgl.vulkan.*")
     documentation =
@@ -1098,7 +1215,6 @@ val XrGraphicsBindingEGLMNDX = struct(Module.OPENXR, "XrGraphicsBindingEGLMNDX")
 
     Expression("#TYPE_GRAPHICS_BINDING_EGL_MNDX")..XrStructureType("type", "the {@code XrStructureType} of this structure.")
     nullable..opaque_const_p("next", "{@code NULL} or a pointer to the next structure in a structure chain. No such structures are defined in core OpenXR or this extension.")
-    PFNEGLGETPROCADDRESSPROC("getProcAddress", "a valid function pointer to {@code eglGetProcAddress}.")
     EGLDisplay("display", "a valid EGL {@code EGLDisplay}.")
     EGLConfig("config", "a valid EGL {@code EGLConfig}.")
     EGLContext("context", "a valid EGL {@code EGLContext}.")
@@ -2403,6 +2519,7 @@ val XrLoaderInitInfoBaseHeaderKHR = struct(Module.OPENXR, "XrLoaderInitInfoBaseH
         <h5>Valid Usage (Implicit)</h5>
         <ul>
             <li>The {@link KHRLoaderInit XR_KHR_loader_init} extension <b>must</b> be enabled prior to using ##XrLoaderInitInfoBaseHeaderKHR</li>
+            <li>{@code type} <b>must</b> be #TYPE_LOADER_INIT_INFO_ANDROID_KHR</li>
             <li>{@code next} <b>must</b> be {@code NULL} or a valid pointer to the <a target="_blank" href="https://www.khronos.org/registry/OpenXR/specs/1.0/html/xrspec.html\#valid-usage-for-structure-pointer-chains">next structure in a structure chain</a></li>
         </ul>
 
@@ -2412,6 +2529,30 @@ val XrLoaderInitInfoBaseHeaderKHR = struct(Module.OPENXR, "XrLoaderInitInfoBaseH
 
     XrStructureType("type", "the {@code XrStructureType} of this structure. This base structure itself has no associated {@code XrStructureType} value.")
     nullable..opaque_const_p("next", "{@code NULL} or a pointer to the next structure in a structure chain. No such structures are defined in core OpenXR or this extension.")
+}
+
+val XrLoaderInitInfoAndroidKHR = struct(Module.OPENXR, "XrLoaderInitInfoAndroidKHR", parentStruct = XrLoaderInitInfoBaseHeaderKHR) {
+    documentation =
+        """
+        Initializes OpenXR loader on Android.
+
+        <h5>Valid Usage (Implicit)</h5>
+        <ul>
+            <li>The {@link KHRLoaderInitAndroid XR_KHR_loader_init_android} extension <b>must</b> be enabled prior to using ##XrLoaderInitInfoAndroidKHR</li>
+            <li>{@code type} <b>must</b> be #TYPE_LOADER_INIT_INFO_ANDROID_KHR</li>
+            <li>{@code next} <b>must</b> be {@code NULL} or a valid pointer to the <a target="_blank" href="https://www.khronos.org/registry/OpenXR/specs/1.0/html/xrspec.html\#valid-usage-for-structure-pointer-chains">next structure in a structure chain</a></li>
+            <li>{@code applicationVM} <b>must</b> be a pointer value</li>
+            <li>{@code applicationContext} <b>must</b> be a pointer value</li>
+        </ul>
+
+        <h5>See Also</h5>
+        #InitializeLoaderKHR()
+        """
+
+    Expression("#TYPE_LOADER_INIT_INFO_ANDROID_KHR")..XrStructureType("type", "the {@code XrStructureType} of this structure.")
+    nullable..opaque_const_p("next", "{@code NULL} or a pointer to the next structure in a structure chain. No such structures are defined in core OpenXR or this extension.")
+    opaque_p("applicationVM", "a pointer to the JNI’s opaque {@code JavaVM} structure, cast to a void pointer.")
+    opaque_p("applicationContext", "a JNI reference to an {@code android.content.Context} associated with the application, cast to a void pointer.")
 }
 
 val XrVulkanInstanceCreateInfoKHR = struct(Module.OPENXR, "XrVulkanInstanceCreateInfoKHR") {
@@ -6186,7 +6327,6 @@ val XrSystemEyeTrackingPropertiesFB = struct(Module.OPENXR, "XrSystemEyeTracking
 }
 
 val XrEyeGazesFB = struct(Module.OPENXR, "XrEyeGazesFB") {
-    javaImport("static org.lwjgl.openxr.FBEyeTrackingSocial.*")
     documentation =
         """
         Returns the eye gaze directions.
@@ -6205,7 +6345,7 @@ val XrEyeGazesFB = struct(Module.OPENXR, "XrEyeGazesFB") {
 
     Expression("#TYPE_EYE_GAZES_FB")..XrStructureType("type", "the {@code XrStructureType} of this structure.")
     nullable..opaque_p("next", "{@code NULL} or a pointer to the next structure in a structure chain. No such structures are defined in core OpenXR or this extension.")
-    XrEyeGazeFB("gaze", "an array of ##XrEyeGazeFB receiving the returned eye gaze directions.")["XR_EYE_POSITION_COUNT_FB"]
+    XrEyeGazeFB("gaze", "an array of ##XrEyeGazeFB receiving the returned eye gaze directions.")
     XrTime("time", "an {@code XrTime} time at which the returned eye gaze is tracked or extrapolated to. Equals the time for which the eye gaze was requested if the interpolation at the time was successful.")
 }
 

@@ -43,7 +43,7 @@ val KHR_loader_init = "KHRLoaderInit".nativeClassXR("KHR_loader_init", type = "i
         <h5>Valid Usage (Implicit)</h5>
         <ul>
             <li>The {@link KHRLoaderInit XR_KHR_loader_init} extension <b>must</b> be enabled prior to calling #InitializeLoaderKHR()</li>
-            <li>{@code loaderInitInfo} <b>must</b> be a pointer to a valid ##XrLoaderInitInfoBaseHeaderKHR-based structure</li>
+            <li>{@code loaderInitInfo} <b>must</b> be a pointer to a valid ##XrLoaderInitInfoBaseHeaderKHR-based structure. See also: ##XrLoaderInitInfoAndroidKHR</li>
         </ul>
 
         <h5>Return Codes</h5>
