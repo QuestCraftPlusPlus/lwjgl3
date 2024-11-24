@@ -127,15 +127,7 @@ yes | ant -Dplatform.linux=true \
   -Dbuild.type=release/3.3.3 \
   -Djavadoc.skip=true \
   -Dnashorn.args="--no-deprecation-warning" \
-  compile compile-native release
-
-# Copy native libraries
-rm -rf bin/out; mkdir bin/out
-find $LWJGL_NATIVE -name 'liblwjgl*.so' -exec cp {} bin/out/ \;
-cp $LWJGL_NATIVE/shaderc/libshaderc.so bin/out/
-if [ -e "$LWJGL_NATIVE/libfreetype.so" ]; then
-  cp $LWJGL_NATIVE/libfreetype.so bin/out/
-fi
-
+  compile release
+  
 # Cleanup unused output jar files
 find bin/RELEASE \( -name '*-natives-*' -o -name '*-sources.jar' \) -delete
