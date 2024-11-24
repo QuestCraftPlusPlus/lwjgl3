@@ -23,7 +23,7 @@ import static org.lwjgl.system.MemoryStack.*;
  * 
  * <ul>
  * <li>The {@link KHRLoaderInitAndroid XR_KHR_loader_init_android} extension <b>must</b> be enabled prior to using {@link XrLoaderInitInfoAndroidKHR}</li>
- * <li>{@code type} <b>must</b> be {@link KHRLoaderInitAndroid#XR_TYPE_LOADER_INIT_INFO_ANDROID_KHR TYPE_LOADER_INIT_INFO_ANDROID_KHR}</li>
+ * <li>{@code type} <b>must</b> be TYPE_LOADER_INIT_INFO_ANDROID_KHR</li>
  * <li>{@code next} <b>must</b> be {@code NULL} or a valid pointer to the <a target="_blank" href="https://www.khronos.org/registry/OpenXR/specs/1.0/html/xrspec.html#valid-usage-for-structure-pointer-chains">next structure in a structure chain</a></li>
  * <li>{@code applicationVM} <b>must</b> be a pointer value</li>
  * <li>{@code applicationContext} <b>must</b> be a pointer value</li>
@@ -43,7 +43,7 @@ import static org.lwjgl.system.MemoryStack.*;
  *     void * {@link #applicationContext};
  * }</code></pre>
  */
-public class XrLoaderInitInfoAndroidKHR extends Struct<XrLoaderInitInfoAndroidKHR> implements NativeResource {
+public class XrLoaderInitInfoAndroidKHR extends Struct implements NativeResource {
 
     /** The struct size in bytes. */
     public static final int SIZEOF;
@@ -75,15 +75,6 @@ public class XrLoaderInitInfoAndroidKHR extends Struct<XrLoaderInitInfoAndroidKH
         APPLICATIONCONTEXT = layout.offsetof(3);
     }
 
-    protected XrLoaderInitInfoAndroidKHR(long address, @Nullable ByteBuffer container) {
-        super(address, container);
-    }
-
-    @Override
-    protected XrLoaderInitInfoAndroidKHR create(long address, @Nullable ByteBuffer container) {
-        return new XrLoaderInitInfoAndroidKHR(address, container);
-    }
-
     /**
      * Creates a {@code XrLoaderInitInfoAndroidKHR} instance at the current position of the specified {@link ByteBuffer} container. Changes to the buffer's content will be
      * visible to the struct instance and vice versa.
@@ -112,8 +103,8 @@ public class XrLoaderInitInfoAndroidKHR extends Struct<XrLoaderInitInfoAndroidKH
 
     /** Sets the specified value to the {@link #type} field. */
     public XrLoaderInitInfoAndroidKHR type(@NativeType("XrStructureType") int value) { ntype(address(), value); return this; }
-    /** Sets the {@link KHRLoaderInitAndroid#XR_TYPE_LOADER_INIT_INFO_ANDROID_KHR TYPE_LOADER_INIT_INFO_ANDROID_KHR} value to the {@link #type} field. */
-    public XrLoaderInitInfoAndroidKHR type$Default() { return type(KHRLoaderInitAndroid.XR_TYPE_LOADER_INIT_INFO_ANDROID_KHR); }
+    /** Sets the default value to the {@link #type} field. */
+    public XrLoaderInitInfoAndroidKHR type$Default() { return type(TYPE_LOADER_INIT_INFO_ANDROID_KHR); }
     /** Sets the specified value to the {@link #next} field. */
     public XrLoaderInitInfoAndroidKHR next(@NativeType("void const *") long value) { nnext(address(), value); return this; }
     /** Sets the specified value to the {@link #applicationVM} field. */
@@ -152,34 +143,34 @@ public class XrLoaderInitInfoAndroidKHR extends Struct<XrLoaderInitInfoAndroidKH
 
     /** Returns a new {@code XrLoaderInitInfoAndroidKHR} instance allocated with {@link MemoryUtil#memAlloc memAlloc}. The instance must be explicitly freed. */
     public static XrLoaderInitInfoAndroidKHR malloc() {
-        return new XrLoaderInitInfoAndroidKHR(nmemAllocChecked(SIZEOF), null);
+        return wrap(XrLoaderInitInfoAndroidKHR.class, nmemAllocChecked(SIZEOF));
     }
 
     /** Returns a new {@code XrLoaderInitInfoAndroidKHR} instance allocated with {@link MemoryUtil#memCalloc memCalloc}. The instance must be explicitly freed. */
     public static XrLoaderInitInfoAndroidKHR calloc() {
-        return new XrLoaderInitInfoAndroidKHR(nmemCallocChecked(1, SIZEOF), null);
+        return wrap(XrLoaderInitInfoAndroidKHR.class, nmemCallocChecked(1, SIZEOF));
     }
 
     /** Returns a new {@code XrLoaderInitInfoAndroidKHR} instance allocated with {@link BufferUtils}. */
     public static XrLoaderInitInfoAndroidKHR create() {
         ByteBuffer container = BufferUtils.createByteBuffer(SIZEOF);
-        return new XrLoaderInitInfoAndroidKHR(memAddress(container), container);
+        return wrap(XrLoaderInitInfoAndroidKHR.class, memAddress(container), container);
     }
 
     /** Returns a new {@code XrLoaderInitInfoAndroidKHR} instance for the specified memory address. */
     public static XrLoaderInitInfoAndroidKHR create(long address) {
-        return new XrLoaderInitInfoAndroidKHR(address, null);
+        return wrap(XrLoaderInitInfoAndroidKHR.class, address);
     }
 
     /** Like {@link #create(long) create}, but returns {@code null} if {@code address} is {@code NULL}. */
     @Nullable
     public static XrLoaderInitInfoAndroidKHR createSafe(long address) {
-        return address == NULL ? null : new XrLoaderInitInfoAndroidKHR(address, null);
+        return address == NULL ? null : wrap(XrLoaderInitInfoAndroidKHR.class, address);
     }
 
     /** Downcasts the specified {@code XrLoaderInitInfoBaseHeaderKHR} instance to {@code XrLoaderInitInfoAndroidKHR}. */
     public static XrLoaderInitInfoAndroidKHR create(XrLoaderInitInfoBaseHeaderKHR value) {
-        return new XrLoaderInitInfoAndroidKHR(value.address(), __getContainer(value));
+        return wrap(XrLoaderInitInfoAndroidKHR.class, value);
     }
 
     /**
@@ -188,7 +179,7 @@ public class XrLoaderInitInfoAndroidKHR extends Struct<XrLoaderInitInfoAndroidKH
      * @param capacity the buffer capacity
      */
     public static XrLoaderInitInfoAndroidKHR.Buffer malloc(int capacity) {
-        return new Buffer(nmemAllocChecked(__checkMalloc(capacity, SIZEOF)), capacity);
+        return wrap(Buffer.class, nmemAllocChecked(__checkMalloc(capacity, SIZEOF)), capacity);
     }
 
     /**
@@ -197,7 +188,7 @@ public class XrLoaderInitInfoAndroidKHR extends Struct<XrLoaderInitInfoAndroidKH
      * @param capacity the buffer capacity
      */
     public static XrLoaderInitInfoAndroidKHR.Buffer calloc(int capacity) {
-        return new Buffer(nmemCallocChecked(capacity, SIZEOF), capacity);
+        return wrap(Buffer.class, nmemCallocChecked(capacity, SIZEOF), capacity);
     }
 
     /**
@@ -207,7 +198,7 @@ public class XrLoaderInitInfoAndroidKHR extends Struct<XrLoaderInitInfoAndroidKH
      */
     public static XrLoaderInitInfoAndroidKHR.Buffer create(int capacity) {
         ByteBuffer container = __create(capacity, SIZEOF);
-        return new Buffer(memAddress(container), container, -1, 0, capacity, capacity);
+        return wrap(Buffer.class, memAddress(container), capacity, container);
     }
 
     /**
@@ -217,18 +208,18 @@ public class XrLoaderInitInfoAndroidKHR extends Struct<XrLoaderInitInfoAndroidKH
      * @param capacity the buffer capacity
      */
     public static XrLoaderInitInfoAndroidKHR.Buffer create(long address, int capacity) {
-        return new Buffer(address, capacity);
+        return wrap(Buffer.class, address, capacity);
     }
 
     /** Like {@link #create(long, int) create}, but returns {@code null} if {@code address} is {@code NULL}. */
     @Nullable
     public static XrLoaderInitInfoAndroidKHR.Buffer createSafe(long address, int capacity) {
-        return address == NULL ? null : new Buffer(address, capacity);
+        return address == NULL ? null : wrap(Buffer.class, address, capacity);
     }
 
     /** Downcasts the specified {@code XrLoaderInitInfoBaseHeaderKHR.Buffer} instance to {@code XrLoaderInitInfoAndroidKHR.Buffer}. */
     public static XrLoaderInitInfoAndroidKHR.Buffer create(XrLoaderInitInfoBaseHeaderKHR.Buffer value) {
-        return new XrLoaderInitInfoAndroidKHR.Buffer(value.address(), __getContainer(value), -1, 0, value.remaining(), value.remaining());
+        return wrap(Buffer.class, value);
     }
 
     /**
@@ -237,7 +228,7 @@ public class XrLoaderInitInfoAndroidKHR extends Struct<XrLoaderInitInfoAndroidKH
      * @param stack the stack from which to allocate
      */
     public static XrLoaderInitInfoAndroidKHR malloc(MemoryStack stack) {
-        return new XrLoaderInitInfoAndroidKHR(stack.nmalloc(ALIGNOF, SIZEOF), null);
+        return wrap(XrLoaderInitInfoAndroidKHR.class, stack.nmalloc(ALIGNOF, SIZEOF));
     }
 
     /**
@@ -246,7 +237,7 @@ public class XrLoaderInitInfoAndroidKHR extends Struct<XrLoaderInitInfoAndroidKH
      * @param stack the stack from which to allocate
      */
     public static XrLoaderInitInfoAndroidKHR calloc(MemoryStack stack) {
-        return new XrLoaderInitInfoAndroidKHR(stack.ncalloc(ALIGNOF, 1, SIZEOF), null);
+        return wrap(XrLoaderInitInfoAndroidKHR.class, stack.ncalloc(ALIGNOF, 1, SIZEOF));
     }
 
     /**
@@ -256,7 +247,7 @@ public class XrLoaderInitInfoAndroidKHR extends Struct<XrLoaderInitInfoAndroidKH
      * @param capacity the buffer capacity
      */
     public static XrLoaderInitInfoAndroidKHR.Buffer malloc(int capacity, MemoryStack stack) {
-        return new Buffer(stack.nmalloc(ALIGNOF, capacity * SIZEOF), capacity);
+        return wrap(Buffer.class, stack.nmalloc(ALIGNOF, capacity * SIZEOF), capacity);
     }
 
     /**
@@ -266,7 +257,7 @@ public class XrLoaderInitInfoAndroidKHR extends Struct<XrLoaderInitInfoAndroidKH
      * @param capacity the buffer capacity
      */
     public static XrLoaderInitInfoAndroidKHR.Buffer calloc(int capacity, MemoryStack stack) {
-        return new Buffer(stack.ncalloc(ALIGNOF, capacity, SIZEOF), capacity);
+        return wrap(Buffer.class, stack.ncalloc(ALIGNOF, capacity, SIZEOF), capacity);
     }
 
     // -----------------------------------
@@ -309,9 +300,9 @@ public class XrLoaderInitInfoAndroidKHR extends Struct<XrLoaderInitInfoAndroidKH
         /**
          * Creates a new {@code XrLoaderInitInfoAndroidKHR.Buffer} instance backed by the specified container.
          *
-         * <p>Changes to the container's content will be visible to the struct buffer instance and vice versa. The two buffers' position, limit, and mark values
+         * Changes to the container's content will be visible to the struct buffer instance and vice versa. The two buffers' position, limit, and mark values
          * will be independent. The new buffer's position will be zero, its capacity and its limit will be the number of bytes remaining in this buffer divided
-         * by {@link XrLoaderInitInfoAndroidKHR#SIZEOF}, and its mark will be undefined.</p>
+         * by {@link XrLoaderInitInfoAndroidKHR#SIZEOF}, and its mark will be undefined.
          *
          * <p>The created buffer instance holds a strong reference to the container object.</p>
          */
@@ -352,8 +343,8 @@ public class XrLoaderInitInfoAndroidKHR extends Struct<XrLoaderInitInfoAndroidKH
 
         /** Sets the specified value to the {@link XrLoaderInitInfoAndroidKHR#type} field. */
         public XrLoaderInitInfoAndroidKHR.Buffer type(@NativeType("XrStructureType") int value) { XrLoaderInitInfoAndroidKHR.ntype(address(), value); return this; }
-        /** Sets the {@link KHRLoaderInitAndroid#XR_TYPE_LOADER_INIT_INFO_ANDROID_KHR TYPE_LOADER_INIT_INFO_ANDROID_KHR} value to the {@link XrLoaderInitInfoAndroidKHR#type} field. */
-        public XrLoaderInitInfoAndroidKHR.Buffer type$Default() { return type(KHRLoaderInitAndroid.XR_TYPE_LOADER_INIT_INFO_ANDROID_KHR); }
+        /** Sets the default value to the {@link XrLoaderInitInfoAndroidKHR#type} field. */
+        public XrLoaderInitInfoAndroidKHR.Buffer type$Default() { return type(TYPE_LOADER_INIT_INFO_ANDROID_KHR); }
         /** Sets the specified value to the {@link XrLoaderInitInfoAndroidKHR#next} field. */
         public XrLoaderInitInfoAndroidKHR.Buffer next(@NativeType("void const *") long value) { XrLoaderInitInfoAndroidKHR.nnext(address(), value); return this; }
         /** Sets the specified value to the {@link XrLoaderInitInfoAndroidKHR#applicationVM} field. */

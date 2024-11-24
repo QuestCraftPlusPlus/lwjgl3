@@ -45,7 +45,7 @@ import static org.lwjgl.system.MemoryStack.*;
  *     XrInputSourceLocalizedNameFlags {@link #whichComponents};
  * }</code></pre>
  */
-public class XrInputSourceLocalizedNameGetInfo extends Struct<XrInputSourceLocalizedNameGetInfo> implements NativeResource {
+public class XrInputSourceLocalizedNameGetInfo extends Struct implements NativeResource {
 
     /** The struct size in bytes. */
     public static final int SIZEOF;
@@ -75,15 +75,6 @@ public class XrInputSourceLocalizedNameGetInfo extends Struct<XrInputSourceLocal
         NEXT = layout.offsetof(1);
         SOURCEPATH = layout.offsetof(2);
         WHICHCOMPONENTS = layout.offsetof(3);
-    }
-
-    protected XrInputSourceLocalizedNameGetInfo(long address, @Nullable ByteBuffer container) {
-        super(address, container);
-    }
-
-    @Override
-    protected XrInputSourceLocalizedNameGetInfo create(long address, @Nullable ByteBuffer container) {
-        return new XrInputSourceLocalizedNameGetInfo(address, container);
     }
 
     /**
@@ -154,29 +145,29 @@ public class XrInputSourceLocalizedNameGetInfo extends Struct<XrInputSourceLocal
 
     /** Returns a new {@code XrInputSourceLocalizedNameGetInfo} instance allocated with {@link MemoryUtil#memAlloc memAlloc}. The instance must be explicitly freed. */
     public static XrInputSourceLocalizedNameGetInfo malloc() {
-        return new XrInputSourceLocalizedNameGetInfo(nmemAllocChecked(SIZEOF), null);
+        return wrap(XrInputSourceLocalizedNameGetInfo.class, nmemAllocChecked(SIZEOF));
     }
 
     /** Returns a new {@code XrInputSourceLocalizedNameGetInfo} instance allocated with {@link MemoryUtil#memCalloc memCalloc}. The instance must be explicitly freed. */
     public static XrInputSourceLocalizedNameGetInfo calloc() {
-        return new XrInputSourceLocalizedNameGetInfo(nmemCallocChecked(1, SIZEOF), null);
+        return wrap(XrInputSourceLocalizedNameGetInfo.class, nmemCallocChecked(1, SIZEOF));
     }
 
     /** Returns a new {@code XrInputSourceLocalizedNameGetInfo} instance allocated with {@link BufferUtils}. */
     public static XrInputSourceLocalizedNameGetInfo create() {
         ByteBuffer container = BufferUtils.createByteBuffer(SIZEOF);
-        return new XrInputSourceLocalizedNameGetInfo(memAddress(container), container);
+        return wrap(XrInputSourceLocalizedNameGetInfo.class, memAddress(container), container);
     }
 
     /** Returns a new {@code XrInputSourceLocalizedNameGetInfo} instance for the specified memory address. */
     public static XrInputSourceLocalizedNameGetInfo create(long address) {
-        return new XrInputSourceLocalizedNameGetInfo(address, null);
+        return wrap(XrInputSourceLocalizedNameGetInfo.class, address);
     }
 
     /** Like {@link #create(long) create}, but returns {@code null} if {@code address} is {@code NULL}. */
     @Nullable
     public static XrInputSourceLocalizedNameGetInfo createSafe(long address) {
-        return address == NULL ? null : new XrInputSourceLocalizedNameGetInfo(address, null);
+        return address == NULL ? null : wrap(XrInputSourceLocalizedNameGetInfo.class, address);
     }
 
     /**
@@ -185,7 +176,7 @@ public class XrInputSourceLocalizedNameGetInfo extends Struct<XrInputSourceLocal
      * @param capacity the buffer capacity
      */
     public static XrInputSourceLocalizedNameGetInfo.Buffer malloc(int capacity) {
-        return new Buffer(nmemAllocChecked(__checkMalloc(capacity, SIZEOF)), capacity);
+        return wrap(Buffer.class, nmemAllocChecked(__checkMalloc(capacity, SIZEOF)), capacity);
     }
 
     /**
@@ -194,7 +185,7 @@ public class XrInputSourceLocalizedNameGetInfo extends Struct<XrInputSourceLocal
      * @param capacity the buffer capacity
      */
     public static XrInputSourceLocalizedNameGetInfo.Buffer calloc(int capacity) {
-        return new Buffer(nmemCallocChecked(capacity, SIZEOF), capacity);
+        return wrap(Buffer.class, nmemCallocChecked(capacity, SIZEOF), capacity);
     }
 
     /**
@@ -204,7 +195,7 @@ public class XrInputSourceLocalizedNameGetInfo extends Struct<XrInputSourceLocal
      */
     public static XrInputSourceLocalizedNameGetInfo.Buffer create(int capacity) {
         ByteBuffer container = __create(capacity, SIZEOF);
-        return new Buffer(memAddress(container), container, -1, 0, capacity, capacity);
+        return wrap(Buffer.class, memAddress(container), capacity, container);
     }
 
     /**
@@ -214,13 +205,13 @@ public class XrInputSourceLocalizedNameGetInfo extends Struct<XrInputSourceLocal
      * @param capacity the buffer capacity
      */
     public static XrInputSourceLocalizedNameGetInfo.Buffer create(long address, int capacity) {
-        return new Buffer(address, capacity);
+        return wrap(Buffer.class, address, capacity);
     }
 
     /** Like {@link #create(long, int) create}, but returns {@code null} if {@code address} is {@code NULL}. */
     @Nullable
     public static XrInputSourceLocalizedNameGetInfo.Buffer createSafe(long address, int capacity) {
-        return address == NULL ? null : new Buffer(address, capacity);
+        return address == NULL ? null : wrap(Buffer.class, address, capacity);
     }
 
     /**
@@ -229,7 +220,7 @@ public class XrInputSourceLocalizedNameGetInfo extends Struct<XrInputSourceLocal
      * @param stack the stack from which to allocate
      */
     public static XrInputSourceLocalizedNameGetInfo malloc(MemoryStack stack) {
-        return new XrInputSourceLocalizedNameGetInfo(stack.nmalloc(ALIGNOF, SIZEOF), null);
+        return wrap(XrInputSourceLocalizedNameGetInfo.class, stack.nmalloc(ALIGNOF, SIZEOF));
     }
 
     /**
@@ -238,7 +229,7 @@ public class XrInputSourceLocalizedNameGetInfo extends Struct<XrInputSourceLocal
      * @param stack the stack from which to allocate
      */
     public static XrInputSourceLocalizedNameGetInfo calloc(MemoryStack stack) {
-        return new XrInputSourceLocalizedNameGetInfo(stack.ncalloc(ALIGNOF, 1, SIZEOF), null);
+        return wrap(XrInputSourceLocalizedNameGetInfo.class, stack.ncalloc(ALIGNOF, 1, SIZEOF));
     }
 
     /**
@@ -248,7 +239,7 @@ public class XrInputSourceLocalizedNameGetInfo extends Struct<XrInputSourceLocal
      * @param capacity the buffer capacity
      */
     public static XrInputSourceLocalizedNameGetInfo.Buffer malloc(int capacity, MemoryStack stack) {
-        return new Buffer(stack.nmalloc(ALIGNOF, capacity * SIZEOF), capacity);
+        return wrap(Buffer.class, stack.nmalloc(ALIGNOF, capacity * SIZEOF), capacity);
     }
 
     /**
@@ -258,7 +249,7 @@ public class XrInputSourceLocalizedNameGetInfo extends Struct<XrInputSourceLocal
      * @param capacity the buffer capacity
      */
     public static XrInputSourceLocalizedNameGetInfo.Buffer calloc(int capacity, MemoryStack stack) {
-        return new Buffer(stack.ncalloc(ALIGNOF, capacity, SIZEOF), capacity);
+        return wrap(Buffer.class, stack.ncalloc(ALIGNOF, capacity, SIZEOF), capacity);
     }
 
     // -----------------------------------
@@ -291,9 +282,9 @@ public class XrInputSourceLocalizedNameGetInfo extends Struct<XrInputSourceLocal
         /**
          * Creates a new {@code XrInputSourceLocalizedNameGetInfo.Buffer} instance backed by the specified container.
          *
-         * <p>Changes to the container's content will be visible to the struct buffer instance and vice versa. The two buffers' position, limit, and mark values
+         * Changes to the container's content will be visible to the struct buffer instance and vice versa. The two buffers' position, limit, and mark values
          * will be independent. The new buffer's position will be zero, its capacity and its limit will be the number of bytes remaining in this buffer divided
-         * by {@link XrInputSourceLocalizedNameGetInfo#SIZEOF}, and its mark will be undefined.</p>
+         * by {@link XrInputSourceLocalizedNameGetInfo#SIZEOF}, and its mark will be undefined.
          *
          * <p>The created buffer instance holds a strong reference to the container object.</p>
          */

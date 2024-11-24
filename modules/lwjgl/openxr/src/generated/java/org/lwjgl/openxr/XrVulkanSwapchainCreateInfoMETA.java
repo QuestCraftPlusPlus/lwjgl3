@@ -44,7 +44,7 @@ import org.lwjgl.vulkan.*;
  *     VkImageUsageFlags {@link #additionalUsageFlags};
  * }</code></pre>
  */
-public class XrVulkanSwapchainCreateInfoMETA extends Struct<XrVulkanSwapchainCreateInfoMETA> implements NativeResource {
+public class XrVulkanSwapchainCreateInfoMETA extends Struct implements NativeResource {
 
     /** The struct size in bytes. */
     public static final int SIZEOF;
@@ -74,15 +74,6 @@ public class XrVulkanSwapchainCreateInfoMETA extends Struct<XrVulkanSwapchainCre
         NEXT = layout.offsetof(1);
         ADDITIONALCREATEFLAGS = layout.offsetof(2);
         ADDITIONALUSAGEFLAGS = layout.offsetof(3);
-    }
-
-    protected XrVulkanSwapchainCreateInfoMETA(long address, @Nullable ByteBuffer container) {
-        super(address, container);
-    }
-
-    @Override
-    protected XrVulkanSwapchainCreateInfoMETA create(long address, @Nullable ByteBuffer container) {
-        return new XrVulkanSwapchainCreateInfoMETA(address, container);
     }
 
     /**
@@ -153,29 +144,29 @@ public class XrVulkanSwapchainCreateInfoMETA extends Struct<XrVulkanSwapchainCre
 
     /** Returns a new {@code XrVulkanSwapchainCreateInfoMETA} instance allocated with {@link MemoryUtil#memAlloc memAlloc}. The instance must be explicitly freed. */
     public static XrVulkanSwapchainCreateInfoMETA malloc() {
-        return new XrVulkanSwapchainCreateInfoMETA(nmemAllocChecked(SIZEOF), null);
+        return wrap(XrVulkanSwapchainCreateInfoMETA.class, nmemAllocChecked(SIZEOF));
     }
 
     /** Returns a new {@code XrVulkanSwapchainCreateInfoMETA} instance allocated with {@link MemoryUtil#memCalloc memCalloc}. The instance must be explicitly freed. */
     public static XrVulkanSwapchainCreateInfoMETA calloc() {
-        return new XrVulkanSwapchainCreateInfoMETA(nmemCallocChecked(1, SIZEOF), null);
+        return wrap(XrVulkanSwapchainCreateInfoMETA.class, nmemCallocChecked(1, SIZEOF));
     }
 
     /** Returns a new {@code XrVulkanSwapchainCreateInfoMETA} instance allocated with {@link BufferUtils}. */
     public static XrVulkanSwapchainCreateInfoMETA create() {
         ByteBuffer container = BufferUtils.createByteBuffer(SIZEOF);
-        return new XrVulkanSwapchainCreateInfoMETA(memAddress(container), container);
+        return wrap(XrVulkanSwapchainCreateInfoMETA.class, memAddress(container), container);
     }
 
     /** Returns a new {@code XrVulkanSwapchainCreateInfoMETA} instance for the specified memory address. */
     public static XrVulkanSwapchainCreateInfoMETA create(long address) {
-        return new XrVulkanSwapchainCreateInfoMETA(address, null);
+        return wrap(XrVulkanSwapchainCreateInfoMETA.class, address);
     }
 
     /** Like {@link #create(long) create}, but returns {@code null} if {@code address} is {@code NULL}. */
     @Nullable
     public static XrVulkanSwapchainCreateInfoMETA createSafe(long address) {
-        return address == NULL ? null : new XrVulkanSwapchainCreateInfoMETA(address, null);
+        return address == NULL ? null : wrap(XrVulkanSwapchainCreateInfoMETA.class, address);
     }
 
     /**
@@ -184,7 +175,7 @@ public class XrVulkanSwapchainCreateInfoMETA extends Struct<XrVulkanSwapchainCre
      * @param capacity the buffer capacity
      */
     public static XrVulkanSwapchainCreateInfoMETA.Buffer malloc(int capacity) {
-        return new Buffer(nmemAllocChecked(__checkMalloc(capacity, SIZEOF)), capacity);
+        return wrap(Buffer.class, nmemAllocChecked(__checkMalloc(capacity, SIZEOF)), capacity);
     }
 
     /**
@@ -193,7 +184,7 @@ public class XrVulkanSwapchainCreateInfoMETA extends Struct<XrVulkanSwapchainCre
      * @param capacity the buffer capacity
      */
     public static XrVulkanSwapchainCreateInfoMETA.Buffer calloc(int capacity) {
-        return new Buffer(nmemCallocChecked(capacity, SIZEOF), capacity);
+        return wrap(Buffer.class, nmemCallocChecked(capacity, SIZEOF), capacity);
     }
 
     /**
@@ -203,7 +194,7 @@ public class XrVulkanSwapchainCreateInfoMETA extends Struct<XrVulkanSwapchainCre
      */
     public static XrVulkanSwapchainCreateInfoMETA.Buffer create(int capacity) {
         ByteBuffer container = __create(capacity, SIZEOF);
-        return new Buffer(memAddress(container), container, -1, 0, capacity, capacity);
+        return wrap(Buffer.class, memAddress(container), capacity, container);
     }
 
     /**
@@ -213,13 +204,13 @@ public class XrVulkanSwapchainCreateInfoMETA extends Struct<XrVulkanSwapchainCre
      * @param capacity the buffer capacity
      */
     public static XrVulkanSwapchainCreateInfoMETA.Buffer create(long address, int capacity) {
-        return new Buffer(address, capacity);
+        return wrap(Buffer.class, address, capacity);
     }
 
     /** Like {@link #create(long, int) create}, but returns {@code null} if {@code address} is {@code NULL}. */
     @Nullable
     public static XrVulkanSwapchainCreateInfoMETA.Buffer createSafe(long address, int capacity) {
-        return address == NULL ? null : new Buffer(address, capacity);
+        return address == NULL ? null : wrap(Buffer.class, address, capacity);
     }
 
     /**
@@ -228,7 +219,7 @@ public class XrVulkanSwapchainCreateInfoMETA extends Struct<XrVulkanSwapchainCre
      * @param stack the stack from which to allocate
      */
     public static XrVulkanSwapchainCreateInfoMETA malloc(MemoryStack stack) {
-        return new XrVulkanSwapchainCreateInfoMETA(stack.nmalloc(ALIGNOF, SIZEOF), null);
+        return wrap(XrVulkanSwapchainCreateInfoMETA.class, stack.nmalloc(ALIGNOF, SIZEOF));
     }
 
     /**
@@ -237,7 +228,7 @@ public class XrVulkanSwapchainCreateInfoMETA extends Struct<XrVulkanSwapchainCre
      * @param stack the stack from which to allocate
      */
     public static XrVulkanSwapchainCreateInfoMETA calloc(MemoryStack stack) {
-        return new XrVulkanSwapchainCreateInfoMETA(stack.ncalloc(ALIGNOF, 1, SIZEOF), null);
+        return wrap(XrVulkanSwapchainCreateInfoMETA.class, stack.ncalloc(ALIGNOF, 1, SIZEOF));
     }
 
     /**
@@ -247,7 +238,7 @@ public class XrVulkanSwapchainCreateInfoMETA extends Struct<XrVulkanSwapchainCre
      * @param capacity the buffer capacity
      */
     public static XrVulkanSwapchainCreateInfoMETA.Buffer malloc(int capacity, MemoryStack stack) {
-        return new Buffer(stack.nmalloc(ALIGNOF, capacity * SIZEOF), capacity);
+        return wrap(Buffer.class, stack.nmalloc(ALIGNOF, capacity * SIZEOF), capacity);
     }
 
     /**
@@ -257,7 +248,7 @@ public class XrVulkanSwapchainCreateInfoMETA extends Struct<XrVulkanSwapchainCre
      * @param capacity the buffer capacity
      */
     public static XrVulkanSwapchainCreateInfoMETA.Buffer calloc(int capacity, MemoryStack stack) {
-        return new Buffer(stack.ncalloc(ALIGNOF, capacity, SIZEOF), capacity);
+        return wrap(Buffer.class, stack.ncalloc(ALIGNOF, capacity, SIZEOF), capacity);
     }
 
     // -----------------------------------
@@ -290,9 +281,9 @@ public class XrVulkanSwapchainCreateInfoMETA extends Struct<XrVulkanSwapchainCre
         /**
          * Creates a new {@code XrVulkanSwapchainCreateInfoMETA.Buffer} instance backed by the specified container.
          *
-         * <p>Changes to the container's content will be visible to the struct buffer instance and vice versa. The two buffers' position, limit, and mark values
+         * Changes to the container's content will be visible to the struct buffer instance and vice versa. The two buffers' position, limit, and mark values
          * will be independent. The new buffer's position will be zero, its capacity and its limit will be the number of bytes remaining in this buffer divided
-         * by {@link XrVulkanSwapchainCreateInfoMETA#SIZEOF}, and its mark will be undefined.</p>
+         * by {@link XrVulkanSwapchainCreateInfoMETA#SIZEOF}, and its mark will be undefined.
          *
          * <p>The created buffer instance holds a strong reference to the container object.</p>
          */

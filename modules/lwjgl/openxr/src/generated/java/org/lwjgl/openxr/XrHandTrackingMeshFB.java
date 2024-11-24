@@ -68,7 +68,7 @@ import static org.lwjgl.system.MemoryStack.*;
  *     int16_t * {@link #indices};
  * }</code></pre>
  */
-public class XrHandTrackingMeshFB extends Struct<XrHandTrackingMeshFB> implements NativeResource {
+public class XrHandTrackingMeshFB extends Struct implements NativeResource {
 
     /** The struct size in bytes. */
     public static final int SIZEOF;
@@ -137,15 +137,6 @@ public class XrHandTrackingMeshFB extends Struct<XrHandTrackingMeshFB> implement
         INDEXCAPACITYINPUT = layout.offsetof(14);
         INDEXCOUNTOUTPUT = layout.offsetof(15);
         INDICES = layout.offsetof(16);
-    }
-
-    protected XrHandTrackingMeshFB(long address, @Nullable ByteBuffer container) {
-        super(address, container);
-    }
-
-    @Override
-    protected XrHandTrackingMeshFB create(long address, @Nullable ByteBuffer container) {
-        return new XrHandTrackingMeshFB(address, container);
     }
 
     /**
@@ -316,29 +307,29 @@ public class XrHandTrackingMeshFB extends Struct<XrHandTrackingMeshFB> implement
 
     /** Returns a new {@code XrHandTrackingMeshFB} instance allocated with {@link MemoryUtil#memAlloc memAlloc}. The instance must be explicitly freed. */
     public static XrHandTrackingMeshFB malloc() {
-        return new XrHandTrackingMeshFB(nmemAllocChecked(SIZEOF), null);
+        return wrap(XrHandTrackingMeshFB.class, nmemAllocChecked(SIZEOF));
     }
 
     /** Returns a new {@code XrHandTrackingMeshFB} instance allocated with {@link MemoryUtil#memCalloc memCalloc}. The instance must be explicitly freed. */
     public static XrHandTrackingMeshFB calloc() {
-        return new XrHandTrackingMeshFB(nmemCallocChecked(1, SIZEOF), null);
+        return wrap(XrHandTrackingMeshFB.class, nmemCallocChecked(1, SIZEOF));
     }
 
     /** Returns a new {@code XrHandTrackingMeshFB} instance allocated with {@link BufferUtils}. */
     public static XrHandTrackingMeshFB create() {
         ByteBuffer container = BufferUtils.createByteBuffer(SIZEOF);
-        return new XrHandTrackingMeshFB(memAddress(container), container);
+        return wrap(XrHandTrackingMeshFB.class, memAddress(container), container);
     }
 
     /** Returns a new {@code XrHandTrackingMeshFB} instance for the specified memory address. */
     public static XrHandTrackingMeshFB create(long address) {
-        return new XrHandTrackingMeshFB(address, null);
+        return wrap(XrHandTrackingMeshFB.class, address);
     }
 
     /** Like {@link #create(long) create}, but returns {@code null} if {@code address} is {@code NULL}. */
     @Nullable
     public static XrHandTrackingMeshFB createSafe(long address) {
-        return address == NULL ? null : new XrHandTrackingMeshFB(address, null);
+        return address == NULL ? null : wrap(XrHandTrackingMeshFB.class, address);
     }
 
     /**
@@ -347,7 +338,7 @@ public class XrHandTrackingMeshFB extends Struct<XrHandTrackingMeshFB> implement
      * @param capacity the buffer capacity
      */
     public static XrHandTrackingMeshFB.Buffer malloc(int capacity) {
-        return new Buffer(nmemAllocChecked(__checkMalloc(capacity, SIZEOF)), capacity);
+        return wrap(Buffer.class, nmemAllocChecked(__checkMalloc(capacity, SIZEOF)), capacity);
     }
 
     /**
@@ -356,7 +347,7 @@ public class XrHandTrackingMeshFB extends Struct<XrHandTrackingMeshFB> implement
      * @param capacity the buffer capacity
      */
     public static XrHandTrackingMeshFB.Buffer calloc(int capacity) {
-        return new Buffer(nmemCallocChecked(capacity, SIZEOF), capacity);
+        return wrap(Buffer.class, nmemCallocChecked(capacity, SIZEOF), capacity);
     }
 
     /**
@@ -366,7 +357,7 @@ public class XrHandTrackingMeshFB extends Struct<XrHandTrackingMeshFB> implement
      */
     public static XrHandTrackingMeshFB.Buffer create(int capacity) {
         ByteBuffer container = __create(capacity, SIZEOF);
-        return new Buffer(memAddress(container), container, -1, 0, capacity, capacity);
+        return wrap(Buffer.class, memAddress(container), capacity, container);
     }
 
     /**
@@ -376,13 +367,13 @@ public class XrHandTrackingMeshFB extends Struct<XrHandTrackingMeshFB> implement
      * @param capacity the buffer capacity
      */
     public static XrHandTrackingMeshFB.Buffer create(long address, int capacity) {
-        return new Buffer(address, capacity);
+        return wrap(Buffer.class, address, capacity);
     }
 
     /** Like {@link #create(long, int) create}, but returns {@code null} if {@code address} is {@code NULL}. */
     @Nullable
     public static XrHandTrackingMeshFB.Buffer createSafe(long address, int capacity) {
-        return address == NULL ? null : new Buffer(address, capacity);
+        return address == NULL ? null : wrap(Buffer.class, address, capacity);
     }
 
     /**
@@ -391,7 +382,7 @@ public class XrHandTrackingMeshFB extends Struct<XrHandTrackingMeshFB> implement
      * @param stack the stack from which to allocate
      */
     public static XrHandTrackingMeshFB malloc(MemoryStack stack) {
-        return new XrHandTrackingMeshFB(stack.nmalloc(ALIGNOF, SIZEOF), null);
+        return wrap(XrHandTrackingMeshFB.class, stack.nmalloc(ALIGNOF, SIZEOF));
     }
 
     /**
@@ -400,7 +391,7 @@ public class XrHandTrackingMeshFB extends Struct<XrHandTrackingMeshFB> implement
      * @param stack the stack from which to allocate
      */
     public static XrHandTrackingMeshFB calloc(MemoryStack stack) {
-        return new XrHandTrackingMeshFB(stack.ncalloc(ALIGNOF, 1, SIZEOF), null);
+        return wrap(XrHandTrackingMeshFB.class, stack.ncalloc(ALIGNOF, 1, SIZEOF));
     }
 
     /**
@@ -410,7 +401,7 @@ public class XrHandTrackingMeshFB extends Struct<XrHandTrackingMeshFB> implement
      * @param capacity the buffer capacity
      */
     public static XrHandTrackingMeshFB.Buffer malloc(int capacity, MemoryStack stack) {
-        return new Buffer(stack.nmalloc(ALIGNOF, capacity * SIZEOF), capacity);
+        return wrap(Buffer.class, stack.nmalloc(ALIGNOF, capacity * SIZEOF), capacity);
     }
 
     /**
@@ -420,7 +411,7 @@ public class XrHandTrackingMeshFB extends Struct<XrHandTrackingMeshFB> implement
      * @param capacity the buffer capacity
      */
     public static XrHandTrackingMeshFB.Buffer calloc(int capacity, MemoryStack stack) {
-        return new Buffer(stack.ncalloc(ALIGNOF, capacity, SIZEOF), capacity);
+        return wrap(Buffer.class, stack.ncalloc(ALIGNOF, capacity, SIZEOF), capacity);
     }
 
     // -----------------------------------
@@ -505,9 +496,9 @@ public class XrHandTrackingMeshFB extends Struct<XrHandTrackingMeshFB> implement
         /**
          * Creates a new {@code XrHandTrackingMeshFB.Buffer} instance backed by the specified container.
          *
-         * <p>Changes to the container's content will be visible to the struct buffer instance and vice versa. The two buffers' position, limit, and mark values
+         * Changes to the container's content will be visible to the struct buffer instance and vice versa. The two buffers' position, limit, and mark values
          * will be independent. The new buffer's position will be zero, its capacity and its limit will be the number of bytes remaining in this buffer divided
-         * by {@link XrHandTrackingMeshFB#SIZEOF}, and its mark will be undefined.</p>
+         * by {@link XrHandTrackingMeshFB#SIZEOF}, and its mark will be undefined.
          *
          * <p>The created buffer instance holds a strong reference to the container object.</p>
          */

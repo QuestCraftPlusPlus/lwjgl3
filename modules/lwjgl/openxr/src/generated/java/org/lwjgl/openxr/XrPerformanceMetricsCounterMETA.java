@@ -48,7 +48,7 @@ import static org.lwjgl.system.MemoryStack.*;
  *     float {@link #floatValue};
  * }</code></pre>
  */
-public class XrPerformanceMetricsCounterMETA extends Struct<XrPerformanceMetricsCounterMETA> implements NativeResource {
+public class XrPerformanceMetricsCounterMETA extends Struct implements NativeResource {
 
     /** The struct size in bytes. */
     public static final int SIZEOF;
@@ -84,15 +84,6 @@ public class XrPerformanceMetricsCounterMETA extends Struct<XrPerformanceMetrics
         COUNTERUNIT = layout.offsetof(3);
         UINTVALUE = layout.offsetof(4);
         FLOATVALUE = layout.offsetof(5);
-    }
-
-    protected XrPerformanceMetricsCounterMETA(long address, @Nullable ByteBuffer container) {
-        super(address, container);
-    }
-
-    @Override
-    protected XrPerformanceMetricsCounterMETA create(long address, @Nullable ByteBuffer container) {
-        return new XrPerformanceMetricsCounterMETA(address, container);
     }
 
     /**
@@ -176,29 +167,29 @@ public class XrPerformanceMetricsCounterMETA extends Struct<XrPerformanceMetrics
 
     /** Returns a new {@code XrPerformanceMetricsCounterMETA} instance allocated with {@link MemoryUtil#memAlloc memAlloc}. The instance must be explicitly freed. */
     public static XrPerformanceMetricsCounterMETA malloc() {
-        return new XrPerformanceMetricsCounterMETA(nmemAllocChecked(SIZEOF), null);
+        return wrap(XrPerformanceMetricsCounterMETA.class, nmemAllocChecked(SIZEOF));
     }
 
     /** Returns a new {@code XrPerformanceMetricsCounterMETA} instance allocated with {@link MemoryUtil#memCalloc memCalloc}. The instance must be explicitly freed. */
     public static XrPerformanceMetricsCounterMETA calloc() {
-        return new XrPerformanceMetricsCounterMETA(nmemCallocChecked(1, SIZEOF), null);
+        return wrap(XrPerformanceMetricsCounterMETA.class, nmemCallocChecked(1, SIZEOF));
     }
 
     /** Returns a new {@code XrPerformanceMetricsCounterMETA} instance allocated with {@link BufferUtils}. */
     public static XrPerformanceMetricsCounterMETA create() {
         ByteBuffer container = BufferUtils.createByteBuffer(SIZEOF);
-        return new XrPerformanceMetricsCounterMETA(memAddress(container), container);
+        return wrap(XrPerformanceMetricsCounterMETA.class, memAddress(container), container);
     }
 
     /** Returns a new {@code XrPerformanceMetricsCounterMETA} instance for the specified memory address. */
     public static XrPerformanceMetricsCounterMETA create(long address) {
-        return new XrPerformanceMetricsCounterMETA(address, null);
+        return wrap(XrPerformanceMetricsCounterMETA.class, address);
     }
 
     /** Like {@link #create(long) create}, but returns {@code null} if {@code address} is {@code NULL}. */
     @Nullable
     public static XrPerformanceMetricsCounterMETA createSafe(long address) {
-        return address == NULL ? null : new XrPerformanceMetricsCounterMETA(address, null);
+        return address == NULL ? null : wrap(XrPerformanceMetricsCounterMETA.class, address);
     }
 
     /**
@@ -207,7 +198,7 @@ public class XrPerformanceMetricsCounterMETA extends Struct<XrPerformanceMetrics
      * @param capacity the buffer capacity
      */
     public static XrPerformanceMetricsCounterMETA.Buffer malloc(int capacity) {
-        return new Buffer(nmemAllocChecked(__checkMalloc(capacity, SIZEOF)), capacity);
+        return wrap(Buffer.class, nmemAllocChecked(__checkMalloc(capacity, SIZEOF)), capacity);
     }
 
     /**
@@ -216,7 +207,7 @@ public class XrPerformanceMetricsCounterMETA extends Struct<XrPerformanceMetrics
      * @param capacity the buffer capacity
      */
     public static XrPerformanceMetricsCounterMETA.Buffer calloc(int capacity) {
-        return new Buffer(nmemCallocChecked(capacity, SIZEOF), capacity);
+        return wrap(Buffer.class, nmemCallocChecked(capacity, SIZEOF), capacity);
     }
 
     /**
@@ -226,7 +217,7 @@ public class XrPerformanceMetricsCounterMETA extends Struct<XrPerformanceMetrics
      */
     public static XrPerformanceMetricsCounterMETA.Buffer create(int capacity) {
         ByteBuffer container = __create(capacity, SIZEOF);
-        return new Buffer(memAddress(container), container, -1, 0, capacity, capacity);
+        return wrap(Buffer.class, memAddress(container), capacity, container);
     }
 
     /**
@@ -236,13 +227,13 @@ public class XrPerformanceMetricsCounterMETA extends Struct<XrPerformanceMetrics
      * @param capacity the buffer capacity
      */
     public static XrPerformanceMetricsCounterMETA.Buffer create(long address, int capacity) {
-        return new Buffer(address, capacity);
+        return wrap(Buffer.class, address, capacity);
     }
 
     /** Like {@link #create(long, int) create}, but returns {@code null} if {@code address} is {@code NULL}. */
     @Nullable
     public static XrPerformanceMetricsCounterMETA.Buffer createSafe(long address, int capacity) {
-        return address == NULL ? null : new Buffer(address, capacity);
+        return address == NULL ? null : wrap(Buffer.class, address, capacity);
     }
 
     /**
@@ -251,7 +242,7 @@ public class XrPerformanceMetricsCounterMETA extends Struct<XrPerformanceMetrics
      * @param stack the stack from which to allocate
      */
     public static XrPerformanceMetricsCounterMETA malloc(MemoryStack stack) {
-        return new XrPerformanceMetricsCounterMETA(stack.nmalloc(ALIGNOF, SIZEOF), null);
+        return wrap(XrPerformanceMetricsCounterMETA.class, stack.nmalloc(ALIGNOF, SIZEOF));
     }
 
     /**
@@ -260,7 +251,7 @@ public class XrPerformanceMetricsCounterMETA extends Struct<XrPerformanceMetrics
      * @param stack the stack from which to allocate
      */
     public static XrPerformanceMetricsCounterMETA calloc(MemoryStack stack) {
-        return new XrPerformanceMetricsCounterMETA(stack.ncalloc(ALIGNOF, 1, SIZEOF), null);
+        return wrap(XrPerformanceMetricsCounterMETA.class, stack.ncalloc(ALIGNOF, 1, SIZEOF));
     }
 
     /**
@@ -270,7 +261,7 @@ public class XrPerformanceMetricsCounterMETA extends Struct<XrPerformanceMetrics
      * @param capacity the buffer capacity
      */
     public static XrPerformanceMetricsCounterMETA.Buffer malloc(int capacity, MemoryStack stack) {
-        return new Buffer(stack.nmalloc(ALIGNOF, capacity * SIZEOF), capacity);
+        return wrap(Buffer.class, stack.nmalloc(ALIGNOF, capacity * SIZEOF), capacity);
     }
 
     /**
@@ -280,7 +271,7 @@ public class XrPerformanceMetricsCounterMETA extends Struct<XrPerformanceMetrics
      * @param capacity the buffer capacity
      */
     public static XrPerformanceMetricsCounterMETA.Buffer calloc(int capacity, MemoryStack stack) {
-        return new Buffer(stack.ncalloc(ALIGNOF, capacity, SIZEOF), capacity);
+        return wrap(Buffer.class, stack.ncalloc(ALIGNOF, capacity, SIZEOF), capacity);
     }
 
     // -----------------------------------
@@ -321,9 +312,9 @@ public class XrPerformanceMetricsCounterMETA extends Struct<XrPerformanceMetrics
         /**
          * Creates a new {@code XrPerformanceMetricsCounterMETA.Buffer} instance backed by the specified container.
          *
-         * <p>Changes to the container's content will be visible to the struct buffer instance and vice versa. The two buffers' position, limit, and mark values
+         * Changes to the container's content will be visible to the struct buffer instance and vice versa. The two buffers' position, limit, and mark values
          * will be independent. The new buffer's position will be zero, its capacity and its limit will be the number of bytes remaining in this buffer divided
-         * by {@link XrPerformanceMetricsCounterMETA#SIZEOF}, and its mark will be undefined.</p>
+         * by {@link XrPerformanceMetricsCounterMETA#SIZEOF}, and its mark will be undefined.
          *
          * <p>The created buffer instance holds a strong reference to the container object.</p>
          */

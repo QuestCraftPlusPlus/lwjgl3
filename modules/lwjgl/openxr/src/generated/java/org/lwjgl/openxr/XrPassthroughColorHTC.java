@@ -43,7 +43,7 @@ import static org.lwjgl.system.MemoryStack.*;
  *     float {@link #alpha};
  * }</code></pre>
  */
-public class XrPassthroughColorHTC extends Struct<XrPassthroughColorHTC> implements NativeResource {
+public class XrPassthroughColorHTC extends Struct implements NativeResource {
 
     /** The struct size in bytes. */
     public static final int SIZEOF;
@@ -70,15 +70,6 @@ public class XrPassthroughColorHTC extends Struct<XrPassthroughColorHTC> impleme
         TYPE = layout.offsetof(0);
         NEXT = layout.offsetof(1);
         ALPHA = layout.offsetof(2);
-    }
-
-    protected XrPassthroughColorHTC(long address, @Nullable ByteBuffer container) {
-        super(address, container);
-    }
-
-    @Override
-    protected XrPassthroughColorHTC create(long address, @Nullable ByteBuffer container) {
-        return new XrPassthroughColorHTC(address, container);
     }
 
     /**
@@ -141,29 +132,29 @@ public class XrPassthroughColorHTC extends Struct<XrPassthroughColorHTC> impleme
 
     /** Returns a new {@code XrPassthroughColorHTC} instance allocated with {@link MemoryUtil#memAlloc memAlloc}. The instance must be explicitly freed. */
     public static XrPassthroughColorHTC malloc() {
-        return new XrPassthroughColorHTC(nmemAllocChecked(SIZEOF), null);
+        return wrap(XrPassthroughColorHTC.class, nmemAllocChecked(SIZEOF));
     }
 
     /** Returns a new {@code XrPassthroughColorHTC} instance allocated with {@link MemoryUtil#memCalloc memCalloc}. The instance must be explicitly freed. */
     public static XrPassthroughColorHTC calloc() {
-        return new XrPassthroughColorHTC(nmemCallocChecked(1, SIZEOF), null);
+        return wrap(XrPassthroughColorHTC.class, nmemCallocChecked(1, SIZEOF));
     }
 
     /** Returns a new {@code XrPassthroughColorHTC} instance allocated with {@link BufferUtils}. */
     public static XrPassthroughColorHTC create() {
         ByteBuffer container = BufferUtils.createByteBuffer(SIZEOF);
-        return new XrPassthroughColorHTC(memAddress(container), container);
+        return wrap(XrPassthroughColorHTC.class, memAddress(container), container);
     }
 
     /** Returns a new {@code XrPassthroughColorHTC} instance for the specified memory address. */
     public static XrPassthroughColorHTC create(long address) {
-        return new XrPassthroughColorHTC(address, null);
+        return wrap(XrPassthroughColorHTC.class, address);
     }
 
     /** Like {@link #create(long) create}, but returns {@code null} if {@code address} is {@code NULL}. */
     @Nullable
     public static XrPassthroughColorHTC createSafe(long address) {
-        return address == NULL ? null : new XrPassthroughColorHTC(address, null);
+        return address == NULL ? null : wrap(XrPassthroughColorHTC.class, address);
     }
 
     /**
@@ -172,7 +163,7 @@ public class XrPassthroughColorHTC extends Struct<XrPassthroughColorHTC> impleme
      * @param capacity the buffer capacity
      */
     public static XrPassthroughColorHTC.Buffer malloc(int capacity) {
-        return new Buffer(nmemAllocChecked(__checkMalloc(capacity, SIZEOF)), capacity);
+        return wrap(Buffer.class, nmemAllocChecked(__checkMalloc(capacity, SIZEOF)), capacity);
     }
 
     /**
@@ -181,7 +172,7 @@ public class XrPassthroughColorHTC extends Struct<XrPassthroughColorHTC> impleme
      * @param capacity the buffer capacity
      */
     public static XrPassthroughColorHTC.Buffer calloc(int capacity) {
-        return new Buffer(nmemCallocChecked(capacity, SIZEOF), capacity);
+        return wrap(Buffer.class, nmemCallocChecked(capacity, SIZEOF), capacity);
     }
 
     /**
@@ -191,7 +182,7 @@ public class XrPassthroughColorHTC extends Struct<XrPassthroughColorHTC> impleme
      */
     public static XrPassthroughColorHTC.Buffer create(int capacity) {
         ByteBuffer container = __create(capacity, SIZEOF);
-        return new Buffer(memAddress(container), container, -1, 0, capacity, capacity);
+        return wrap(Buffer.class, memAddress(container), capacity, container);
     }
 
     /**
@@ -201,13 +192,13 @@ public class XrPassthroughColorHTC extends Struct<XrPassthroughColorHTC> impleme
      * @param capacity the buffer capacity
      */
     public static XrPassthroughColorHTC.Buffer create(long address, int capacity) {
-        return new Buffer(address, capacity);
+        return wrap(Buffer.class, address, capacity);
     }
 
     /** Like {@link #create(long, int) create}, but returns {@code null} if {@code address} is {@code NULL}. */
     @Nullable
     public static XrPassthroughColorHTC.Buffer createSafe(long address, int capacity) {
-        return address == NULL ? null : new Buffer(address, capacity);
+        return address == NULL ? null : wrap(Buffer.class, address, capacity);
     }
 
     /**
@@ -216,7 +207,7 @@ public class XrPassthroughColorHTC extends Struct<XrPassthroughColorHTC> impleme
      * @param stack the stack from which to allocate
      */
     public static XrPassthroughColorHTC malloc(MemoryStack stack) {
-        return new XrPassthroughColorHTC(stack.nmalloc(ALIGNOF, SIZEOF), null);
+        return wrap(XrPassthroughColorHTC.class, stack.nmalloc(ALIGNOF, SIZEOF));
     }
 
     /**
@@ -225,7 +216,7 @@ public class XrPassthroughColorHTC extends Struct<XrPassthroughColorHTC> impleme
      * @param stack the stack from which to allocate
      */
     public static XrPassthroughColorHTC calloc(MemoryStack stack) {
-        return new XrPassthroughColorHTC(stack.ncalloc(ALIGNOF, 1, SIZEOF), null);
+        return wrap(XrPassthroughColorHTC.class, stack.ncalloc(ALIGNOF, 1, SIZEOF));
     }
 
     /**
@@ -235,7 +226,7 @@ public class XrPassthroughColorHTC extends Struct<XrPassthroughColorHTC> impleme
      * @param capacity the buffer capacity
      */
     public static XrPassthroughColorHTC.Buffer malloc(int capacity, MemoryStack stack) {
-        return new Buffer(stack.nmalloc(ALIGNOF, capacity * SIZEOF), capacity);
+        return wrap(Buffer.class, stack.nmalloc(ALIGNOF, capacity * SIZEOF), capacity);
     }
 
     /**
@@ -245,7 +236,7 @@ public class XrPassthroughColorHTC extends Struct<XrPassthroughColorHTC> impleme
      * @param capacity the buffer capacity
      */
     public static XrPassthroughColorHTC.Buffer calloc(int capacity, MemoryStack stack) {
-        return new Buffer(stack.ncalloc(ALIGNOF, capacity, SIZEOF), capacity);
+        return wrap(Buffer.class, stack.ncalloc(ALIGNOF, capacity, SIZEOF), capacity);
     }
 
     // -----------------------------------
@@ -274,9 +265,9 @@ public class XrPassthroughColorHTC extends Struct<XrPassthroughColorHTC> impleme
         /**
          * Creates a new {@code XrPassthroughColorHTC.Buffer} instance backed by the specified container.
          *
-         * <p>Changes to the container's content will be visible to the struct buffer instance and vice versa. The two buffers' position, limit, and mark values
+         * Changes to the container's content will be visible to the struct buffer instance and vice versa. The two buffers' position, limit, and mark values
          * will be independent. The new buffer's position will be zero, its capacity and its limit will be the number of bytes remaining in this buffer divided
-         * by {@link XrPassthroughColorHTC#SIZEOF}, and its mark will be undefined.</p>
+         * by {@link XrPassthroughColorHTC#SIZEOF}, and its mark will be undefined.
          *
          * <p>The created buffer instance holds a strong reference to the container object.</p>
          */

@@ -37,7 +37,7 @@ import static org.lwjgl.system.MemoryStack.*;
  *     {@link XrPosef XrPosef} {@link #pose};
  * }</code></pre>
  */
-public class XrBodySkeletonJointFB extends Struct<XrBodySkeletonJointFB> implements NativeResource {
+public class XrBodySkeletonJointFB extends Struct implements NativeResource {
 
     /** The struct size in bytes. */
     public static final int SIZEOF;
@@ -64,15 +64,6 @@ public class XrBodySkeletonJointFB extends Struct<XrBodySkeletonJointFB> impleme
         JOINT = layout.offsetof(0);
         PARENTJOINT = layout.offsetof(1);
         POSE = layout.offsetof(2);
-    }
-
-    protected XrBodySkeletonJointFB(long address, @Nullable ByteBuffer container) {
-        super(address, container);
-    }
-
-    @Override
-    protected XrBodySkeletonJointFB create(long address, @Nullable ByteBuffer container) {
-        return new XrBodySkeletonJointFB(address, container);
     }
 
     /**
@@ -135,29 +126,29 @@ public class XrBodySkeletonJointFB extends Struct<XrBodySkeletonJointFB> impleme
 
     /** Returns a new {@code XrBodySkeletonJointFB} instance allocated with {@link MemoryUtil#memAlloc memAlloc}. The instance must be explicitly freed. */
     public static XrBodySkeletonJointFB malloc() {
-        return new XrBodySkeletonJointFB(nmemAllocChecked(SIZEOF), null);
+        return wrap(XrBodySkeletonJointFB.class, nmemAllocChecked(SIZEOF));
     }
 
     /** Returns a new {@code XrBodySkeletonJointFB} instance allocated with {@link MemoryUtil#memCalloc memCalloc}. The instance must be explicitly freed. */
     public static XrBodySkeletonJointFB calloc() {
-        return new XrBodySkeletonJointFB(nmemCallocChecked(1, SIZEOF), null);
+        return wrap(XrBodySkeletonJointFB.class, nmemCallocChecked(1, SIZEOF));
     }
 
     /** Returns a new {@code XrBodySkeletonJointFB} instance allocated with {@link BufferUtils}. */
     public static XrBodySkeletonJointFB create() {
         ByteBuffer container = BufferUtils.createByteBuffer(SIZEOF);
-        return new XrBodySkeletonJointFB(memAddress(container), container);
+        return wrap(XrBodySkeletonJointFB.class, memAddress(container), container);
     }
 
     /** Returns a new {@code XrBodySkeletonJointFB} instance for the specified memory address. */
     public static XrBodySkeletonJointFB create(long address) {
-        return new XrBodySkeletonJointFB(address, null);
+        return wrap(XrBodySkeletonJointFB.class, address);
     }
 
     /** Like {@link #create(long) create}, but returns {@code null} if {@code address} is {@code NULL}. */
     @Nullable
     public static XrBodySkeletonJointFB createSafe(long address) {
-        return address == NULL ? null : new XrBodySkeletonJointFB(address, null);
+        return address == NULL ? null : wrap(XrBodySkeletonJointFB.class, address);
     }
 
     /**
@@ -166,7 +157,7 @@ public class XrBodySkeletonJointFB extends Struct<XrBodySkeletonJointFB> impleme
      * @param capacity the buffer capacity
      */
     public static XrBodySkeletonJointFB.Buffer malloc(int capacity) {
-        return new Buffer(nmemAllocChecked(__checkMalloc(capacity, SIZEOF)), capacity);
+        return wrap(Buffer.class, nmemAllocChecked(__checkMalloc(capacity, SIZEOF)), capacity);
     }
 
     /**
@@ -175,7 +166,7 @@ public class XrBodySkeletonJointFB extends Struct<XrBodySkeletonJointFB> impleme
      * @param capacity the buffer capacity
      */
     public static XrBodySkeletonJointFB.Buffer calloc(int capacity) {
-        return new Buffer(nmemCallocChecked(capacity, SIZEOF), capacity);
+        return wrap(Buffer.class, nmemCallocChecked(capacity, SIZEOF), capacity);
     }
 
     /**
@@ -185,7 +176,7 @@ public class XrBodySkeletonJointFB extends Struct<XrBodySkeletonJointFB> impleme
      */
     public static XrBodySkeletonJointFB.Buffer create(int capacity) {
         ByteBuffer container = __create(capacity, SIZEOF);
-        return new Buffer(memAddress(container), container, -1, 0, capacity, capacity);
+        return wrap(Buffer.class, memAddress(container), capacity, container);
     }
 
     /**
@@ -195,13 +186,13 @@ public class XrBodySkeletonJointFB extends Struct<XrBodySkeletonJointFB> impleme
      * @param capacity the buffer capacity
      */
     public static XrBodySkeletonJointFB.Buffer create(long address, int capacity) {
-        return new Buffer(address, capacity);
+        return wrap(Buffer.class, address, capacity);
     }
 
     /** Like {@link #create(long, int) create}, but returns {@code null} if {@code address} is {@code NULL}. */
     @Nullable
     public static XrBodySkeletonJointFB.Buffer createSafe(long address, int capacity) {
-        return address == NULL ? null : new Buffer(address, capacity);
+        return address == NULL ? null : wrap(Buffer.class, address, capacity);
     }
 
     /**
@@ -210,7 +201,7 @@ public class XrBodySkeletonJointFB extends Struct<XrBodySkeletonJointFB> impleme
      * @param stack the stack from which to allocate
      */
     public static XrBodySkeletonJointFB malloc(MemoryStack stack) {
-        return new XrBodySkeletonJointFB(stack.nmalloc(ALIGNOF, SIZEOF), null);
+        return wrap(XrBodySkeletonJointFB.class, stack.nmalloc(ALIGNOF, SIZEOF));
     }
 
     /**
@@ -219,7 +210,7 @@ public class XrBodySkeletonJointFB extends Struct<XrBodySkeletonJointFB> impleme
      * @param stack the stack from which to allocate
      */
     public static XrBodySkeletonJointFB calloc(MemoryStack stack) {
-        return new XrBodySkeletonJointFB(stack.ncalloc(ALIGNOF, 1, SIZEOF), null);
+        return wrap(XrBodySkeletonJointFB.class, stack.ncalloc(ALIGNOF, 1, SIZEOF));
     }
 
     /**
@@ -229,7 +220,7 @@ public class XrBodySkeletonJointFB extends Struct<XrBodySkeletonJointFB> impleme
      * @param capacity the buffer capacity
      */
     public static XrBodySkeletonJointFB.Buffer malloc(int capacity, MemoryStack stack) {
-        return new Buffer(stack.nmalloc(ALIGNOF, capacity * SIZEOF), capacity);
+        return wrap(Buffer.class, stack.nmalloc(ALIGNOF, capacity * SIZEOF), capacity);
     }
 
     /**
@@ -239,7 +230,7 @@ public class XrBodySkeletonJointFB extends Struct<XrBodySkeletonJointFB> impleme
      * @param capacity the buffer capacity
      */
     public static XrBodySkeletonJointFB.Buffer calloc(int capacity, MemoryStack stack) {
-        return new Buffer(stack.ncalloc(ALIGNOF, capacity, SIZEOF), capacity);
+        return wrap(Buffer.class, stack.ncalloc(ALIGNOF, capacity, SIZEOF), capacity);
     }
 
     // -----------------------------------
@@ -268,9 +259,9 @@ public class XrBodySkeletonJointFB extends Struct<XrBodySkeletonJointFB> impleme
         /**
          * Creates a new {@code XrBodySkeletonJointFB.Buffer} instance backed by the specified container.
          *
-         * <p>Changes to the container's content will be visible to the struct buffer instance and vice versa. The two buffers' position, limit, and mark values
+         * Changes to the container's content will be visible to the struct buffer instance and vice versa. The two buffers' position, limit, and mark values
          * will be independent. The new buffer's position will be zero, its capacity and its limit will be the number of bytes remaining in this buffer divided
-         * by {@link XrBodySkeletonJointFB#SIZEOF}, and its mark will be undefined.</p>
+         * by {@link XrBodySkeletonJointFB#SIZEOF}, and its mark will be undefined.
          *
          * <p>The created buffer instance holds a strong reference to the container object.</p>
          */

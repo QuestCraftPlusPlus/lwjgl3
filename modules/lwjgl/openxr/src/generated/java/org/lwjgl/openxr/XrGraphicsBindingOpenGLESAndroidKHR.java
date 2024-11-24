@@ -53,7 +53,7 @@ import org.lwjgl.egl.*;
  *     EGLContext {@link #context};
  * }</code></pre>
  */
-public class XrGraphicsBindingOpenGLESAndroidKHR extends Struct<XrGraphicsBindingOpenGLESAndroidKHR> implements NativeResource {
+public class XrGraphicsBindingOpenGLESAndroidKHR extends Struct implements NativeResource {
 
     /** The struct size in bytes. */
     public static final int SIZEOF;
@@ -86,15 +86,6 @@ public class XrGraphicsBindingOpenGLESAndroidKHR extends Struct<XrGraphicsBindin
         DISPLAY = layout.offsetof(2);
         CONFIG = layout.offsetof(3);
         CONTEXT = layout.offsetof(4);
-    }
-
-    protected XrGraphicsBindingOpenGLESAndroidKHR(long address, @Nullable ByteBuffer container) {
-        super(address, container);
-    }
-
-    @Override
-    protected XrGraphicsBindingOpenGLESAndroidKHR create(long address, @Nullable ByteBuffer container) {
-        return new XrGraphicsBindingOpenGLESAndroidKHR(address, container);
     }
 
     /**
@@ -172,29 +163,29 @@ public class XrGraphicsBindingOpenGLESAndroidKHR extends Struct<XrGraphicsBindin
 
     /** Returns a new {@code XrGraphicsBindingOpenGLESAndroidKHR} instance allocated with {@link MemoryUtil#memAlloc memAlloc}. The instance must be explicitly freed. */
     public static XrGraphicsBindingOpenGLESAndroidKHR malloc() {
-        return new XrGraphicsBindingOpenGLESAndroidKHR(nmemAllocChecked(SIZEOF), null);
+        return wrap(XrGraphicsBindingOpenGLESAndroidKHR.class, nmemAllocChecked(SIZEOF));
     }
 
     /** Returns a new {@code XrGraphicsBindingOpenGLESAndroidKHR} instance allocated with {@link MemoryUtil#memCalloc memCalloc}. The instance must be explicitly freed. */
     public static XrGraphicsBindingOpenGLESAndroidKHR calloc() {
-        return new XrGraphicsBindingOpenGLESAndroidKHR(nmemCallocChecked(1, SIZEOF), null);
+        return wrap(XrGraphicsBindingOpenGLESAndroidKHR.class, nmemCallocChecked(1, SIZEOF));
     }
 
     /** Returns a new {@code XrGraphicsBindingOpenGLESAndroidKHR} instance allocated with {@link BufferUtils}. */
     public static XrGraphicsBindingOpenGLESAndroidKHR create() {
         ByteBuffer container = BufferUtils.createByteBuffer(SIZEOF);
-        return new XrGraphicsBindingOpenGLESAndroidKHR(memAddress(container), container);
+        return wrap(XrGraphicsBindingOpenGLESAndroidKHR.class, memAddress(container), container);
     }
 
     /** Returns a new {@code XrGraphicsBindingOpenGLESAndroidKHR} instance for the specified memory address. */
     public static XrGraphicsBindingOpenGLESAndroidKHR create(long address) {
-        return new XrGraphicsBindingOpenGLESAndroidKHR(address, null);
+        return wrap(XrGraphicsBindingOpenGLESAndroidKHR.class, address);
     }
 
     /** Like {@link #create(long) create}, but returns {@code null} if {@code address} is {@code NULL}. */
     @Nullable
     public static XrGraphicsBindingOpenGLESAndroidKHR createSafe(long address) {
-        return address == NULL ? null : new XrGraphicsBindingOpenGLESAndroidKHR(address, null);
+        return address == NULL ? null : wrap(XrGraphicsBindingOpenGLESAndroidKHR.class, address);
     }
 
     /**
@@ -203,7 +194,7 @@ public class XrGraphicsBindingOpenGLESAndroidKHR extends Struct<XrGraphicsBindin
      * @param capacity the buffer capacity
      */
     public static XrGraphicsBindingOpenGLESAndroidKHR.Buffer malloc(int capacity) {
-        return new Buffer(nmemAllocChecked(__checkMalloc(capacity, SIZEOF)), capacity);
+        return wrap(Buffer.class, nmemAllocChecked(__checkMalloc(capacity, SIZEOF)), capacity);
     }
 
     /**
@@ -212,7 +203,7 @@ public class XrGraphicsBindingOpenGLESAndroidKHR extends Struct<XrGraphicsBindin
      * @param capacity the buffer capacity
      */
     public static XrGraphicsBindingOpenGLESAndroidKHR.Buffer calloc(int capacity) {
-        return new Buffer(nmemCallocChecked(capacity, SIZEOF), capacity);
+        return wrap(Buffer.class, nmemCallocChecked(capacity, SIZEOF), capacity);
     }
 
     /**
@@ -222,7 +213,7 @@ public class XrGraphicsBindingOpenGLESAndroidKHR extends Struct<XrGraphicsBindin
      */
     public static XrGraphicsBindingOpenGLESAndroidKHR.Buffer create(int capacity) {
         ByteBuffer container = __create(capacity, SIZEOF);
-        return new Buffer(memAddress(container), container, -1, 0, capacity, capacity);
+        return wrap(Buffer.class, memAddress(container), capacity, container);
     }
 
     /**
@@ -232,13 +223,13 @@ public class XrGraphicsBindingOpenGLESAndroidKHR extends Struct<XrGraphicsBindin
      * @param capacity the buffer capacity
      */
     public static XrGraphicsBindingOpenGLESAndroidKHR.Buffer create(long address, int capacity) {
-        return new Buffer(address, capacity);
+        return wrap(Buffer.class, address, capacity);
     }
 
     /** Like {@link #create(long, int) create}, but returns {@code null} if {@code address} is {@code NULL}. */
     @Nullable
     public static XrGraphicsBindingOpenGLESAndroidKHR.Buffer createSafe(long address, int capacity) {
-        return address == NULL ? null : new Buffer(address, capacity);
+        return address == NULL ? null : wrap(Buffer.class, address, capacity);
     }
 
     /**
@@ -247,7 +238,7 @@ public class XrGraphicsBindingOpenGLESAndroidKHR extends Struct<XrGraphicsBindin
      * @param stack the stack from which to allocate
      */
     public static XrGraphicsBindingOpenGLESAndroidKHR malloc(MemoryStack stack) {
-        return new XrGraphicsBindingOpenGLESAndroidKHR(stack.nmalloc(ALIGNOF, SIZEOF), null);
+        return wrap(XrGraphicsBindingOpenGLESAndroidKHR.class, stack.nmalloc(ALIGNOF, SIZEOF));
     }
 
     /**
@@ -256,7 +247,7 @@ public class XrGraphicsBindingOpenGLESAndroidKHR extends Struct<XrGraphicsBindin
      * @param stack the stack from which to allocate
      */
     public static XrGraphicsBindingOpenGLESAndroidKHR calloc(MemoryStack stack) {
-        return new XrGraphicsBindingOpenGLESAndroidKHR(stack.ncalloc(ALIGNOF, 1, SIZEOF), null);
+        return wrap(XrGraphicsBindingOpenGLESAndroidKHR.class, stack.ncalloc(ALIGNOF, 1, SIZEOF));
     }
 
     /**
@@ -266,7 +257,7 @@ public class XrGraphicsBindingOpenGLESAndroidKHR extends Struct<XrGraphicsBindin
      * @param capacity the buffer capacity
      */
     public static XrGraphicsBindingOpenGLESAndroidKHR.Buffer malloc(int capacity, MemoryStack stack) {
-        return new Buffer(stack.nmalloc(ALIGNOF, capacity * SIZEOF), capacity);
+        return wrap(Buffer.class, stack.nmalloc(ALIGNOF, capacity * SIZEOF), capacity);
     }
 
     /**
@@ -276,7 +267,7 @@ public class XrGraphicsBindingOpenGLESAndroidKHR extends Struct<XrGraphicsBindin
      * @param capacity the buffer capacity
      */
     public static XrGraphicsBindingOpenGLESAndroidKHR.Buffer calloc(int capacity, MemoryStack stack) {
-        return new Buffer(stack.ncalloc(ALIGNOF, capacity, SIZEOF), capacity);
+        return wrap(Buffer.class, stack.ncalloc(ALIGNOF, capacity, SIZEOF), capacity);
     }
 
     // -----------------------------------
@@ -324,9 +315,9 @@ public class XrGraphicsBindingOpenGLESAndroidKHR extends Struct<XrGraphicsBindin
         /**
          * Creates a new {@code XrGraphicsBindingOpenGLESAndroidKHR.Buffer} instance backed by the specified container.
          *
-         * <p>Changes to the container's content will be visible to the struct buffer instance and vice versa. The two buffers' position, limit, and mark values
+         * Changes to the container's content will be visible to the struct buffer instance and vice versa. The two buffers' position, limit, and mark values
          * will be independent. The new buffer's position will be zero, its capacity and its limit will be the number of bytes remaining in this buffer divided
-         * by {@link XrGraphicsBindingOpenGLESAndroidKHR#SIZEOF}, and its mark will be undefined.</p>
+         * by {@link XrGraphicsBindingOpenGLESAndroidKHR#SIZEOF}, and its mark will be undefined.
          *
          * <p>The created buffer instance holds a strong reference to the container object.</p>
          */

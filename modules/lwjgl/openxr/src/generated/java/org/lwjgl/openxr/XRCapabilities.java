@@ -427,14 +427,10 @@ public class XRCapabilities {
     public final boolean XR_EXT_dpad_binding;
     /** When true, {@link EXTEyeGazeInteraction} is supported. */
     public final boolean XR_EXT_eye_gaze_interaction;
-    /** When true, {@link EXTHandInteraction} is supported. */
-    public final boolean XR_EXT_hand_interaction;
     /** When true, {@link EXTHandJointsMotionRange} is supported. */
     public final boolean XR_EXT_hand_joints_motion_range;
     /** When true, {@link EXTHandTracking} is supported. */
     public final boolean XR_EXT_hand_tracking;
-    /** When true, {@link EXTHandTrackingDataSource} is supported. */
-    public final boolean XR_EXT_hand_tracking_data_source;
     /** When true, {@link EXTHPMixedRealityController} is supported. */
     public final boolean XR_EXT_hp_mixed_reality_controller;
     /** When true, {@link EXTLocalFloor} is supported. */
@@ -549,8 +545,6 @@ public class XRCapabilities {
     public final boolean XR_HTCX_vive_tracker_interaction;
     /** When true, {@link HUAWEIControllerInteraction} is supported. */
     public final boolean XR_HUAWEI_controller_interaction;
-    /** When true, {@link KHRAndroidCreateInstance} is supported. */
-    public final boolean XR_KHR_android_create_instance;
     /** When true, {@link KHRBindingModification} is supported. */
     public final boolean XR_KHR_binding_modification;
     /** When true, {@link KHRCompositionLayerColorScaleBias} is supported. */
@@ -569,8 +563,6 @@ public class XRCapabilities {
     public final boolean XR_KHR_convert_timespec_time;
     /** When true, {@link KHRLoaderInit} is supported. */
     public final boolean XR_KHR_loader_init;
-    /** When true, {@link KHRLoaderInitAndroid} is supported. */
-    public final boolean XR_KHR_loader_init_android;
     /** When true, {@link KHROpenGLEnable} is supported. */
     public final boolean XR_KHR_opengl_enable;
     /** When true, {@link KHROpenGLESEnable} is supported. */
@@ -645,8 +637,6 @@ public class XRCapabilities {
     public final boolean XR_OCULUS_audio_device_guid;
     /** When true, {@link OCULUSExternalCamera} is supported. */
     public final boolean XR_OCULUS_external_camera;
-    /** When true, {@link OPPOControllerInteraction} is supported. */
-    public final boolean XR_OPPO_controller_interaction;
     /** When true, {@link QCOMTrackingOptimizationSettings} is supported. */
     public final boolean XR_QCOM_tracking_optimization_settings;
     /** When true, {@link ULTRALEAPHandTrackingForearm} is supported. */
@@ -680,10 +670,8 @@ public class XRCapabilities {
         XR_EXT_debug_utils = check_EXT_debug_utils(provider, caps, ext);
         XR_EXT_dpad_binding = ext.contains("XR_EXT_dpad_binding");
         XR_EXT_eye_gaze_interaction = ext.contains("XR_EXT_eye_gaze_interaction");
-        XR_EXT_hand_interaction = ext.contains("XR_EXT_hand_interaction");
         XR_EXT_hand_joints_motion_range = ext.contains("XR_EXT_hand_joints_motion_range");
         XR_EXT_hand_tracking = check_EXT_hand_tracking(provider, caps, ext);
-        XR_EXT_hand_tracking_data_source = ext.contains("XR_EXT_hand_tracking_data_source");
         XR_EXT_hp_mixed_reality_controller = ext.contains("XR_EXT_hp_mixed_reality_controller");
         XR_EXT_local_floor = ext.contains("XR_EXT_local_floor");
         XR_EXT_palm_pose = ext.contains("XR_EXT_palm_pose");
@@ -741,7 +729,6 @@ public class XRCapabilities {
         XR_HTC_vive_wrist_tracker_interaction = ext.contains("XR_HTC_vive_wrist_tracker_interaction");
         XR_HTCX_vive_tracker_interaction = check_HTCX_vive_tracker_interaction(provider, caps, ext);
         XR_HUAWEI_controller_interaction = ext.contains("XR_HUAWEI_controller_interaction");
-        XR_KHR_android_create_instance = ext.contains("XR_KHR_android_create_instance");
         XR_KHR_binding_modification = ext.contains("XR_KHR_binding_modification");
         XR_KHR_composition_layer_color_scale_bias = ext.contains("XR_KHR_composition_layer_color_scale_bias");
         XR_KHR_composition_layer_cube = ext.contains("XR_KHR_composition_layer_cube");
@@ -751,7 +738,6 @@ public class XRCapabilities {
         XR_KHR_composition_layer_equirect2 = ext.contains("XR_KHR_composition_layer_equirect2");
         XR_KHR_convert_timespec_time = check_KHR_convert_timespec_time(provider, caps, ext);
         XR_KHR_loader_init = ext.contains("XR_KHR_loader_init");
-        XR_KHR_loader_init_android = ext.contains("XR_KHR_loader_init_android");
         XR_KHR_opengl_enable = check_KHR_opengl_enable(provider, caps, ext);
         XR_KHR_opengl_es_enable = check_KHR_opengl_es_enable(provider, caps, ext);
         XR_KHR_swapchain_usage_input_attachment_bit = ext.contains("XR_KHR_swapchain_usage_input_attachment_bit");
@@ -789,7 +775,6 @@ public class XRCapabilities {
         XR_MSFT_unbounded_reference_space = ext.contains("XR_MSFT_unbounded_reference_space");
         XR_OCULUS_audio_device_guid = check_OCULUS_audio_device_guid(provider, caps, ext);
         XR_OCULUS_external_camera = check_OCULUS_external_camera(provider, caps, ext);
-        XR_OPPO_controller_interaction = ext.contains("XR_OPPO_controller_interaction");
         XR_QCOM_tracking_optimization_settings = check_QCOM_tracking_optimization_settings(provider, caps, ext);
         XR_ULTRALEAP_hand_tracking_forearm = ext.contains("XR_ULTRALEAP_hand_tracking_forearm");
         XR_VALVE_analog_threshold = ext.contains("XR_VALVE_analog_threshold");

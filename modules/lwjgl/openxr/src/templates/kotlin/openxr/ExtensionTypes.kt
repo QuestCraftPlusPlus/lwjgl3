@@ -203,7 +203,7 @@ val XrInstanceCreateInfoAndroidKHR = struct(Module.OPENXR, "XrInstanceCreateInfo
         <h5>Valid Usage (Implicit)</h5>
         <ul>
             <li>The {@link KHRAndroidCreateInstance XR_KHR_android_create_instance} extension <b>must</b> be enabled prior to using ##XrInstanceCreateInfoAndroidKHR</li>
-            <li>{@code type} <b>must</b> be #TYPE_INSTANCE_CREATE_INFO_ANDROID_KHR</li>
+            <li>{@code type} <b>must</b> be TYPE_INSTANCE_CREATE_INFO_ANDROID_KHR</li>
             <li>{@code next} <b>must</b> be {@code NULL} or a valid pointer to the <a target="_blank" href="https://www.khronos.org/registry/OpenXR/specs/1.0/html/xrspec.html\#valid-usage-for-structure-pointer-chains">next structure in a structure chain</a></li>
             <li>{@code applicationVM} <b>must</b> be a pointer value</li>
             <li>{@code applicationActivity} <b>must</b> be a pointer value</li>
@@ -213,7 +213,7 @@ val XrInstanceCreateInfoAndroidKHR = struct(Module.OPENXR, "XrInstanceCreateInfo
         #CreateInstance(), #DestroyInstance()
         """
 
-    Expression("#TYPE_INSTANCE_CREATE_INFO_ANDROID_KHR")..XrStructureType("type", "the {@code XrStructureType} of this structure.")
+    Expression("TYPE_INSTANCE_CREATE_INFO_ANDROID_KHR")..XrStructureType("type", "the {@code XrStructureType} of this structure.")
     nullable..opaque_const_p("next", "{@code NULL} or a pointer to the next structure in a structure chain. No such structures are defined in core OpenXR or this extension.")
     opaque_p("applicationVM", "a pointer to the JNI’s opaque {@code JavaVM} structure, cast to a void pointer.")
     opaque_p("applicationActivity", "a JNI reference to an {@code android.app.Activity} that will drive the session lifecycle of this instance, cast to a void pointer.")
@@ -2519,7 +2519,7 @@ val XrLoaderInitInfoBaseHeaderKHR = struct(Module.OPENXR, "XrLoaderInitInfoBaseH
         <h5>Valid Usage (Implicit)</h5>
         <ul>
             <li>The {@link KHRLoaderInit XR_KHR_loader_init} extension <b>must</b> be enabled prior to using ##XrLoaderInitInfoBaseHeaderKHR</li>
-            <li>{@code type} <b>must</b> be #TYPE_LOADER_INIT_INFO_ANDROID_KHR</li>
+            <li>{@code type} <b>must</b> be TYPE_LOADER_INIT_INFO_ANDROID_KHR</li>
             <li>{@code next} <b>must</b> be {@code NULL} or a valid pointer to the <a target="_blank" href="https://www.khronos.org/registry/OpenXR/specs/1.0/html/xrspec.html\#valid-usage-for-structure-pointer-chains">next structure in a structure chain</a></li>
         </ul>
 
@@ -2539,7 +2539,7 @@ val XrLoaderInitInfoAndroidKHR = struct(Module.OPENXR, "XrLoaderInitInfoAndroidK
         <h5>Valid Usage (Implicit)</h5>
         <ul>
             <li>The {@link KHRLoaderInitAndroid XR_KHR_loader_init_android} extension <b>must</b> be enabled prior to using ##XrLoaderInitInfoAndroidKHR</li>
-            <li>{@code type} <b>must</b> be #TYPE_LOADER_INIT_INFO_ANDROID_KHR</li>
+            <li>{@code type} <b>must</b> be TYPE_LOADER_INIT_INFO_ANDROID_KHR</li>
             <li>{@code next} <b>must</b> be {@code NULL} or a valid pointer to the <a target="_blank" href="https://www.khronos.org/registry/OpenXR/specs/1.0/html/xrspec.html\#valid-usage-for-structure-pointer-chains">next structure in a structure chain</a></li>
             <li>{@code applicationVM} <b>must</b> be a pointer value</li>
             <li>{@code applicationContext} <b>must</b> be a pointer value</li>
@@ -2549,7 +2549,7 @@ val XrLoaderInitInfoAndroidKHR = struct(Module.OPENXR, "XrLoaderInitInfoAndroidK
         #InitializeLoaderKHR()
         """
 
-    Expression("#TYPE_LOADER_INIT_INFO_ANDROID_KHR")..XrStructureType("type", "the {@code XrStructureType} of this structure.")
+    Expression("TYPE_LOADER_INIT_INFO_ANDROID_KHR")..XrStructureType("type", "the {@code XrStructureType} of this structure.")
     nullable..opaque_const_p("next", "{@code NULL} or a pointer to the next structure in a structure chain. No such structures are defined in core OpenXR or this extension.")
     opaque_p("applicationVM", "a pointer to the JNI’s opaque {@code JavaVM} structure, cast to a void pointer.")
     opaque_p("applicationContext", "a JNI reference to an {@code android.content.Context} associated with the application, cast to a void pointer.")

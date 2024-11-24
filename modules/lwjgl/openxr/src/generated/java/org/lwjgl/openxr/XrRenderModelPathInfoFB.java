@@ -62,7 +62,7 @@ import static org.lwjgl.system.MemoryStack.*;
  *     XrPath {@link #path};
  * }</code></pre>
  */
-public class XrRenderModelPathInfoFB extends Struct<XrRenderModelPathInfoFB> implements NativeResource {
+public class XrRenderModelPathInfoFB extends Struct implements NativeResource {
 
     /** The struct size in bytes. */
     public static final int SIZEOF;
@@ -89,15 +89,6 @@ public class XrRenderModelPathInfoFB extends Struct<XrRenderModelPathInfoFB> imp
         TYPE = layout.offsetof(0);
         NEXT = layout.offsetof(1);
         PATH = layout.offsetof(2);
-    }
-
-    protected XrRenderModelPathInfoFB(long address, @Nullable ByteBuffer container) {
-        super(address, container);
-    }
-
-    @Override
-    protected XrRenderModelPathInfoFB create(long address, @Nullable ByteBuffer container) {
-        return new XrRenderModelPathInfoFB(address, container);
     }
 
     /**
@@ -161,29 +152,29 @@ public class XrRenderModelPathInfoFB extends Struct<XrRenderModelPathInfoFB> imp
 
     /** Returns a new {@code XrRenderModelPathInfoFB} instance allocated with {@link MemoryUtil#memAlloc memAlloc}. The instance must be explicitly freed. */
     public static XrRenderModelPathInfoFB malloc() {
-        return new XrRenderModelPathInfoFB(nmemAllocChecked(SIZEOF), null);
+        return wrap(XrRenderModelPathInfoFB.class, nmemAllocChecked(SIZEOF));
     }
 
     /** Returns a new {@code XrRenderModelPathInfoFB} instance allocated with {@link MemoryUtil#memCalloc memCalloc}. The instance must be explicitly freed. */
     public static XrRenderModelPathInfoFB calloc() {
-        return new XrRenderModelPathInfoFB(nmemCallocChecked(1, SIZEOF), null);
+        return wrap(XrRenderModelPathInfoFB.class, nmemCallocChecked(1, SIZEOF));
     }
 
     /** Returns a new {@code XrRenderModelPathInfoFB} instance allocated with {@link BufferUtils}. */
     public static XrRenderModelPathInfoFB create() {
         ByteBuffer container = BufferUtils.createByteBuffer(SIZEOF);
-        return new XrRenderModelPathInfoFB(memAddress(container), container);
+        return wrap(XrRenderModelPathInfoFB.class, memAddress(container), container);
     }
 
     /** Returns a new {@code XrRenderModelPathInfoFB} instance for the specified memory address. */
     public static XrRenderModelPathInfoFB create(long address) {
-        return new XrRenderModelPathInfoFB(address, null);
+        return wrap(XrRenderModelPathInfoFB.class, address);
     }
 
     /** Like {@link #create(long) create}, but returns {@code null} if {@code address} is {@code NULL}. */
     @Nullable
     public static XrRenderModelPathInfoFB createSafe(long address) {
-        return address == NULL ? null : new XrRenderModelPathInfoFB(address, null);
+        return address == NULL ? null : wrap(XrRenderModelPathInfoFB.class, address);
     }
 
     /**
@@ -192,7 +183,7 @@ public class XrRenderModelPathInfoFB extends Struct<XrRenderModelPathInfoFB> imp
      * @param capacity the buffer capacity
      */
     public static XrRenderModelPathInfoFB.Buffer malloc(int capacity) {
-        return new Buffer(nmemAllocChecked(__checkMalloc(capacity, SIZEOF)), capacity);
+        return wrap(Buffer.class, nmemAllocChecked(__checkMalloc(capacity, SIZEOF)), capacity);
     }
 
     /**
@@ -201,7 +192,7 @@ public class XrRenderModelPathInfoFB extends Struct<XrRenderModelPathInfoFB> imp
      * @param capacity the buffer capacity
      */
     public static XrRenderModelPathInfoFB.Buffer calloc(int capacity) {
-        return new Buffer(nmemCallocChecked(capacity, SIZEOF), capacity);
+        return wrap(Buffer.class, nmemCallocChecked(capacity, SIZEOF), capacity);
     }
 
     /**
@@ -211,7 +202,7 @@ public class XrRenderModelPathInfoFB extends Struct<XrRenderModelPathInfoFB> imp
      */
     public static XrRenderModelPathInfoFB.Buffer create(int capacity) {
         ByteBuffer container = __create(capacity, SIZEOF);
-        return new Buffer(memAddress(container), container, -1, 0, capacity, capacity);
+        return wrap(Buffer.class, memAddress(container), capacity, container);
     }
 
     /**
@@ -221,13 +212,13 @@ public class XrRenderModelPathInfoFB extends Struct<XrRenderModelPathInfoFB> imp
      * @param capacity the buffer capacity
      */
     public static XrRenderModelPathInfoFB.Buffer create(long address, int capacity) {
-        return new Buffer(address, capacity);
+        return wrap(Buffer.class, address, capacity);
     }
 
     /** Like {@link #create(long, int) create}, but returns {@code null} if {@code address} is {@code NULL}. */
     @Nullable
     public static XrRenderModelPathInfoFB.Buffer createSafe(long address, int capacity) {
-        return address == NULL ? null : new Buffer(address, capacity);
+        return address == NULL ? null : wrap(Buffer.class, address, capacity);
     }
 
     /**
@@ -236,7 +227,7 @@ public class XrRenderModelPathInfoFB extends Struct<XrRenderModelPathInfoFB> imp
      * @param stack the stack from which to allocate
      */
     public static XrRenderModelPathInfoFB malloc(MemoryStack stack) {
-        return new XrRenderModelPathInfoFB(stack.nmalloc(ALIGNOF, SIZEOF), null);
+        return wrap(XrRenderModelPathInfoFB.class, stack.nmalloc(ALIGNOF, SIZEOF));
     }
 
     /**
@@ -245,7 +236,7 @@ public class XrRenderModelPathInfoFB extends Struct<XrRenderModelPathInfoFB> imp
      * @param stack the stack from which to allocate
      */
     public static XrRenderModelPathInfoFB calloc(MemoryStack stack) {
-        return new XrRenderModelPathInfoFB(stack.ncalloc(ALIGNOF, 1, SIZEOF), null);
+        return wrap(XrRenderModelPathInfoFB.class, stack.ncalloc(ALIGNOF, 1, SIZEOF));
     }
 
     /**
@@ -255,7 +246,7 @@ public class XrRenderModelPathInfoFB extends Struct<XrRenderModelPathInfoFB> imp
      * @param capacity the buffer capacity
      */
     public static XrRenderModelPathInfoFB.Buffer malloc(int capacity, MemoryStack stack) {
-        return new Buffer(stack.nmalloc(ALIGNOF, capacity * SIZEOF), capacity);
+        return wrap(Buffer.class, stack.nmalloc(ALIGNOF, capacity * SIZEOF), capacity);
     }
 
     /**
@@ -265,7 +256,7 @@ public class XrRenderModelPathInfoFB extends Struct<XrRenderModelPathInfoFB> imp
      * @param capacity the buffer capacity
      */
     public static XrRenderModelPathInfoFB.Buffer calloc(int capacity, MemoryStack stack) {
-        return new Buffer(stack.ncalloc(ALIGNOF, capacity, SIZEOF), capacity);
+        return wrap(Buffer.class, stack.ncalloc(ALIGNOF, capacity, SIZEOF), capacity);
     }
 
     // -----------------------------------
@@ -294,9 +285,9 @@ public class XrRenderModelPathInfoFB extends Struct<XrRenderModelPathInfoFB> imp
         /**
          * Creates a new {@code XrRenderModelPathInfoFB.Buffer} instance backed by the specified container.
          *
-         * <p>Changes to the container's content will be visible to the struct buffer instance and vice versa. The two buffers' position, limit, and mark values
+         * Changes to the container's content will be visible to the struct buffer instance and vice versa. The two buffers' position, limit, and mark values
          * will be independent. The new buffer's position will be zero, its capacity and its limit will be the number of bytes remaining in this buffer divided
-         * by {@link XrRenderModelPathInfoFB#SIZEOF}, and its mark will be undefined.</p>
+         * by {@link XrRenderModelPathInfoFB#SIZEOF}, and its mark will be undefined.
          *
          * <p>The created buffer instance holds a strong reference to the container object.</p>
          */

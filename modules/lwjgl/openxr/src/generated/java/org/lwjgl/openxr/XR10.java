@@ -744,7 +744,7 @@ public class XR10 {
         XR_OBJECT_TYPE_ACTION     = 6;
 
     /** OpenXR current version number. */
-    public static final long XR_CURRENT_API_VERSION = XR_MAKE_VERSION(1, 0, 29);
+    public static final long XR_CURRENT_API_VERSION = XR_MAKE_VERSION(1, 0, 27);
 
     /** Compile-time symbols, ignore. */
     public static final int

@@ -44,7 +44,7 @@ import static org.lwjgl.system.MemoryStack.*;
  *     XrBool32 {@link #isEyeFollowingBlendshapesValid};
  * }</code></pre>
  */
-public class XrFaceExpressionStatusFB extends Struct<XrFaceExpressionStatusFB> implements NativeResource {
+public class XrFaceExpressionStatusFB extends Struct implements NativeResource {
 
     /** The struct size in bytes. */
     public static final int SIZEOF;
@@ -68,15 +68,6 @@ public class XrFaceExpressionStatusFB extends Struct<XrFaceExpressionStatusFB> i
 
         ISVALID = layout.offsetof(0);
         ISEYEFOLLOWINGBLENDSHAPESVALID = layout.offsetof(1);
-    }
-
-    protected XrFaceExpressionStatusFB(long address, @Nullable ByteBuffer container) {
-        super(address, container);
-    }
-
-    @Override
-    protected XrFaceExpressionStatusFB create(long address, @Nullable ByteBuffer container) {
-        return new XrFaceExpressionStatusFB(address, container);
     }
 
     /**
@@ -131,29 +122,29 @@ public class XrFaceExpressionStatusFB extends Struct<XrFaceExpressionStatusFB> i
 
     /** Returns a new {@code XrFaceExpressionStatusFB} instance allocated with {@link MemoryUtil#memAlloc memAlloc}. The instance must be explicitly freed. */
     public static XrFaceExpressionStatusFB malloc() {
-        return new XrFaceExpressionStatusFB(nmemAllocChecked(SIZEOF), null);
+        return wrap(XrFaceExpressionStatusFB.class, nmemAllocChecked(SIZEOF));
     }
 
     /** Returns a new {@code XrFaceExpressionStatusFB} instance allocated with {@link MemoryUtil#memCalloc memCalloc}. The instance must be explicitly freed. */
     public static XrFaceExpressionStatusFB calloc() {
-        return new XrFaceExpressionStatusFB(nmemCallocChecked(1, SIZEOF), null);
+        return wrap(XrFaceExpressionStatusFB.class, nmemCallocChecked(1, SIZEOF));
     }
 
     /** Returns a new {@code XrFaceExpressionStatusFB} instance allocated with {@link BufferUtils}. */
     public static XrFaceExpressionStatusFB create() {
         ByteBuffer container = BufferUtils.createByteBuffer(SIZEOF);
-        return new XrFaceExpressionStatusFB(memAddress(container), container);
+        return wrap(XrFaceExpressionStatusFB.class, memAddress(container), container);
     }
 
     /** Returns a new {@code XrFaceExpressionStatusFB} instance for the specified memory address. */
     public static XrFaceExpressionStatusFB create(long address) {
-        return new XrFaceExpressionStatusFB(address, null);
+        return wrap(XrFaceExpressionStatusFB.class, address);
     }
 
     /** Like {@link #create(long) create}, but returns {@code null} if {@code address} is {@code NULL}. */
     @Nullable
     public static XrFaceExpressionStatusFB createSafe(long address) {
-        return address == NULL ? null : new XrFaceExpressionStatusFB(address, null);
+        return address == NULL ? null : wrap(XrFaceExpressionStatusFB.class, address);
     }
 
     /**
@@ -162,7 +153,7 @@ public class XrFaceExpressionStatusFB extends Struct<XrFaceExpressionStatusFB> i
      * @param capacity the buffer capacity
      */
     public static XrFaceExpressionStatusFB.Buffer malloc(int capacity) {
-        return new Buffer(nmemAllocChecked(__checkMalloc(capacity, SIZEOF)), capacity);
+        return wrap(Buffer.class, nmemAllocChecked(__checkMalloc(capacity, SIZEOF)), capacity);
     }
 
     /**
@@ -171,7 +162,7 @@ public class XrFaceExpressionStatusFB extends Struct<XrFaceExpressionStatusFB> i
      * @param capacity the buffer capacity
      */
     public static XrFaceExpressionStatusFB.Buffer calloc(int capacity) {
-        return new Buffer(nmemCallocChecked(capacity, SIZEOF), capacity);
+        return wrap(Buffer.class, nmemCallocChecked(capacity, SIZEOF), capacity);
     }
 
     /**
@@ -181,7 +172,7 @@ public class XrFaceExpressionStatusFB extends Struct<XrFaceExpressionStatusFB> i
      */
     public static XrFaceExpressionStatusFB.Buffer create(int capacity) {
         ByteBuffer container = __create(capacity, SIZEOF);
-        return new Buffer(memAddress(container), container, -1, 0, capacity, capacity);
+        return wrap(Buffer.class, memAddress(container), capacity, container);
     }
 
     /**
@@ -191,13 +182,13 @@ public class XrFaceExpressionStatusFB extends Struct<XrFaceExpressionStatusFB> i
      * @param capacity the buffer capacity
      */
     public static XrFaceExpressionStatusFB.Buffer create(long address, int capacity) {
-        return new Buffer(address, capacity);
+        return wrap(Buffer.class, address, capacity);
     }
 
     /** Like {@link #create(long, int) create}, but returns {@code null} if {@code address} is {@code NULL}. */
     @Nullable
     public static XrFaceExpressionStatusFB.Buffer createSafe(long address, int capacity) {
-        return address == NULL ? null : new Buffer(address, capacity);
+        return address == NULL ? null : wrap(Buffer.class, address, capacity);
     }
 
     /**
@@ -206,7 +197,7 @@ public class XrFaceExpressionStatusFB extends Struct<XrFaceExpressionStatusFB> i
      * @param stack the stack from which to allocate
      */
     public static XrFaceExpressionStatusFB malloc(MemoryStack stack) {
-        return new XrFaceExpressionStatusFB(stack.nmalloc(ALIGNOF, SIZEOF), null);
+        return wrap(XrFaceExpressionStatusFB.class, stack.nmalloc(ALIGNOF, SIZEOF));
     }
 
     /**
@@ -215,7 +206,7 @@ public class XrFaceExpressionStatusFB extends Struct<XrFaceExpressionStatusFB> i
      * @param stack the stack from which to allocate
      */
     public static XrFaceExpressionStatusFB calloc(MemoryStack stack) {
-        return new XrFaceExpressionStatusFB(stack.ncalloc(ALIGNOF, 1, SIZEOF), null);
+        return wrap(XrFaceExpressionStatusFB.class, stack.ncalloc(ALIGNOF, 1, SIZEOF));
     }
 
     /**
@@ -225,7 +216,7 @@ public class XrFaceExpressionStatusFB extends Struct<XrFaceExpressionStatusFB> i
      * @param capacity the buffer capacity
      */
     public static XrFaceExpressionStatusFB.Buffer malloc(int capacity, MemoryStack stack) {
-        return new Buffer(stack.nmalloc(ALIGNOF, capacity * SIZEOF), capacity);
+        return wrap(Buffer.class, stack.nmalloc(ALIGNOF, capacity * SIZEOF), capacity);
     }
 
     /**
@@ -235,7 +226,7 @@ public class XrFaceExpressionStatusFB extends Struct<XrFaceExpressionStatusFB> i
      * @param capacity the buffer capacity
      */
     public static XrFaceExpressionStatusFB.Buffer calloc(int capacity, MemoryStack stack) {
-        return new Buffer(stack.ncalloc(ALIGNOF, capacity, SIZEOF), capacity);
+        return wrap(Buffer.class, stack.ncalloc(ALIGNOF, capacity, SIZEOF), capacity);
     }
 
     // -----------------------------------
@@ -260,9 +251,9 @@ public class XrFaceExpressionStatusFB extends Struct<XrFaceExpressionStatusFB> i
         /**
          * Creates a new {@code XrFaceExpressionStatusFB.Buffer} instance backed by the specified container.
          *
-         * <p>Changes to the container's content will be visible to the struct buffer instance and vice versa. The two buffers' position, limit, and mark values
+         * Changes to the container's content will be visible to the struct buffer instance and vice versa. The two buffers' position, limit, and mark values
          * will be independent. The new buffer's position will be zero, its capacity and its limit will be the number of bytes remaining in this buffer divided
-         * by {@link XrFaceExpressionStatusFB#SIZEOF}, and its mark will be undefined.</p>
+         * by {@link XrFaceExpressionStatusFB#SIZEOF}, and its mark will be undefined.
          *
          * <p>The created buffer instance holds a strong reference to the container object.</p>
          */

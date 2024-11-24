@@ -43,7 +43,7 @@ import static org.lwjgl.system.MemoryStack.*;
  *     {@link XrViveTrackerPathsHTCX XrViveTrackerPathsHTCX} * {@link #paths};
  * }</code></pre>
  */
-public class XrEventDataViveTrackerConnectedHTCX extends Struct<XrEventDataViveTrackerConnectedHTCX> implements NativeResource {
+public class XrEventDataViveTrackerConnectedHTCX extends Struct implements NativeResource {
 
     /** The struct size in bytes. */
     public static final int SIZEOF;
@@ -70,15 +70,6 @@ public class XrEventDataViveTrackerConnectedHTCX extends Struct<XrEventDataViveT
         TYPE = layout.offsetof(0);
         NEXT = layout.offsetof(1);
         PATHS = layout.offsetof(2);
-    }
-
-    protected XrEventDataViveTrackerConnectedHTCX(long address, @Nullable ByteBuffer container) {
-        super(address, container);
-    }
-
-    @Override
-    protected XrEventDataViveTrackerConnectedHTCX create(long address, @Nullable ByteBuffer container) {
-        return new XrEventDataViveTrackerConnectedHTCX(address, container);
     }
 
     /**
@@ -138,34 +129,34 @@ public class XrEventDataViveTrackerConnectedHTCX extends Struct<XrEventDataViveT
 
     /** Returns a new {@code XrEventDataViveTrackerConnectedHTCX} instance allocated with {@link MemoryUtil#memAlloc memAlloc}. The instance must be explicitly freed. */
     public static XrEventDataViveTrackerConnectedHTCX malloc() {
-        return new XrEventDataViveTrackerConnectedHTCX(nmemAllocChecked(SIZEOF), null);
+        return wrap(XrEventDataViveTrackerConnectedHTCX.class, nmemAllocChecked(SIZEOF));
     }
 
     /** Returns a new {@code XrEventDataViveTrackerConnectedHTCX} instance allocated with {@link MemoryUtil#memCalloc memCalloc}. The instance must be explicitly freed. */
     public static XrEventDataViveTrackerConnectedHTCX calloc() {
-        return new XrEventDataViveTrackerConnectedHTCX(nmemCallocChecked(1, SIZEOF), null);
+        return wrap(XrEventDataViveTrackerConnectedHTCX.class, nmemCallocChecked(1, SIZEOF));
     }
 
     /** Returns a new {@code XrEventDataViveTrackerConnectedHTCX} instance allocated with {@link BufferUtils}. */
     public static XrEventDataViveTrackerConnectedHTCX create() {
         ByteBuffer container = BufferUtils.createByteBuffer(SIZEOF);
-        return new XrEventDataViveTrackerConnectedHTCX(memAddress(container), container);
+        return wrap(XrEventDataViveTrackerConnectedHTCX.class, memAddress(container), container);
     }
 
     /** Returns a new {@code XrEventDataViveTrackerConnectedHTCX} instance for the specified memory address. */
     public static XrEventDataViveTrackerConnectedHTCX create(long address) {
-        return new XrEventDataViveTrackerConnectedHTCX(address, null);
+        return wrap(XrEventDataViveTrackerConnectedHTCX.class, address);
     }
 
     /** Like {@link #create(long) create}, but returns {@code null} if {@code address} is {@code NULL}. */
     @Nullable
     public static XrEventDataViveTrackerConnectedHTCX createSafe(long address) {
-        return address == NULL ? null : new XrEventDataViveTrackerConnectedHTCX(address, null);
+        return address == NULL ? null : wrap(XrEventDataViveTrackerConnectedHTCX.class, address);
     }
 
     /** Downcasts the specified {@code XrEventDataBaseHeader} instance to {@code XrEventDataViveTrackerConnectedHTCX}. */
     public static XrEventDataViveTrackerConnectedHTCX create(XrEventDataBaseHeader value) {
-        return new XrEventDataViveTrackerConnectedHTCX(value.address(), __getContainer(value));
+        return wrap(XrEventDataViveTrackerConnectedHTCX.class, value);
     }
 
     /**
@@ -174,7 +165,7 @@ public class XrEventDataViveTrackerConnectedHTCX extends Struct<XrEventDataViveT
      * @param capacity the buffer capacity
      */
     public static XrEventDataViveTrackerConnectedHTCX.Buffer malloc(int capacity) {
-        return new Buffer(nmemAllocChecked(__checkMalloc(capacity, SIZEOF)), capacity);
+        return wrap(Buffer.class, nmemAllocChecked(__checkMalloc(capacity, SIZEOF)), capacity);
     }
 
     /**
@@ -183,7 +174,7 @@ public class XrEventDataViveTrackerConnectedHTCX extends Struct<XrEventDataViveT
      * @param capacity the buffer capacity
      */
     public static XrEventDataViveTrackerConnectedHTCX.Buffer calloc(int capacity) {
-        return new Buffer(nmemCallocChecked(capacity, SIZEOF), capacity);
+        return wrap(Buffer.class, nmemCallocChecked(capacity, SIZEOF), capacity);
     }
 
     /**
@@ -193,7 +184,7 @@ public class XrEventDataViveTrackerConnectedHTCX extends Struct<XrEventDataViveT
      */
     public static XrEventDataViveTrackerConnectedHTCX.Buffer create(int capacity) {
         ByteBuffer container = __create(capacity, SIZEOF);
-        return new Buffer(memAddress(container), container, -1, 0, capacity, capacity);
+        return wrap(Buffer.class, memAddress(container), capacity, container);
     }
 
     /**
@@ -203,18 +194,18 @@ public class XrEventDataViveTrackerConnectedHTCX extends Struct<XrEventDataViveT
      * @param capacity the buffer capacity
      */
     public static XrEventDataViveTrackerConnectedHTCX.Buffer create(long address, int capacity) {
-        return new Buffer(address, capacity);
+        return wrap(Buffer.class, address, capacity);
     }
 
     /** Like {@link #create(long, int) create}, but returns {@code null} if {@code address} is {@code NULL}. */
     @Nullable
     public static XrEventDataViveTrackerConnectedHTCX.Buffer createSafe(long address, int capacity) {
-        return address == NULL ? null : new Buffer(address, capacity);
+        return address == NULL ? null : wrap(Buffer.class, address, capacity);
     }
 
     /** Downcasts the specified {@code XrEventDataBaseHeader.Buffer} instance to {@code XrEventDataViveTrackerConnectedHTCX.Buffer}. */
     public static XrEventDataViveTrackerConnectedHTCX.Buffer create(XrEventDataBaseHeader.Buffer value) {
-        return new XrEventDataViveTrackerConnectedHTCX.Buffer(value.address(), __getContainer(value), -1, 0, value.remaining(), value.remaining());
+        return wrap(Buffer.class, value);
     }
 
     /**
@@ -223,7 +214,7 @@ public class XrEventDataViveTrackerConnectedHTCX extends Struct<XrEventDataViveT
      * @param stack the stack from which to allocate
      */
     public static XrEventDataViveTrackerConnectedHTCX malloc(MemoryStack stack) {
-        return new XrEventDataViveTrackerConnectedHTCX(stack.nmalloc(ALIGNOF, SIZEOF), null);
+        return wrap(XrEventDataViveTrackerConnectedHTCX.class, stack.nmalloc(ALIGNOF, SIZEOF));
     }
 
     /**
@@ -232,7 +223,7 @@ public class XrEventDataViveTrackerConnectedHTCX extends Struct<XrEventDataViveT
      * @param stack the stack from which to allocate
      */
     public static XrEventDataViveTrackerConnectedHTCX calloc(MemoryStack stack) {
-        return new XrEventDataViveTrackerConnectedHTCX(stack.ncalloc(ALIGNOF, 1, SIZEOF), null);
+        return wrap(XrEventDataViveTrackerConnectedHTCX.class, stack.ncalloc(ALIGNOF, 1, SIZEOF));
     }
 
     /**
@@ -242,7 +233,7 @@ public class XrEventDataViveTrackerConnectedHTCX extends Struct<XrEventDataViveT
      * @param capacity the buffer capacity
      */
     public static XrEventDataViveTrackerConnectedHTCX.Buffer malloc(int capacity, MemoryStack stack) {
-        return new Buffer(stack.nmalloc(ALIGNOF, capacity * SIZEOF), capacity);
+        return wrap(Buffer.class, stack.nmalloc(ALIGNOF, capacity * SIZEOF), capacity);
     }
 
     /**
@@ -252,7 +243,7 @@ public class XrEventDataViveTrackerConnectedHTCX extends Struct<XrEventDataViveT
      * @param capacity the buffer capacity
      */
     public static XrEventDataViveTrackerConnectedHTCX.Buffer calloc(int capacity, MemoryStack stack) {
-        return new Buffer(stack.ncalloc(ALIGNOF, capacity, SIZEOF), capacity);
+        return wrap(Buffer.class, stack.ncalloc(ALIGNOF, capacity, SIZEOF), capacity);
     }
 
     // -----------------------------------
@@ -279,9 +270,9 @@ public class XrEventDataViveTrackerConnectedHTCX extends Struct<XrEventDataViveT
         /**
          * Creates a new {@code XrEventDataViveTrackerConnectedHTCX.Buffer} instance backed by the specified container.
          *
-         * <p>Changes to the container's content will be visible to the struct buffer instance and vice versa. The two buffers' position, limit, and mark values
+         * Changes to the container's content will be visible to the struct buffer instance and vice versa. The two buffers' position, limit, and mark values
          * will be independent. The new buffer's position will be zero, its capacity and its limit will be the number of bytes remaining in this buffer divided
-         * by {@link XrEventDataViveTrackerConnectedHTCX#SIZEOF}, and its mark will be undefined.</p>
+         * by {@link XrEventDataViveTrackerConnectedHTCX#SIZEOF}, and its mark will be undefined.
          *
          * <p>The created buffer instance holds a strong reference to the container object.</p>
          */

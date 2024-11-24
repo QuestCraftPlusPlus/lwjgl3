@@ -38,7 +38,7 @@ import static org.lwjgl.system.MemoryStack.*;
  *     XrPerfSettingsNotificationLevelEXT {@link #toLevel};
  * }</code></pre>
  */
-public class XrEventDataPerfSettingsEXT extends Struct<XrEventDataPerfSettingsEXT> implements NativeResource {
+public class XrEventDataPerfSettingsEXT extends Struct implements NativeResource {
 
     /** The struct size in bytes. */
     public static final int SIZEOF;
@@ -74,15 +74,6 @@ public class XrEventDataPerfSettingsEXT extends Struct<XrEventDataPerfSettingsEX
         SUBDOMAIN = layout.offsetof(3);
         FROMLEVEL = layout.offsetof(4);
         TOLEVEL = layout.offsetof(5);
-    }
-
-    protected XrEventDataPerfSettingsEXT(long address, @Nullable ByteBuffer container) {
-        super(address, container);
-    }
-
-    @Override
-    protected XrEventDataPerfSettingsEXT create(long address, @Nullable ByteBuffer container) {
-        return new XrEventDataPerfSettingsEXT(address, container);
     }
 
     /**
@@ -151,34 +142,34 @@ public class XrEventDataPerfSettingsEXT extends Struct<XrEventDataPerfSettingsEX
 
     /** Returns a new {@code XrEventDataPerfSettingsEXT} instance allocated with {@link MemoryUtil#memAlloc memAlloc}. The instance must be explicitly freed. */
     public static XrEventDataPerfSettingsEXT malloc() {
-        return new XrEventDataPerfSettingsEXT(nmemAllocChecked(SIZEOF), null);
+        return wrap(XrEventDataPerfSettingsEXT.class, nmemAllocChecked(SIZEOF));
     }
 
     /** Returns a new {@code XrEventDataPerfSettingsEXT} instance allocated with {@link MemoryUtil#memCalloc memCalloc}. The instance must be explicitly freed. */
     public static XrEventDataPerfSettingsEXT calloc() {
-        return new XrEventDataPerfSettingsEXT(nmemCallocChecked(1, SIZEOF), null);
+        return wrap(XrEventDataPerfSettingsEXT.class, nmemCallocChecked(1, SIZEOF));
     }
 
     /** Returns a new {@code XrEventDataPerfSettingsEXT} instance allocated with {@link BufferUtils}. */
     public static XrEventDataPerfSettingsEXT create() {
         ByteBuffer container = BufferUtils.createByteBuffer(SIZEOF);
-        return new XrEventDataPerfSettingsEXT(memAddress(container), container);
+        return wrap(XrEventDataPerfSettingsEXT.class, memAddress(container), container);
     }
 
     /** Returns a new {@code XrEventDataPerfSettingsEXT} instance for the specified memory address. */
     public static XrEventDataPerfSettingsEXT create(long address) {
-        return new XrEventDataPerfSettingsEXT(address, null);
+        return wrap(XrEventDataPerfSettingsEXT.class, address);
     }
 
     /** Like {@link #create(long) create}, but returns {@code null} if {@code address} is {@code NULL}. */
     @Nullable
     public static XrEventDataPerfSettingsEXT createSafe(long address) {
-        return address == NULL ? null : new XrEventDataPerfSettingsEXT(address, null);
+        return address == NULL ? null : wrap(XrEventDataPerfSettingsEXT.class, address);
     }
 
     /** Downcasts the specified {@code XrEventDataBaseHeader} instance to {@code XrEventDataPerfSettingsEXT}. */
     public static XrEventDataPerfSettingsEXT create(XrEventDataBaseHeader value) {
-        return new XrEventDataPerfSettingsEXT(value.address(), __getContainer(value));
+        return wrap(XrEventDataPerfSettingsEXT.class, value);
     }
 
     /**
@@ -187,7 +178,7 @@ public class XrEventDataPerfSettingsEXT extends Struct<XrEventDataPerfSettingsEX
      * @param capacity the buffer capacity
      */
     public static XrEventDataPerfSettingsEXT.Buffer malloc(int capacity) {
-        return new Buffer(nmemAllocChecked(__checkMalloc(capacity, SIZEOF)), capacity);
+        return wrap(Buffer.class, nmemAllocChecked(__checkMalloc(capacity, SIZEOF)), capacity);
     }
 
     /**
@@ -196,7 +187,7 @@ public class XrEventDataPerfSettingsEXT extends Struct<XrEventDataPerfSettingsEX
      * @param capacity the buffer capacity
      */
     public static XrEventDataPerfSettingsEXT.Buffer calloc(int capacity) {
-        return new Buffer(nmemCallocChecked(capacity, SIZEOF), capacity);
+        return wrap(Buffer.class, nmemCallocChecked(capacity, SIZEOF), capacity);
     }
 
     /**
@@ -206,7 +197,7 @@ public class XrEventDataPerfSettingsEXT extends Struct<XrEventDataPerfSettingsEX
      */
     public static XrEventDataPerfSettingsEXT.Buffer create(int capacity) {
         ByteBuffer container = __create(capacity, SIZEOF);
-        return new Buffer(memAddress(container), container, -1, 0, capacity, capacity);
+        return wrap(Buffer.class, memAddress(container), capacity, container);
     }
 
     /**
@@ -216,18 +207,18 @@ public class XrEventDataPerfSettingsEXT extends Struct<XrEventDataPerfSettingsEX
      * @param capacity the buffer capacity
      */
     public static XrEventDataPerfSettingsEXT.Buffer create(long address, int capacity) {
-        return new Buffer(address, capacity);
+        return wrap(Buffer.class, address, capacity);
     }
 
     /** Like {@link #create(long, int) create}, but returns {@code null} if {@code address} is {@code NULL}. */
     @Nullable
     public static XrEventDataPerfSettingsEXT.Buffer createSafe(long address, int capacity) {
-        return address == NULL ? null : new Buffer(address, capacity);
+        return address == NULL ? null : wrap(Buffer.class, address, capacity);
     }
 
     /** Downcasts the specified {@code XrEventDataBaseHeader.Buffer} instance to {@code XrEventDataPerfSettingsEXT.Buffer}. */
     public static XrEventDataPerfSettingsEXT.Buffer create(XrEventDataBaseHeader.Buffer value) {
-        return new XrEventDataPerfSettingsEXT.Buffer(value.address(), __getContainer(value), -1, 0, value.remaining(), value.remaining());
+        return wrap(Buffer.class, value);
     }
 
     /**
@@ -236,7 +227,7 @@ public class XrEventDataPerfSettingsEXT extends Struct<XrEventDataPerfSettingsEX
      * @param stack the stack from which to allocate
      */
     public static XrEventDataPerfSettingsEXT malloc(MemoryStack stack) {
-        return new XrEventDataPerfSettingsEXT(stack.nmalloc(ALIGNOF, SIZEOF), null);
+        return wrap(XrEventDataPerfSettingsEXT.class, stack.nmalloc(ALIGNOF, SIZEOF));
     }
 
     /**
@@ -245,7 +236,7 @@ public class XrEventDataPerfSettingsEXT extends Struct<XrEventDataPerfSettingsEX
      * @param stack the stack from which to allocate
      */
     public static XrEventDataPerfSettingsEXT calloc(MemoryStack stack) {
-        return new XrEventDataPerfSettingsEXT(stack.ncalloc(ALIGNOF, 1, SIZEOF), null);
+        return wrap(XrEventDataPerfSettingsEXT.class, stack.ncalloc(ALIGNOF, 1, SIZEOF));
     }
 
     /**
@@ -255,7 +246,7 @@ public class XrEventDataPerfSettingsEXT extends Struct<XrEventDataPerfSettingsEX
      * @param capacity the buffer capacity
      */
     public static XrEventDataPerfSettingsEXT.Buffer malloc(int capacity, MemoryStack stack) {
-        return new Buffer(stack.nmalloc(ALIGNOF, capacity * SIZEOF), capacity);
+        return wrap(Buffer.class, stack.nmalloc(ALIGNOF, capacity * SIZEOF), capacity);
     }
 
     /**
@@ -265,7 +256,7 @@ public class XrEventDataPerfSettingsEXT extends Struct<XrEventDataPerfSettingsEX
      * @param capacity the buffer capacity
      */
     public static XrEventDataPerfSettingsEXT.Buffer calloc(int capacity, MemoryStack stack) {
-        return new Buffer(stack.ncalloc(ALIGNOF, capacity, SIZEOF), capacity);
+        return wrap(Buffer.class, stack.ncalloc(ALIGNOF, capacity, SIZEOF), capacity);
     }
 
     // -----------------------------------
@@ -298,9 +289,9 @@ public class XrEventDataPerfSettingsEXT extends Struct<XrEventDataPerfSettingsEX
         /**
          * Creates a new {@code XrEventDataPerfSettingsEXT.Buffer} instance backed by the specified container.
          *
-         * <p>Changes to the container's content will be visible to the struct buffer instance and vice versa. The two buffers' position, limit, and mark values
+         * Changes to the container's content will be visible to the struct buffer instance and vice versa. The two buffers' position, limit, and mark values
          * will be independent. The new buffer's position will be zero, its capacity and its limit will be the number of bytes remaining in this buffer divided
-         * by {@link XrEventDataPerfSettingsEXT#SIZEOF}, and its mark will be undefined.</p>
+         * by {@link XrEventDataPerfSettingsEXT#SIZEOF}, and its mark will be undefined.
          *
          * <p>The created buffer instance holds a strong reference to the container object.</p>
          */

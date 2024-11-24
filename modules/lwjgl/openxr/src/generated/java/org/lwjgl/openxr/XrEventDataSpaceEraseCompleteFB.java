@@ -47,7 +47,7 @@ import static org.lwjgl.system.MemoryStack.*;
  *     XrSpaceStorageLocationFB {@link #location};
  * }</code></pre>
  */
-public class XrEventDataSpaceEraseCompleteFB extends Struct<XrEventDataSpaceEraseCompleteFB> implements NativeResource {
+public class XrEventDataSpaceEraseCompleteFB extends Struct implements NativeResource {
 
     /** The struct size in bytes. */
     public static final int SIZEOF;
@@ -86,15 +86,6 @@ public class XrEventDataSpaceEraseCompleteFB extends Struct<XrEventDataSpaceEras
         SPACE = layout.offsetof(4);
         UUID = layout.offsetof(5);
         LOCATION = layout.offsetof(6);
-    }
-
-    protected XrEventDataSpaceEraseCompleteFB(long address, @Nullable ByteBuffer container) {
-        super(address, container);
-    }
-
-    @Override
-    protected XrEventDataSpaceEraseCompleteFB create(long address, @Nullable ByteBuffer container) {
-        return new XrEventDataSpaceEraseCompleteFB(address, container);
     }
 
     /**
@@ -165,34 +156,34 @@ public class XrEventDataSpaceEraseCompleteFB extends Struct<XrEventDataSpaceEras
 
     /** Returns a new {@code XrEventDataSpaceEraseCompleteFB} instance allocated with {@link MemoryUtil#memAlloc memAlloc}. The instance must be explicitly freed. */
     public static XrEventDataSpaceEraseCompleteFB malloc() {
-        return new XrEventDataSpaceEraseCompleteFB(nmemAllocChecked(SIZEOF), null);
+        return wrap(XrEventDataSpaceEraseCompleteFB.class, nmemAllocChecked(SIZEOF));
     }
 
     /** Returns a new {@code XrEventDataSpaceEraseCompleteFB} instance allocated with {@link MemoryUtil#memCalloc memCalloc}. The instance must be explicitly freed. */
     public static XrEventDataSpaceEraseCompleteFB calloc() {
-        return new XrEventDataSpaceEraseCompleteFB(nmemCallocChecked(1, SIZEOF), null);
+        return wrap(XrEventDataSpaceEraseCompleteFB.class, nmemCallocChecked(1, SIZEOF));
     }
 
     /** Returns a new {@code XrEventDataSpaceEraseCompleteFB} instance allocated with {@link BufferUtils}. */
     public static XrEventDataSpaceEraseCompleteFB create() {
         ByteBuffer container = BufferUtils.createByteBuffer(SIZEOF);
-        return new XrEventDataSpaceEraseCompleteFB(memAddress(container), container);
+        return wrap(XrEventDataSpaceEraseCompleteFB.class, memAddress(container), container);
     }
 
     /** Returns a new {@code XrEventDataSpaceEraseCompleteFB} instance for the specified memory address. */
     public static XrEventDataSpaceEraseCompleteFB create(long address) {
-        return new XrEventDataSpaceEraseCompleteFB(address, null);
+        return wrap(XrEventDataSpaceEraseCompleteFB.class, address);
     }
 
     /** Like {@link #create(long) create}, but returns {@code null} if {@code address} is {@code NULL}. */
     @Nullable
     public static XrEventDataSpaceEraseCompleteFB createSafe(long address) {
-        return address == NULL ? null : new XrEventDataSpaceEraseCompleteFB(address, null);
+        return address == NULL ? null : wrap(XrEventDataSpaceEraseCompleteFB.class, address);
     }
 
     /** Downcasts the specified {@code XrEventDataBaseHeader} instance to {@code XrEventDataSpaceEraseCompleteFB}. */
     public static XrEventDataSpaceEraseCompleteFB create(XrEventDataBaseHeader value) {
-        return new XrEventDataSpaceEraseCompleteFB(value.address(), __getContainer(value));
+        return wrap(XrEventDataSpaceEraseCompleteFB.class, value);
     }
 
     /**
@@ -201,7 +192,7 @@ public class XrEventDataSpaceEraseCompleteFB extends Struct<XrEventDataSpaceEras
      * @param capacity the buffer capacity
      */
     public static XrEventDataSpaceEraseCompleteFB.Buffer malloc(int capacity) {
-        return new Buffer(nmemAllocChecked(__checkMalloc(capacity, SIZEOF)), capacity);
+        return wrap(Buffer.class, nmemAllocChecked(__checkMalloc(capacity, SIZEOF)), capacity);
     }
 
     /**
@@ -210,7 +201,7 @@ public class XrEventDataSpaceEraseCompleteFB extends Struct<XrEventDataSpaceEras
      * @param capacity the buffer capacity
      */
     public static XrEventDataSpaceEraseCompleteFB.Buffer calloc(int capacity) {
-        return new Buffer(nmemCallocChecked(capacity, SIZEOF), capacity);
+        return wrap(Buffer.class, nmemCallocChecked(capacity, SIZEOF), capacity);
     }
 
     /**
@@ -220,7 +211,7 @@ public class XrEventDataSpaceEraseCompleteFB extends Struct<XrEventDataSpaceEras
      */
     public static XrEventDataSpaceEraseCompleteFB.Buffer create(int capacity) {
         ByteBuffer container = __create(capacity, SIZEOF);
-        return new Buffer(memAddress(container), container, -1, 0, capacity, capacity);
+        return wrap(Buffer.class, memAddress(container), capacity, container);
     }
 
     /**
@@ -230,18 +221,18 @@ public class XrEventDataSpaceEraseCompleteFB extends Struct<XrEventDataSpaceEras
      * @param capacity the buffer capacity
      */
     public static XrEventDataSpaceEraseCompleteFB.Buffer create(long address, int capacity) {
-        return new Buffer(address, capacity);
+        return wrap(Buffer.class, address, capacity);
     }
 
     /** Like {@link #create(long, int) create}, but returns {@code null} if {@code address} is {@code NULL}. */
     @Nullable
     public static XrEventDataSpaceEraseCompleteFB.Buffer createSafe(long address, int capacity) {
-        return address == NULL ? null : new Buffer(address, capacity);
+        return address == NULL ? null : wrap(Buffer.class, address, capacity);
     }
 
     /** Downcasts the specified {@code XrEventDataBaseHeader.Buffer} instance to {@code XrEventDataSpaceEraseCompleteFB.Buffer}. */
     public static XrEventDataSpaceEraseCompleteFB.Buffer create(XrEventDataBaseHeader.Buffer value) {
-        return new XrEventDataSpaceEraseCompleteFB.Buffer(value.address(), __getContainer(value), -1, 0, value.remaining(), value.remaining());
+        return wrap(Buffer.class, value);
     }
 
     /**
@@ -250,7 +241,7 @@ public class XrEventDataSpaceEraseCompleteFB extends Struct<XrEventDataSpaceEras
      * @param stack the stack from which to allocate
      */
     public static XrEventDataSpaceEraseCompleteFB malloc(MemoryStack stack) {
-        return new XrEventDataSpaceEraseCompleteFB(stack.nmalloc(ALIGNOF, SIZEOF), null);
+        return wrap(XrEventDataSpaceEraseCompleteFB.class, stack.nmalloc(ALIGNOF, SIZEOF));
     }
 
     /**
@@ -259,7 +250,7 @@ public class XrEventDataSpaceEraseCompleteFB extends Struct<XrEventDataSpaceEras
      * @param stack the stack from which to allocate
      */
     public static XrEventDataSpaceEraseCompleteFB calloc(MemoryStack stack) {
-        return new XrEventDataSpaceEraseCompleteFB(stack.ncalloc(ALIGNOF, 1, SIZEOF), null);
+        return wrap(XrEventDataSpaceEraseCompleteFB.class, stack.ncalloc(ALIGNOF, 1, SIZEOF));
     }
 
     /**
@@ -269,7 +260,7 @@ public class XrEventDataSpaceEraseCompleteFB extends Struct<XrEventDataSpaceEras
      * @param capacity the buffer capacity
      */
     public static XrEventDataSpaceEraseCompleteFB.Buffer malloc(int capacity, MemoryStack stack) {
-        return new Buffer(stack.nmalloc(ALIGNOF, capacity * SIZEOF), capacity);
+        return wrap(Buffer.class, stack.nmalloc(ALIGNOF, capacity * SIZEOF), capacity);
     }
 
     /**
@@ -279,7 +270,7 @@ public class XrEventDataSpaceEraseCompleteFB extends Struct<XrEventDataSpaceEras
      * @param capacity the buffer capacity
      */
     public static XrEventDataSpaceEraseCompleteFB.Buffer calloc(int capacity, MemoryStack stack) {
-        return new Buffer(stack.ncalloc(ALIGNOF, capacity, SIZEOF), capacity);
+        return wrap(Buffer.class, stack.ncalloc(ALIGNOF, capacity, SIZEOF), capacity);
     }
 
     // -----------------------------------
@@ -314,9 +305,9 @@ public class XrEventDataSpaceEraseCompleteFB extends Struct<XrEventDataSpaceEras
         /**
          * Creates a new {@code XrEventDataSpaceEraseCompleteFB.Buffer} instance backed by the specified container.
          *
-         * <p>Changes to the container's content will be visible to the struct buffer instance and vice versa. The two buffers' position, limit, and mark values
+         * Changes to the container's content will be visible to the struct buffer instance and vice versa. The two buffers' position, limit, and mark values
          * will be independent. The new buffer's position will be zero, its capacity and its limit will be the number of bytes remaining in this buffer divided
-         * by {@link XrEventDataSpaceEraseCompleteFB#SIZEOF}, and its mark will be undefined.</p>
+         * by {@link XrEventDataSpaceEraseCompleteFB#SIZEOF}, and its mark will be undefined.
          *
          * <p>The created buffer instance holds a strong reference to the container object.</p>
          */

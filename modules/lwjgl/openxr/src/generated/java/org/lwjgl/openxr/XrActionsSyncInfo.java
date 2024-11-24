@@ -40,7 +40,7 @@ import static org.lwjgl.system.MemoryStack.*;
  *     {@link XrActiveActionSet XrActiveActionSet} const * {@link #activeActionSets};
  * }</code></pre>
  */
-public class XrActionsSyncInfo extends Struct<XrActionsSyncInfo> implements NativeResource {
+public class XrActionsSyncInfo extends Struct implements NativeResource {
 
     /** The struct size in bytes. */
     public static final int SIZEOF;
@@ -70,15 +70,6 @@ public class XrActionsSyncInfo extends Struct<XrActionsSyncInfo> implements Nati
         NEXT = layout.offsetof(1);
         COUNTACTIVEACTIONSETS = layout.offsetof(2);
         ACTIVEACTIONSETS = layout.offsetof(3);
-    }
-
-    protected XrActionsSyncInfo(long address, @Nullable ByteBuffer container) {
-        super(address, container);
-    }
-
-    @Override
-    protected XrActionsSyncInfo create(long address, @Nullable ByteBuffer container) {
-        return new XrActionsSyncInfo(address, container);
     }
 
     /**
@@ -152,29 +143,29 @@ public class XrActionsSyncInfo extends Struct<XrActionsSyncInfo> implements Nati
 
     /** Returns a new {@code XrActionsSyncInfo} instance allocated with {@link MemoryUtil#memAlloc memAlloc}. The instance must be explicitly freed. */
     public static XrActionsSyncInfo malloc() {
-        return new XrActionsSyncInfo(nmemAllocChecked(SIZEOF), null);
+        return wrap(XrActionsSyncInfo.class, nmemAllocChecked(SIZEOF));
     }
 
     /** Returns a new {@code XrActionsSyncInfo} instance allocated with {@link MemoryUtil#memCalloc memCalloc}. The instance must be explicitly freed. */
     public static XrActionsSyncInfo calloc() {
-        return new XrActionsSyncInfo(nmemCallocChecked(1, SIZEOF), null);
+        return wrap(XrActionsSyncInfo.class, nmemCallocChecked(1, SIZEOF));
     }
 
     /** Returns a new {@code XrActionsSyncInfo} instance allocated with {@link BufferUtils}. */
     public static XrActionsSyncInfo create() {
         ByteBuffer container = BufferUtils.createByteBuffer(SIZEOF);
-        return new XrActionsSyncInfo(memAddress(container), container);
+        return wrap(XrActionsSyncInfo.class, memAddress(container), container);
     }
 
     /** Returns a new {@code XrActionsSyncInfo} instance for the specified memory address. */
     public static XrActionsSyncInfo create(long address) {
-        return new XrActionsSyncInfo(address, null);
+        return wrap(XrActionsSyncInfo.class, address);
     }
 
     /** Like {@link #create(long) create}, but returns {@code null} if {@code address} is {@code NULL}. */
     @Nullable
     public static XrActionsSyncInfo createSafe(long address) {
-        return address == NULL ? null : new XrActionsSyncInfo(address, null);
+        return address == NULL ? null : wrap(XrActionsSyncInfo.class, address);
     }
 
     /**
@@ -183,7 +174,7 @@ public class XrActionsSyncInfo extends Struct<XrActionsSyncInfo> implements Nati
      * @param capacity the buffer capacity
      */
     public static XrActionsSyncInfo.Buffer malloc(int capacity) {
-        return new Buffer(nmemAllocChecked(__checkMalloc(capacity, SIZEOF)), capacity);
+        return wrap(Buffer.class, nmemAllocChecked(__checkMalloc(capacity, SIZEOF)), capacity);
     }
 
     /**
@@ -192,7 +183,7 @@ public class XrActionsSyncInfo extends Struct<XrActionsSyncInfo> implements Nati
      * @param capacity the buffer capacity
      */
     public static XrActionsSyncInfo.Buffer calloc(int capacity) {
-        return new Buffer(nmemCallocChecked(capacity, SIZEOF), capacity);
+        return wrap(Buffer.class, nmemCallocChecked(capacity, SIZEOF), capacity);
     }
 
     /**
@@ -202,7 +193,7 @@ public class XrActionsSyncInfo extends Struct<XrActionsSyncInfo> implements Nati
      */
     public static XrActionsSyncInfo.Buffer create(int capacity) {
         ByteBuffer container = __create(capacity, SIZEOF);
-        return new Buffer(memAddress(container), container, -1, 0, capacity, capacity);
+        return wrap(Buffer.class, memAddress(container), capacity, container);
     }
 
     /**
@@ -212,13 +203,13 @@ public class XrActionsSyncInfo extends Struct<XrActionsSyncInfo> implements Nati
      * @param capacity the buffer capacity
      */
     public static XrActionsSyncInfo.Buffer create(long address, int capacity) {
-        return new Buffer(address, capacity);
+        return wrap(Buffer.class, address, capacity);
     }
 
     /** Like {@link #create(long, int) create}, but returns {@code null} if {@code address} is {@code NULL}. */
     @Nullable
     public static XrActionsSyncInfo.Buffer createSafe(long address, int capacity) {
-        return address == NULL ? null : new Buffer(address, capacity);
+        return address == NULL ? null : wrap(Buffer.class, address, capacity);
     }
 
     /**
@@ -227,7 +218,7 @@ public class XrActionsSyncInfo extends Struct<XrActionsSyncInfo> implements Nati
      * @param stack the stack from which to allocate
      */
     public static XrActionsSyncInfo malloc(MemoryStack stack) {
-        return new XrActionsSyncInfo(stack.nmalloc(ALIGNOF, SIZEOF), null);
+        return wrap(XrActionsSyncInfo.class, stack.nmalloc(ALIGNOF, SIZEOF));
     }
 
     /**
@@ -236,7 +227,7 @@ public class XrActionsSyncInfo extends Struct<XrActionsSyncInfo> implements Nati
      * @param stack the stack from which to allocate
      */
     public static XrActionsSyncInfo calloc(MemoryStack stack) {
-        return new XrActionsSyncInfo(stack.ncalloc(ALIGNOF, 1, SIZEOF), null);
+        return wrap(XrActionsSyncInfo.class, stack.ncalloc(ALIGNOF, 1, SIZEOF));
     }
 
     /**
@@ -246,7 +237,7 @@ public class XrActionsSyncInfo extends Struct<XrActionsSyncInfo> implements Nati
      * @param capacity the buffer capacity
      */
     public static XrActionsSyncInfo.Buffer malloc(int capacity, MemoryStack stack) {
-        return new Buffer(stack.nmalloc(ALIGNOF, capacity * SIZEOF), capacity);
+        return wrap(Buffer.class, stack.nmalloc(ALIGNOF, capacity * SIZEOF), capacity);
     }
 
     /**
@@ -256,7 +247,7 @@ public class XrActionsSyncInfo extends Struct<XrActionsSyncInfo> implements Nati
      * @param capacity the buffer capacity
      */
     public static XrActionsSyncInfo.Buffer calloc(int capacity, MemoryStack stack) {
-        return new Buffer(stack.ncalloc(ALIGNOF, capacity, SIZEOF), capacity);
+        return wrap(Buffer.class, stack.ncalloc(ALIGNOF, capacity, SIZEOF), capacity);
     }
 
     // -----------------------------------
@@ -289,9 +280,9 @@ public class XrActionsSyncInfo extends Struct<XrActionsSyncInfo> implements Nati
         /**
          * Creates a new {@code XrActionsSyncInfo.Buffer} instance backed by the specified container.
          *
-         * <p>Changes to the container's content will be visible to the struct buffer instance and vice versa. The two buffers' position, limit, and mark values
+         * Changes to the container's content will be visible to the struct buffer instance and vice versa. The two buffers' position, limit, and mark values
          * will be independent. The new buffer's position will be zero, its capacity and its limit will be the number of bytes remaining in this buffer divided
-         * by {@link XrActionsSyncInfo#SIZEOF}, and its mark will be undefined.</p>
+         * by {@link XrActionsSyncInfo#SIZEOF}, and its mark will be undefined.
          *
          * <p>The created buffer instance holds a strong reference to the container object.</p>
          */

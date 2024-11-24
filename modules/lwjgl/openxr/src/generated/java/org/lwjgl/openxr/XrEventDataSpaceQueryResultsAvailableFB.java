@@ -39,7 +39,7 @@ import static org.lwjgl.system.MemoryStack.*;
  *     XrAsyncRequestIdFB {@link #requestId};
  * }</code></pre>
  */
-public class XrEventDataSpaceQueryResultsAvailableFB extends Struct<XrEventDataSpaceQueryResultsAvailableFB> implements NativeResource {
+public class XrEventDataSpaceQueryResultsAvailableFB extends Struct implements NativeResource {
 
     /** The struct size in bytes. */
     public static final int SIZEOF;
@@ -66,15 +66,6 @@ public class XrEventDataSpaceQueryResultsAvailableFB extends Struct<XrEventDataS
         TYPE = layout.offsetof(0);
         NEXT = layout.offsetof(1);
         REQUESTID = layout.offsetof(2);
-    }
-
-    protected XrEventDataSpaceQueryResultsAvailableFB(long address, @Nullable ByteBuffer container) {
-        super(address, container);
-    }
-
-    @Override
-    protected XrEventDataSpaceQueryResultsAvailableFB create(long address, @Nullable ByteBuffer container) {
-        return new XrEventDataSpaceQueryResultsAvailableFB(address, container);
     }
 
     /**
@@ -134,34 +125,34 @@ public class XrEventDataSpaceQueryResultsAvailableFB extends Struct<XrEventDataS
 
     /** Returns a new {@code XrEventDataSpaceQueryResultsAvailableFB} instance allocated with {@link MemoryUtil#memAlloc memAlloc}. The instance must be explicitly freed. */
     public static XrEventDataSpaceQueryResultsAvailableFB malloc() {
-        return new XrEventDataSpaceQueryResultsAvailableFB(nmemAllocChecked(SIZEOF), null);
+        return wrap(XrEventDataSpaceQueryResultsAvailableFB.class, nmemAllocChecked(SIZEOF));
     }
 
     /** Returns a new {@code XrEventDataSpaceQueryResultsAvailableFB} instance allocated with {@link MemoryUtil#memCalloc memCalloc}. The instance must be explicitly freed. */
     public static XrEventDataSpaceQueryResultsAvailableFB calloc() {
-        return new XrEventDataSpaceQueryResultsAvailableFB(nmemCallocChecked(1, SIZEOF), null);
+        return wrap(XrEventDataSpaceQueryResultsAvailableFB.class, nmemCallocChecked(1, SIZEOF));
     }
 
     /** Returns a new {@code XrEventDataSpaceQueryResultsAvailableFB} instance allocated with {@link BufferUtils}. */
     public static XrEventDataSpaceQueryResultsAvailableFB create() {
         ByteBuffer container = BufferUtils.createByteBuffer(SIZEOF);
-        return new XrEventDataSpaceQueryResultsAvailableFB(memAddress(container), container);
+        return wrap(XrEventDataSpaceQueryResultsAvailableFB.class, memAddress(container), container);
     }
 
     /** Returns a new {@code XrEventDataSpaceQueryResultsAvailableFB} instance for the specified memory address. */
     public static XrEventDataSpaceQueryResultsAvailableFB create(long address) {
-        return new XrEventDataSpaceQueryResultsAvailableFB(address, null);
+        return wrap(XrEventDataSpaceQueryResultsAvailableFB.class, address);
     }
 
     /** Like {@link #create(long) create}, but returns {@code null} if {@code address} is {@code NULL}. */
     @Nullable
     public static XrEventDataSpaceQueryResultsAvailableFB createSafe(long address) {
-        return address == NULL ? null : new XrEventDataSpaceQueryResultsAvailableFB(address, null);
+        return address == NULL ? null : wrap(XrEventDataSpaceQueryResultsAvailableFB.class, address);
     }
 
     /** Downcasts the specified {@code XrEventDataBaseHeader} instance to {@code XrEventDataSpaceQueryResultsAvailableFB}. */
     public static XrEventDataSpaceQueryResultsAvailableFB create(XrEventDataBaseHeader value) {
-        return new XrEventDataSpaceQueryResultsAvailableFB(value.address(), __getContainer(value));
+        return wrap(XrEventDataSpaceQueryResultsAvailableFB.class, value);
     }
 
     /**
@@ -170,7 +161,7 @@ public class XrEventDataSpaceQueryResultsAvailableFB extends Struct<XrEventDataS
      * @param capacity the buffer capacity
      */
     public static XrEventDataSpaceQueryResultsAvailableFB.Buffer malloc(int capacity) {
-        return new Buffer(nmemAllocChecked(__checkMalloc(capacity, SIZEOF)), capacity);
+        return wrap(Buffer.class, nmemAllocChecked(__checkMalloc(capacity, SIZEOF)), capacity);
     }
 
     /**
@@ -179,7 +170,7 @@ public class XrEventDataSpaceQueryResultsAvailableFB extends Struct<XrEventDataS
      * @param capacity the buffer capacity
      */
     public static XrEventDataSpaceQueryResultsAvailableFB.Buffer calloc(int capacity) {
-        return new Buffer(nmemCallocChecked(capacity, SIZEOF), capacity);
+        return wrap(Buffer.class, nmemCallocChecked(capacity, SIZEOF), capacity);
     }
 
     /**
@@ -189,7 +180,7 @@ public class XrEventDataSpaceQueryResultsAvailableFB extends Struct<XrEventDataS
      */
     public static XrEventDataSpaceQueryResultsAvailableFB.Buffer create(int capacity) {
         ByteBuffer container = __create(capacity, SIZEOF);
-        return new Buffer(memAddress(container), container, -1, 0, capacity, capacity);
+        return wrap(Buffer.class, memAddress(container), capacity, container);
     }
 
     /**
@@ -199,18 +190,18 @@ public class XrEventDataSpaceQueryResultsAvailableFB extends Struct<XrEventDataS
      * @param capacity the buffer capacity
      */
     public static XrEventDataSpaceQueryResultsAvailableFB.Buffer create(long address, int capacity) {
-        return new Buffer(address, capacity);
+        return wrap(Buffer.class, address, capacity);
     }
 
     /** Like {@link #create(long, int) create}, but returns {@code null} if {@code address} is {@code NULL}. */
     @Nullable
     public static XrEventDataSpaceQueryResultsAvailableFB.Buffer createSafe(long address, int capacity) {
-        return address == NULL ? null : new Buffer(address, capacity);
+        return address == NULL ? null : wrap(Buffer.class, address, capacity);
     }
 
     /** Downcasts the specified {@code XrEventDataBaseHeader.Buffer} instance to {@code XrEventDataSpaceQueryResultsAvailableFB.Buffer}. */
     public static XrEventDataSpaceQueryResultsAvailableFB.Buffer create(XrEventDataBaseHeader.Buffer value) {
-        return new XrEventDataSpaceQueryResultsAvailableFB.Buffer(value.address(), __getContainer(value), -1, 0, value.remaining(), value.remaining());
+        return wrap(Buffer.class, value);
     }
 
     /**
@@ -219,7 +210,7 @@ public class XrEventDataSpaceQueryResultsAvailableFB extends Struct<XrEventDataS
      * @param stack the stack from which to allocate
      */
     public static XrEventDataSpaceQueryResultsAvailableFB malloc(MemoryStack stack) {
-        return new XrEventDataSpaceQueryResultsAvailableFB(stack.nmalloc(ALIGNOF, SIZEOF), null);
+        return wrap(XrEventDataSpaceQueryResultsAvailableFB.class, stack.nmalloc(ALIGNOF, SIZEOF));
     }
 
     /**
@@ -228,7 +219,7 @@ public class XrEventDataSpaceQueryResultsAvailableFB extends Struct<XrEventDataS
      * @param stack the stack from which to allocate
      */
     public static XrEventDataSpaceQueryResultsAvailableFB calloc(MemoryStack stack) {
-        return new XrEventDataSpaceQueryResultsAvailableFB(stack.ncalloc(ALIGNOF, 1, SIZEOF), null);
+        return wrap(XrEventDataSpaceQueryResultsAvailableFB.class, stack.ncalloc(ALIGNOF, 1, SIZEOF));
     }
 
     /**
@@ -238,7 +229,7 @@ public class XrEventDataSpaceQueryResultsAvailableFB extends Struct<XrEventDataS
      * @param capacity the buffer capacity
      */
     public static XrEventDataSpaceQueryResultsAvailableFB.Buffer malloc(int capacity, MemoryStack stack) {
-        return new Buffer(stack.nmalloc(ALIGNOF, capacity * SIZEOF), capacity);
+        return wrap(Buffer.class, stack.nmalloc(ALIGNOF, capacity * SIZEOF), capacity);
     }
 
     /**
@@ -248,7 +239,7 @@ public class XrEventDataSpaceQueryResultsAvailableFB extends Struct<XrEventDataS
      * @param capacity the buffer capacity
      */
     public static XrEventDataSpaceQueryResultsAvailableFB.Buffer calloc(int capacity, MemoryStack stack) {
-        return new Buffer(stack.ncalloc(ALIGNOF, capacity, SIZEOF), capacity);
+        return wrap(Buffer.class, stack.ncalloc(ALIGNOF, capacity, SIZEOF), capacity);
     }
 
     // -----------------------------------
@@ -275,9 +266,9 @@ public class XrEventDataSpaceQueryResultsAvailableFB extends Struct<XrEventDataS
         /**
          * Creates a new {@code XrEventDataSpaceQueryResultsAvailableFB.Buffer} instance backed by the specified container.
          *
-         * <p>Changes to the container's content will be visible to the struct buffer instance and vice versa. The two buffers' position, limit, and mark values
+         * Changes to the container's content will be visible to the struct buffer instance and vice versa. The two buffers' position, limit, and mark values
          * will be independent. The new buffer's position will be zero, its capacity and its limit will be the number of bytes remaining in this buffer divided
-         * by {@link XrEventDataSpaceQueryResultsAvailableFB#SIZEOF}, and its mark will be undefined.</p>
+         * by {@link XrEventDataSpaceQueryResultsAvailableFB#SIZEOF}, and its mark will be undefined.
          *
          * <p>The created buffer instance holds a strong reference to the container object.</p>
          */

@@ -55,7 +55,7 @@ import static org.lwjgl.system.MemoryStack.*;
  *     uint32_t * {@link #samplesConsumed};
  * }</code></pre>
  */
-public class XrHapticPcmVibrationFB extends Struct<XrHapticPcmVibrationFB> implements NativeResource {
+public class XrHapticPcmVibrationFB extends Struct implements NativeResource {
 
     /** The struct size in bytes. */
     public static final int SIZEOF;
@@ -94,15 +94,6 @@ public class XrHapticPcmVibrationFB extends Struct<XrHapticPcmVibrationFB> imple
         SAMPLERATE = layout.offsetof(4);
         APPEND = layout.offsetof(5);
         SAMPLESCONSUMED = layout.offsetof(6);
-    }
-
-    protected XrHapticPcmVibrationFB(long address, @Nullable ByteBuffer container) {
-        super(address, container);
-    }
-
-    @Override
-    protected XrHapticPcmVibrationFB create(long address, @Nullable ByteBuffer container) {
-        return new XrHapticPcmVibrationFB(address, container);
     }
 
     /**
@@ -193,34 +184,34 @@ public class XrHapticPcmVibrationFB extends Struct<XrHapticPcmVibrationFB> imple
 
     /** Returns a new {@code XrHapticPcmVibrationFB} instance allocated with {@link MemoryUtil#memAlloc memAlloc}. The instance must be explicitly freed. */
     public static XrHapticPcmVibrationFB malloc() {
-        return new XrHapticPcmVibrationFB(nmemAllocChecked(SIZEOF), null);
+        return wrap(XrHapticPcmVibrationFB.class, nmemAllocChecked(SIZEOF));
     }
 
     /** Returns a new {@code XrHapticPcmVibrationFB} instance allocated with {@link MemoryUtil#memCalloc memCalloc}. The instance must be explicitly freed. */
     public static XrHapticPcmVibrationFB calloc() {
-        return new XrHapticPcmVibrationFB(nmemCallocChecked(1, SIZEOF), null);
+        return wrap(XrHapticPcmVibrationFB.class, nmemCallocChecked(1, SIZEOF));
     }
 
     /** Returns a new {@code XrHapticPcmVibrationFB} instance allocated with {@link BufferUtils}. */
     public static XrHapticPcmVibrationFB create() {
         ByteBuffer container = BufferUtils.createByteBuffer(SIZEOF);
-        return new XrHapticPcmVibrationFB(memAddress(container), container);
+        return wrap(XrHapticPcmVibrationFB.class, memAddress(container), container);
     }
 
     /** Returns a new {@code XrHapticPcmVibrationFB} instance for the specified memory address. */
     public static XrHapticPcmVibrationFB create(long address) {
-        return new XrHapticPcmVibrationFB(address, null);
+        return wrap(XrHapticPcmVibrationFB.class, address);
     }
 
     /** Like {@link #create(long) create}, but returns {@code null} if {@code address} is {@code NULL}. */
     @Nullable
     public static XrHapticPcmVibrationFB createSafe(long address) {
-        return address == NULL ? null : new XrHapticPcmVibrationFB(address, null);
+        return address == NULL ? null : wrap(XrHapticPcmVibrationFB.class, address);
     }
 
     /** Downcasts the specified {@code XrHapticBaseHeader} instance to {@code XrHapticPcmVibrationFB}. */
     public static XrHapticPcmVibrationFB create(XrHapticBaseHeader value) {
-        return new XrHapticPcmVibrationFB(value.address(), __getContainer(value));
+        return wrap(XrHapticPcmVibrationFB.class, value);
     }
 
     /**
@@ -229,7 +220,7 @@ public class XrHapticPcmVibrationFB extends Struct<XrHapticPcmVibrationFB> imple
      * @param capacity the buffer capacity
      */
     public static XrHapticPcmVibrationFB.Buffer malloc(int capacity) {
-        return new Buffer(nmemAllocChecked(__checkMalloc(capacity, SIZEOF)), capacity);
+        return wrap(Buffer.class, nmemAllocChecked(__checkMalloc(capacity, SIZEOF)), capacity);
     }
 
     /**
@@ -238,7 +229,7 @@ public class XrHapticPcmVibrationFB extends Struct<XrHapticPcmVibrationFB> imple
      * @param capacity the buffer capacity
      */
     public static XrHapticPcmVibrationFB.Buffer calloc(int capacity) {
-        return new Buffer(nmemCallocChecked(capacity, SIZEOF), capacity);
+        return wrap(Buffer.class, nmemCallocChecked(capacity, SIZEOF), capacity);
     }
 
     /**
@@ -248,7 +239,7 @@ public class XrHapticPcmVibrationFB extends Struct<XrHapticPcmVibrationFB> imple
      */
     public static XrHapticPcmVibrationFB.Buffer create(int capacity) {
         ByteBuffer container = __create(capacity, SIZEOF);
-        return new Buffer(memAddress(container), container, -1, 0, capacity, capacity);
+        return wrap(Buffer.class, memAddress(container), capacity, container);
     }
 
     /**
@@ -258,18 +249,18 @@ public class XrHapticPcmVibrationFB extends Struct<XrHapticPcmVibrationFB> imple
      * @param capacity the buffer capacity
      */
     public static XrHapticPcmVibrationFB.Buffer create(long address, int capacity) {
-        return new Buffer(address, capacity);
+        return wrap(Buffer.class, address, capacity);
     }
 
     /** Like {@link #create(long, int) create}, but returns {@code null} if {@code address} is {@code NULL}. */
     @Nullable
     public static XrHapticPcmVibrationFB.Buffer createSafe(long address, int capacity) {
-        return address == NULL ? null : new Buffer(address, capacity);
+        return address == NULL ? null : wrap(Buffer.class, address, capacity);
     }
 
     /** Downcasts the specified {@code XrHapticBaseHeader.Buffer} instance to {@code XrHapticPcmVibrationFB.Buffer}. */
     public static XrHapticPcmVibrationFB.Buffer create(XrHapticBaseHeader.Buffer value) {
-        return new XrHapticPcmVibrationFB.Buffer(value.address(), __getContainer(value), -1, 0, value.remaining(), value.remaining());
+        return wrap(Buffer.class, value);
     }
 
     /**
@@ -278,7 +269,7 @@ public class XrHapticPcmVibrationFB extends Struct<XrHapticPcmVibrationFB> imple
      * @param stack the stack from which to allocate
      */
     public static XrHapticPcmVibrationFB malloc(MemoryStack stack) {
-        return new XrHapticPcmVibrationFB(stack.nmalloc(ALIGNOF, SIZEOF), null);
+        return wrap(XrHapticPcmVibrationFB.class, stack.nmalloc(ALIGNOF, SIZEOF));
     }
 
     /**
@@ -287,7 +278,7 @@ public class XrHapticPcmVibrationFB extends Struct<XrHapticPcmVibrationFB> imple
      * @param stack the stack from which to allocate
      */
     public static XrHapticPcmVibrationFB calloc(MemoryStack stack) {
-        return new XrHapticPcmVibrationFB(stack.ncalloc(ALIGNOF, 1, SIZEOF), null);
+        return wrap(XrHapticPcmVibrationFB.class, stack.ncalloc(ALIGNOF, 1, SIZEOF));
     }
 
     /**
@@ -297,7 +288,7 @@ public class XrHapticPcmVibrationFB extends Struct<XrHapticPcmVibrationFB> imple
      * @param capacity the buffer capacity
      */
     public static XrHapticPcmVibrationFB.Buffer malloc(int capacity, MemoryStack stack) {
-        return new Buffer(stack.nmalloc(ALIGNOF, capacity * SIZEOF), capacity);
+        return wrap(Buffer.class, stack.nmalloc(ALIGNOF, capacity * SIZEOF), capacity);
     }
 
     /**
@@ -307,7 +298,7 @@ public class XrHapticPcmVibrationFB extends Struct<XrHapticPcmVibrationFB> imple
      * @param capacity the buffer capacity
      */
     public static XrHapticPcmVibrationFB.Buffer calloc(int capacity, MemoryStack stack) {
-        return new Buffer(stack.ncalloc(ALIGNOF, capacity, SIZEOF), capacity);
+        return wrap(Buffer.class, stack.ncalloc(ALIGNOF, capacity, SIZEOF), capacity);
     }
 
     // -----------------------------------
@@ -362,9 +353,9 @@ public class XrHapticPcmVibrationFB extends Struct<XrHapticPcmVibrationFB> imple
         /**
          * Creates a new {@code XrHapticPcmVibrationFB.Buffer} instance backed by the specified container.
          *
-         * <p>Changes to the container's content will be visible to the struct buffer instance and vice versa. The two buffers' position, limit, and mark values
+         * Changes to the container's content will be visible to the struct buffer instance and vice versa. The two buffers' position, limit, and mark values
          * will be independent. The new buffer's position will be zero, its capacity and its limit will be the number of bytes remaining in this buffer divided
-         * by {@link XrHapticPcmVibrationFB#SIZEOF}, and its mark will be undefined.</p>
+         * by {@link XrHapticPcmVibrationFB#SIZEOF}, and its mark will be undefined.
          *
          * <p>The created buffer instance holds a strong reference to the container object.</p>
          */

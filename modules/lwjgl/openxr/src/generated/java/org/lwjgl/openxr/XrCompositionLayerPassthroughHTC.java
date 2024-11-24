@@ -55,7 +55,7 @@ import static org.lwjgl.system.MemoryStack.*;
  *     {@link XrPassthroughColorHTC XrPassthroughColorHTC} {@link #color};
  * }</code></pre>
  */
-public class XrCompositionLayerPassthroughHTC extends Struct<XrCompositionLayerPassthroughHTC> implements NativeResource {
+public class XrCompositionLayerPassthroughHTC extends Struct implements NativeResource {
 
     /** The struct size in bytes. */
     public static final int SIZEOF;
@@ -91,15 +91,6 @@ public class XrCompositionLayerPassthroughHTC extends Struct<XrCompositionLayerP
         SPACE = layout.offsetof(3);
         PASSTHROUGH = layout.offsetof(4);
         COLOR = layout.offsetof(5);
-    }
-
-    protected XrCompositionLayerPassthroughHTC(long address, @Nullable ByteBuffer container) {
-        super(address, container);
-    }
-
-    @Override
-    protected XrCompositionLayerPassthroughHTC create(long address, @Nullable ByteBuffer container) {
-        return new XrCompositionLayerPassthroughHTC(address, container);
     }
 
     /**
@@ -187,34 +178,34 @@ public class XrCompositionLayerPassthroughHTC extends Struct<XrCompositionLayerP
 
     /** Returns a new {@code XrCompositionLayerPassthroughHTC} instance allocated with {@link MemoryUtil#memAlloc memAlloc}. The instance must be explicitly freed. */
     public static XrCompositionLayerPassthroughHTC malloc() {
-        return new XrCompositionLayerPassthroughHTC(nmemAllocChecked(SIZEOF), null);
+        return wrap(XrCompositionLayerPassthroughHTC.class, nmemAllocChecked(SIZEOF));
     }
 
     /** Returns a new {@code XrCompositionLayerPassthroughHTC} instance allocated with {@link MemoryUtil#memCalloc memCalloc}. The instance must be explicitly freed. */
     public static XrCompositionLayerPassthroughHTC calloc() {
-        return new XrCompositionLayerPassthroughHTC(nmemCallocChecked(1, SIZEOF), null);
+        return wrap(XrCompositionLayerPassthroughHTC.class, nmemCallocChecked(1, SIZEOF));
     }
 
     /** Returns a new {@code XrCompositionLayerPassthroughHTC} instance allocated with {@link BufferUtils}. */
     public static XrCompositionLayerPassthroughHTC create() {
         ByteBuffer container = BufferUtils.createByteBuffer(SIZEOF);
-        return new XrCompositionLayerPassthroughHTC(memAddress(container), container);
+        return wrap(XrCompositionLayerPassthroughHTC.class, memAddress(container), container);
     }
 
     /** Returns a new {@code XrCompositionLayerPassthroughHTC} instance for the specified memory address. */
     public static XrCompositionLayerPassthroughHTC create(long address) {
-        return new XrCompositionLayerPassthroughHTC(address, null);
+        return wrap(XrCompositionLayerPassthroughHTC.class, address);
     }
 
     /** Like {@link #create(long) create}, but returns {@code null} if {@code address} is {@code NULL}. */
     @Nullable
     public static XrCompositionLayerPassthroughHTC createSafe(long address) {
-        return address == NULL ? null : new XrCompositionLayerPassthroughHTC(address, null);
+        return address == NULL ? null : wrap(XrCompositionLayerPassthroughHTC.class, address);
     }
 
     /** Downcasts the specified {@code XrCompositionLayerBaseHeader} instance to {@code XrCompositionLayerPassthroughHTC}. */
     public static XrCompositionLayerPassthroughHTC create(XrCompositionLayerBaseHeader value) {
-        return new XrCompositionLayerPassthroughHTC(value.address(), __getContainer(value));
+        return wrap(XrCompositionLayerPassthroughHTC.class, value);
     }
 
     /**
@@ -223,7 +214,7 @@ public class XrCompositionLayerPassthroughHTC extends Struct<XrCompositionLayerP
      * @param capacity the buffer capacity
      */
     public static XrCompositionLayerPassthroughHTC.Buffer malloc(int capacity) {
-        return new Buffer(nmemAllocChecked(__checkMalloc(capacity, SIZEOF)), capacity);
+        return wrap(Buffer.class, nmemAllocChecked(__checkMalloc(capacity, SIZEOF)), capacity);
     }
 
     /**
@@ -232,7 +223,7 @@ public class XrCompositionLayerPassthroughHTC extends Struct<XrCompositionLayerP
      * @param capacity the buffer capacity
      */
     public static XrCompositionLayerPassthroughHTC.Buffer calloc(int capacity) {
-        return new Buffer(nmemCallocChecked(capacity, SIZEOF), capacity);
+        return wrap(Buffer.class, nmemCallocChecked(capacity, SIZEOF), capacity);
     }
 
     /**
@@ -242,7 +233,7 @@ public class XrCompositionLayerPassthroughHTC extends Struct<XrCompositionLayerP
      */
     public static XrCompositionLayerPassthroughHTC.Buffer create(int capacity) {
         ByteBuffer container = __create(capacity, SIZEOF);
-        return new Buffer(memAddress(container), container, -1, 0, capacity, capacity);
+        return wrap(Buffer.class, memAddress(container), capacity, container);
     }
 
     /**
@@ -252,18 +243,18 @@ public class XrCompositionLayerPassthroughHTC extends Struct<XrCompositionLayerP
      * @param capacity the buffer capacity
      */
     public static XrCompositionLayerPassthroughHTC.Buffer create(long address, int capacity) {
-        return new Buffer(address, capacity);
+        return wrap(Buffer.class, address, capacity);
     }
 
     /** Like {@link #create(long, int) create}, but returns {@code null} if {@code address} is {@code NULL}. */
     @Nullable
     public static XrCompositionLayerPassthroughHTC.Buffer createSafe(long address, int capacity) {
-        return address == NULL ? null : new Buffer(address, capacity);
+        return address == NULL ? null : wrap(Buffer.class, address, capacity);
     }
 
     /** Downcasts the specified {@code XrCompositionLayerBaseHeader.Buffer} instance to {@code XrCompositionLayerPassthroughHTC.Buffer}. */
     public static XrCompositionLayerPassthroughHTC.Buffer create(XrCompositionLayerBaseHeader.Buffer value) {
-        return new XrCompositionLayerPassthroughHTC.Buffer(value.address(), __getContainer(value), -1, 0, value.remaining(), value.remaining());
+        return wrap(Buffer.class, value);
     }
 
     /**
@@ -272,7 +263,7 @@ public class XrCompositionLayerPassthroughHTC extends Struct<XrCompositionLayerP
      * @param stack the stack from which to allocate
      */
     public static XrCompositionLayerPassthroughHTC malloc(MemoryStack stack) {
-        return new XrCompositionLayerPassthroughHTC(stack.nmalloc(ALIGNOF, SIZEOF), null);
+        return wrap(XrCompositionLayerPassthroughHTC.class, stack.nmalloc(ALIGNOF, SIZEOF));
     }
 
     /**
@@ -281,7 +272,7 @@ public class XrCompositionLayerPassthroughHTC extends Struct<XrCompositionLayerP
      * @param stack the stack from which to allocate
      */
     public static XrCompositionLayerPassthroughHTC calloc(MemoryStack stack) {
-        return new XrCompositionLayerPassthroughHTC(stack.ncalloc(ALIGNOF, 1, SIZEOF), null);
+        return wrap(XrCompositionLayerPassthroughHTC.class, stack.ncalloc(ALIGNOF, 1, SIZEOF));
     }
 
     /**
@@ -291,7 +282,7 @@ public class XrCompositionLayerPassthroughHTC extends Struct<XrCompositionLayerP
      * @param capacity the buffer capacity
      */
     public static XrCompositionLayerPassthroughHTC.Buffer malloc(int capacity, MemoryStack stack) {
-        return new Buffer(stack.nmalloc(ALIGNOF, capacity * SIZEOF), capacity);
+        return wrap(Buffer.class, stack.nmalloc(ALIGNOF, capacity * SIZEOF), capacity);
     }
 
     /**
@@ -301,7 +292,7 @@ public class XrCompositionLayerPassthroughHTC extends Struct<XrCompositionLayerP
      * @param capacity the buffer capacity
      */
     public static XrCompositionLayerPassthroughHTC.Buffer calloc(int capacity, MemoryStack stack) {
-        return new Buffer(stack.ncalloc(ALIGNOF, capacity, SIZEOF), capacity);
+        return wrap(Buffer.class, stack.ncalloc(ALIGNOF, capacity, SIZEOF), capacity);
     }
 
     // -----------------------------------
@@ -352,9 +343,9 @@ public class XrCompositionLayerPassthroughHTC extends Struct<XrCompositionLayerP
         /**
          * Creates a new {@code XrCompositionLayerPassthroughHTC.Buffer} instance backed by the specified container.
          *
-         * <p>Changes to the container's content will be visible to the struct buffer instance and vice versa. The two buffers' position, limit, and mark values
+         * Changes to the container's content will be visible to the struct buffer instance and vice versa. The two buffers' position, limit, and mark values
          * will be independent. The new buffer's position will be zero, its capacity and its limit will be the number of bytes remaining in this buffer divided
-         * by {@link XrCompositionLayerPassthroughHTC#SIZEOF}, and its mark will be undefined.</p>
+         * by {@link XrCompositionLayerPassthroughHTC#SIZEOF}, and its mark will be undefined.
          *
          * <p>The created buffer instance holds a strong reference to the container object.</p>
          */

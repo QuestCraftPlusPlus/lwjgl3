@@ -45,7 +45,7 @@ import static org.lwjgl.system.MemoryStack.*;
  *     XrOverlayMainSessionFlagsEXTX flags;
  * }</code></pre>
  */
-public class XrEventDataMainSessionVisibilityChangedEXTX extends Struct<XrEventDataMainSessionVisibilityChangedEXTX> implements NativeResource {
+public class XrEventDataMainSessionVisibilityChangedEXTX extends Struct implements NativeResource {
 
     /** The struct size in bytes. */
     public static final int SIZEOF;
@@ -75,15 +75,6 @@ public class XrEventDataMainSessionVisibilityChangedEXTX extends Struct<XrEventD
         NEXT = layout.offsetof(1);
         VISIBLE = layout.offsetof(2);
         FLAGS = layout.offsetof(3);
-    }
-
-    protected XrEventDataMainSessionVisibilityChangedEXTX(long address, @Nullable ByteBuffer container) {
-        super(address, container);
-    }
-
-    @Override
-    protected XrEventDataMainSessionVisibilityChangedEXTX create(long address, @Nullable ByteBuffer container) {
-        return new XrEventDataMainSessionVisibilityChangedEXTX(address, container);
     }
 
     /**
@@ -146,34 +137,34 @@ public class XrEventDataMainSessionVisibilityChangedEXTX extends Struct<XrEventD
 
     /** Returns a new {@code XrEventDataMainSessionVisibilityChangedEXTX} instance allocated with {@link MemoryUtil#memAlloc memAlloc}. The instance must be explicitly freed. */
     public static XrEventDataMainSessionVisibilityChangedEXTX malloc() {
-        return new XrEventDataMainSessionVisibilityChangedEXTX(nmemAllocChecked(SIZEOF), null);
+        return wrap(XrEventDataMainSessionVisibilityChangedEXTX.class, nmemAllocChecked(SIZEOF));
     }
 
     /** Returns a new {@code XrEventDataMainSessionVisibilityChangedEXTX} instance allocated with {@link MemoryUtil#memCalloc memCalloc}. The instance must be explicitly freed. */
     public static XrEventDataMainSessionVisibilityChangedEXTX calloc() {
-        return new XrEventDataMainSessionVisibilityChangedEXTX(nmemCallocChecked(1, SIZEOF), null);
+        return wrap(XrEventDataMainSessionVisibilityChangedEXTX.class, nmemCallocChecked(1, SIZEOF));
     }
 
     /** Returns a new {@code XrEventDataMainSessionVisibilityChangedEXTX} instance allocated with {@link BufferUtils}. */
     public static XrEventDataMainSessionVisibilityChangedEXTX create() {
         ByteBuffer container = BufferUtils.createByteBuffer(SIZEOF);
-        return new XrEventDataMainSessionVisibilityChangedEXTX(memAddress(container), container);
+        return wrap(XrEventDataMainSessionVisibilityChangedEXTX.class, memAddress(container), container);
     }
 
     /** Returns a new {@code XrEventDataMainSessionVisibilityChangedEXTX} instance for the specified memory address. */
     public static XrEventDataMainSessionVisibilityChangedEXTX create(long address) {
-        return new XrEventDataMainSessionVisibilityChangedEXTX(address, null);
+        return wrap(XrEventDataMainSessionVisibilityChangedEXTX.class, address);
     }
 
     /** Like {@link #create(long) create}, but returns {@code null} if {@code address} is {@code NULL}. */
     @Nullable
     public static XrEventDataMainSessionVisibilityChangedEXTX createSafe(long address) {
-        return address == NULL ? null : new XrEventDataMainSessionVisibilityChangedEXTX(address, null);
+        return address == NULL ? null : wrap(XrEventDataMainSessionVisibilityChangedEXTX.class, address);
     }
 
     /** Downcasts the specified {@code XrEventDataBaseHeader} instance to {@code XrEventDataMainSessionVisibilityChangedEXTX}. */
     public static XrEventDataMainSessionVisibilityChangedEXTX create(XrEventDataBaseHeader value) {
-        return new XrEventDataMainSessionVisibilityChangedEXTX(value.address(), __getContainer(value));
+        return wrap(XrEventDataMainSessionVisibilityChangedEXTX.class, value);
     }
 
     /**
@@ -182,7 +173,7 @@ public class XrEventDataMainSessionVisibilityChangedEXTX extends Struct<XrEventD
      * @param capacity the buffer capacity
      */
     public static XrEventDataMainSessionVisibilityChangedEXTX.Buffer malloc(int capacity) {
-        return new Buffer(nmemAllocChecked(__checkMalloc(capacity, SIZEOF)), capacity);
+        return wrap(Buffer.class, nmemAllocChecked(__checkMalloc(capacity, SIZEOF)), capacity);
     }
 
     /**
@@ -191,7 +182,7 @@ public class XrEventDataMainSessionVisibilityChangedEXTX extends Struct<XrEventD
      * @param capacity the buffer capacity
      */
     public static XrEventDataMainSessionVisibilityChangedEXTX.Buffer calloc(int capacity) {
-        return new Buffer(nmemCallocChecked(capacity, SIZEOF), capacity);
+        return wrap(Buffer.class, nmemCallocChecked(capacity, SIZEOF), capacity);
     }
 
     /**
@@ -201,7 +192,7 @@ public class XrEventDataMainSessionVisibilityChangedEXTX extends Struct<XrEventD
      */
     public static XrEventDataMainSessionVisibilityChangedEXTX.Buffer create(int capacity) {
         ByteBuffer container = __create(capacity, SIZEOF);
-        return new Buffer(memAddress(container), container, -1, 0, capacity, capacity);
+        return wrap(Buffer.class, memAddress(container), capacity, container);
     }
 
     /**
@@ -211,18 +202,18 @@ public class XrEventDataMainSessionVisibilityChangedEXTX extends Struct<XrEventD
      * @param capacity the buffer capacity
      */
     public static XrEventDataMainSessionVisibilityChangedEXTX.Buffer create(long address, int capacity) {
-        return new Buffer(address, capacity);
+        return wrap(Buffer.class, address, capacity);
     }
 
     /** Like {@link #create(long, int) create}, but returns {@code null} if {@code address} is {@code NULL}. */
     @Nullable
     public static XrEventDataMainSessionVisibilityChangedEXTX.Buffer createSafe(long address, int capacity) {
-        return address == NULL ? null : new Buffer(address, capacity);
+        return address == NULL ? null : wrap(Buffer.class, address, capacity);
     }
 
     /** Downcasts the specified {@code XrEventDataBaseHeader.Buffer} instance to {@code XrEventDataMainSessionVisibilityChangedEXTX.Buffer}. */
     public static XrEventDataMainSessionVisibilityChangedEXTX.Buffer create(XrEventDataBaseHeader.Buffer value) {
-        return new XrEventDataMainSessionVisibilityChangedEXTX.Buffer(value.address(), __getContainer(value), -1, 0, value.remaining(), value.remaining());
+        return wrap(Buffer.class, value);
     }
 
     /**
@@ -231,7 +222,7 @@ public class XrEventDataMainSessionVisibilityChangedEXTX extends Struct<XrEventD
      * @param stack the stack from which to allocate
      */
     public static XrEventDataMainSessionVisibilityChangedEXTX malloc(MemoryStack stack) {
-        return new XrEventDataMainSessionVisibilityChangedEXTX(stack.nmalloc(ALIGNOF, SIZEOF), null);
+        return wrap(XrEventDataMainSessionVisibilityChangedEXTX.class, stack.nmalloc(ALIGNOF, SIZEOF));
     }
 
     /**
@@ -240,7 +231,7 @@ public class XrEventDataMainSessionVisibilityChangedEXTX extends Struct<XrEventD
      * @param stack the stack from which to allocate
      */
     public static XrEventDataMainSessionVisibilityChangedEXTX calloc(MemoryStack stack) {
-        return new XrEventDataMainSessionVisibilityChangedEXTX(stack.ncalloc(ALIGNOF, 1, SIZEOF), null);
+        return wrap(XrEventDataMainSessionVisibilityChangedEXTX.class, stack.ncalloc(ALIGNOF, 1, SIZEOF));
     }
 
     /**
@@ -250,7 +241,7 @@ public class XrEventDataMainSessionVisibilityChangedEXTX extends Struct<XrEventD
      * @param capacity the buffer capacity
      */
     public static XrEventDataMainSessionVisibilityChangedEXTX.Buffer malloc(int capacity, MemoryStack stack) {
-        return new Buffer(stack.nmalloc(ALIGNOF, capacity * SIZEOF), capacity);
+        return wrap(Buffer.class, stack.nmalloc(ALIGNOF, capacity * SIZEOF), capacity);
     }
 
     /**
@@ -260,7 +251,7 @@ public class XrEventDataMainSessionVisibilityChangedEXTX extends Struct<XrEventD
      * @param capacity the buffer capacity
      */
     public static XrEventDataMainSessionVisibilityChangedEXTX.Buffer calloc(int capacity, MemoryStack stack) {
-        return new Buffer(stack.ncalloc(ALIGNOF, capacity, SIZEOF), capacity);
+        return wrap(Buffer.class, stack.ncalloc(ALIGNOF, capacity, SIZEOF), capacity);
     }
 
     // -----------------------------------
@@ -289,9 +280,9 @@ public class XrEventDataMainSessionVisibilityChangedEXTX extends Struct<XrEventD
         /**
          * Creates a new {@code XrEventDataMainSessionVisibilityChangedEXTX.Buffer} instance backed by the specified container.
          *
-         * <p>Changes to the container's content will be visible to the struct buffer instance and vice versa. The two buffers' position, limit, and mark values
+         * Changes to the container's content will be visible to the struct buffer instance and vice versa. The two buffers' position, limit, and mark values
          * will be independent. The new buffer's position will be zero, its capacity and its limit will be the number of bytes remaining in this buffer divided
-         * by {@link XrEventDataMainSessionVisibilityChangedEXTX#SIZEOF}, and its mark will be undefined.</p>
+         * by {@link XrEventDataMainSessionVisibilityChangedEXTX#SIZEOF}, and its mark will be undefined.
          *
          * <p>The created buffer instance holds a strong reference to the container object.</p>
          */

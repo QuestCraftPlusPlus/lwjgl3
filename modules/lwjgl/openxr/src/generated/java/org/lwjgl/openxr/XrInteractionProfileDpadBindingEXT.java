@@ -79,7 +79,7 @@ import static org.lwjgl.system.MemoryStack.*;
  *     {@link XrHapticBaseHeader XrHapticBaseHeader} const * {@link #offHaptic};
  * }</code></pre>
  */
-public class XrInteractionProfileDpadBindingEXT extends Struct<XrInteractionProfileDpadBindingEXT> implements NativeResource {
+public class XrInteractionProfileDpadBindingEXT extends Struct implements NativeResource {
 
     /** The struct size in bytes. */
     public static final int SIZEOF;
@@ -130,15 +130,6 @@ public class XrInteractionProfileDpadBindingEXT extends Struct<XrInteractionProf
         ISSTICKY = layout.offsetof(8);
         ONHAPTIC = layout.offsetof(9);
         OFFHAPTIC = layout.offsetof(10);
-    }
-
-    protected XrInteractionProfileDpadBindingEXT(long address, @Nullable ByteBuffer container) {
-        super(address, container);
-    }
-
-    @Override
-    protected XrInteractionProfileDpadBindingEXT create(long address, @Nullable ByteBuffer container) {
-        return new XrInteractionProfileDpadBindingEXT(address, container);
     }
 
     /**
@@ -256,34 +247,34 @@ public class XrInteractionProfileDpadBindingEXT extends Struct<XrInteractionProf
 
     /** Returns a new {@code XrInteractionProfileDpadBindingEXT} instance allocated with {@link MemoryUtil#memAlloc memAlloc}. The instance must be explicitly freed. */
     public static XrInteractionProfileDpadBindingEXT malloc() {
-        return new XrInteractionProfileDpadBindingEXT(nmemAllocChecked(SIZEOF), null);
+        return wrap(XrInteractionProfileDpadBindingEXT.class, nmemAllocChecked(SIZEOF));
     }
 
     /** Returns a new {@code XrInteractionProfileDpadBindingEXT} instance allocated with {@link MemoryUtil#memCalloc memCalloc}. The instance must be explicitly freed. */
     public static XrInteractionProfileDpadBindingEXT calloc() {
-        return new XrInteractionProfileDpadBindingEXT(nmemCallocChecked(1, SIZEOF), null);
+        return wrap(XrInteractionProfileDpadBindingEXT.class, nmemCallocChecked(1, SIZEOF));
     }
 
     /** Returns a new {@code XrInteractionProfileDpadBindingEXT} instance allocated with {@link BufferUtils}. */
     public static XrInteractionProfileDpadBindingEXT create() {
         ByteBuffer container = BufferUtils.createByteBuffer(SIZEOF);
-        return new XrInteractionProfileDpadBindingEXT(memAddress(container), container);
+        return wrap(XrInteractionProfileDpadBindingEXT.class, memAddress(container), container);
     }
 
     /** Returns a new {@code XrInteractionProfileDpadBindingEXT} instance for the specified memory address. */
     public static XrInteractionProfileDpadBindingEXT create(long address) {
-        return new XrInteractionProfileDpadBindingEXT(address, null);
+        return wrap(XrInteractionProfileDpadBindingEXT.class, address);
     }
 
     /** Like {@link #create(long) create}, but returns {@code null} if {@code address} is {@code NULL}. */
     @Nullable
     public static XrInteractionProfileDpadBindingEXT createSafe(long address) {
-        return address == NULL ? null : new XrInteractionProfileDpadBindingEXT(address, null);
+        return address == NULL ? null : wrap(XrInteractionProfileDpadBindingEXT.class, address);
     }
 
     /** Downcasts the specified {@code XrBindingModificationBaseHeaderKHR} instance to {@code XrInteractionProfileDpadBindingEXT}. */
     public static XrInteractionProfileDpadBindingEXT create(XrBindingModificationBaseHeaderKHR value) {
-        return new XrInteractionProfileDpadBindingEXT(value.address(), __getContainer(value));
+        return wrap(XrInteractionProfileDpadBindingEXT.class, value);
     }
 
     /**
@@ -292,7 +283,7 @@ public class XrInteractionProfileDpadBindingEXT extends Struct<XrInteractionProf
      * @param capacity the buffer capacity
      */
     public static XrInteractionProfileDpadBindingEXT.Buffer malloc(int capacity) {
-        return new Buffer(nmemAllocChecked(__checkMalloc(capacity, SIZEOF)), capacity);
+        return wrap(Buffer.class, nmemAllocChecked(__checkMalloc(capacity, SIZEOF)), capacity);
     }
 
     /**
@@ -301,7 +292,7 @@ public class XrInteractionProfileDpadBindingEXT extends Struct<XrInteractionProf
      * @param capacity the buffer capacity
      */
     public static XrInteractionProfileDpadBindingEXT.Buffer calloc(int capacity) {
-        return new Buffer(nmemCallocChecked(capacity, SIZEOF), capacity);
+        return wrap(Buffer.class, nmemCallocChecked(capacity, SIZEOF), capacity);
     }
 
     /**
@@ -311,7 +302,7 @@ public class XrInteractionProfileDpadBindingEXT extends Struct<XrInteractionProf
      */
     public static XrInteractionProfileDpadBindingEXT.Buffer create(int capacity) {
         ByteBuffer container = __create(capacity, SIZEOF);
-        return new Buffer(memAddress(container), container, -1, 0, capacity, capacity);
+        return wrap(Buffer.class, memAddress(container), capacity, container);
     }
 
     /**
@@ -321,18 +312,18 @@ public class XrInteractionProfileDpadBindingEXT extends Struct<XrInteractionProf
      * @param capacity the buffer capacity
      */
     public static XrInteractionProfileDpadBindingEXT.Buffer create(long address, int capacity) {
-        return new Buffer(address, capacity);
+        return wrap(Buffer.class, address, capacity);
     }
 
     /** Like {@link #create(long, int) create}, but returns {@code null} if {@code address} is {@code NULL}. */
     @Nullable
     public static XrInteractionProfileDpadBindingEXT.Buffer createSafe(long address, int capacity) {
-        return address == NULL ? null : new Buffer(address, capacity);
+        return address == NULL ? null : wrap(Buffer.class, address, capacity);
     }
 
     /** Downcasts the specified {@code XrBindingModificationBaseHeaderKHR.Buffer} instance to {@code XrInteractionProfileDpadBindingEXT.Buffer}. */
     public static XrInteractionProfileDpadBindingEXT.Buffer create(XrBindingModificationBaseHeaderKHR.Buffer value) {
-        return new XrInteractionProfileDpadBindingEXT.Buffer(value.address(), __getContainer(value), -1, 0, value.remaining(), value.remaining());
+        return wrap(Buffer.class, value);
     }
 
     /**
@@ -341,7 +332,7 @@ public class XrInteractionProfileDpadBindingEXT extends Struct<XrInteractionProf
      * @param stack the stack from which to allocate
      */
     public static XrInteractionProfileDpadBindingEXT malloc(MemoryStack stack) {
-        return new XrInteractionProfileDpadBindingEXT(stack.nmalloc(ALIGNOF, SIZEOF), null);
+        return wrap(XrInteractionProfileDpadBindingEXT.class, stack.nmalloc(ALIGNOF, SIZEOF));
     }
 
     /**
@@ -350,7 +341,7 @@ public class XrInteractionProfileDpadBindingEXT extends Struct<XrInteractionProf
      * @param stack the stack from which to allocate
      */
     public static XrInteractionProfileDpadBindingEXT calloc(MemoryStack stack) {
-        return new XrInteractionProfileDpadBindingEXT(stack.ncalloc(ALIGNOF, 1, SIZEOF), null);
+        return wrap(XrInteractionProfileDpadBindingEXT.class, stack.ncalloc(ALIGNOF, 1, SIZEOF));
     }
 
     /**
@@ -360,7 +351,7 @@ public class XrInteractionProfileDpadBindingEXT extends Struct<XrInteractionProf
      * @param capacity the buffer capacity
      */
     public static XrInteractionProfileDpadBindingEXT.Buffer malloc(int capacity, MemoryStack stack) {
-        return new Buffer(stack.nmalloc(ALIGNOF, capacity * SIZEOF), capacity);
+        return wrap(Buffer.class, stack.nmalloc(ALIGNOF, capacity * SIZEOF), capacity);
     }
 
     /**
@@ -370,7 +361,7 @@ public class XrInteractionProfileDpadBindingEXT extends Struct<XrInteractionProf
      * @param capacity the buffer capacity
      */
     public static XrInteractionProfileDpadBindingEXT.Buffer calloc(int capacity, MemoryStack stack) {
-        return new Buffer(stack.ncalloc(ALIGNOF, capacity, SIZEOF), capacity);
+        return wrap(Buffer.class, stack.ncalloc(ALIGNOF, capacity, SIZEOF), capacity);
     }
 
     // -----------------------------------
@@ -440,9 +431,9 @@ public class XrInteractionProfileDpadBindingEXT extends Struct<XrInteractionProf
         /**
          * Creates a new {@code XrInteractionProfileDpadBindingEXT.Buffer} instance backed by the specified container.
          *
-         * <p>Changes to the container's content will be visible to the struct buffer instance and vice versa. The two buffers' position, limit, and mark values
+         * Changes to the container's content will be visible to the struct buffer instance and vice versa. The two buffers' position, limit, and mark values
          * will be independent. The new buffer's position will be zero, its capacity and its limit will be the number of bytes remaining in this buffer divided
-         * by {@link XrInteractionProfileDpadBindingEXT#SIZEOF}, and its mark will be undefined.</p>
+         * by {@link XrInteractionProfileDpadBindingEXT#SIZEOF}, and its mark will be undefined.
          *
          * <p>The created buffer instance holds a strong reference to the container object.</p>
          */

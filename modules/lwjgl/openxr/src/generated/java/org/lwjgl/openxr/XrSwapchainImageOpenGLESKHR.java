@@ -52,7 +52,7 @@ import static org.lwjgl.system.MemoryStack.*;
  *     uint32_t {@link #image};
  * }</code></pre>
  */
-public class XrSwapchainImageOpenGLESKHR extends Struct<XrSwapchainImageOpenGLESKHR> implements NativeResource {
+public class XrSwapchainImageOpenGLESKHR extends Struct implements NativeResource {
 
     /** The struct size in bytes. */
     public static final int SIZEOF;
@@ -79,15 +79,6 @@ public class XrSwapchainImageOpenGLESKHR extends Struct<XrSwapchainImageOpenGLES
         TYPE = layout.offsetof(0);
         NEXT = layout.offsetof(1);
         IMAGE = layout.offsetof(2);
-    }
-
-    protected XrSwapchainImageOpenGLESKHR(long address, @Nullable ByteBuffer container) {
-        super(address, container);
-    }
-
-    @Override
-    protected XrSwapchainImageOpenGLESKHR create(long address, @Nullable ByteBuffer container) {
-        return new XrSwapchainImageOpenGLESKHR(address, container);
     }
 
     /**
@@ -147,34 +138,34 @@ public class XrSwapchainImageOpenGLESKHR extends Struct<XrSwapchainImageOpenGLES
 
     /** Returns a new {@code XrSwapchainImageOpenGLESKHR} instance allocated with {@link MemoryUtil#memAlloc memAlloc}. The instance must be explicitly freed. */
     public static XrSwapchainImageOpenGLESKHR malloc() {
-        return new XrSwapchainImageOpenGLESKHR(nmemAllocChecked(SIZEOF), null);
+        return wrap(XrSwapchainImageOpenGLESKHR.class, nmemAllocChecked(SIZEOF));
     }
 
     /** Returns a new {@code XrSwapchainImageOpenGLESKHR} instance allocated with {@link MemoryUtil#memCalloc memCalloc}. The instance must be explicitly freed. */
     public static XrSwapchainImageOpenGLESKHR calloc() {
-        return new XrSwapchainImageOpenGLESKHR(nmemCallocChecked(1, SIZEOF), null);
+        return wrap(XrSwapchainImageOpenGLESKHR.class, nmemCallocChecked(1, SIZEOF));
     }
 
     /** Returns a new {@code XrSwapchainImageOpenGLESKHR} instance allocated with {@link BufferUtils}. */
     public static XrSwapchainImageOpenGLESKHR create() {
         ByteBuffer container = BufferUtils.createByteBuffer(SIZEOF);
-        return new XrSwapchainImageOpenGLESKHR(memAddress(container), container);
+        return wrap(XrSwapchainImageOpenGLESKHR.class, memAddress(container), container);
     }
 
     /** Returns a new {@code XrSwapchainImageOpenGLESKHR} instance for the specified memory address. */
     public static XrSwapchainImageOpenGLESKHR create(long address) {
-        return new XrSwapchainImageOpenGLESKHR(address, null);
+        return wrap(XrSwapchainImageOpenGLESKHR.class, address);
     }
 
     /** Like {@link #create(long) create}, but returns {@code null} if {@code address} is {@code NULL}. */
     @Nullable
     public static XrSwapchainImageOpenGLESKHR createSafe(long address) {
-        return address == NULL ? null : new XrSwapchainImageOpenGLESKHR(address, null);
+        return address == NULL ? null : wrap(XrSwapchainImageOpenGLESKHR.class, address);
     }
 
     /** Downcasts the specified {@code XrSwapchainImageBaseHeader} instance to {@code XrSwapchainImageOpenGLESKHR}. */
     public static XrSwapchainImageOpenGLESKHR create(XrSwapchainImageBaseHeader value) {
-        return new XrSwapchainImageOpenGLESKHR(value.address(), __getContainer(value));
+        return wrap(XrSwapchainImageOpenGLESKHR.class, value);
     }
 
     /**
@@ -183,7 +174,7 @@ public class XrSwapchainImageOpenGLESKHR extends Struct<XrSwapchainImageOpenGLES
      * @param capacity the buffer capacity
      */
     public static XrSwapchainImageOpenGLESKHR.Buffer malloc(int capacity) {
-        return new Buffer(nmemAllocChecked(__checkMalloc(capacity, SIZEOF)), capacity);
+        return wrap(Buffer.class, nmemAllocChecked(__checkMalloc(capacity, SIZEOF)), capacity);
     }
 
     /**
@@ -192,7 +183,7 @@ public class XrSwapchainImageOpenGLESKHR extends Struct<XrSwapchainImageOpenGLES
      * @param capacity the buffer capacity
      */
     public static XrSwapchainImageOpenGLESKHR.Buffer calloc(int capacity) {
-        return new Buffer(nmemCallocChecked(capacity, SIZEOF), capacity);
+        return wrap(Buffer.class, nmemCallocChecked(capacity, SIZEOF), capacity);
     }
 
     /**
@@ -202,7 +193,7 @@ public class XrSwapchainImageOpenGLESKHR extends Struct<XrSwapchainImageOpenGLES
      */
     public static XrSwapchainImageOpenGLESKHR.Buffer create(int capacity) {
         ByteBuffer container = __create(capacity, SIZEOF);
-        return new Buffer(memAddress(container), container, -1, 0, capacity, capacity);
+        return wrap(Buffer.class, memAddress(container), capacity, container);
     }
 
     /**
@@ -212,18 +203,18 @@ public class XrSwapchainImageOpenGLESKHR extends Struct<XrSwapchainImageOpenGLES
      * @param capacity the buffer capacity
      */
     public static XrSwapchainImageOpenGLESKHR.Buffer create(long address, int capacity) {
-        return new Buffer(address, capacity);
+        return wrap(Buffer.class, address, capacity);
     }
 
     /** Like {@link #create(long, int) create}, but returns {@code null} if {@code address} is {@code NULL}. */
     @Nullable
     public static XrSwapchainImageOpenGLESKHR.Buffer createSafe(long address, int capacity) {
-        return address == NULL ? null : new Buffer(address, capacity);
+        return address == NULL ? null : wrap(Buffer.class, address, capacity);
     }
 
     /** Downcasts the specified {@code XrSwapchainImageBaseHeader.Buffer} instance to {@code XrSwapchainImageOpenGLESKHR.Buffer}. */
     public static XrSwapchainImageOpenGLESKHR.Buffer create(XrSwapchainImageBaseHeader.Buffer value) {
-        return new XrSwapchainImageOpenGLESKHR.Buffer(value.address(), __getContainer(value), -1, 0, value.remaining(), value.remaining());
+        return wrap(Buffer.class, value);
     }
 
     /**
@@ -232,7 +223,7 @@ public class XrSwapchainImageOpenGLESKHR extends Struct<XrSwapchainImageOpenGLES
      * @param stack the stack from which to allocate
      */
     public static XrSwapchainImageOpenGLESKHR malloc(MemoryStack stack) {
-        return new XrSwapchainImageOpenGLESKHR(stack.nmalloc(ALIGNOF, SIZEOF), null);
+        return wrap(XrSwapchainImageOpenGLESKHR.class, stack.nmalloc(ALIGNOF, SIZEOF));
     }
 
     /**
@@ -241,7 +232,7 @@ public class XrSwapchainImageOpenGLESKHR extends Struct<XrSwapchainImageOpenGLES
      * @param stack the stack from which to allocate
      */
     public static XrSwapchainImageOpenGLESKHR calloc(MemoryStack stack) {
-        return new XrSwapchainImageOpenGLESKHR(stack.ncalloc(ALIGNOF, 1, SIZEOF), null);
+        return wrap(XrSwapchainImageOpenGLESKHR.class, stack.ncalloc(ALIGNOF, 1, SIZEOF));
     }
 
     /**
@@ -251,7 +242,7 @@ public class XrSwapchainImageOpenGLESKHR extends Struct<XrSwapchainImageOpenGLES
      * @param capacity the buffer capacity
      */
     public static XrSwapchainImageOpenGLESKHR.Buffer malloc(int capacity, MemoryStack stack) {
-        return new Buffer(stack.nmalloc(ALIGNOF, capacity * SIZEOF), capacity);
+        return wrap(Buffer.class, stack.nmalloc(ALIGNOF, capacity * SIZEOF), capacity);
     }
 
     /**
@@ -261,7 +252,7 @@ public class XrSwapchainImageOpenGLESKHR extends Struct<XrSwapchainImageOpenGLES
      * @param capacity the buffer capacity
      */
     public static XrSwapchainImageOpenGLESKHR.Buffer calloc(int capacity, MemoryStack stack) {
-        return new Buffer(stack.ncalloc(ALIGNOF, capacity, SIZEOF), capacity);
+        return wrap(Buffer.class, stack.ncalloc(ALIGNOF, capacity, SIZEOF), capacity);
     }
 
     // -----------------------------------
@@ -288,9 +279,9 @@ public class XrSwapchainImageOpenGLESKHR extends Struct<XrSwapchainImageOpenGLES
         /**
          * Creates a new {@code XrSwapchainImageOpenGLESKHR.Buffer} instance backed by the specified container.
          *
-         * <p>Changes to the container's content will be visible to the struct buffer instance and vice versa. The two buffers' position, limit, and mark values
+         * Changes to the container's content will be visible to the struct buffer instance and vice versa. The two buffers' position, limit, and mark values
          * will be independent. The new buffer's position will be zero, its capacity and its limit will be the number of bytes remaining in this buffer divided
-         * by {@link XrSwapchainImageOpenGLESKHR#SIZEOF}, and its mark will be undefined.</p>
+         * by {@link XrSwapchainImageOpenGLESKHR#SIZEOF}, and its mark will be undefined.
          *
          * <p>The created buffer instance holds a strong reference to the container object.</p>
          */

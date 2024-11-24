@@ -38,7 +38,7 @@ import static org.lwjgl.system.MemoryUtil.*;
  *     {@link XrUuidEXT XrUuidEXT} {@link #uuid};
  * }</code></pre>
  */
-public class XrSpaceQueryResultFB extends Struct<XrSpaceQueryResultFB> {
+public class XrSpaceQueryResultFB extends Struct {
 
     /** The struct size in bytes. */
     public static final int SIZEOF;
@@ -64,15 +64,6 @@ public class XrSpaceQueryResultFB extends Struct<XrSpaceQueryResultFB> {
         UUID = layout.offsetof(1);
     }
 
-    protected XrSpaceQueryResultFB(long address, @Nullable ByteBuffer container) {
-        super(address, container);
-    }
-
-    @Override
-    protected XrSpaceQueryResultFB create(long address, @Nullable ByteBuffer container) {
-        return new XrSpaceQueryResultFB(address, container);
-    }
-
     /**
      * Creates a {@code XrSpaceQueryResultFB} instance at the current position of the specified {@link ByteBuffer} container. Changes to the buffer's content will be
      * visible to the struct instance and vice versa.
@@ -96,13 +87,13 @@ public class XrSpaceQueryResultFB extends Struct<XrSpaceQueryResultFB> {
 
     /** Returns a new {@code XrSpaceQueryResultFB} instance for the specified memory address. */
     public static XrSpaceQueryResultFB create(long address) {
-        return new XrSpaceQueryResultFB(address, null);
+        return wrap(XrSpaceQueryResultFB.class, address);
     }
 
     /** Like {@link #create(long) create}, but returns {@code null} if {@code address} is {@code NULL}. */
     @Nullable
     public static XrSpaceQueryResultFB createSafe(long address) {
-        return address == NULL ? null : new XrSpaceQueryResultFB(address, null);
+        return address == NULL ? null : wrap(XrSpaceQueryResultFB.class, address);
     }
 
     /**
@@ -112,13 +103,13 @@ public class XrSpaceQueryResultFB extends Struct<XrSpaceQueryResultFB> {
      * @param capacity the buffer capacity
      */
     public static XrSpaceQueryResultFB.Buffer create(long address, int capacity) {
-        return new Buffer(address, capacity);
+        return wrap(Buffer.class, address, capacity);
     }
 
     /** Like {@link #create(long, int) create}, but returns {@code null} if {@code address} is {@code NULL}. */
     @Nullable
     public static XrSpaceQueryResultFB.Buffer createSafe(long address, int capacity) {
-        return address == NULL ? null : new Buffer(address, capacity);
+        return address == NULL ? null : wrap(Buffer.class, address, capacity);
     }
 
     // -----------------------------------
@@ -138,9 +129,9 @@ public class XrSpaceQueryResultFB extends Struct<XrSpaceQueryResultFB> {
         /**
          * Creates a new {@code XrSpaceQueryResultFB.Buffer} instance backed by the specified container.
          *
-         * <p>Changes to the container's content will be visible to the struct buffer instance and vice versa. The two buffers' position, limit, and mark values
+         * Changes to the container's content will be visible to the struct buffer instance and vice versa. The two buffers' position, limit, and mark values
          * will be independent. The new buffer's position will be zero, its capacity and its limit will be the number of bytes remaining in this buffer divided
-         * by {@link XrSpaceQueryResultFB#SIZEOF}, and its mark will be undefined.</p>
+         * by {@link XrSpaceQueryResultFB#SIZEOF}, and its mark will be undefined.
          *
          * <p>The created buffer instance holds a strong reference to the container object.</p>
          */

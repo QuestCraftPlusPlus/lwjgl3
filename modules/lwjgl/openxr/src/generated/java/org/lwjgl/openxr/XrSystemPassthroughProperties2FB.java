@@ -43,7 +43,7 @@ import static org.lwjgl.system.MemoryStack.*;
  *     XrPassthroughCapabilityFlagsFB capabilities;
  * }</code></pre>
  */
-public class XrSystemPassthroughProperties2FB extends Struct<XrSystemPassthroughProperties2FB> implements NativeResource {
+public class XrSystemPassthroughProperties2FB extends Struct implements NativeResource {
 
     /** The struct size in bytes. */
     public static final int SIZEOF;
@@ -70,15 +70,6 @@ public class XrSystemPassthroughProperties2FB extends Struct<XrSystemPassthrough
         TYPE = layout.offsetof(0);
         NEXT = layout.offsetof(1);
         CAPABILITIES = layout.offsetof(2);
-    }
-
-    protected XrSystemPassthroughProperties2FB(long address, @Nullable ByteBuffer container) {
-        super(address, container);
-    }
-
-    @Override
-    protected XrSystemPassthroughProperties2FB create(long address, @Nullable ByteBuffer container) {
-        return new XrSystemPassthroughProperties2FB(address, container);
     }
 
     /**
@@ -138,29 +129,29 @@ public class XrSystemPassthroughProperties2FB extends Struct<XrSystemPassthrough
 
     /** Returns a new {@code XrSystemPassthroughProperties2FB} instance allocated with {@link MemoryUtil#memAlloc memAlloc}. The instance must be explicitly freed. */
     public static XrSystemPassthroughProperties2FB malloc() {
-        return new XrSystemPassthroughProperties2FB(nmemAllocChecked(SIZEOF), null);
+        return wrap(XrSystemPassthroughProperties2FB.class, nmemAllocChecked(SIZEOF));
     }
 
     /** Returns a new {@code XrSystemPassthroughProperties2FB} instance allocated with {@link MemoryUtil#memCalloc memCalloc}. The instance must be explicitly freed. */
     public static XrSystemPassthroughProperties2FB calloc() {
-        return new XrSystemPassthroughProperties2FB(nmemCallocChecked(1, SIZEOF), null);
+        return wrap(XrSystemPassthroughProperties2FB.class, nmemCallocChecked(1, SIZEOF));
     }
 
     /** Returns a new {@code XrSystemPassthroughProperties2FB} instance allocated with {@link BufferUtils}. */
     public static XrSystemPassthroughProperties2FB create() {
         ByteBuffer container = BufferUtils.createByteBuffer(SIZEOF);
-        return new XrSystemPassthroughProperties2FB(memAddress(container), container);
+        return wrap(XrSystemPassthroughProperties2FB.class, memAddress(container), container);
     }
 
     /** Returns a new {@code XrSystemPassthroughProperties2FB} instance for the specified memory address. */
     public static XrSystemPassthroughProperties2FB create(long address) {
-        return new XrSystemPassthroughProperties2FB(address, null);
+        return wrap(XrSystemPassthroughProperties2FB.class, address);
     }
 
     /** Like {@link #create(long) create}, but returns {@code null} if {@code address} is {@code NULL}. */
     @Nullable
     public static XrSystemPassthroughProperties2FB createSafe(long address) {
-        return address == NULL ? null : new XrSystemPassthroughProperties2FB(address, null);
+        return address == NULL ? null : wrap(XrSystemPassthroughProperties2FB.class, address);
     }
 
     /**
@@ -169,7 +160,7 @@ public class XrSystemPassthroughProperties2FB extends Struct<XrSystemPassthrough
      * @param capacity the buffer capacity
      */
     public static XrSystemPassthroughProperties2FB.Buffer malloc(int capacity) {
-        return new Buffer(nmemAllocChecked(__checkMalloc(capacity, SIZEOF)), capacity);
+        return wrap(Buffer.class, nmemAllocChecked(__checkMalloc(capacity, SIZEOF)), capacity);
     }
 
     /**
@@ -178,7 +169,7 @@ public class XrSystemPassthroughProperties2FB extends Struct<XrSystemPassthrough
      * @param capacity the buffer capacity
      */
     public static XrSystemPassthroughProperties2FB.Buffer calloc(int capacity) {
-        return new Buffer(nmemCallocChecked(capacity, SIZEOF), capacity);
+        return wrap(Buffer.class, nmemCallocChecked(capacity, SIZEOF), capacity);
     }
 
     /**
@@ -188,7 +179,7 @@ public class XrSystemPassthroughProperties2FB extends Struct<XrSystemPassthrough
      */
     public static XrSystemPassthroughProperties2FB.Buffer create(int capacity) {
         ByteBuffer container = __create(capacity, SIZEOF);
-        return new Buffer(memAddress(container), container, -1, 0, capacity, capacity);
+        return wrap(Buffer.class, memAddress(container), capacity, container);
     }
 
     /**
@@ -198,13 +189,13 @@ public class XrSystemPassthroughProperties2FB extends Struct<XrSystemPassthrough
      * @param capacity the buffer capacity
      */
     public static XrSystemPassthroughProperties2FB.Buffer create(long address, int capacity) {
-        return new Buffer(address, capacity);
+        return wrap(Buffer.class, address, capacity);
     }
 
     /** Like {@link #create(long, int) create}, but returns {@code null} if {@code address} is {@code NULL}. */
     @Nullable
     public static XrSystemPassthroughProperties2FB.Buffer createSafe(long address, int capacity) {
-        return address == NULL ? null : new Buffer(address, capacity);
+        return address == NULL ? null : wrap(Buffer.class, address, capacity);
     }
 
     /**
@@ -213,7 +204,7 @@ public class XrSystemPassthroughProperties2FB extends Struct<XrSystemPassthrough
      * @param stack the stack from which to allocate
      */
     public static XrSystemPassthroughProperties2FB malloc(MemoryStack stack) {
-        return new XrSystemPassthroughProperties2FB(stack.nmalloc(ALIGNOF, SIZEOF), null);
+        return wrap(XrSystemPassthroughProperties2FB.class, stack.nmalloc(ALIGNOF, SIZEOF));
     }
 
     /**
@@ -222,7 +213,7 @@ public class XrSystemPassthroughProperties2FB extends Struct<XrSystemPassthrough
      * @param stack the stack from which to allocate
      */
     public static XrSystemPassthroughProperties2FB calloc(MemoryStack stack) {
-        return new XrSystemPassthroughProperties2FB(stack.ncalloc(ALIGNOF, 1, SIZEOF), null);
+        return wrap(XrSystemPassthroughProperties2FB.class, stack.ncalloc(ALIGNOF, 1, SIZEOF));
     }
 
     /**
@@ -232,7 +223,7 @@ public class XrSystemPassthroughProperties2FB extends Struct<XrSystemPassthrough
      * @param capacity the buffer capacity
      */
     public static XrSystemPassthroughProperties2FB.Buffer malloc(int capacity, MemoryStack stack) {
-        return new Buffer(stack.nmalloc(ALIGNOF, capacity * SIZEOF), capacity);
+        return wrap(Buffer.class, stack.nmalloc(ALIGNOF, capacity * SIZEOF), capacity);
     }
 
     /**
@@ -242,7 +233,7 @@ public class XrSystemPassthroughProperties2FB extends Struct<XrSystemPassthrough
      * @param capacity the buffer capacity
      */
     public static XrSystemPassthroughProperties2FB.Buffer calloc(int capacity, MemoryStack stack) {
-        return new Buffer(stack.ncalloc(ALIGNOF, capacity, SIZEOF), capacity);
+        return wrap(Buffer.class, stack.ncalloc(ALIGNOF, capacity, SIZEOF), capacity);
     }
 
     // -----------------------------------
@@ -269,9 +260,9 @@ public class XrSystemPassthroughProperties2FB extends Struct<XrSystemPassthrough
         /**
          * Creates a new {@code XrSystemPassthroughProperties2FB.Buffer} instance backed by the specified container.
          *
-         * <p>Changes to the container's content will be visible to the struct buffer instance and vice versa. The two buffers' position, limit, and mark values
+         * Changes to the container's content will be visible to the struct buffer instance and vice versa. The two buffers' position, limit, and mark values
          * will be independent. The new buffer's position will be zero, its capacity and its limit will be the number of bytes remaining in this buffer divided
-         * by {@link XrSystemPassthroughProperties2FB#SIZEOF}, and its mark will be undefined.</p>
+         * by {@link XrSystemPassthroughProperties2FB#SIZEOF}, and its mark will be undefined.
          *
          * <p>The created buffer instance holds a strong reference to the container object.</p>
          */

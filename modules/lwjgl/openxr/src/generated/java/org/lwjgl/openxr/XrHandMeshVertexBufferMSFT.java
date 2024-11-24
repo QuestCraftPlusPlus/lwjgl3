@@ -57,7 +57,7 @@ import static org.lwjgl.system.MemoryStack.*;
  *     {@link XrHandMeshVertexMSFT XrHandMeshVertexMSFT} * {@link #vertices};
  * }</code></pre>
  */
-public class XrHandMeshVertexBufferMSFT extends Struct<XrHandMeshVertexBufferMSFT> implements NativeResource {
+public class XrHandMeshVertexBufferMSFT extends Struct implements NativeResource {
 
     /** The struct size in bytes. */
     public static final int SIZEOF;
@@ -87,15 +87,6 @@ public class XrHandMeshVertexBufferMSFT extends Struct<XrHandMeshVertexBufferMSF
         VERTEXCAPACITYINPUT = layout.offsetof(1);
         VERTEXCOUNTOUTPUT = layout.offsetof(2);
         VERTICES = layout.offsetof(3);
-    }
-
-    protected XrHandMeshVertexBufferMSFT(long address, @Nullable ByteBuffer container) {
-        super(address, container);
-    }
-
-    @Override
-    protected XrHandMeshVertexBufferMSFT create(long address, @Nullable ByteBuffer container) {
-        return new XrHandMeshVertexBufferMSFT(address, container);
     }
 
     /**
@@ -160,29 +151,29 @@ public class XrHandMeshVertexBufferMSFT extends Struct<XrHandMeshVertexBufferMSF
 
     /** Returns a new {@code XrHandMeshVertexBufferMSFT} instance allocated with {@link MemoryUtil#memAlloc memAlloc}. The instance must be explicitly freed. */
     public static XrHandMeshVertexBufferMSFT malloc() {
-        return new XrHandMeshVertexBufferMSFT(nmemAllocChecked(SIZEOF), null);
+        return wrap(XrHandMeshVertexBufferMSFT.class, nmemAllocChecked(SIZEOF));
     }
 
     /** Returns a new {@code XrHandMeshVertexBufferMSFT} instance allocated with {@link MemoryUtil#memCalloc memCalloc}. The instance must be explicitly freed. */
     public static XrHandMeshVertexBufferMSFT calloc() {
-        return new XrHandMeshVertexBufferMSFT(nmemCallocChecked(1, SIZEOF), null);
+        return wrap(XrHandMeshVertexBufferMSFT.class, nmemCallocChecked(1, SIZEOF));
     }
 
     /** Returns a new {@code XrHandMeshVertexBufferMSFT} instance allocated with {@link BufferUtils}. */
     public static XrHandMeshVertexBufferMSFT create() {
         ByteBuffer container = BufferUtils.createByteBuffer(SIZEOF);
-        return new XrHandMeshVertexBufferMSFT(memAddress(container), container);
+        return wrap(XrHandMeshVertexBufferMSFT.class, memAddress(container), container);
     }
 
     /** Returns a new {@code XrHandMeshVertexBufferMSFT} instance for the specified memory address. */
     public static XrHandMeshVertexBufferMSFT create(long address) {
-        return new XrHandMeshVertexBufferMSFT(address, null);
+        return wrap(XrHandMeshVertexBufferMSFT.class, address);
     }
 
     /** Like {@link #create(long) create}, but returns {@code null} if {@code address} is {@code NULL}. */
     @Nullable
     public static XrHandMeshVertexBufferMSFT createSafe(long address) {
-        return address == NULL ? null : new XrHandMeshVertexBufferMSFT(address, null);
+        return address == NULL ? null : wrap(XrHandMeshVertexBufferMSFT.class, address);
     }
 
     /**
@@ -191,7 +182,7 @@ public class XrHandMeshVertexBufferMSFT extends Struct<XrHandMeshVertexBufferMSF
      * @param capacity the buffer capacity
      */
     public static XrHandMeshVertexBufferMSFT.Buffer malloc(int capacity) {
-        return new Buffer(nmemAllocChecked(__checkMalloc(capacity, SIZEOF)), capacity);
+        return wrap(Buffer.class, nmemAllocChecked(__checkMalloc(capacity, SIZEOF)), capacity);
     }
 
     /**
@@ -200,7 +191,7 @@ public class XrHandMeshVertexBufferMSFT extends Struct<XrHandMeshVertexBufferMSF
      * @param capacity the buffer capacity
      */
     public static XrHandMeshVertexBufferMSFT.Buffer calloc(int capacity) {
-        return new Buffer(nmemCallocChecked(capacity, SIZEOF), capacity);
+        return wrap(Buffer.class, nmemCallocChecked(capacity, SIZEOF), capacity);
     }
 
     /**
@@ -210,7 +201,7 @@ public class XrHandMeshVertexBufferMSFT extends Struct<XrHandMeshVertexBufferMSF
      */
     public static XrHandMeshVertexBufferMSFT.Buffer create(int capacity) {
         ByteBuffer container = __create(capacity, SIZEOF);
-        return new Buffer(memAddress(container), container, -1, 0, capacity, capacity);
+        return wrap(Buffer.class, memAddress(container), capacity, container);
     }
 
     /**
@@ -220,13 +211,13 @@ public class XrHandMeshVertexBufferMSFT extends Struct<XrHandMeshVertexBufferMSF
      * @param capacity the buffer capacity
      */
     public static XrHandMeshVertexBufferMSFT.Buffer create(long address, int capacity) {
-        return new Buffer(address, capacity);
+        return wrap(Buffer.class, address, capacity);
     }
 
     /** Like {@link #create(long, int) create}, but returns {@code null} if {@code address} is {@code NULL}. */
     @Nullable
     public static XrHandMeshVertexBufferMSFT.Buffer createSafe(long address, int capacity) {
-        return address == NULL ? null : new Buffer(address, capacity);
+        return address == NULL ? null : wrap(Buffer.class, address, capacity);
     }
 
     /**
@@ -235,7 +226,7 @@ public class XrHandMeshVertexBufferMSFT extends Struct<XrHandMeshVertexBufferMSF
      * @param stack the stack from which to allocate
      */
     public static XrHandMeshVertexBufferMSFT malloc(MemoryStack stack) {
-        return new XrHandMeshVertexBufferMSFT(stack.nmalloc(ALIGNOF, SIZEOF), null);
+        return wrap(XrHandMeshVertexBufferMSFT.class, stack.nmalloc(ALIGNOF, SIZEOF));
     }
 
     /**
@@ -244,7 +235,7 @@ public class XrHandMeshVertexBufferMSFT extends Struct<XrHandMeshVertexBufferMSF
      * @param stack the stack from which to allocate
      */
     public static XrHandMeshVertexBufferMSFT calloc(MemoryStack stack) {
-        return new XrHandMeshVertexBufferMSFT(stack.ncalloc(ALIGNOF, 1, SIZEOF), null);
+        return wrap(XrHandMeshVertexBufferMSFT.class, stack.ncalloc(ALIGNOF, 1, SIZEOF));
     }
 
     /**
@@ -254,7 +245,7 @@ public class XrHandMeshVertexBufferMSFT extends Struct<XrHandMeshVertexBufferMSF
      * @param capacity the buffer capacity
      */
     public static XrHandMeshVertexBufferMSFT.Buffer malloc(int capacity, MemoryStack stack) {
-        return new Buffer(stack.nmalloc(ALIGNOF, capacity * SIZEOF), capacity);
+        return wrap(Buffer.class, stack.nmalloc(ALIGNOF, capacity * SIZEOF), capacity);
     }
 
     /**
@@ -264,7 +255,7 @@ public class XrHandMeshVertexBufferMSFT extends Struct<XrHandMeshVertexBufferMSF
      * @param capacity the buffer capacity
      */
     public static XrHandMeshVertexBufferMSFT.Buffer calloc(int capacity, MemoryStack stack) {
-        return new Buffer(stack.ncalloc(ALIGNOF, capacity, SIZEOF), capacity);
+        return wrap(Buffer.class, stack.ncalloc(ALIGNOF, capacity, SIZEOF), capacity);
     }
 
     // -----------------------------------
@@ -306,9 +297,9 @@ public class XrHandMeshVertexBufferMSFT extends Struct<XrHandMeshVertexBufferMSF
         /**
          * Creates a new {@code XrHandMeshVertexBufferMSFT.Buffer} instance backed by the specified container.
          *
-         * <p>Changes to the container's content will be visible to the struct buffer instance and vice versa. The two buffers' position, limit, and mark values
+         * Changes to the container's content will be visible to the struct buffer instance and vice versa. The two buffers' position, limit, and mark values
          * will be independent. The new buffer's position will be zero, its capacity and its limit will be the number of bytes remaining in this buffer divided
-         * by {@link XrHandMeshVertexBufferMSFT#SIZEOF}, and its mark will be undefined.</p>
+         * by {@link XrHandMeshVertexBufferMSFT#SIZEOF}, and its mark will be undefined.
          *
          * <p>The created buffer instance holds a strong reference to the container object.</p>
          */

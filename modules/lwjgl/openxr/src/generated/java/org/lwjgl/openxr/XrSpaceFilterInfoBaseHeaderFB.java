@@ -42,7 +42,7 @@ import static org.lwjgl.system.MemoryStack.*;
  *     void const * {@link #next};
  * }</code></pre>
  */
-public class XrSpaceFilterInfoBaseHeaderFB extends Struct<XrSpaceFilterInfoBaseHeaderFB> implements NativeResource {
+public class XrSpaceFilterInfoBaseHeaderFB extends Struct implements NativeResource {
 
     /** The struct size in bytes. */
     public static final int SIZEOF;
@@ -66,15 +66,6 @@ public class XrSpaceFilterInfoBaseHeaderFB extends Struct<XrSpaceFilterInfoBaseH
 
         TYPE = layout.offsetof(0);
         NEXT = layout.offsetof(1);
-    }
-
-    protected XrSpaceFilterInfoBaseHeaderFB(long address, @Nullable ByteBuffer container) {
-        super(address, container);
-    }
-
-    @Override
-    protected XrSpaceFilterInfoBaseHeaderFB create(long address, @Nullable ByteBuffer container) {
-        return new XrSpaceFilterInfoBaseHeaderFB(address, container);
     }
 
     /**
@@ -131,39 +122,39 @@ public class XrSpaceFilterInfoBaseHeaderFB extends Struct<XrSpaceFilterInfoBaseH
 
     /** Returns a new {@code XrSpaceFilterInfoBaseHeaderFB} instance allocated with {@link MemoryUtil#memAlloc memAlloc}. The instance must be explicitly freed. */
     public static XrSpaceFilterInfoBaseHeaderFB malloc() {
-        return new XrSpaceFilterInfoBaseHeaderFB(nmemAllocChecked(SIZEOF), null);
+        return wrap(XrSpaceFilterInfoBaseHeaderFB.class, nmemAllocChecked(SIZEOF));
     }
 
     /** Returns a new {@code XrSpaceFilterInfoBaseHeaderFB} instance allocated with {@link MemoryUtil#memCalloc memCalloc}. The instance must be explicitly freed. */
     public static XrSpaceFilterInfoBaseHeaderFB calloc() {
-        return new XrSpaceFilterInfoBaseHeaderFB(nmemCallocChecked(1, SIZEOF), null);
+        return wrap(XrSpaceFilterInfoBaseHeaderFB.class, nmemCallocChecked(1, SIZEOF));
     }
 
     /** Returns a new {@code XrSpaceFilterInfoBaseHeaderFB} instance allocated with {@link BufferUtils}. */
     public static XrSpaceFilterInfoBaseHeaderFB create() {
         ByteBuffer container = BufferUtils.createByteBuffer(SIZEOF);
-        return new XrSpaceFilterInfoBaseHeaderFB(memAddress(container), container);
+        return wrap(XrSpaceFilterInfoBaseHeaderFB.class, memAddress(container), container);
     }
 
     /** Returns a new {@code XrSpaceFilterInfoBaseHeaderFB} instance for the specified memory address. */
     public static XrSpaceFilterInfoBaseHeaderFB create(long address) {
-        return new XrSpaceFilterInfoBaseHeaderFB(address, null);
+        return wrap(XrSpaceFilterInfoBaseHeaderFB.class, address);
     }
 
     /** Like {@link #create(long) create}, but returns {@code null} if {@code address} is {@code NULL}. */
     @Nullable
     public static XrSpaceFilterInfoBaseHeaderFB createSafe(long address) {
-        return address == NULL ? null : new XrSpaceFilterInfoBaseHeaderFB(address, null);
+        return address == NULL ? null : wrap(XrSpaceFilterInfoBaseHeaderFB.class, address);
     }
 
     /** Upcasts the specified {@code XrSpaceUuidFilterInfoFB} instance to {@code XrSpaceFilterInfoBaseHeaderFB}. */
     public static XrSpaceFilterInfoBaseHeaderFB create(XrSpaceUuidFilterInfoFB value) {
-        return new XrSpaceFilterInfoBaseHeaderFB(value.address(), __getContainer(value));
+        return wrap(XrSpaceFilterInfoBaseHeaderFB.class, value);
     }
 
     /** Upcasts the specified {@code XrSpaceComponentFilterInfoFB} instance to {@code XrSpaceFilterInfoBaseHeaderFB}. */
     public static XrSpaceFilterInfoBaseHeaderFB create(XrSpaceComponentFilterInfoFB value) {
-        return new XrSpaceFilterInfoBaseHeaderFB(value.address(), __getContainer(value));
+        return wrap(XrSpaceFilterInfoBaseHeaderFB.class, value);
     }
 
     /**
@@ -172,7 +163,7 @@ public class XrSpaceFilterInfoBaseHeaderFB extends Struct<XrSpaceFilterInfoBaseH
      * @param capacity the buffer capacity
      */
     public static XrSpaceFilterInfoBaseHeaderFB.Buffer malloc(int capacity) {
-        return new Buffer(nmemAllocChecked(__checkMalloc(capacity, SIZEOF)), capacity);
+        return wrap(Buffer.class, nmemAllocChecked(__checkMalloc(capacity, SIZEOF)), capacity);
     }
 
     /**
@@ -181,7 +172,7 @@ public class XrSpaceFilterInfoBaseHeaderFB extends Struct<XrSpaceFilterInfoBaseH
      * @param capacity the buffer capacity
      */
     public static XrSpaceFilterInfoBaseHeaderFB.Buffer calloc(int capacity) {
-        return new Buffer(nmemCallocChecked(capacity, SIZEOF), capacity);
+        return wrap(Buffer.class, nmemCallocChecked(capacity, SIZEOF), capacity);
     }
 
     /**
@@ -191,7 +182,7 @@ public class XrSpaceFilterInfoBaseHeaderFB extends Struct<XrSpaceFilterInfoBaseH
      */
     public static XrSpaceFilterInfoBaseHeaderFB.Buffer create(int capacity) {
         ByteBuffer container = __create(capacity, SIZEOF);
-        return new Buffer(memAddress(container), container, -1, 0, capacity, capacity);
+        return wrap(Buffer.class, memAddress(container), capacity, container);
     }
 
     /**
@@ -201,23 +192,23 @@ public class XrSpaceFilterInfoBaseHeaderFB extends Struct<XrSpaceFilterInfoBaseH
      * @param capacity the buffer capacity
      */
     public static XrSpaceFilterInfoBaseHeaderFB.Buffer create(long address, int capacity) {
-        return new Buffer(address, capacity);
+        return wrap(Buffer.class, address, capacity);
     }
 
     /** Like {@link #create(long, int) create}, but returns {@code null} if {@code address} is {@code NULL}. */
     @Nullable
     public static XrSpaceFilterInfoBaseHeaderFB.Buffer createSafe(long address, int capacity) {
-        return address == NULL ? null : new Buffer(address, capacity);
+        return address == NULL ? null : wrap(Buffer.class, address, capacity);
     }
 
     /** Upcasts the specified {@code XrSpaceUuidFilterInfoFB.Buffer} instance to {@code XrSpaceFilterInfoBaseHeaderFB.Buffer}. */
     public static XrSpaceFilterInfoBaseHeaderFB.Buffer create(XrSpaceUuidFilterInfoFB.Buffer value) {
-        return new XrSpaceFilterInfoBaseHeaderFB.Buffer(value.address(), __getContainer(value), -1, 0, value.remaining(), value.remaining());
+        return wrap(Buffer.class, value);
     }
 
     /** Upcasts the specified {@code XrSpaceComponentFilterInfoFB.Buffer} instance to {@code XrSpaceFilterInfoBaseHeaderFB.Buffer}. */
     public static XrSpaceFilterInfoBaseHeaderFB.Buffer create(XrSpaceComponentFilterInfoFB.Buffer value) {
-        return new XrSpaceFilterInfoBaseHeaderFB.Buffer(value.address(), __getContainer(value), -1, 0, value.remaining(), value.remaining());
+        return wrap(Buffer.class, value);
     }
 
     /**
@@ -226,7 +217,7 @@ public class XrSpaceFilterInfoBaseHeaderFB extends Struct<XrSpaceFilterInfoBaseH
      * @param stack the stack from which to allocate
      */
     public static XrSpaceFilterInfoBaseHeaderFB malloc(MemoryStack stack) {
-        return new XrSpaceFilterInfoBaseHeaderFB(stack.nmalloc(ALIGNOF, SIZEOF), null);
+        return wrap(XrSpaceFilterInfoBaseHeaderFB.class, stack.nmalloc(ALIGNOF, SIZEOF));
     }
 
     /**
@@ -235,7 +226,7 @@ public class XrSpaceFilterInfoBaseHeaderFB extends Struct<XrSpaceFilterInfoBaseH
      * @param stack the stack from which to allocate
      */
     public static XrSpaceFilterInfoBaseHeaderFB calloc(MemoryStack stack) {
-        return new XrSpaceFilterInfoBaseHeaderFB(stack.ncalloc(ALIGNOF, 1, SIZEOF), null);
+        return wrap(XrSpaceFilterInfoBaseHeaderFB.class, stack.ncalloc(ALIGNOF, 1, SIZEOF));
     }
 
     /**
@@ -245,7 +236,7 @@ public class XrSpaceFilterInfoBaseHeaderFB extends Struct<XrSpaceFilterInfoBaseH
      * @param capacity the buffer capacity
      */
     public static XrSpaceFilterInfoBaseHeaderFB.Buffer malloc(int capacity, MemoryStack stack) {
-        return new Buffer(stack.nmalloc(ALIGNOF, capacity * SIZEOF), capacity);
+        return wrap(Buffer.class, stack.nmalloc(ALIGNOF, capacity * SIZEOF), capacity);
     }
 
     /**
@@ -255,7 +246,7 @@ public class XrSpaceFilterInfoBaseHeaderFB extends Struct<XrSpaceFilterInfoBaseH
      * @param capacity the buffer capacity
      */
     public static XrSpaceFilterInfoBaseHeaderFB.Buffer calloc(int capacity, MemoryStack stack) {
-        return new Buffer(stack.ncalloc(ALIGNOF, capacity, SIZEOF), capacity);
+        return wrap(Buffer.class, stack.ncalloc(ALIGNOF, capacity, SIZEOF), capacity);
     }
 
     // -----------------------------------
@@ -280,9 +271,9 @@ public class XrSpaceFilterInfoBaseHeaderFB extends Struct<XrSpaceFilterInfoBaseH
         /**
          * Creates a new {@code XrSpaceFilterInfoBaseHeaderFB.Buffer} instance backed by the specified container.
          *
-         * <p>Changes to the container's content will be visible to the struct buffer instance and vice versa. The two buffers' position, limit, and mark values
+         * Changes to the container's content will be visible to the struct buffer instance and vice versa. The two buffers' position, limit, and mark values
          * will be independent. The new buffer's position will be zero, its capacity and its limit will be the number of bytes remaining in this buffer divided
-         * by {@link XrSpaceFilterInfoBaseHeaderFB#SIZEOF}, and its mark will be undefined.</p>
+         * by {@link XrSpaceFilterInfoBaseHeaderFB#SIZEOF}, and its mark will be undefined.
          *
          * <p>The created buffer instance holds a strong reference to the container object.</p>
          */

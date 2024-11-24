@@ -49,7 +49,7 @@ import static org.lwjgl.system.MemoryStack.*;
  *     uint32_t {@link #maxSwapchainSampleCount};
  * }</code></pre>
  */
-public class XrViewConfigurationView extends Struct<XrViewConfigurationView> implements NativeResource {
+public class XrViewConfigurationView extends Struct implements NativeResource {
 
     /** The struct size in bytes. */
     public static final int SIZEOF;
@@ -91,15 +91,6 @@ public class XrViewConfigurationView extends Struct<XrViewConfigurationView> imp
         MAXIMAGERECTHEIGHT = layout.offsetof(5);
         RECOMMENDEDSWAPCHAINSAMPLECOUNT = layout.offsetof(6);
         MAXSWAPCHAINSAMPLECOUNT = layout.offsetof(7);
-    }
-
-    protected XrViewConfigurationView(long address, @Nullable ByteBuffer container) {
-        super(address, container);
-    }
-
-    @Override
-    protected XrViewConfigurationView create(long address, @Nullable ByteBuffer container) {
-        return new XrViewConfigurationView(address, container);
     }
 
     /**
@@ -204,29 +195,29 @@ public class XrViewConfigurationView extends Struct<XrViewConfigurationView> imp
 
     /** Returns a new {@code XrViewConfigurationView} instance allocated with {@link MemoryUtil#memAlloc memAlloc}. The instance must be explicitly freed. */
     public static XrViewConfigurationView malloc() {
-        return new XrViewConfigurationView(nmemAllocChecked(SIZEOF), null);
+        return wrap(XrViewConfigurationView.class, nmemAllocChecked(SIZEOF));
     }
 
     /** Returns a new {@code XrViewConfigurationView} instance allocated with {@link MemoryUtil#memCalloc memCalloc}. The instance must be explicitly freed. */
     public static XrViewConfigurationView calloc() {
-        return new XrViewConfigurationView(nmemCallocChecked(1, SIZEOF), null);
+        return wrap(XrViewConfigurationView.class, nmemCallocChecked(1, SIZEOF));
     }
 
     /** Returns a new {@code XrViewConfigurationView} instance allocated with {@link BufferUtils}. */
     public static XrViewConfigurationView create() {
         ByteBuffer container = BufferUtils.createByteBuffer(SIZEOF);
-        return new XrViewConfigurationView(memAddress(container), container);
+        return wrap(XrViewConfigurationView.class, memAddress(container), container);
     }
 
     /** Returns a new {@code XrViewConfigurationView} instance for the specified memory address. */
     public static XrViewConfigurationView create(long address) {
-        return new XrViewConfigurationView(address, null);
+        return wrap(XrViewConfigurationView.class, address);
     }
 
     /** Like {@link #create(long) create}, but returns {@code null} if {@code address} is {@code NULL}. */
     @Nullable
     public static XrViewConfigurationView createSafe(long address) {
-        return address == NULL ? null : new XrViewConfigurationView(address, null);
+        return address == NULL ? null : wrap(XrViewConfigurationView.class, address);
     }
 
     /**
@@ -235,7 +226,7 @@ public class XrViewConfigurationView extends Struct<XrViewConfigurationView> imp
      * @param capacity the buffer capacity
      */
     public static XrViewConfigurationView.Buffer malloc(int capacity) {
-        return new Buffer(nmemAllocChecked(__checkMalloc(capacity, SIZEOF)), capacity);
+        return wrap(Buffer.class, nmemAllocChecked(__checkMalloc(capacity, SIZEOF)), capacity);
     }
 
     /**
@@ -244,7 +235,7 @@ public class XrViewConfigurationView extends Struct<XrViewConfigurationView> imp
      * @param capacity the buffer capacity
      */
     public static XrViewConfigurationView.Buffer calloc(int capacity) {
-        return new Buffer(nmemCallocChecked(capacity, SIZEOF), capacity);
+        return wrap(Buffer.class, nmemCallocChecked(capacity, SIZEOF), capacity);
     }
 
     /**
@@ -254,7 +245,7 @@ public class XrViewConfigurationView extends Struct<XrViewConfigurationView> imp
      */
     public static XrViewConfigurationView.Buffer create(int capacity) {
         ByteBuffer container = __create(capacity, SIZEOF);
-        return new Buffer(memAddress(container), container, -1, 0, capacity, capacity);
+        return wrap(Buffer.class, memAddress(container), capacity, container);
     }
 
     /**
@@ -264,13 +255,13 @@ public class XrViewConfigurationView extends Struct<XrViewConfigurationView> imp
      * @param capacity the buffer capacity
      */
     public static XrViewConfigurationView.Buffer create(long address, int capacity) {
-        return new Buffer(address, capacity);
+        return wrap(Buffer.class, address, capacity);
     }
 
     /** Like {@link #create(long, int) create}, but returns {@code null} if {@code address} is {@code NULL}. */
     @Nullable
     public static XrViewConfigurationView.Buffer createSafe(long address, int capacity) {
-        return address == NULL ? null : new Buffer(address, capacity);
+        return address == NULL ? null : wrap(Buffer.class, address, capacity);
     }
 
     /**
@@ -279,7 +270,7 @@ public class XrViewConfigurationView extends Struct<XrViewConfigurationView> imp
      * @param stack the stack from which to allocate
      */
     public static XrViewConfigurationView malloc(MemoryStack stack) {
-        return new XrViewConfigurationView(stack.nmalloc(ALIGNOF, SIZEOF), null);
+        return wrap(XrViewConfigurationView.class, stack.nmalloc(ALIGNOF, SIZEOF));
     }
 
     /**
@@ -288,7 +279,7 @@ public class XrViewConfigurationView extends Struct<XrViewConfigurationView> imp
      * @param stack the stack from which to allocate
      */
     public static XrViewConfigurationView calloc(MemoryStack stack) {
-        return new XrViewConfigurationView(stack.ncalloc(ALIGNOF, 1, SIZEOF), null);
+        return wrap(XrViewConfigurationView.class, stack.ncalloc(ALIGNOF, 1, SIZEOF));
     }
 
     /**
@@ -298,7 +289,7 @@ public class XrViewConfigurationView extends Struct<XrViewConfigurationView> imp
      * @param capacity the buffer capacity
      */
     public static XrViewConfigurationView.Buffer malloc(int capacity, MemoryStack stack) {
-        return new Buffer(stack.nmalloc(ALIGNOF, capacity * SIZEOF), capacity);
+        return wrap(Buffer.class, stack.nmalloc(ALIGNOF, capacity * SIZEOF), capacity);
     }
 
     /**
@@ -308,7 +299,7 @@ public class XrViewConfigurationView extends Struct<XrViewConfigurationView> imp
      * @param capacity the buffer capacity
      */
     public static XrViewConfigurationView.Buffer calloc(int capacity, MemoryStack stack) {
-        return new Buffer(stack.ncalloc(ALIGNOF, capacity, SIZEOF), capacity);
+        return wrap(Buffer.class, stack.ncalloc(ALIGNOF, capacity, SIZEOF), capacity);
     }
 
     // -----------------------------------
@@ -357,9 +348,9 @@ public class XrViewConfigurationView extends Struct<XrViewConfigurationView> imp
         /**
          * Creates a new {@code XrViewConfigurationView.Buffer} instance backed by the specified container.
          *
-         * <p>Changes to the container's content will be visible to the struct buffer instance and vice versa. The two buffers' position, limit, and mark values
+         * Changes to the container's content will be visible to the struct buffer instance and vice versa. The two buffers' position, limit, and mark values
          * will be independent. The new buffer's position will be zero, its capacity and its limit will be the number of bytes remaining in this buffer divided
-         * by {@link XrViewConfigurationView#SIZEOF}, and its mark will be undefined.</p>
+         * by {@link XrViewConfigurationView#SIZEOF}, and its mark will be undefined.
          *
          * <p>The created buffer instance holds a strong reference to the container object.</p>
          */

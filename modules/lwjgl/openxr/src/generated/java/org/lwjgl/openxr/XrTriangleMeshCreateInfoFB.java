@@ -52,7 +52,7 @@ import static org.lwjgl.system.MemoryStack.*;
  *     uint32_t const * {@link #indexBuffer};
  * }</code></pre>
  */
-public class XrTriangleMeshCreateInfoFB extends Struct<XrTriangleMeshCreateInfoFB> implements NativeResource {
+public class XrTriangleMeshCreateInfoFB extends Struct implements NativeResource {
 
     /** The struct size in bytes. */
     public static final int SIZEOF;
@@ -94,15 +94,6 @@ public class XrTriangleMeshCreateInfoFB extends Struct<XrTriangleMeshCreateInfoF
         VERTEXBUFFER = layout.offsetof(5);
         TRIANGLECOUNT = layout.offsetof(6);
         INDEXBUFFER = layout.offsetof(7);
-    }
-
-    protected XrTriangleMeshCreateInfoFB(long address, @Nullable ByteBuffer container) {
-        super(address, container);
-    }
-
-    @Override
-    protected XrTriangleMeshCreateInfoFB create(long address, @Nullable ByteBuffer container) {
-        return new XrTriangleMeshCreateInfoFB(address, container);
     }
 
     /**
@@ -207,29 +198,29 @@ public class XrTriangleMeshCreateInfoFB extends Struct<XrTriangleMeshCreateInfoF
 
     /** Returns a new {@code XrTriangleMeshCreateInfoFB} instance allocated with {@link MemoryUtil#memAlloc memAlloc}. The instance must be explicitly freed. */
     public static XrTriangleMeshCreateInfoFB malloc() {
-        return new XrTriangleMeshCreateInfoFB(nmemAllocChecked(SIZEOF), null);
+        return wrap(XrTriangleMeshCreateInfoFB.class, nmemAllocChecked(SIZEOF));
     }
 
     /** Returns a new {@code XrTriangleMeshCreateInfoFB} instance allocated with {@link MemoryUtil#memCalloc memCalloc}. The instance must be explicitly freed. */
     public static XrTriangleMeshCreateInfoFB calloc() {
-        return new XrTriangleMeshCreateInfoFB(nmemCallocChecked(1, SIZEOF), null);
+        return wrap(XrTriangleMeshCreateInfoFB.class, nmemCallocChecked(1, SIZEOF));
     }
 
     /** Returns a new {@code XrTriangleMeshCreateInfoFB} instance allocated with {@link BufferUtils}. */
     public static XrTriangleMeshCreateInfoFB create() {
         ByteBuffer container = BufferUtils.createByteBuffer(SIZEOF);
-        return new XrTriangleMeshCreateInfoFB(memAddress(container), container);
+        return wrap(XrTriangleMeshCreateInfoFB.class, memAddress(container), container);
     }
 
     /** Returns a new {@code XrTriangleMeshCreateInfoFB} instance for the specified memory address. */
     public static XrTriangleMeshCreateInfoFB create(long address) {
-        return new XrTriangleMeshCreateInfoFB(address, null);
+        return wrap(XrTriangleMeshCreateInfoFB.class, address);
     }
 
     /** Like {@link #create(long) create}, but returns {@code null} if {@code address} is {@code NULL}. */
     @Nullable
     public static XrTriangleMeshCreateInfoFB createSafe(long address) {
-        return address == NULL ? null : new XrTriangleMeshCreateInfoFB(address, null);
+        return address == NULL ? null : wrap(XrTriangleMeshCreateInfoFB.class, address);
     }
 
     /**
@@ -238,7 +229,7 @@ public class XrTriangleMeshCreateInfoFB extends Struct<XrTriangleMeshCreateInfoF
      * @param capacity the buffer capacity
      */
     public static XrTriangleMeshCreateInfoFB.Buffer malloc(int capacity) {
-        return new Buffer(nmemAllocChecked(__checkMalloc(capacity, SIZEOF)), capacity);
+        return wrap(Buffer.class, nmemAllocChecked(__checkMalloc(capacity, SIZEOF)), capacity);
     }
 
     /**
@@ -247,7 +238,7 @@ public class XrTriangleMeshCreateInfoFB extends Struct<XrTriangleMeshCreateInfoF
      * @param capacity the buffer capacity
      */
     public static XrTriangleMeshCreateInfoFB.Buffer calloc(int capacity) {
-        return new Buffer(nmemCallocChecked(capacity, SIZEOF), capacity);
+        return wrap(Buffer.class, nmemCallocChecked(capacity, SIZEOF), capacity);
     }
 
     /**
@@ -257,7 +248,7 @@ public class XrTriangleMeshCreateInfoFB extends Struct<XrTriangleMeshCreateInfoF
      */
     public static XrTriangleMeshCreateInfoFB.Buffer create(int capacity) {
         ByteBuffer container = __create(capacity, SIZEOF);
-        return new Buffer(memAddress(container), container, -1, 0, capacity, capacity);
+        return wrap(Buffer.class, memAddress(container), capacity, container);
     }
 
     /**
@@ -267,13 +258,13 @@ public class XrTriangleMeshCreateInfoFB extends Struct<XrTriangleMeshCreateInfoF
      * @param capacity the buffer capacity
      */
     public static XrTriangleMeshCreateInfoFB.Buffer create(long address, int capacity) {
-        return new Buffer(address, capacity);
+        return wrap(Buffer.class, address, capacity);
     }
 
     /** Like {@link #create(long, int) create}, but returns {@code null} if {@code address} is {@code NULL}. */
     @Nullable
     public static XrTriangleMeshCreateInfoFB.Buffer createSafe(long address, int capacity) {
-        return address == NULL ? null : new Buffer(address, capacity);
+        return address == NULL ? null : wrap(Buffer.class, address, capacity);
     }
 
     /**
@@ -282,7 +273,7 @@ public class XrTriangleMeshCreateInfoFB extends Struct<XrTriangleMeshCreateInfoF
      * @param stack the stack from which to allocate
      */
     public static XrTriangleMeshCreateInfoFB malloc(MemoryStack stack) {
-        return new XrTriangleMeshCreateInfoFB(stack.nmalloc(ALIGNOF, SIZEOF), null);
+        return wrap(XrTriangleMeshCreateInfoFB.class, stack.nmalloc(ALIGNOF, SIZEOF));
     }
 
     /**
@@ -291,7 +282,7 @@ public class XrTriangleMeshCreateInfoFB extends Struct<XrTriangleMeshCreateInfoF
      * @param stack the stack from which to allocate
      */
     public static XrTriangleMeshCreateInfoFB calloc(MemoryStack stack) {
-        return new XrTriangleMeshCreateInfoFB(stack.ncalloc(ALIGNOF, 1, SIZEOF), null);
+        return wrap(XrTriangleMeshCreateInfoFB.class, stack.ncalloc(ALIGNOF, 1, SIZEOF));
     }
 
     /**
@@ -301,7 +292,7 @@ public class XrTriangleMeshCreateInfoFB extends Struct<XrTriangleMeshCreateInfoF
      * @param capacity the buffer capacity
      */
     public static XrTriangleMeshCreateInfoFB.Buffer malloc(int capacity, MemoryStack stack) {
-        return new Buffer(stack.nmalloc(ALIGNOF, capacity * SIZEOF), capacity);
+        return wrap(Buffer.class, stack.nmalloc(ALIGNOF, capacity * SIZEOF), capacity);
     }
 
     /**
@@ -311,7 +302,7 @@ public class XrTriangleMeshCreateInfoFB extends Struct<XrTriangleMeshCreateInfoF
      * @param capacity the buffer capacity
      */
     public static XrTriangleMeshCreateInfoFB.Buffer calloc(int capacity, MemoryStack stack) {
-        return new Buffer(stack.ncalloc(ALIGNOF, capacity, SIZEOF), capacity);
+        return wrap(Buffer.class, stack.ncalloc(ALIGNOF, capacity, SIZEOF), capacity);
     }
 
     // -----------------------------------
@@ -360,9 +351,9 @@ public class XrTriangleMeshCreateInfoFB extends Struct<XrTriangleMeshCreateInfoF
         /**
          * Creates a new {@code XrTriangleMeshCreateInfoFB.Buffer} instance backed by the specified container.
          *
-         * <p>Changes to the container's content will be visible to the struct buffer instance and vice versa. The two buffers' position, limit, and mark values
+         * Changes to the container's content will be visible to the struct buffer instance and vice versa. The two buffers' position, limit, and mark values
          * will be independent. The new buffer's position will be zero, its capacity and its limit will be the number of bytes remaining in this buffer divided
-         * by {@link XrTriangleMeshCreateInfoFB#SIZEOF}, and its mark will be undefined.</p>
+         * by {@link XrTriangleMeshCreateInfoFB#SIZEOF}, and its mark will be undefined.
          *
          * <p>The created buffer instance holds a strong reference to the container object.</p>
          */

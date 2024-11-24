@@ -39,7 +39,7 @@ import static org.lwjgl.system.MemoryStack.*;
  *     XrBool32 {@link #supportsFoveatedRendering};
  * }</code></pre>
  */
-public class XrSystemFoveatedRenderingPropertiesVARJO extends Struct<XrSystemFoveatedRenderingPropertiesVARJO> implements NativeResource {
+public class XrSystemFoveatedRenderingPropertiesVARJO extends Struct implements NativeResource {
 
     /** The struct size in bytes. */
     public static final int SIZEOF;
@@ -66,15 +66,6 @@ public class XrSystemFoveatedRenderingPropertiesVARJO extends Struct<XrSystemFov
         TYPE = layout.offsetof(0);
         NEXT = layout.offsetof(1);
         SUPPORTSFOVEATEDRENDERING = layout.offsetof(2);
-    }
-
-    protected XrSystemFoveatedRenderingPropertiesVARJO(long address, @Nullable ByteBuffer container) {
-        super(address, container);
-    }
-
-    @Override
-    protected XrSystemFoveatedRenderingPropertiesVARJO create(long address, @Nullable ByteBuffer container) {
-        return new XrSystemFoveatedRenderingPropertiesVARJO(address, container);
     }
 
     /**
@@ -134,29 +125,29 @@ public class XrSystemFoveatedRenderingPropertiesVARJO extends Struct<XrSystemFov
 
     /** Returns a new {@code XrSystemFoveatedRenderingPropertiesVARJO} instance allocated with {@link MemoryUtil#memAlloc memAlloc}. The instance must be explicitly freed. */
     public static XrSystemFoveatedRenderingPropertiesVARJO malloc() {
-        return new XrSystemFoveatedRenderingPropertiesVARJO(nmemAllocChecked(SIZEOF), null);
+        return wrap(XrSystemFoveatedRenderingPropertiesVARJO.class, nmemAllocChecked(SIZEOF));
     }
 
     /** Returns a new {@code XrSystemFoveatedRenderingPropertiesVARJO} instance allocated with {@link MemoryUtil#memCalloc memCalloc}. The instance must be explicitly freed. */
     public static XrSystemFoveatedRenderingPropertiesVARJO calloc() {
-        return new XrSystemFoveatedRenderingPropertiesVARJO(nmemCallocChecked(1, SIZEOF), null);
+        return wrap(XrSystemFoveatedRenderingPropertiesVARJO.class, nmemCallocChecked(1, SIZEOF));
     }
 
     /** Returns a new {@code XrSystemFoveatedRenderingPropertiesVARJO} instance allocated with {@link BufferUtils}. */
     public static XrSystemFoveatedRenderingPropertiesVARJO create() {
         ByteBuffer container = BufferUtils.createByteBuffer(SIZEOF);
-        return new XrSystemFoveatedRenderingPropertiesVARJO(memAddress(container), container);
+        return wrap(XrSystemFoveatedRenderingPropertiesVARJO.class, memAddress(container), container);
     }
 
     /** Returns a new {@code XrSystemFoveatedRenderingPropertiesVARJO} instance for the specified memory address. */
     public static XrSystemFoveatedRenderingPropertiesVARJO create(long address) {
-        return new XrSystemFoveatedRenderingPropertiesVARJO(address, null);
+        return wrap(XrSystemFoveatedRenderingPropertiesVARJO.class, address);
     }
 
     /** Like {@link #create(long) create}, but returns {@code null} if {@code address} is {@code NULL}. */
     @Nullable
     public static XrSystemFoveatedRenderingPropertiesVARJO createSafe(long address) {
-        return address == NULL ? null : new XrSystemFoveatedRenderingPropertiesVARJO(address, null);
+        return address == NULL ? null : wrap(XrSystemFoveatedRenderingPropertiesVARJO.class, address);
     }
 
     /**
@@ -165,7 +156,7 @@ public class XrSystemFoveatedRenderingPropertiesVARJO extends Struct<XrSystemFov
      * @param capacity the buffer capacity
      */
     public static XrSystemFoveatedRenderingPropertiesVARJO.Buffer malloc(int capacity) {
-        return new Buffer(nmemAllocChecked(__checkMalloc(capacity, SIZEOF)), capacity);
+        return wrap(Buffer.class, nmemAllocChecked(__checkMalloc(capacity, SIZEOF)), capacity);
     }
 
     /**
@@ -174,7 +165,7 @@ public class XrSystemFoveatedRenderingPropertiesVARJO extends Struct<XrSystemFov
      * @param capacity the buffer capacity
      */
     public static XrSystemFoveatedRenderingPropertiesVARJO.Buffer calloc(int capacity) {
-        return new Buffer(nmemCallocChecked(capacity, SIZEOF), capacity);
+        return wrap(Buffer.class, nmemCallocChecked(capacity, SIZEOF), capacity);
     }
 
     /**
@@ -184,7 +175,7 @@ public class XrSystemFoveatedRenderingPropertiesVARJO extends Struct<XrSystemFov
      */
     public static XrSystemFoveatedRenderingPropertiesVARJO.Buffer create(int capacity) {
         ByteBuffer container = __create(capacity, SIZEOF);
-        return new Buffer(memAddress(container), container, -1, 0, capacity, capacity);
+        return wrap(Buffer.class, memAddress(container), capacity, container);
     }
 
     /**
@@ -194,13 +185,13 @@ public class XrSystemFoveatedRenderingPropertiesVARJO extends Struct<XrSystemFov
      * @param capacity the buffer capacity
      */
     public static XrSystemFoveatedRenderingPropertiesVARJO.Buffer create(long address, int capacity) {
-        return new Buffer(address, capacity);
+        return wrap(Buffer.class, address, capacity);
     }
 
     /** Like {@link #create(long, int) create}, but returns {@code null} if {@code address} is {@code NULL}. */
     @Nullable
     public static XrSystemFoveatedRenderingPropertiesVARJO.Buffer createSafe(long address, int capacity) {
-        return address == NULL ? null : new Buffer(address, capacity);
+        return address == NULL ? null : wrap(Buffer.class, address, capacity);
     }
 
     /**
@@ -209,7 +200,7 @@ public class XrSystemFoveatedRenderingPropertiesVARJO extends Struct<XrSystemFov
      * @param stack the stack from which to allocate
      */
     public static XrSystemFoveatedRenderingPropertiesVARJO malloc(MemoryStack stack) {
-        return new XrSystemFoveatedRenderingPropertiesVARJO(stack.nmalloc(ALIGNOF, SIZEOF), null);
+        return wrap(XrSystemFoveatedRenderingPropertiesVARJO.class, stack.nmalloc(ALIGNOF, SIZEOF));
     }
 
     /**
@@ -218,7 +209,7 @@ public class XrSystemFoveatedRenderingPropertiesVARJO extends Struct<XrSystemFov
      * @param stack the stack from which to allocate
      */
     public static XrSystemFoveatedRenderingPropertiesVARJO calloc(MemoryStack stack) {
-        return new XrSystemFoveatedRenderingPropertiesVARJO(stack.ncalloc(ALIGNOF, 1, SIZEOF), null);
+        return wrap(XrSystemFoveatedRenderingPropertiesVARJO.class, stack.ncalloc(ALIGNOF, 1, SIZEOF));
     }
 
     /**
@@ -228,7 +219,7 @@ public class XrSystemFoveatedRenderingPropertiesVARJO extends Struct<XrSystemFov
      * @param capacity the buffer capacity
      */
     public static XrSystemFoveatedRenderingPropertiesVARJO.Buffer malloc(int capacity, MemoryStack stack) {
-        return new Buffer(stack.nmalloc(ALIGNOF, capacity * SIZEOF), capacity);
+        return wrap(Buffer.class, stack.nmalloc(ALIGNOF, capacity * SIZEOF), capacity);
     }
 
     /**
@@ -238,7 +229,7 @@ public class XrSystemFoveatedRenderingPropertiesVARJO extends Struct<XrSystemFov
      * @param capacity the buffer capacity
      */
     public static XrSystemFoveatedRenderingPropertiesVARJO.Buffer calloc(int capacity, MemoryStack stack) {
-        return new Buffer(stack.ncalloc(ALIGNOF, capacity, SIZEOF), capacity);
+        return wrap(Buffer.class, stack.ncalloc(ALIGNOF, capacity, SIZEOF), capacity);
     }
 
     // -----------------------------------
@@ -265,9 +256,9 @@ public class XrSystemFoveatedRenderingPropertiesVARJO extends Struct<XrSystemFov
         /**
          * Creates a new {@code XrSystemFoveatedRenderingPropertiesVARJO.Buffer} instance backed by the specified container.
          *
-         * <p>Changes to the container's content will be visible to the struct buffer instance and vice versa. The two buffers' position, limit, and mark values
+         * Changes to the container's content will be visible to the struct buffer instance and vice versa. The two buffers' position, limit, and mark values
          * will be independent. The new buffer's position will be zero, its capacity and its limit will be the number of bytes remaining in this buffer divided
-         * by {@link XrSystemFoveatedRenderingPropertiesVARJO#SIZEOF}, and its mark will be undefined.</p>
+         * by {@link XrSystemFoveatedRenderingPropertiesVARJO#SIZEOF}, and its mark will be undefined.
          *
          * <p>The created buffer instance holds a strong reference to the container object.</p>
          */

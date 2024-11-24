@@ -47,7 +47,7 @@ import static org.lwjgl.system.MemoryStack.*;
  *     {@link XrForceFeedbackCurlApplyLocationMNDX XrForceFeedbackCurlApplyLocationMNDX} * {@link #locations};
  * }</code></pre>
  */
-public class XrForceFeedbackCurlApplyLocationsMNDX extends Struct<XrForceFeedbackCurlApplyLocationsMNDX> implements NativeResource {
+public class XrForceFeedbackCurlApplyLocationsMNDX extends Struct implements NativeResource {
 
     /** The struct size in bytes. */
     public static final int SIZEOF;
@@ -77,15 +77,6 @@ public class XrForceFeedbackCurlApplyLocationsMNDX extends Struct<XrForceFeedbac
         NEXT = layout.offsetof(1);
         LOCATIONCOUNT = layout.offsetof(2);
         LOCATIONS = layout.offsetof(3);
-    }
-
-    protected XrForceFeedbackCurlApplyLocationsMNDX(long address, @Nullable ByteBuffer container) {
-        super(address, container);
-    }
-
-    @Override
-    protected XrForceFeedbackCurlApplyLocationsMNDX create(long address, @Nullable ByteBuffer container) {
-        return new XrForceFeedbackCurlApplyLocationsMNDX(address, container);
     }
 
     /**
@@ -152,29 +143,29 @@ public class XrForceFeedbackCurlApplyLocationsMNDX extends Struct<XrForceFeedbac
 
     /** Returns a new {@code XrForceFeedbackCurlApplyLocationsMNDX} instance allocated with {@link MemoryUtil#memAlloc memAlloc}. The instance must be explicitly freed. */
     public static XrForceFeedbackCurlApplyLocationsMNDX malloc() {
-        return new XrForceFeedbackCurlApplyLocationsMNDX(nmemAllocChecked(SIZEOF), null);
+        return wrap(XrForceFeedbackCurlApplyLocationsMNDX.class, nmemAllocChecked(SIZEOF));
     }
 
     /** Returns a new {@code XrForceFeedbackCurlApplyLocationsMNDX} instance allocated with {@link MemoryUtil#memCalloc memCalloc}. The instance must be explicitly freed. */
     public static XrForceFeedbackCurlApplyLocationsMNDX calloc() {
-        return new XrForceFeedbackCurlApplyLocationsMNDX(nmemCallocChecked(1, SIZEOF), null);
+        return wrap(XrForceFeedbackCurlApplyLocationsMNDX.class, nmemCallocChecked(1, SIZEOF));
     }
 
     /** Returns a new {@code XrForceFeedbackCurlApplyLocationsMNDX} instance allocated with {@link BufferUtils}. */
     public static XrForceFeedbackCurlApplyLocationsMNDX create() {
         ByteBuffer container = BufferUtils.createByteBuffer(SIZEOF);
-        return new XrForceFeedbackCurlApplyLocationsMNDX(memAddress(container), container);
+        return wrap(XrForceFeedbackCurlApplyLocationsMNDX.class, memAddress(container), container);
     }
 
     /** Returns a new {@code XrForceFeedbackCurlApplyLocationsMNDX} instance for the specified memory address. */
     public static XrForceFeedbackCurlApplyLocationsMNDX create(long address) {
-        return new XrForceFeedbackCurlApplyLocationsMNDX(address, null);
+        return wrap(XrForceFeedbackCurlApplyLocationsMNDX.class, address);
     }
 
     /** Like {@link #create(long) create}, but returns {@code null} if {@code address} is {@code NULL}. */
     @Nullable
     public static XrForceFeedbackCurlApplyLocationsMNDX createSafe(long address) {
-        return address == NULL ? null : new XrForceFeedbackCurlApplyLocationsMNDX(address, null);
+        return address == NULL ? null : wrap(XrForceFeedbackCurlApplyLocationsMNDX.class, address);
     }
 
     /**
@@ -183,7 +174,7 @@ public class XrForceFeedbackCurlApplyLocationsMNDX extends Struct<XrForceFeedbac
      * @param capacity the buffer capacity
      */
     public static XrForceFeedbackCurlApplyLocationsMNDX.Buffer malloc(int capacity) {
-        return new Buffer(nmemAllocChecked(__checkMalloc(capacity, SIZEOF)), capacity);
+        return wrap(Buffer.class, nmemAllocChecked(__checkMalloc(capacity, SIZEOF)), capacity);
     }
 
     /**
@@ -192,7 +183,7 @@ public class XrForceFeedbackCurlApplyLocationsMNDX extends Struct<XrForceFeedbac
      * @param capacity the buffer capacity
      */
     public static XrForceFeedbackCurlApplyLocationsMNDX.Buffer calloc(int capacity) {
-        return new Buffer(nmemCallocChecked(capacity, SIZEOF), capacity);
+        return wrap(Buffer.class, nmemCallocChecked(capacity, SIZEOF), capacity);
     }
 
     /**
@@ -202,7 +193,7 @@ public class XrForceFeedbackCurlApplyLocationsMNDX extends Struct<XrForceFeedbac
      */
     public static XrForceFeedbackCurlApplyLocationsMNDX.Buffer create(int capacity) {
         ByteBuffer container = __create(capacity, SIZEOF);
-        return new Buffer(memAddress(container), container, -1, 0, capacity, capacity);
+        return wrap(Buffer.class, memAddress(container), capacity, container);
     }
 
     /**
@@ -212,13 +203,13 @@ public class XrForceFeedbackCurlApplyLocationsMNDX extends Struct<XrForceFeedbac
      * @param capacity the buffer capacity
      */
     public static XrForceFeedbackCurlApplyLocationsMNDX.Buffer create(long address, int capacity) {
-        return new Buffer(address, capacity);
+        return wrap(Buffer.class, address, capacity);
     }
 
     /** Like {@link #create(long, int) create}, but returns {@code null} if {@code address} is {@code NULL}. */
     @Nullable
     public static XrForceFeedbackCurlApplyLocationsMNDX.Buffer createSafe(long address, int capacity) {
-        return address == NULL ? null : new Buffer(address, capacity);
+        return address == NULL ? null : wrap(Buffer.class, address, capacity);
     }
 
     /**
@@ -227,7 +218,7 @@ public class XrForceFeedbackCurlApplyLocationsMNDX extends Struct<XrForceFeedbac
      * @param stack the stack from which to allocate
      */
     public static XrForceFeedbackCurlApplyLocationsMNDX malloc(MemoryStack stack) {
-        return new XrForceFeedbackCurlApplyLocationsMNDX(stack.nmalloc(ALIGNOF, SIZEOF), null);
+        return wrap(XrForceFeedbackCurlApplyLocationsMNDX.class, stack.nmalloc(ALIGNOF, SIZEOF));
     }
 
     /**
@@ -236,7 +227,7 @@ public class XrForceFeedbackCurlApplyLocationsMNDX extends Struct<XrForceFeedbac
      * @param stack the stack from which to allocate
      */
     public static XrForceFeedbackCurlApplyLocationsMNDX calloc(MemoryStack stack) {
-        return new XrForceFeedbackCurlApplyLocationsMNDX(stack.ncalloc(ALIGNOF, 1, SIZEOF), null);
+        return wrap(XrForceFeedbackCurlApplyLocationsMNDX.class, stack.ncalloc(ALIGNOF, 1, SIZEOF));
     }
 
     /**
@@ -246,7 +237,7 @@ public class XrForceFeedbackCurlApplyLocationsMNDX extends Struct<XrForceFeedbac
      * @param capacity the buffer capacity
      */
     public static XrForceFeedbackCurlApplyLocationsMNDX.Buffer malloc(int capacity, MemoryStack stack) {
-        return new Buffer(stack.nmalloc(ALIGNOF, capacity * SIZEOF), capacity);
+        return wrap(Buffer.class, stack.nmalloc(ALIGNOF, capacity * SIZEOF), capacity);
     }
 
     /**
@@ -256,7 +247,7 @@ public class XrForceFeedbackCurlApplyLocationsMNDX extends Struct<XrForceFeedbac
      * @param capacity the buffer capacity
      */
     public static XrForceFeedbackCurlApplyLocationsMNDX.Buffer calloc(int capacity, MemoryStack stack) {
-        return new Buffer(stack.ncalloc(ALIGNOF, capacity, SIZEOF), capacity);
+        return wrap(Buffer.class, stack.ncalloc(ALIGNOF, capacity, SIZEOF), capacity);
     }
 
     // -----------------------------------
@@ -298,9 +289,9 @@ public class XrForceFeedbackCurlApplyLocationsMNDX extends Struct<XrForceFeedbac
         /**
          * Creates a new {@code XrForceFeedbackCurlApplyLocationsMNDX.Buffer} instance backed by the specified container.
          *
-         * <p>Changes to the container's content will be visible to the struct buffer instance and vice versa. The two buffers' position, limit, and mark values
+         * Changes to the container's content will be visible to the struct buffer instance and vice versa. The two buffers' position, limit, and mark values
          * will be independent. The new buffer's position will be zero, its capacity and its limit will be the number of bytes remaining in this buffer divided
-         * by {@link XrForceFeedbackCurlApplyLocationsMNDX#SIZEOF}, and its mark will be undefined.</p>
+         * by {@link XrForceFeedbackCurlApplyLocationsMNDX#SIZEOF}, and its mark will be undefined.
          *
          * <p>The created buffer instance holds a strong reference to the container object.</p>
          */

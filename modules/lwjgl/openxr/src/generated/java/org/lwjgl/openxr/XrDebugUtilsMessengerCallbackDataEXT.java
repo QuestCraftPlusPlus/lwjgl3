@@ -58,7 +58,7 @@ import static org.lwjgl.system.MemoryStack.*;
  *     {@link XrDebugUtilsLabelEXT XrDebugUtilsLabelEXT} * {@link #sessionLabels};
  * }</code></pre>
  */
-public class XrDebugUtilsMessengerCallbackDataEXT extends Struct<XrDebugUtilsMessengerCallbackDataEXT> implements NativeResource {
+public class XrDebugUtilsMessengerCallbackDataEXT extends Struct implements NativeResource {
 
     /** The struct size in bytes. */
     public static final int SIZEOF;
@@ -103,15 +103,6 @@ public class XrDebugUtilsMessengerCallbackDataEXT extends Struct<XrDebugUtilsMes
         OBJECTS = layout.offsetof(6);
         SESSIONLABELCOUNT = layout.offsetof(7);
         SESSIONLABELS = layout.offsetof(8);
-    }
-
-    protected XrDebugUtilsMessengerCallbackDataEXT(long address, @Nullable ByteBuffer container) {
-        super(address, container);
-    }
-
-    @Override
-    protected XrDebugUtilsMessengerCallbackDataEXT create(long address, @Nullable ByteBuffer container) {
-        return new XrDebugUtilsMessengerCallbackDataEXT(address, container);
     }
 
     /**
@@ -232,29 +223,29 @@ public class XrDebugUtilsMessengerCallbackDataEXT extends Struct<XrDebugUtilsMes
 
     /** Returns a new {@code XrDebugUtilsMessengerCallbackDataEXT} instance allocated with {@link MemoryUtil#memAlloc memAlloc}. The instance must be explicitly freed. */
     public static XrDebugUtilsMessengerCallbackDataEXT malloc() {
-        return new XrDebugUtilsMessengerCallbackDataEXT(nmemAllocChecked(SIZEOF), null);
+        return wrap(XrDebugUtilsMessengerCallbackDataEXT.class, nmemAllocChecked(SIZEOF));
     }
 
     /** Returns a new {@code XrDebugUtilsMessengerCallbackDataEXT} instance allocated with {@link MemoryUtil#memCalloc memCalloc}. The instance must be explicitly freed. */
     public static XrDebugUtilsMessengerCallbackDataEXT calloc() {
-        return new XrDebugUtilsMessengerCallbackDataEXT(nmemCallocChecked(1, SIZEOF), null);
+        return wrap(XrDebugUtilsMessengerCallbackDataEXT.class, nmemCallocChecked(1, SIZEOF));
     }
 
     /** Returns a new {@code XrDebugUtilsMessengerCallbackDataEXT} instance allocated with {@link BufferUtils}. */
     public static XrDebugUtilsMessengerCallbackDataEXT create() {
         ByteBuffer container = BufferUtils.createByteBuffer(SIZEOF);
-        return new XrDebugUtilsMessengerCallbackDataEXT(memAddress(container), container);
+        return wrap(XrDebugUtilsMessengerCallbackDataEXT.class, memAddress(container), container);
     }
 
     /** Returns a new {@code XrDebugUtilsMessengerCallbackDataEXT} instance for the specified memory address. */
     public static XrDebugUtilsMessengerCallbackDataEXT create(long address) {
-        return new XrDebugUtilsMessengerCallbackDataEXT(address, null);
+        return wrap(XrDebugUtilsMessengerCallbackDataEXT.class, address);
     }
 
     /** Like {@link #create(long) create}, but returns {@code null} if {@code address} is {@code NULL}. */
     @Nullable
     public static XrDebugUtilsMessengerCallbackDataEXT createSafe(long address) {
-        return address == NULL ? null : new XrDebugUtilsMessengerCallbackDataEXT(address, null);
+        return address == NULL ? null : wrap(XrDebugUtilsMessengerCallbackDataEXT.class, address);
     }
 
     /**
@@ -263,7 +254,7 @@ public class XrDebugUtilsMessengerCallbackDataEXT extends Struct<XrDebugUtilsMes
      * @param capacity the buffer capacity
      */
     public static XrDebugUtilsMessengerCallbackDataEXT.Buffer malloc(int capacity) {
-        return new Buffer(nmemAllocChecked(__checkMalloc(capacity, SIZEOF)), capacity);
+        return wrap(Buffer.class, nmemAllocChecked(__checkMalloc(capacity, SIZEOF)), capacity);
     }
 
     /**
@@ -272,7 +263,7 @@ public class XrDebugUtilsMessengerCallbackDataEXT extends Struct<XrDebugUtilsMes
      * @param capacity the buffer capacity
      */
     public static XrDebugUtilsMessengerCallbackDataEXT.Buffer calloc(int capacity) {
-        return new Buffer(nmemCallocChecked(capacity, SIZEOF), capacity);
+        return wrap(Buffer.class, nmemCallocChecked(capacity, SIZEOF), capacity);
     }
 
     /**
@@ -282,7 +273,7 @@ public class XrDebugUtilsMessengerCallbackDataEXT extends Struct<XrDebugUtilsMes
      */
     public static XrDebugUtilsMessengerCallbackDataEXT.Buffer create(int capacity) {
         ByteBuffer container = __create(capacity, SIZEOF);
-        return new Buffer(memAddress(container), container, -1, 0, capacity, capacity);
+        return wrap(Buffer.class, memAddress(container), capacity, container);
     }
 
     /**
@@ -292,13 +283,13 @@ public class XrDebugUtilsMessengerCallbackDataEXT extends Struct<XrDebugUtilsMes
      * @param capacity the buffer capacity
      */
     public static XrDebugUtilsMessengerCallbackDataEXT.Buffer create(long address, int capacity) {
-        return new Buffer(address, capacity);
+        return wrap(Buffer.class, address, capacity);
     }
 
     /** Like {@link #create(long, int) create}, but returns {@code null} if {@code address} is {@code NULL}. */
     @Nullable
     public static XrDebugUtilsMessengerCallbackDataEXT.Buffer createSafe(long address, int capacity) {
-        return address == NULL ? null : new Buffer(address, capacity);
+        return address == NULL ? null : wrap(Buffer.class, address, capacity);
     }
 
     /**
@@ -307,7 +298,7 @@ public class XrDebugUtilsMessengerCallbackDataEXT extends Struct<XrDebugUtilsMes
      * @param stack the stack from which to allocate
      */
     public static XrDebugUtilsMessengerCallbackDataEXT malloc(MemoryStack stack) {
-        return new XrDebugUtilsMessengerCallbackDataEXT(stack.nmalloc(ALIGNOF, SIZEOF), null);
+        return wrap(XrDebugUtilsMessengerCallbackDataEXT.class, stack.nmalloc(ALIGNOF, SIZEOF));
     }
 
     /**
@@ -316,7 +307,7 @@ public class XrDebugUtilsMessengerCallbackDataEXT extends Struct<XrDebugUtilsMes
      * @param stack the stack from which to allocate
      */
     public static XrDebugUtilsMessengerCallbackDataEXT calloc(MemoryStack stack) {
-        return new XrDebugUtilsMessengerCallbackDataEXT(stack.ncalloc(ALIGNOF, 1, SIZEOF), null);
+        return wrap(XrDebugUtilsMessengerCallbackDataEXT.class, stack.ncalloc(ALIGNOF, 1, SIZEOF));
     }
 
     /**
@@ -326,7 +317,7 @@ public class XrDebugUtilsMessengerCallbackDataEXT extends Struct<XrDebugUtilsMes
      * @param capacity the buffer capacity
      */
     public static XrDebugUtilsMessengerCallbackDataEXT.Buffer malloc(int capacity, MemoryStack stack) {
-        return new Buffer(stack.nmalloc(ALIGNOF, capacity * SIZEOF), capacity);
+        return wrap(Buffer.class, stack.nmalloc(ALIGNOF, capacity * SIZEOF), capacity);
     }
 
     /**
@@ -336,7 +327,7 @@ public class XrDebugUtilsMessengerCallbackDataEXT extends Struct<XrDebugUtilsMes
      * @param capacity the buffer capacity
      */
     public static XrDebugUtilsMessengerCallbackDataEXT.Buffer calloc(int capacity, MemoryStack stack) {
-        return new Buffer(stack.ncalloc(ALIGNOF, capacity, SIZEOF), capacity);
+        return wrap(Buffer.class, stack.ncalloc(ALIGNOF, capacity, SIZEOF), capacity);
     }
 
     // -----------------------------------
@@ -415,9 +406,9 @@ public class XrDebugUtilsMessengerCallbackDataEXT extends Struct<XrDebugUtilsMes
         /**
          * Creates a new {@code XrDebugUtilsMessengerCallbackDataEXT.Buffer} instance backed by the specified container.
          *
-         * <p>Changes to the container's content will be visible to the struct buffer instance and vice versa. The two buffers' position, limit, and mark values
+         * Changes to the container's content will be visible to the struct buffer instance and vice versa. The two buffers' position, limit, and mark values
          * will be independent. The new buffer's position will be zero, its capacity and its limit will be the number of bytes remaining in this buffer divided
-         * by {@link XrDebugUtilsMessengerCallbackDataEXT#SIZEOF}, and its mark will be undefined.</p>
+         * by {@link XrDebugUtilsMessengerCallbackDataEXT#SIZEOF}, and its mark will be undefined.
          *
          * <p>The created buffer instance holds a strong reference to the container object.</p>
          */

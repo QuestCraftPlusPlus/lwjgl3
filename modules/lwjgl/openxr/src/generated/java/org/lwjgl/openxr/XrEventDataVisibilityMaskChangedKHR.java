@@ -37,7 +37,7 @@ import static org.lwjgl.system.MemoryStack.*;
  *     uint32_t {@link #viewIndex};
  * }</code></pre>
  */
-public class XrEventDataVisibilityMaskChangedKHR extends Struct<XrEventDataVisibilityMaskChangedKHR> implements NativeResource {
+public class XrEventDataVisibilityMaskChangedKHR extends Struct implements NativeResource {
 
     /** The struct size in bytes. */
     public static final int SIZEOF;
@@ -70,15 +70,6 @@ public class XrEventDataVisibilityMaskChangedKHR extends Struct<XrEventDataVisib
         SESSION = layout.offsetof(2);
         VIEWCONFIGURATIONTYPE = layout.offsetof(3);
         VIEWINDEX = layout.offsetof(4);
-    }
-
-    protected XrEventDataVisibilityMaskChangedKHR(long address, @Nullable ByteBuffer container) {
-        super(address, container);
-    }
-
-    @Override
-    protected XrEventDataVisibilityMaskChangedKHR create(long address, @Nullable ByteBuffer container) {
-        return new XrEventDataVisibilityMaskChangedKHR(address, container);
     }
 
     /**
@@ -144,34 +135,34 @@ public class XrEventDataVisibilityMaskChangedKHR extends Struct<XrEventDataVisib
 
     /** Returns a new {@code XrEventDataVisibilityMaskChangedKHR} instance allocated with {@link MemoryUtil#memAlloc memAlloc}. The instance must be explicitly freed. */
     public static XrEventDataVisibilityMaskChangedKHR malloc() {
-        return new XrEventDataVisibilityMaskChangedKHR(nmemAllocChecked(SIZEOF), null);
+        return wrap(XrEventDataVisibilityMaskChangedKHR.class, nmemAllocChecked(SIZEOF));
     }
 
     /** Returns a new {@code XrEventDataVisibilityMaskChangedKHR} instance allocated with {@link MemoryUtil#memCalloc memCalloc}. The instance must be explicitly freed. */
     public static XrEventDataVisibilityMaskChangedKHR calloc() {
-        return new XrEventDataVisibilityMaskChangedKHR(nmemCallocChecked(1, SIZEOF), null);
+        return wrap(XrEventDataVisibilityMaskChangedKHR.class, nmemCallocChecked(1, SIZEOF));
     }
 
     /** Returns a new {@code XrEventDataVisibilityMaskChangedKHR} instance allocated with {@link BufferUtils}. */
     public static XrEventDataVisibilityMaskChangedKHR create() {
         ByteBuffer container = BufferUtils.createByteBuffer(SIZEOF);
-        return new XrEventDataVisibilityMaskChangedKHR(memAddress(container), container);
+        return wrap(XrEventDataVisibilityMaskChangedKHR.class, memAddress(container), container);
     }
 
     /** Returns a new {@code XrEventDataVisibilityMaskChangedKHR} instance for the specified memory address. */
     public static XrEventDataVisibilityMaskChangedKHR create(long address) {
-        return new XrEventDataVisibilityMaskChangedKHR(address, null);
+        return wrap(XrEventDataVisibilityMaskChangedKHR.class, address);
     }
 
     /** Like {@link #create(long) create}, but returns {@code null} if {@code address} is {@code NULL}. */
     @Nullable
     public static XrEventDataVisibilityMaskChangedKHR createSafe(long address) {
-        return address == NULL ? null : new XrEventDataVisibilityMaskChangedKHR(address, null);
+        return address == NULL ? null : wrap(XrEventDataVisibilityMaskChangedKHR.class, address);
     }
 
     /** Downcasts the specified {@code XrEventDataBaseHeader} instance to {@code XrEventDataVisibilityMaskChangedKHR}. */
     public static XrEventDataVisibilityMaskChangedKHR create(XrEventDataBaseHeader value) {
-        return new XrEventDataVisibilityMaskChangedKHR(value.address(), __getContainer(value));
+        return wrap(XrEventDataVisibilityMaskChangedKHR.class, value);
     }
 
     /**
@@ -180,7 +171,7 @@ public class XrEventDataVisibilityMaskChangedKHR extends Struct<XrEventDataVisib
      * @param capacity the buffer capacity
      */
     public static XrEventDataVisibilityMaskChangedKHR.Buffer malloc(int capacity) {
-        return new Buffer(nmemAllocChecked(__checkMalloc(capacity, SIZEOF)), capacity);
+        return wrap(Buffer.class, nmemAllocChecked(__checkMalloc(capacity, SIZEOF)), capacity);
     }
 
     /**
@@ -189,7 +180,7 @@ public class XrEventDataVisibilityMaskChangedKHR extends Struct<XrEventDataVisib
      * @param capacity the buffer capacity
      */
     public static XrEventDataVisibilityMaskChangedKHR.Buffer calloc(int capacity) {
-        return new Buffer(nmemCallocChecked(capacity, SIZEOF), capacity);
+        return wrap(Buffer.class, nmemCallocChecked(capacity, SIZEOF), capacity);
     }
 
     /**
@@ -199,7 +190,7 @@ public class XrEventDataVisibilityMaskChangedKHR extends Struct<XrEventDataVisib
      */
     public static XrEventDataVisibilityMaskChangedKHR.Buffer create(int capacity) {
         ByteBuffer container = __create(capacity, SIZEOF);
-        return new Buffer(memAddress(container), container, -1, 0, capacity, capacity);
+        return wrap(Buffer.class, memAddress(container), capacity, container);
     }
 
     /**
@@ -209,18 +200,18 @@ public class XrEventDataVisibilityMaskChangedKHR extends Struct<XrEventDataVisib
      * @param capacity the buffer capacity
      */
     public static XrEventDataVisibilityMaskChangedKHR.Buffer create(long address, int capacity) {
-        return new Buffer(address, capacity);
+        return wrap(Buffer.class, address, capacity);
     }
 
     /** Like {@link #create(long, int) create}, but returns {@code null} if {@code address} is {@code NULL}. */
     @Nullable
     public static XrEventDataVisibilityMaskChangedKHR.Buffer createSafe(long address, int capacity) {
-        return address == NULL ? null : new Buffer(address, capacity);
+        return address == NULL ? null : wrap(Buffer.class, address, capacity);
     }
 
     /** Downcasts the specified {@code XrEventDataBaseHeader.Buffer} instance to {@code XrEventDataVisibilityMaskChangedKHR.Buffer}. */
     public static XrEventDataVisibilityMaskChangedKHR.Buffer create(XrEventDataBaseHeader.Buffer value) {
-        return new XrEventDataVisibilityMaskChangedKHR.Buffer(value.address(), __getContainer(value), -1, 0, value.remaining(), value.remaining());
+        return wrap(Buffer.class, value);
     }
 
     /**
@@ -229,7 +220,7 @@ public class XrEventDataVisibilityMaskChangedKHR extends Struct<XrEventDataVisib
      * @param stack the stack from which to allocate
      */
     public static XrEventDataVisibilityMaskChangedKHR malloc(MemoryStack stack) {
-        return new XrEventDataVisibilityMaskChangedKHR(stack.nmalloc(ALIGNOF, SIZEOF), null);
+        return wrap(XrEventDataVisibilityMaskChangedKHR.class, stack.nmalloc(ALIGNOF, SIZEOF));
     }
 
     /**
@@ -238,7 +229,7 @@ public class XrEventDataVisibilityMaskChangedKHR extends Struct<XrEventDataVisib
      * @param stack the stack from which to allocate
      */
     public static XrEventDataVisibilityMaskChangedKHR calloc(MemoryStack stack) {
-        return new XrEventDataVisibilityMaskChangedKHR(stack.ncalloc(ALIGNOF, 1, SIZEOF), null);
+        return wrap(XrEventDataVisibilityMaskChangedKHR.class, stack.ncalloc(ALIGNOF, 1, SIZEOF));
     }
 
     /**
@@ -248,7 +239,7 @@ public class XrEventDataVisibilityMaskChangedKHR extends Struct<XrEventDataVisib
      * @param capacity the buffer capacity
      */
     public static XrEventDataVisibilityMaskChangedKHR.Buffer malloc(int capacity, MemoryStack stack) {
-        return new Buffer(stack.nmalloc(ALIGNOF, capacity * SIZEOF), capacity);
+        return wrap(Buffer.class, stack.nmalloc(ALIGNOF, capacity * SIZEOF), capacity);
     }
 
     /**
@@ -258,7 +249,7 @@ public class XrEventDataVisibilityMaskChangedKHR extends Struct<XrEventDataVisib
      * @param capacity the buffer capacity
      */
     public static XrEventDataVisibilityMaskChangedKHR.Buffer calloc(int capacity, MemoryStack stack) {
-        return new Buffer(stack.ncalloc(ALIGNOF, capacity, SIZEOF), capacity);
+        return wrap(Buffer.class, stack.ncalloc(ALIGNOF, capacity, SIZEOF), capacity);
     }
 
     // -----------------------------------
@@ -289,9 +280,9 @@ public class XrEventDataVisibilityMaskChangedKHR extends Struct<XrEventDataVisib
         /**
          * Creates a new {@code XrEventDataVisibilityMaskChangedKHR.Buffer} instance backed by the specified container.
          *
-         * <p>Changes to the container's content will be visible to the struct buffer instance and vice versa. The two buffers' position, limit, and mark values
+         * Changes to the container's content will be visible to the struct buffer instance and vice versa. The two buffers' position, limit, and mark values
          * will be independent. The new buffer's position will be zero, its capacity and its limit will be the number of bytes remaining in this buffer divided
-         * by {@link XrEventDataVisibilityMaskChangedKHR#SIZEOF}, and its mark will be undefined.</p>
+         * by {@link XrEventDataVisibilityMaskChangedKHR#SIZEOF}, and its mark will be undefined.
          *
          * <p>The created buffer instance holds a strong reference to the container object.</p>
          */

@@ -44,7 +44,7 @@ import org.lwjgl.vulkan.*;
  *     VkInstance {@link #vulkanInstance};
  * }</code></pre>
  */
-public class XrVulkanGraphicsDeviceGetInfoKHR extends Struct<XrVulkanGraphicsDeviceGetInfoKHR> implements NativeResource {
+public class XrVulkanGraphicsDeviceGetInfoKHR extends Struct implements NativeResource {
 
     /** The struct size in bytes. */
     public static final int SIZEOF;
@@ -74,15 +74,6 @@ public class XrVulkanGraphicsDeviceGetInfoKHR extends Struct<XrVulkanGraphicsDev
         NEXT = layout.offsetof(1);
         SYSTEMID = layout.offsetof(2);
         VULKANINSTANCE = layout.offsetof(3);
-    }
-
-    protected XrVulkanGraphicsDeviceGetInfoKHR(long address, @Nullable ByteBuffer container) {
-        super(address, container);
-    }
-
-    @Override
-    protected XrVulkanGraphicsDeviceGetInfoKHR create(long address, @Nullable ByteBuffer container) {
-        return new XrVulkanGraphicsDeviceGetInfoKHR(address, container);
     }
 
     /**
@@ -153,29 +144,29 @@ public class XrVulkanGraphicsDeviceGetInfoKHR extends Struct<XrVulkanGraphicsDev
 
     /** Returns a new {@code XrVulkanGraphicsDeviceGetInfoKHR} instance allocated with {@link MemoryUtil#memAlloc memAlloc}. The instance must be explicitly freed. */
     public static XrVulkanGraphicsDeviceGetInfoKHR malloc() {
-        return new XrVulkanGraphicsDeviceGetInfoKHR(nmemAllocChecked(SIZEOF), null);
+        return wrap(XrVulkanGraphicsDeviceGetInfoKHR.class, nmemAllocChecked(SIZEOF));
     }
 
     /** Returns a new {@code XrVulkanGraphicsDeviceGetInfoKHR} instance allocated with {@link MemoryUtil#memCalloc memCalloc}. The instance must be explicitly freed. */
     public static XrVulkanGraphicsDeviceGetInfoKHR calloc() {
-        return new XrVulkanGraphicsDeviceGetInfoKHR(nmemCallocChecked(1, SIZEOF), null);
+        return wrap(XrVulkanGraphicsDeviceGetInfoKHR.class, nmemCallocChecked(1, SIZEOF));
     }
 
     /** Returns a new {@code XrVulkanGraphicsDeviceGetInfoKHR} instance allocated with {@link BufferUtils}. */
     public static XrVulkanGraphicsDeviceGetInfoKHR create() {
         ByteBuffer container = BufferUtils.createByteBuffer(SIZEOF);
-        return new XrVulkanGraphicsDeviceGetInfoKHR(memAddress(container), container);
+        return wrap(XrVulkanGraphicsDeviceGetInfoKHR.class, memAddress(container), container);
     }
 
     /** Returns a new {@code XrVulkanGraphicsDeviceGetInfoKHR} instance for the specified memory address. */
     public static XrVulkanGraphicsDeviceGetInfoKHR create(long address) {
-        return new XrVulkanGraphicsDeviceGetInfoKHR(address, null);
+        return wrap(XrVulkanGraphicsDeviceGetInfoKHR.class, address);
     }
 
     /** Like {@link #create(long) create}, but returns {@code null} if {@code address} is {@code NULL}. */
     @Nullable
     public static XrVulkanGraphicsDeviceGetInfoKHR createSafe(long address) {
-        return address == NULL ? null : new XrVulkanGraphicsDeviceGetInfoKHR(address, null);
+        return address == NULL ? null : wrap(XrVulkanGraphicsDeviceGetInfoKHR.class, address);
     }
 
     /**
@@ -184,7 +175,7 @@ public class XrVulkanGraphicsDeviceGetInfoKHR extends Struct<XrVulkanGraphicsDev
      * @param capacity the buffer capacity
      */
     public static XrVulkanGraphicsDeviceGetInfoKHR.Buffer malloc(int capacity) {
-        return new Buffer(nmemAllocChecked(__checkMalloc(capacity, SIZEOF)), capacity);
+        return wrap(Buffer.class, nmemAllocChecked(__checkMalloc(capacity, SIZEOF)), capacity);
     }
 
     /**
@@ -193,7 +184,7 @@ public class XrVulkanGraphicsDeviceGetInfoKHR extends Struct<XrVulkanGraphicsDev
      * @param capacity the buffer capacity
      */
     public static XrVulkanGraphicsDeviceGetInfoKHR.Buffer calloc(int capacity) {
-        return new Buffer(nmemCallocChecked(capacity, SIZEOF), capacity);
+        return wrap(Buffer.class, nmemCallocChecked(capacity, SIZEOF), capacity);
     }
 
     /**
@@ -203,7 +194,7 @@ public class XrVulkanGraphicsDeviceGetInfoKHR extends Struct<XrVulkanGraphicsDev
      */
     public static XrVulkanGraphicsDeviceGetInfoKHR.Buffer create(int capacity) {
         ByteBuffer container = __create(capacity, SIZEOF);
-        return new Buffer(memAddress(container), container, -1, 0, capacity, capacity);
+        return wrap(Buffer.class, memAddress(container), capacity, container);
     }
 
     /**
@@ -213,13 +204,13 @@ public class XrVulkanGraphicsDeviceGetInfoKHR extends Struct<XrVulkanGraphicsDev
      * @param capacity the buffer capacity
      */
     public static XrVulkanGraphicsDeviceGetInfoKHR.Buffer create(long address, int capacity) {
-        return new Buffer(address, capacity);
+        return wrap(Buffer.class, address, capacity);
     }
 
     /** Like {@link #create(long, int) create}, but returns {@code null} if {@code address} is {@code NULL}. */
     @Nullable
     public static XrVulkanGraphicsDeviceGetInfoKHR.Buffer createSafe(long address, int capacity) {
-        return address == NULL ? null : new Buffer(address, capacity);
+        return address == NULL ? null : wrap(Buffer.class, address, capacity);
     }
 
     /**
@@ -228,7 +219,7 @@ public class XrVulkanGraphicsDeviceGetInfoKHR extends Struct<XrVulkanGraphicsDev
      * @param stack the stack from which to allocate
      */
     public static XrVulkanGraphicsDeviceGetInfoKHR malloc(MemoryStack stack) {
-        return new XrVulkanGraphicsDeviceGetInfoKHR(stack.nmalloc(ALIGNOF, SIZEOF), null);
+        return wrap(XrVulkanGraphicsDeviceGetInfoKHR.class, stack.nmalloc(ALIGNOF, SIZEOF));
     }
 
     /**
@@ -237,7 +228,7 @@ public class XrVulkanGraphicsDeviceGetInfoKHR extends Struct<XrVulkanGraphicsDev
      * @param stack the stack from which to allocate
      */
     public static XrVulkanGraphicsDeviceGetInfoKHR calloc(MemoryStack stack) {
-        return new XrVulkanGraphicsDeviceGetInfoKHR(stack.ncalloc(ALIGNOF, 1, SIZEOF), null);
+        return wrap(XrVulkanGraphicsDeviceGetInfoKHR.class, stack.ncalloc(ALIGNOF, 1, SIZEOF));
     }
 
     /**
@@ -247,7 +238,7 @@ public class XrVulkanGraphicsDeviceGetInfoKHR extends Struct<XrVulkanGraphicsDev
      * @param capacity the buffer capacity
      */
     public static XrVulkanGraphicsDeviceGetInfoKHR.Buffer malloc(int capacity, MemoryStack stack) {
-        return new Buffer(stack.nmalloc(ALIGNOF, capacity * SIZEOF), capacity);
+        return wrap(Buffer.class, stack.nmalloc(ALIGNOF, capacity * SIZEOF), capacity);
     }
 
     /**
@@ -257,7 +248,7 @@ public class XrVulkanGraphicsDeviceGetInfoKHR extends Struct<XrVulkanGraphicsDev
      * @param capacity the buffer capacity
      */
     public static XrVulkanGraphicsDeviceGetInfoKHR.Buffer calloc(int capacity, MemoryStack stack) {
-        return new Buffer(stack.ncalloc(ALIGNOF, capacity, SIZEOF), capacity);
+        return wrap(Buffer.class, stack.ncalloc(ALIGNOF, capacity, SIZEOF), capacity);
     }
 
     // -----------------------------------
@@ -299,9 +290,9 @@ public class XrVulkanGraphicsDeviceGetInfoKHR extends Struct<XrVulkanGraphicsDev
         /**
          * Creates a new {@code XrVulkanGraphicsDeviceGetInfoKHR.Buffer} instance backed by the specified container.
          *
-         * <p>Changes to the container's content will be visible to the struct buffer instance and vice versa. The two buffers' position, limit, and mark values
+         * Changes to the container's content will be visible to the struct buffer instance and vice versa. The two buffers' position, limit, and mark values
          * will be independent. The new buffer's position will be zero, its capacity and its limit will be the number of bytes remaining in this buffer divided
-         * by {@link XrVulkanGraphicsDeviceGetInfoKHR#SIZEOF}, and its mark will be undefined.</p>
+         * by {@link XrVulkanGraphicsDeviceGetInfoKHR#SIZEOF}, and its mark will be undefined.
          *
          * <p>The created buffer instance holds a strong reference to the container object.</p>
          */

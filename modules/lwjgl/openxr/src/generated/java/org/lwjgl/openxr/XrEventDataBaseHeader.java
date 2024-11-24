@@ -43,7 +43,7 @@ import static org.lwjgl.system.MemoryStack.*;
  *     void const * {@link #next};
  * }</code></pre>
  */
-public class XrEventDataBaseHeader extends Struct<XrEventDataBaseHeader> implements NativeResource {
+public class XrEventDataBaseHeader extends Struct implements NativeResource {
 
     /** The struct size in bytes. */
     public static final int SIZEOF;
@@ -67,15 +67,6 @@ public class XrEventDataBaseHeader extends Struct<XrEventDataBaseHeader> impleme
 
         TYPE = layout.offsetof(0);
         NEXT = layout.offsetof(1);
-    }
-
-    protected XrEventDataBaseHeader(long address, @Nullable ByteBuffer container) {
-        super(address, container);
-    }
-
-    @Override
-    protected XrEventDataBaseHeader create(long address, @Nullable ByteBuffer container) {
-        return new XrEventDataBaseHeader(address, container);
     }
 
     /**
@@ -130,124 +121,124 @@ public class XrEventDataBaseHeader extends Struct<XrEventDataBaseHeader> impleme
 
     /** Returns a new {@code XrEventDataBaseHeader} instance allocated with {@link MemoryUtil#memAlloc memAlloc}. The instance must be explicitly freed. */
     public static XrEventDataBaseHeader malloc() {
-        return new XrEventDataBaseHeader(nmemAllocChecked(SIZEOF), null);
+        return wrap(XrEventDataBaseHeader.class, nmemAllocChecked(SIZEOF));
     }
 
     /** Returns a new {@code XrEventDataBaseHeader} instance allocated with {@link MemoryUtil#memCalloc memCalloc}. The instance must be explicitly freed. */
     public static XrEventDataBaseHeader calloc() {
-        return new XrEventDataBaseHeader(nmemCallocChecked(1, SIZEOF), null);
+        return wrap(XrEventDataBaseHeader.class, nmemCallocChecked(1, SIZEOF));
     }
 
     /** Returns a new {@code XrEventDataBaseHeader} instance allocated with {@link BufferUtils}. */
     public static XrEventDataBaseHeader create() {
         ByteBuffer container = BufferUtils.createByteBuffer(SIZEOF);
-        return new XrEventDataBaseHeader(memAddress(container), container);
+        return wrap(XrEventDataBaseHeader.class, memAddress(container), container);
     }
 
     /** Returns a new {@code XrEventDataBaseHeader} instance for the specified memory address. */
     public static XrEventDataBaseHeader create(long address) {
-        return new XrEventDataBaseHeader(address, null);
+        return wrap(XrEventDataBaseHeader.class, address);
     }
 
     /** Like {@link #create(long) create}, but returns {@code null} if {@code address} is {@code NULL}. */
     @Nullable
     public static XrEventDataBaseHeader createSafe(long address) {
-        return address == NULL ? null : new XrEventDataBaseHeader(address, null);
+        return address == NULL ? null : wrap(XrEventDataBaseHeader.class, address);
     }
 
     /** Upcasts the specified {@code XrEventDataEventsLost} instance to {@code XrEventDataBaseHeader}. */
     public static XrEventDataBaseHeader create(XrEventDataEventsLost value) {
-        return new XrEventDataBaseHeader(value.address(), __getContainer(value));
+        return wrap(XrEventDataBaseHeader.class, value);
     }
 
     /** Upcasts the specified {@code XrEventDataInstanceLossPending} instance to {@code XrEventDataBaseHeader}. */
     public static XrEventDataBaseHeader create(XrEventDataInstanceLossPending value) {
-        return new XrEventDataBaseHeader(value.address(), __getContainer(value));
+        return wrap(XrEventDataBaseHeader.class, value);
     }
 
     /** Upcasts the specified {@code XrEventDataSessionStateChanged} instance to {@code XrEventDataBaseHeader}. */
     public static XrEventDataBaseHeader create(XrEventDataSessionStateChanged value) {
-        return new XrEventDataBaseHeader(value.address(), __getContainer(value));
+        return wrap(XrEventDataBaseHeader.class, value);
     }
 
     /** Upcasts the specified {@code XrEventDataReferenceSpaceChangePending} instance to {@code XrEventDataBaseHeader}. */
     public static XrEventDataBaseHeader create(XrEventDataReferenceSpaceChangePending value) {
-        return new XrEventDataBaseHeader(value.address(), __getContainer(value));
+        return wrap(XrEventDataBaseHeader.class, value);
     }
 
     /** Upcasts the specified {@code XrEventDataInteractionProfileChanged} instance to {@code XrEventDataBaseHeader}. */
     public static XrEventDataBaseHeader create(XrEventDataInteractionProfileChanged value) {
-        return new XrEventDataBaseHeader(value.address(), __getContainer(value));
+        return wrap(XrEventDataBaseHeader.class, value);
     }
 
     /** Upcasts the specified {@code XrEventDataPerfSettingsEXT} instance to {@code XrEventDataBaseHeader}. */
     public static XrEventDataBaseHeader create(XrEventDataPerfSettingsEXT value) {
-        return new XrEventDataBaseHeader(value.address(), __getContainer(value));
+        return wrap(XrEventDataBaseHeader.class, value);
     }
 
     /** Upcasts the specified {@code XrEventDataVisibilityMaskChangedKHR} instance to {@code XrEventDataBaseHeader}. */
     public static XrEventDataBaseHeader create(XrEventDataVisibilityMaskChangedKHR value) {
-        return new XrEventDataBaseHeader(value.address(), __getContainer(value));
+        return wrap(XrEventDataBaseHeader.class, value);
     }
 
     /** Upcasts the specified {@code XrEventDataMainSessionVisibilityChangedEXTX} instance to {@code XrEventDataBaseHeader}. */
     public static XrEventDataBaseHeader create(XrEventDataMainSessionVisibilityChangedEXTX value) {
-        return new XrEventDataBaseHeader(value.address(), __getContainer(value));
+        return wrap(XrEventDataBaseHeader.class, value);
     }
 
     /** Upcasts the specified {@code XrEventDataDisplayRefreshRateChangedFB} instance to {@code XrEventDataBaseHeader}. */
     public static XrEventDataBaseHeader create(XrEventDataDisplayRefreshRateChangedFB value) {
-        return new XrEventDataBaseHeader(value.address(), __getContainer(value));
+        return wrap(XrEventDataBaseHeader.class, value);
     }
 
     /** Upcasts the specified {@code XrEventDataViveTrackerConnectedHTCX} instance to {@code XrEventDataBaseHeader}. */
     public static XrEventDataBaseHeader create(XrEventDataViveTrackerConnectedHTCX value) {
-        return new XrEventDataBaseHeader(value.address(), __getContainer(value));
+        return wrap(XrEventDataBaseHeader.class, value);
     }
 
     /** Upcasts the specified {@code XrEventDataSpatialAnchorCreateCompleteFB} instance to {@code XrEventDataBaseHeader}. */
     public static XrEventDataBaseHeader create(XrEventDataSpatialAnchorCreateCompleteFB value) {
-        return new XrEventDataBaseHeader(value.address(), __getContainer(value));
+        return wrap(XrEventDataBaseHeader.class, value);
     }
 
     /** Upcasts the specified {@code XrEventDataSpaceSetStatusCompleteFB} instance to {@code XrEventDataBaseHeader}. */
     public static XrEventDataBaseHeader create(XrEventDataSpaceSetStatusCompleteFB value) {
-        return new XrEventDataBaseHeader(value.address(), __getContainer(value));
+        return wrap(XrEventDataBaseHeader.class, value);
     }
 
     /** Upcasts the specified {@code XrEventDataMarkerTrackingUpdateVARJO} instance to {@code XrEventDataBaseHeader}. */
     public static XrEventDataBaseHeader create(XrEventDataMarkerTrackingUpdateVARJO value) {
-        return new XrEventDataBaseHeader(value.address(), __getContainer(value));
+        return wrap(XrEventDataBaseHeader.class, value);
     }
 
     /** Upcasts the specified {@code XrEventDataSpaceQueryResultsAvailableFB} instance to {@code XrEventDataBaseHeader}. */
     public static XrEventDataBaseHeader create(XrEventDataSpaceQueryResultsAvailableFB value) {
-        return new XrEventDataBaseHeader(value.address(), __getContainer(value));
+        return wrap(XrEventDataBaseHeader.class, value);
     }
 
     /** Upcasts the specified {@code XrEventDataSpaceQueryCompleteFB} instance to {@code XrEventDataBaseHeader}. */
     public static XrEventDataBaseHeader create(XrEventDataSpaceQueryCompleteFB value) {
-        return new XrEventDataBaseHeader(value.address(), __getContainer(value));
+        return wrap(XrEventDataBaseHeader.class, value);
     }
 
     /** Upcasts the specified {@code XrEventDataSpaceSaveCompleteFB} instance to {@code XrEventDataBaseHeader}. */
     public static XrEventDataBaseHeader create(XrEventDataSpaceSaveCompleteFB value) {
-        return new XrEventDataBaseHeader(value.address(), __getContainer(value));
+        return wrap(XrEventDataBaseHeader.class, value);
     }
 
     /** Upcasts the specified {@code XrEventDataSpaceEraseCompleteFB} instance to {@code XrEventDataBaseHeader}. */
     public static XrEventDataBaseHeader create(XrEventDataSpaceEraseCompleteFB value) {
-        return new XrEventDataBaseHeader(value.address(), __getContainer(value));
+        return wrap(XrEventDataBaseHeader.class, value);
     }
 
     /** Upcasts the specified {@code XrEventDataSpaceShareCompleteFB} instance to {@code XrEventDataBaseHeader}. */
     public static XrEventDataBaseHeader create(XrEventDataSpaceShareCompleteFB value) {
-        return new XrEventDataBaseHeader(value.address(), __getContainer(value));
+        return wrap(XrEventDataBaseHeader.class, value);
     }
 
     /** Upcasts the specified {@code XrEventDataSpaceListSaveCompleteFB} instance to {@code XrEventDataBaseHeader}. */
     public static XrEventDataBaseHeader create(XrEventDataSpaceListSaveCompleteFB value) {
-        return new XrEventDataBaseHeader(value.address(), __getContainer(value));
+        return wrap(XrEventDataBaseHeader.class, value);
     }
 
     /**
@@ -256,7 +247,7 @@ public class XrEventDataBaseHeader extends Struct<XrEventDataBaseHeader> impleme
      * @param capacity the buffer capacity
      */
     public static XrEventDataBaseHeader.Buffer malloc(int capacity) {
-        return new Buffer(nmemAllocChecked(__checkMalloc(capacity, SIZEOF)), capacity);
+        return wrap(Buffer.class, nmemAllocChecked(__checkMalloc(capacity, SIZEOF)), capacity);
     }
 
     /**
@@ -265,7 +256,7 @@ public class XrEventDataBaseHeader extends Struct<XrEventDataBaseHeader> impleme
      * @param capacity the buffer capacity
      */
     public static XrEventDataBaseHeader.Buffer calloc(int capacity) {
-        return new Buffer(nmemCallocChecked(capacity, SIZEOF), capacity);
+        return wrap(Buffer.class, nmemCallocChecked(capacity, SIZEOF), capacity);
     }
 
     /**
@@ -275,7 +266,7 @@ public class XrEventDataBaseHeader extends Struct<XrEventDataBaseHeader> impleme
      */
     public static XrEventDataBaseHeader.Buffer create(int capacity) {
         ByteBuffer container = __create(capacity, SIZEOF);
-        return new Buffer(memAddress(container), container, -1, 0, capacity, capacity);
+        return wrap(Buffer.class, memAddress(container), capacity, container);
     }
 
     /**
@@ -285,108 +276,108 @@ public class XrEventDataBaseHeader extends Struct<XrEventDataBaseHeader> impleme
      * @param capacity the buffer capacity
      */
     public static XrEventDataBaseHeader.Buffer create(long address, int capacity) {
-        return new Buffer(address, capacity);
+        return wrap(Buffer.class, address, capacity);
     }
 
     /** Like {@link #create(long, int) create}, but returns {@code null} if {@code address} is {@code NULL}. */
     @Nullable
     public static XrEventDataBaseHeader.Buffer createSafe(long address, int capacity) {
-        return address == NULL ? null : new Buffer(address, capacity);
+        return address == NULL ? null : wrap(Buffer.class, address, capacity);
     }
 
     /** Upcasts the specified {@code XrEventDataEventsLost.Buffer} instance to {@code XrEventDataBaseHeader.Buffer}. */
     public static XrEventDataBaseHeader.Buffer create(XrEventDataEventsLost.Buffer value) {
-        return new XrEventDataBaseHeader.Buffer(value.address(), __getContainer(value), -1, 0, value.remaining(), value.remaining());
+        return wrap(Buffer.class, value);
     }
 
     /** Upcasts the specified {@code XrEventDataInstanceLossPending.Buffer} instance to {@code XrEventDataBaseHeader.Buffer}. */
     public static XrEventDataBaseHeader.Buffer create(XrEventDataInstanceLossPending.Buffer value) {
-        return new XrEventDataBaseHeader.Buffer(value.address(), __getContainer(value), -1, 0, value.remaining(), value.remaining());
+        return wrap(Buffer.class, value);
     }
 
     /** Upcasts the specified {@code XrEventDataSessionStateChanged.Buffer} instance to {@code XrEventDataBaseHeader.Buffer}. */
     public static XrEventDataBaseHeader.Buffer create(XrEventDataSessionStateChanged.Buffer value) {
-        return new XrEventDataBaseHeader.Buffer(value.address(), __getContainer(value), -1, 0, value.remaining(), value.remaining());
+        return wrap(Buffer.class, value);
     }
 
     /** Upcasts the specified {@code XrEventDataReferenceSpaceChangePending.Buffer} instance to {@code XrEventDataBaseHeader.Buffer}. */
     public static XrEventDataBaseHeader.Buffer create(XrEventDataReferenceSpaceChangePending.Buffer value) {
-        return new XrEventDataBaseHeader.Buffer(value.address(), __getContainer(value), -1, 0, value.remaining(), value.remaining());
+        return wrap(Buffer.class, value);
     }
 
     /** Upcasts the specified {@code XrEventDataInteractionProfileChanged.Buffer} instance to {@code XrEventDataBaseHeader.Buffer}. */
     public static XrEventDataBaseHeader.Buffer create(XrEventDataInteractionProfileChanged.Buffer value) {
-        return new XrEventDataBaseHeader.Buffer(value.address(), __getContainer(value), -1, 0, value.remaining(), value.remaining());
+        return wrap(Buffer.class, value);
     }
 
     /** Upcasts the specified {@code XrEventDataPerfSettingsEXT.Buffer} instance to {@code XrEventDataBaseHeader.Buffer}. */
     public static XrEventDataBaseHeader.Buffer create(XrEventDataPerfSettingsEXT.Buffer value) {
-        return new XrEventDataBaseHeader.Buffer(value.address(), __getContainer(value), -1, 0, value.remaining(), value.remaining());
+        return wrap(Buffer.class, value);
     }
 
     /** Upcasts the specified {@code XrEventDataVisibilityMaskChangedKHR.Buffer} instance to {@code XrEventDataBaseHeader.Buffer}. */
     public static XrEventDataBaseHeader.Buffer create(XrEventDataVisibilityMaskChangedKHR.Buffer value) {
-        return new XrEventDataBaseHeader.Buffer(value.address(), __getContainer(value), -1, 0, value.remaining(), value.remaining());
+        return wrap(Buffer.class, value);
     }
 
     /** Upcasts the specified {@code XrEventDataMainSessionVisibilityChangedEXTX.Buffer} instance to {@code XrEventDataBaseHeader.Buffer}. */
     public static XrEventDataBaseHeader.Buffer create(XrEventDataMainSessionVisibilityChangedEXTX.Buffer value) {
-        return new XrEventDataBaseHeader.Buffer(value.address(), __getContainer(value), -1, 0, value.remaining(), value.remaining());
+        return wrap(Buffer.class, value);
     }
 
     /** Upcasts the specified {@code XrEventDataDisplayRefreshRateChangedFB.Buffer} instance to {@code XrEventDataBaseHeader.Buffer}. */
     public static XrEventDataBaseHeader.Buffer create(XrEventDataDisplayRefreshRateChangedFB.Buffer value) {
-        return new XrEventDataBaseHeader.Buffer(value.address(), __getContainer(value), -1, 0, value.remaining(), value.remaining());
+        return wrap(Buffer.class, value);
     }
 
     /** Upcasts the specified {@code XrEventDataViveTrackerConnectedHTCX.Buffer} instance to {@code XrEventDataBaseHeader.Buffer}. */
     public static XrEventDataBaseHeader.Buffer create(XrEventDataViveTrackerConnectedHTCX.Buffer value) {
-        return new XrEventDataBaseHeader.Buffer(value.address(), __getContainer(value), -1, 0, value.remaining(), value.remaining());
+        return wrap(Buffer.class, value);
     }
 
     /** Upcasts the specified {@code XrEventDataSpatialAnchorCreateCompleteFB.Buffer} instance to {@code XrEventDataBaseHeader.Buffer}. */
     public static XrEventDataBaseHeader.Buffer create(XrEventDataSpatialAnchorCreateCompleteFB.Buffer value) {
-        return new XrEventDataBaseHeader.Buffer(value.address(), __getContainer(value), -1, 0, value.remaining(), value.remaining());
+        return wrap(Buffer.class, value);
     }
 
     /** Upcasts the specified {@code XrEventDataSpaceSetStatusCompleteFB.Buffer} instance to {@code XrEventDataBaseHeader.Buffer}. */
     public static XrEventDataBaseHeader.Buffer create(XrEventDataSpaceSetStatusCompleteFB.Buffer value) {
-        return new XrEventDataBaseHeader.Buffer(value.address(), __getContainer(value), -1, 0, value.remaining(), value.remaining());
+        return wrap(Buffer.class, value);
     }
 
     /** Upcasts the specified {@code XrEventDataMarkerTrackingUpdateVARJO.Buffer} instance to {@code XrEventDataBaseHeader.Buffer}. */
     public static XrEventDataBaseHeader.Buffer create(XrEventDataMarkerTrackingUpdateVARJO.Buffer value) {
-        return new XrEventDataBaseHeader.Buffer(value.address(), __getContainer(value), -1, 0, value.remaining(), value.remaining());
+        return wrap(Buffer.class, value);
     }
 
     /** Upcasts the specified {@code XrEventDataSpaceQueryResultsAvailableFB.Buffer} instance to {@code XrEventDataBaseHeader.Buffer}. */
     public static XrEventDataBaseHeader.Buffer create(XrEventDataSpaceQueryResultsAvailableFB.Buffer value) {
-        return new XrEventDataBaseHeader.Buffer(value.address(), __getContainer(value), -1, 0, value.remaining(), value.remaining());
+        return wrap(Buffer.class, value);
     }
 
     /** Upcasts the specified {@code XrEventDataSpaceQueryCompleteFB.Buffer} instance to {@code XrEventDataBaseHeader.Buffer}. */
     public static XrEventDataBaseHeader.Buffer create(XrEventDataSpaceQueryCompleteFB.Buffer value) {
-        return new XrEventDataBaseHeader.Buffer(value.address(), __getContainer(value), -1, 0, value.remaining(), value.remaining());
+        return wrap(Buffer.class, value);
     }
 
     /** Upcasts the specified {@code XrEventDataSpaceSaveCompleteFB.Buffer} instance to {@code XrEventDataBaseHeader.Buffer}. */
     public static XrEventDataBaseHeader.Buffer create(XrEventDataSpaceSaveCompleteFB.Buffer value) {
-        return new XrEventDataBaseHeader.Buffer(value.address(), __getContainer(value), -1, 0, value.remaining(), value.remaining());
+        return wrap(Buffer.class, value);
     }
 
     /** Upcasts the specified {@code XrEventDataSpaceEraseCompleteFB.Buffer} instance to {@code XrEventDataBaseHeader.Buffer}. */
     public static XrEventDataBaseHeader.Buffer create(XrEventDataSpaceEraseCompleteFB.Buffer value) {
-        return new XrEventDataBaseHeader.Buffer(value.address(), __getContainer(value), -1, 0, value.remaining(), value.remaining());
+        return wrap(Buffer.class, value);
     }
 
     /** Upcasts the specified {@code XrEventDataSpaceShareCompleteFB.Buffer} instance to {@code XrEventDataBaseHeader.Buffer}. */
     public static XrEventDataBaseHeader.Buffer create(XrEventDataSpaceShareCompleteFB.Buffer value) {
-        return new XrEventDataBaseHeader.Buffer(value.address(), __getContainer(value), -1, 0, value.remaining(), value.remaining());
+        return wrap(Buffer.class, value);
     }
 
     /** Upcasts the specified {@code XrEventDataSpaceListSaveCompleteFB.Buffer} instance to {@code XrEventDataBaseHeader.Buffer}. */
     public static XrEventDataBaseHeader.Buffer create(XrEventDataSpaceListSaveCompleteFB.Buffer value) {
-        return new XrEventDataBaseHeader.Buffer(value.address(), __getContainer(value), -1, 0, value.remaining(), value.remaining());
+        return wrap(Buffer.class, value);
     }
 
     /**
@@ -395,7 +386,7 @@ public class XrEventDataBaseHeader extends Struct<XrEventDataBaseHeader> impleme
      * @param stack the stack from which to allocate
      */
     public static XrEventDataBaseHeader malloc(MemoryStack stack) {
-        return new XrEventDataBaseHeader(stack.nmalloc(ALIGNOF, SIZEOF), null);
+        return wrap(XrEventDataBaseHeader.class, stack.nmalloc(ALIGNOF, SIZEOF));
     }
 
     /**
@@ -404,7 +395,7 @@ public class XrEventDataBaseHeader extends Struct<XrEventDataBaseHeader> impleme
      * @param stack the stack from which to allocate
      */
     public static XrEventDataBaseHeader calloc(MemoryStack stack) {
-        return new XrEventDataBaseHeader(stack.ncalloc(ALIGNOF, 1, SIZEOF), null);
+        return wrap(XrEventDataBaseHeader.class, stack.ncalloc(ALIGNOF, 1, SIZEOF));
     }
 
     /**
@@ -414,7 +405,7 @@ public class XrEventDataBaseHeader extends Struct<XrEventDataBaseHeader> impleme
      * @param capacity the buffer capacity
      */
     public static XrEventDataBaseHeader.Buffer malloc(int capacity, MemoryStack stack) {
-        return new Buffer(stack.nmalloc(ALIGNOF, capacity * SIZEOF), capacity);
+        return wrap(Buffer.class, stack.nmalloc(ALIGNOF, capacity * SIZEOF), capacity);
     }
 
     /**
@@ -424,7 +415,7 @@ public class XrEventDataBaseHeader extends Struct<XrEventDataBaseHeader> impleme
      * @param capacity the buffer capacity
      */
     public static XrEventDataBaseHeader.Buffer calloc(int capacity, MemoryStack stack) {
-        return new Buffer(stack.ncalloc(ALIGNOF, capacity, SIZEOF), capacity);
+        return wrap(Buffer.class, stack.ncalloc(ALIGNOF, capacity, SIZEOF), capacity);
     }
 
     // -----------------------------------
@@ -449,9 +440,9 @@ public class XrEventDataBaseHeader extends Struct<XrEventDataBaseHeader> impleme
         /**
          * Creates a new {@code XrEventDataBaseHeader.Buffer} instance backed by the specified container.
          *
-         * <p>Changes to the container's content will be visible to the struct buffer instance and vice versa. The two buffers' position, limit, and mark values
+         * Changes to the container's content will be visible to the struct buffer instance and vice versa. The two buffers' position, limit, and mark values
          * will be independent. The new buffer's position will be zero, its capacity and its limit will be the number of bytes remaining in this buffer divided
-         * by {@link XrEventDataBaseHeader#SIZEOF}, and its mark will be undefined.</p>
+         * by {@link XrEventDataBaseHeader#SIZEOF}, and its mark will be undefined.
          *
          * <p>The created buffer instance holds a strong reference to the container object.</p>
          */
