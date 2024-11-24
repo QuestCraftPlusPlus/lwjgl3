@@ -12,6 +12,7 @@ import java.nio.*;
 import org.lwjgl.*;
 import org.lwjgl.system.*;
 
+import static org.lwjgl.openxr.KHRAndroidCreateInstance.*;
 import static org.lwjgl.system.Checks.*;
 import static org.lwjgl.system.MemoryUtil.*;
 import static org.lwjgl.system.MemoryStack.*;
@@ -108,7 +109,7 @@ public class XrInstanceCreateInfoAndroidKHR extends Struct implements NativeReso
     /** Sets the specified value to the {@link #type} field. */
     public XrInstanceCreateInfoAndroidKHR type(@NativeType("XrStructureType") int value) { ntype(address(), value); return this; }
     /** Sets the default value to the {@link #type} field. */
-    public XrInstanceCreateInfoAndroidKHR type$Default() { return type(TYPE_INSTANCE_CREATE_INFO_ANDROID_KHR); }
+    public XrInstanceCreateInfoAndroidKHR type$Default() { return type(XR_TYPE_INSTANCE_CREATE_INFO_ANDROID_KHR); }
     /** Sets the specified value to the {@link #next} field. */
     public XrInstanceCreateInfoAndroidKHR next(@NativeType("void const *") long value) { nnext(address(), value); return this; }
     /** Sets the specified value to the {@link #applicationVM} field. */
@@ -338,7 +339,7 @@ public class XrInstanceCreateInfoAndroidKHR extends Struct implements NativeReso
         /** Sets the specified value to the {@link XrInstanceCreateInfoAndroidKHR#type} field. */
         public XrInstanceCreateInfoAndroidKHR.Buffer type(@NativeType("XrStructureType") int value) { XrInstanceCreateInfoAndroidKHR.ntype(address(), value); return this; }
         /** Sets the default value to the {@link XrInstanceCreateInfoAndroidKHR#type} field. */
-        public XrInstanceCreateInfoAndroidKHR.Buffer type$Default() { return type(TYPE_INSTANCE_CREATE_INFO_ANDROID_KHR); }
+        public XrInstanceCreateInfoAndroidKHR.Buffer type$Default() { return type(XR_TYPE_INSTANCE_CREATE_INFO_ANDROID_KHR); }
         /** Sets the specified value to the {@link XrInstanceCreateInfoAndroidKHR#next} field. */
         public XrInstanceCreateInfoAndroidKHR.Buffer next(@NativeType("void const *") long value) { XrInstanceCreateInfoAndroidKHR.nnext(address(), value); return this; }
         /** Sets the specified value to the {@link XrInstanceCreateInfoAndroidKHR#applicationVM} field. */

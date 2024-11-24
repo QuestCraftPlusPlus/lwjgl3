@@ -12,6 +12,7 @@ import java.nio.*;
 import org.lwjgl.*;
 import org.lwjgl.system.*;
 
+import static org.lwjgl.openxr.KHRLoaderInitAndroid.*;
 import static org.lwjgl.system.Checks.*;
 import static org.lwjgl.system.MemoryUtil.*;
 import static org.lwjgl.system.MemoryStack.*;
@@ -104,7 +105,7 @@ public class XrLoaderInitInfoAndroidKHR extends Struct implements NativeResource
     /** Sets the specified value to the {@link #type} field. */
     public XrLoaderInitInfoAndroidKHR type(@NativeType("XrStructureType") int value) { ntype(address(), value); return this; }
     /** Sets the default value to the {@link #type} field. */
-    public XrLoaderInitInfoAndroidKHR type$Default() { return type(TYPE_LOADER_INIT_INFO_ANDROID_KHR); }
+    public XrLoaderInitInfoAndroidKHR type$Default() { return type(XR_TYPE_LOADER_INIT_INFO_ANDROID_KHR); }
     /** Sets the specified value to the {@link #next} field. */
     public XrLoaderInitInfoAndroidKHR next(@NativeType("void const *") long value) { nnext(address(), value); return this; }
     /** Sets the specified value to the {@link #applicationVM} field. */
@@ -344,7 +345,7 @@ public class XrLoaderInitInfoAndroidKHR extends Struct implements NativeResource
         /** Sets the specified value to the {@link XrLoaderInitInfoAndroidKHR#type} field. */
         public XrLoaderInitInfoAndroidKHR.Buffer type(@NativeType("XrStructureType") int value) { XrLoaderInitInfoAndroidKHR.ntype(address(), value); return this; }
         /** Sets the default value to the {@link XrLoaderInitInfoAndroidKHR#type} field. */
-        public XrLoaderInitInfoAndroidKHR.Buffer type$Default() { return type(TYPE_LOADER_INIT_INFO_ANDROID_KHR); }
+        public XrLoaderInitInfoAndroidKHR.Buffer type$Default() { return type(XR_TYPE_LOADER_INIT_INFO_ANDROID_KHR); }
         /** Sets the specified value to the {@link XrLoaderInitInfoAndroidKHR#next} field. */
         public XrLoaderInitInfoAndroidKHR.Buffer next(@NativeType("void const *") long value) { XrLoaderInitInfoAndroidKHR.nnext(address(), value); return this; }
         /** Sets the specified value to the {@link XrLoaderInitInfoAndroidKHR#applicationVM} field. */
